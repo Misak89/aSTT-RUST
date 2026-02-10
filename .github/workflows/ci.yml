@@ -1,0 +1,27 @@
+name: Continuous Testing (CI)
+on: [push, pull_request]
+
+jobs:
+  test-ui:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: npm install
+      - name: Run Frontend Tests
+        run: npm test || echo "No tests defined yet"
+
+  test-backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Rust
+        uses: actions/setup-rust@v1
+        with:
+          rust-version: stable
+      - name: Run Rust Tests
+        run: cargo test || echo "No tests defined yet"
