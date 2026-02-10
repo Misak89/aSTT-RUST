@@ -1,0 +1,27 @@
+{
+  "project": "aSTT-RUST",
+  "version": "0.1.0",
+  "description": "Modular STT & Diarization for Physicians",
+  "tracks": {
+    "main": {
+      "name": "Production Track",
+      "path": "src-*",
+      "status": "Scaffolding"
+    },
+    "sandbox": {
+      "name": "Research Track (HW Benchmark)",
+      "path": "sandbox/portable_bench",
+      "status": "Functional"
+    }
+  },
+  "docs": {
+    "framework": "Spec-Kit",
+    "root": "./",
+    "specs": ".specify/",
+    "qa_report": "QA_REPORT.md"
+  },
+  "automation": {
+    "script": "scripts/update_docs.ps1",
+    "logs": "logs/"
+  }
+}
