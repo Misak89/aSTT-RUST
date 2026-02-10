@@ -10,10 +10,11 @@ The application will use **Tauri** (Rust) for the desktop backend, a **Python 3.
 
 > [!IMPORTANT]
 > **Priority Change**: The user prioritized a **CPU-only version** for standard office notebooks (4-5 years old) without NVIDIA GPUs.
-> **Implication**: We must configure the "Portable Test Bench" to run on CPU. Performance will be lower, but it validates functionality.
-> **Environment Strategy**: 
-> 1. **Development**: Using a local virtual environment (`.venv`) created from system Python 3.11/3.13 for isolation and ease of development.
-> 2. **Portable/QA**: Using a standalone, no-install Python build in `tests/portable_bench` for user-ready "no-install" verification.
+> [!IMPORTANT]
+> **Python Sidecar Solution**: We are committing to a **"Downloads on First Run" (Portable Python)** strategy.
+> 1. In `dev`, the system uses the local virtual environment (`.venv`) created from system Python 3.11/3.13 for isolation and ease of development.
+> 2. In `production`, the app will automatically download a standalone, frozen Python build (e.g. from `indygreg/python-build-standalone`) and relevant WhisperX models on the first run.
+> 3. **Portable/QA**: Using a standalone, no-install Python build in `tests/portable_bench` for user-ready "no-install" verification.
 
 ## Proposed Changes
 
@@ -62,7 +63,8 @@ The application will use **Tauri** (Rust) for the desktop backend, a **Python 3.
 ### Manual Verification
 1. **Sidecar Communication**:
     - Run `npm run tauri dev`.
-    - Trigger a command from UI -> Rust -> Python Sidecar.
-    - Verify Python responds (e.g., logs to console or returns string).
+    - **DX Requirement**: The Tauri dev lifecycle must manage the sidecar (no manual Python startup).
+    - Trigger a command from UI -> Rust -> Python Sidecar (JSON-RPC).
+    - Verify Python responds via structured JSON.
 2. **Build**:
     - Run `npm run tauri build` to ensure the bundling logic works (might fail initially without strict sidecar binary setup, but we will test the *dev* flow first).

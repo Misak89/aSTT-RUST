@@ -18,15 +18,15 @@ graph TD
 ## Track Segmentation (Machine-Readable)
 The project is architected as two parallel tracks defined in `project.json`:
 
-1.  **Main Track (Production)**: `src-ui/`, `src-tauri/`, `src-python/`. Focused on stability and deployment.
-2.  **Sandbox Track (Research)**: `sandbox/portable_bench/`. Focused on HW validation and benchmarking.
+- **Track 1 (Main SW)**: Production-ready code in `src-ui/`, `src-tauri/`, `src-python/`. Focused on stability and clinical deployment.
+- **Track 2 (Sandbox/Research)**: Research and prototypes in `sandbox/portable_bench/`. Focused on HW validation and rapid bench testing.
 
 ## Modules (Per Constitution)
 
 ### 1. ASR Module (Python Sidecar)
 - **Responsibility**: Audio ingestion, speech-to-text, speaker diarization.
 - **Technology**: Python 3.10, WhisperX, PyTorch.
-- **Communication**: Standard Input/Output (stdio) or local WebSocket with the Rust core.
+- **Communication**: **JSON-RPC over Stdio** (See Section 6).
 - **Key Interface**: `transcribe(audio_path) -> JSON`, `stream_audio(chunk) -> JSON`.
 
 ### 2. LLM Module (Rust/Python Hybrid)
@@ -64,22 +64,27 @@ The project is divided into two distinct tracks to ensure stability while allowi
 *   **Status**: Functional; used for "Portable USB" testing.
 *   **Location**: `tests/portable_bench/` (acts as our **Sandbox/Research** area).
 
-## Directory Structure
+## 5. Directory Structure
 ```text
 aSTT-RUST/
-├── Document/                # Shared Documentation (Spec-Kit)
+├── .specify/                # Spec-Kit (spec.md, plan.md)
+├── .github/workflows/       # Permanent Testing & CI
 ├── src-tauri/               # [TRACK 1] Rust Backend
 ├── src-ui/                  # [TRACK 1] Svelte Frontend
 ├── src-python/              # [TRACK 1] Python Sidecar (Production)
-├── tests/
+├── sandbox/
 │   └── portable_bench/      # [TRACK 2] HW Prototype & Sandbox
+├── scripts/                 # Autonomous Documentation Controller
 ├── .venv/                   # Development virtual environment
-└── package.json             # Root build orchestration
+└── project.json             # Global Machine Metadata
 ```
 
-## 2. Track Separation
-- **Track 1 (Main SW)**: Production-ready code in `src-*`.
-- **Track 2 (Sandbox)**: Research and prototypes in `sandbox/`.
+## 6. Communication Protocol (Sidecar IPC)
+To prevent "IPC Fragility", Rust and Python communicate via a strict JSON-RPC schema over `stdin/stdout`.
+
+- **Strictness**: Python uses `Pydantic` for validation; Rust uses `Serde`.
+- **Log Isolation**: All non-JSON output from Python (logs, prints) is prefixed with `[LOG]` and ignored by the RPC parser to prevent JSON parsing errors.
+- **Lifecycle**: Tauri manages the sidecar process (starts on app launch, kills on exit).
 
 ## Development Timeline (Milestones)
 

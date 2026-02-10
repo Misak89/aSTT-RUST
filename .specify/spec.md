@@ -27,6 +27,11 @@ This specification defines the core functionality for the first iteration of the
 
 ## Functional Requirements
 
+### 4. Sidecar Interface (IPC)
+The Rust backend communicates with the Python sidecar via **JSON-RPC over Stdio**.
+- **Payload**: Strict JSON structure (Pydantic <-> Serde).
+- **Robustness**: Any non-JSON stdout from Python is treated as an internal log and ignored by the RPC parser to prevent crashes.
+
 ### FR-01: Initialization
 - The app must launch within 5 seconds.
 - The Python sidecar (WhisperX) must initialize in the background.
@@ -39,12 +44,16 @@ This specification defines the core functionality for the first iteration of the
 
 ### FR-03: Transcription Display
 - Text must be appended to the main view.
-- Speaker labels (e.g., "Speaker 0", "Speaker 1") must prefix each segment.
+- **Retroactive Diarization**: Speaker labels (e.g., "Speaker 0", "Speaker 1") will update retroactively (2-5s delay) once segment processing is complete.
 - Timestamp for each segment start.
 
 ### FR-04: Configuration
 - Option to select microphone input device.
 - Option to toggle "Always on Top" for window.
+
+### FR-05: Design System
+- **Aesthetic**: Clean Swiss Style (High Contrast Accessibility).
+- **Behavior**: Distraction-free for clinical environments.
 
 ## Non-Functional Requirements
 - **Privacy**: No audio data leaves the local machine (Local-First).
