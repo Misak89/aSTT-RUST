@@ -8,6 +8,10 @@ Vítejte v hlavní navigaci projektu **aSTT-RUST**. Tento dokument slouží jako
 | **Co je cílem?** | [VISION.md](./VISION.md) | High-level vize a cílová skupina. |
 | **Kde jsou specifikace?** | [.specify/spec.md](./.specify/spec.md) | Funkční a technické požadavky (SDD). |
 | **Jaká je struktura?** | [ARCHITECTURE.md](./ARCHITECTURE.md#directory-structure) | Mapa adresářů pro lidi i stroje. |
+| **Soukromí a Bezpečnost?** | [CONSTITUTION.md](./CONSTITUTION.md) | Základní dogmata (Local-First, AI Safety). |
+| **Budoucí platformy?** | [ARCHITECTURE.md](./ARCHITECTURE.md#future-considerations) | Plán pro Android, Mac a Web. |
+| **Kritika dokumentace?** | [documentation_analysis.md](./documentation_analysis.md) | Audit a hodnocení kvality dokumentů. |
+| **Kdo co hlídá?** | [GOVERNANCE.md](./GOVERNANCE.md) | Mapa automatizace, testů a bezpečnostních kontrol. |
 
 ## ⚙️ Automatizace a Verifikace
 
