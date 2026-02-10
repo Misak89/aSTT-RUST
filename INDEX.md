@@ -12,10 +12,7 @@ Vítejte v hlavní navigaci projektu **aSTT-RUST**. Tento dokument slouží jako
 ## ⚙️ Automatizace a Verifikace
 
 ### Jak kontrolovat průběžnou aktualizaci?
-Hlavním bodem pravdy je **[QA_REPORT.md](./QA_REPORT.md)**. 
-- Každé spuštění skriptu `update_docs.ps1` zvýší **Version** v záhlaví.
-- Sekce **Last Updated** obsahuje čas s přesností na minuty.
-- Nejnovější testy se řadí **nahoru** pod sekci `Automated Test Log`.
+- [QA_REPORT.md](./QA_REPORT.md): Aktuální stav systému a výsledky testů.
 
 ### Kde najdu logy?
 - Souhrnné logy jsou přímo v [QA_REPORT.md](./QA_REPORT.md).

@@ -7,6 +7,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Danger JS
-        uses: danger/danger-js@9.1.5 # Fixed version
+        run: npx danger ci
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

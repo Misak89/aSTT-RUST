@@ -1,6 +1,6 @@
-# System Architecture
+# System Architecture: aSTT Core
 
-## Overview
+## 1. Overview
 aSTT is a modular desktop application designed for real-time speech transcription and diarization, primarily for physicians. It leverages a high-performance Rust backend (Tauri), a Python sidecar for ML inference (WhisperX), and a modern web frontend.
 
 ## High-Level Diagram
@@ -76,6 +76,10 @@ aSTT-RUST/
 ├── .venv/                   # Development virtual environment
 └── package.json             # Root build orchestration
 ```
+
+## 2. Track Separation
+- **Track 1 (Main SW)**: Production-ready code in `src-*`.
+- **Track 2 (Sandbox)**: Research and prototypes in `sandbox/`.
 
 ## Development Timeline (Milestones)
 
