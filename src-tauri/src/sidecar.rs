@@ -54,7 +54,7 @@ impl SidecarManager {
             .map_err(|e| format!("Failed to spawn sidecar: {}", e))?;
 
         self.child = Some(child);
-        self.receiver = Some(rx);
+        // Note: rx is moved to async task, so we don't store it
 
         // Start listening for responses
         let pending = self.pending_responses.clone();
