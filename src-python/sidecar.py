@@ -126,9 +126,27 @@ class SidecarHandler:
         if "config" in params:
             self.state.config.update(params["config"])
 
-        # TODO: Actually load WhisperX model
-        # For now, just mark as initialized
-        self.state.initialized = True
+        # Load WhisperX model
+        try:
+            import whisperx
+            model_name = self.state.config.get("model", "base")
+            device = self.state.config.get("device", "cpu")
+            compute_type = self.state.config.get("compute_type", "int8")
+            
+            logger.info(f"Loading WhisperX model: {model_name} on {device}")
+            self.state.whisperx_model = whisperx.load_model(
+                model_name,
+                device=device,
+                compute_type=compute_type
+            )
+            self.state.initialized = True
+            logger.info(f"WhisperX model loaded successfully")
+        except ImportError:
+            logger.warning("WhisperX not installed, using placeholder mode")
+            self.state.initialized = True
+        except Exception as e:
+            logger.error(f"Failed to load WhisperX: {e}")
+            return {"status": "error", "message": str(e)}
 
         logger.info(f"Initialized with config: {self.state.config}")
         return {
@@ -164,23 +182,75 @@ class SidecarHandler:
         return {"status": "stopped", "duration_ms": 5000}
 
     def handle_transcribe(self, params: Dict[str, Any]) -> Dict[str, Any]:
-        """Transcribe audio file"""
+        """Transcribe audio file with WhisperX"""
         audio_path = params.get("audio_path", "")
         logger.info(f"Transcribing: {audio_path}")
 
         if not self.state.initialized:
             return {"status": "error", "message": "Not initialized"}
 
-        # TODO: Implement actual transcription with WhisperX
-        # This is a placeholder response
+        if not audio_path:
+            return {"status": "error", "message": "No audio_path provided"}
+
+        # Try real WhisperX transcription
+        if self.state.whisperx_model is not None:
+            try:
+                import whisperx
+                
+                # Load audio
+                audio = whisperx.load_audio(audio_path)
+                
+                # Transcribe
+                result = self.state.whisperx_model.transcribe(audio)
+                
+                # Align if possible
+                language = result.get("language", self.state.config.get("language", "cs"))
+                try:
+                    model_a, metadata = whisperx.load_align_model(
+                        language_code=language,
+                        device=self.state.config.get("device", "cpu")
+                    )
+                    result = whisperx.align(
+                        result["segments"],
+                        model_a,
+                        metadata,
+                        audio,
+                        self.state.config.get("device", "cpu")
+                    )
+                except Exception as e:
+                    logger.warning(f"Alignment failed: {e}")
+                
+                # Diarization if enabled
+                if self.state.config.get("diarization", False):
+                    try:
+                        diarize_model = whisperx.DiarizationPipeline(
+                            use_auth_token=self.state.config.get("hf_token"),
+                            device=self.state.config.get("device", "cpu")
+                        )
+                        diarize_segments = diarize_model(audio)
+                        result = whisperx.assign_word_speakers(diarize_segments, result)
+                    except Exception as e:
+                        logger.warning(f"Diarization failed: {e}")
+                
+                return {
+                    "status": "success",
+                    "text": " ".join([s["text"] for s in result.get("segments", [])]),
+                    "segments": result.get("segments", []),
+                    "language": language
+                }
+            except Exception as e:
+                logger.error(f"Transcription failed: {e}")
+                return {"status": "error", "message": str(e)}
+        
+        # Fallback: placeholder response
         return {
             "status": "success",
-            "text": "Placeholder transcription text",
+            "text": "Placeholder transcription (WhisperX not loaded)",
             "segments": [
                 {
                     "start": 0.0,
                     "end": 2.5,
-                    "text": "Placeholder transcription text",
+                    "text": "Placeholder transcription",
                     "speaker": "SPEAKER_01"
                 }
             ],
