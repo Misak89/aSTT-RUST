@@ -1,0 +1,12 @@
+#!/bin/bash
+echo "Running documentation checks..."
+
+# Kontrola duplicit (ignorovat prazdne radky)
+powershell -ExecutionPolicy Bypass -File scripts/check_duplicates.ps1 -IgnoreEmptyLines
+
+if [ $? -ne 0 ]; then
+    echo "Duplicate check failed!"
+    exit 1
+fi
+
+echo "All checks passed!"
