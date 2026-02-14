@@ -51,9 +51,13 @@ The Rust backend communicates with the Python sidecar via **JSON-RPC over Stdio*
 - Option to select microphone input device.
 - Option to toggle "Always on Top" for window.
 
-### FR-05: Design System
+### FR-05: Design System (Clean Swiss Style)
 - **Aesthetic**: Clean Swiss Style (High Contrast Accessibility).
-- **Behavior**: Distraction-free for clinical environments.
+    - **Typography**: Sans-serif, bold hierarchy (e.g., Inter or Roboto).
+    - **Palette**: Monochromatic with single accent color for active states (e.g., Medical Blue or Emergency Red for Recording).
+    - **Layout**: Grid-based, generous whitespace to reduce cognitive load.
+- **Behavior**: Distraction-free for clinical environments; no unnecessary animations.
+- **Accessibility**: Support for high-contrast modes and screen readers.
 
 ## Non-Functional Requirements
 - **Privacy**: No audio data leaves the local machine (Local-First).

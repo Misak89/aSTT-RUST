@@ -3,6 +3,9 @@
 ## 1. Overview
 aSTT is a modular desktop application designed for real-time speech transcription and diarization, primarily for physicians. It leverages a high-performance Rust backend (Tauri), a Python sidecar for ML inference (WhisperX), and a modern web frontend.
 
+> [!IMPORTANT]
+> **Article I: Library-First**: All core features (ASR, LLM processing, Export) MUST be developed as standalone, independent libraries before integration into the Tauri host application.
+
 ## High-Level Diagram
 
 ```mermaid
@@ -18,7 +21,7 @@ graph TD
 ## Track Segmentation (Machine-Readable)
 The project is architected as two parallel tracks defined in `project.json`:
 
-- **Track 1 (Main SW)**: Production-ready code in `src-ui/`, `src-tauri/`, `src-python/`. Focused on stability and clinical deployment.
+- **Track 1 (Main SW)**: Production-ready code in `src-ui/`, `src-tauri/`. Python sidecar validated in Sandbox before integration.
 - **Track 2 (Sandbox/Research)**: Research and prototypes in `sandbox/portable_bench/`. Focused on HW validation and rapid bench testing.
 
 ## Modules (Per Constitution)
@@ -57,12 +60,13 @@ The project is divided into two distinct tracks to ensure stability while allowi
 ### 1. Main Application (Production Track)
 *   **Goal**: Full-featured desktop software for physicians.
 *   **Status**: Scaffolding complete; blocked on Rust installation.
-*   **Location**: `src-ui/`, `src-tauri/`, `src-python/`.
+*   **Location**: `src-ui/`, `src-tauri/`.
+> **Note**: Python sidecar is being validated in Sandbox track (`sandbox/portable_bench/`) before integration.
 
 ### 2. STT Benchmark Prototype (Research Track)
 *   **Goal**: Validate WhisperX performance on varying hardware (4-5 year old CPUs) and 2-3 participants.
 *   **Status**: Functional; used for "Portable USB" testing.
-*   **Location**: `tests/portable_bench/` (acts as our **Sandbox/Research** area).
+*   **Location**: `sandbox/portable_bench/` (acts as our **Sandbox/Research** area).
 
 ## 5. Directory Structure
 ```text
@@ -71,7 +75,7 @@ aSTT-RUST/
 ├── .github/workflows/       # Permanent Testing & CI
 ├── src-tauri/               # [TRACK 1] Rust Backend
 ├── src-ui/                  # [TRACK 1] Svelte Frontend
-├── src-python/              # [TRACK 1] Python Sidecar (Production)
+├── src-python/              # [DEPRECATED] Will be created after Sandbox validation
 ├── sandbox/
 │   └── portable_bench/      # [TRACK 2] HW Prototype & Sandbox
 ├── scripts/                 # Autonomous Documentation Controller
@@ -86,15 +90,30 @@ To prevent "IPC Fragility", Rust and Python communicate via a strict JSON-RPC sc
 - **Log Isolation**: All non-JSON output from Python (logs, prints) is prefixed with `[LOG]` and ignored by the RPC parser to prevent JSON parsing errors.
 - **Lifecycle**: Tauri manages the sidecar process (starts on app launch, kills on exit).
 
-## Development Timeline (Milestones)
+## Roadmap & Milestones
 
-| Phase | Milestone | Goal | Status |
+### 🗺️ High-Level Timeline
+| Phase | Milestone | Focus | Status |
 | :--- | :--- | :--- | :--- |
-| **0** | **Portable Bench** | Validate WhisperX on CPU-only office notebooks | **DONE** |
-| **1** | **Prototype (Core)** | Rust-Python bridge, basic UI, "Start/Stop" transcription | *IN PROGRESS* |
-| **2** | **Diarization Sync** | Integrating speaker labels into the real-time UI | *PLANNED* |
-| **3** | **LLM Integration** | Summary generation (Doctor's Notes) from transcript | *PLANNED* |
-| **4** | **Alpha Release** | Portable USB-ready build for physician feedback | *PLANNED* |
+| **0** | **Portable Bench** | HW validation, Mic/PC audio support, Portable USB run. | **IN PROGRESS** (Deficient) |
+| **1** | **Core Prototype** | Rust-Python bridge, Svelte UI, Start/Stop logic. | **PLANNED** |
+| **2** | **Diarization Sync** | Real-time speaker labels in UI. | **PLANNED** |
+| **3** | **LLM & Summaries** | Automatic clinical notes generation. | **PLANNED** |
+| **4** | **Alpha (Physician)** | Portable USB build for field testing. | **PLANNED** |
+
+---
+
+### 📍 Current Priority (Phase 0: Portable Bench)
+**Goal**: Create a truly functional, high-performance benchmark that works as a standalone portable folder.
+
+**Finished**:
+- [x] Initial WhisperX research and venv setup.
+- [x] Basic inference script.
+
+**Pending (CRITICAL)**:
+- [ ] **Mic & PC Audio Integration**: Support real-time capture from system audio.
+- [ ] **Portable Verification**: Ensure everything runs from a USB stick without local Python install.
+- [ ] **Audio Samples**: Test with 2-3 participant medical dialogue samples.
 
 ## Future Architecture: Mobile (Addendum)
 
@@ -120,3 +139,6 @@ The documentation is managed by an **Autonomous Documentation Controller** (`scr
 - **Reporting**: Updates `QA_REPORT.md` with system health and test metrics.
 - **Versioning**: Enforces semantic versioning of specs for LLM synchronization.
 - **Automation**: Runs sandbox benchmarks and captures machine-readable logs.
+
+
+

@@ -9,12 +9,10 @@ The application will use **Tauri** (Rust) for the desktop backend, a **Python 3.
 > **Frontend Framework**: I am proposing **Svelte** + TypeScript for the UI because it is lighter and faster than React, which aligns with the "high performance" and "minimal resource/binary size" goals in the Constitution. Please confirm if you strictly prefer React.
 
 > [!IMPORTANT]
-> **Priority Change**: The user prioritized a **CPU-only version** for standard office notebooks (4-5 years old) without NVIDIA GPUs.
-> [!IMPORTANT]
-> **Python Sidecar Solution**: We are committing to a **"Downloads on First Run" (Portable Python)** strategy.
-> 1. In `dev`, the system uses the local virtual environment (`.venv`) created from system Python 3.11/3.13 for isolation and ease of development.
-> 2. In `production`, the app will automatically download a standalone, frozen Python build (e.g. from `indygreg/python-build-standalone`) and relevant WhisperX models on the first run.
-> 3. **Portable/QA**: Using a standalone, no-install Python build in `tests/portable_bench` for user-ready "no-install" verification.
+> **Spec-Kit Compliance (The Nine Articles)**:
+> 1. **Library-First (Art. I)**: The ASR (Python) and Core (Rust) logic MUST be developed as standalone libraries before integration into the Tauri shell.
+> 2. **Test-First (Art. III)**: This project follows strict TDD. No implementation code will be written until unit/contract tests are approved and failing.
+> 3. **CLI-First (Art. II)**: The Python sidecar must be a functional CLI tool independently of the GUI.
 
 ## Proposed Changes
 
@@ -22,7 +20,7 @@ The application will use **Tauri** (Rust) for the desktop backend, a **Python 3.
 #### [NEW] [.venv](file:///c:/Users/adamf/OneDrive/Dokumenty/aSTT-RUST/.venv/)
 - Local virtual environment for system-independent development and testing.
 
-#### [NEW] [tests/portable_bench](file:///c:/Users/adamf/OneDrive/Dokumenty/aSTT-RUST/tests/portable_bench/)
+#### [NEW] [sandbox/portable_bench](file:///c:/Users/adamf/OneDrive/Dokumenty/aSTT-RUST/sandbox/portable_bench/)
 - **setup.ps1**: PowerShell script to download standalone Python, extract it, and install `whisperx` + `torch` (CPU optimized to save size).
 - **run_demo.bat**: One-click script to run diarization on a sample file using `--device cpu`.
 - **README.md**: Instructions for the user.
@@ -56,9 +54,14 @@ The application will use **Tauri** (Rust) for the desktop backend, a **Python 3.
 
 ## Verification Plan
 
-### Automated Tests
-- **Rust Tests**: `cargo test` to verify module logic (once added).
-- **UI Tests**: Basic render test (will add later).
+### Automated Tests (The "Red" Phase)
+- **Article III Gate**: Before any feature code is written:
+    - [ ] **Contract Tests**: Define expected JSON-RPC inputs/outputs in `src-tauri/tests/contracts.rs`.
+    - [ ] **Python Unit Tests**: Write tests for the inference library in `src-python/tests/`.
+    - [ ] **Verification**: Run `cargo test` and `pytest` to ensure they fail before implementation begins.
+
+### Article IX: Integration-First Verification
+- **Hardware Bench**: Use `sandbox/portable_bench/` to verify performance on CPU-only machines before committing to stable code.
 
 ### Manual Verification
 1. **Sidecar Communication**:

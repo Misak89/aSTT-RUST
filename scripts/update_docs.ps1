@@ -15,7 +15,10 @@ $criticalPaths = @(
     "$root\.specify\spec.md",
     "$root\.specify\plan.md",
     "$root\project.json",
-    "$root\ARCHITECTURE.md"
+    "$root\ARCHITECTURE.md",
+    "$root\GOVERNANCE.md",
+    "$root\ORGANIZATION.md",
+    "$root\documentation_analysis.md"
 )
 
 foreach ($path in $criticalPaths) {

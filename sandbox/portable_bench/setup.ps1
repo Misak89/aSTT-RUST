@@ -19,7 +19,8 @@ if (-not (Test-Path "$destDir\python.exe")) {
     Write-Host "Extracting Python..."
     Expand-Archive -Path $zipPath -DestinationPath $destDir -Force
     Remove-Item $zipPath
-} else {
+}
+else {
     Write-Host "Python already present."
 }
 
@@ -39,13 +40,36 @@ if (-not (Test-Path $pipPath)) {
 }
 
 # 4. Install Pip and Dependencies
-Write-Host "Installing/Upgrading Pip..."
-& "$destDir\python.exe" $pipPath --no-warn-script-location --user
+Write-Host "Installing Pip..."
+& "$destDir\python.exe" "$pipPath" --no-warn-script-location
+
+# Verify Pip
+if (& "$destDir\python.exe" -m pip --version) {
+    Write-Host "Pip installed successfully."
+}
+else {
+    Write-Error "Pip installation failed."
+    exit 1
+}
 
 # Note: Using --no-cache-dir to avoid disk bloat
-Write-Host "Installing PyTorch (CPU) and WhisperX..."
-& "$destDir\python.exe" -m pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu --no-warn-script-location
-& "$destDir\python.exe" -m pip install whisperx --no-warn-script-location
+Write-Host "Installing Libraries... (This will take a few minutes)"
+
+# First install torch family to ensure correct CPU wheels
+Write-Host "Installing PyTorch (CPU)..."
+& "$destDir\python.exe" -m pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu --no-cache-dir --no-warn-script-location
+
+# Then install WhisperX and other audio tools
+Write-Host "Installing WhisperX and audio tools..."
+& "$destDir\python.exe" -m pip install whisperx sounddevice scipy --no-cache-dir --no-warn-script-location
+
+# Install additional tools for benchmark testing
+Write-Host "Installing benchmark dependencies..."
+& "$destDir\python.exe" -m pip install requests playsound pycaw comtypes pyaudiowpatch --no-cache-dir --no-warn-script-location
+
+# Final verification of numpy and other critical libs
+Write-Host "Verifying installations..."
+& "$destDir\python.exe" -m pip install --upgrade numpy --no-cache-dir --no-warn-script-location
 
 # 5. FFmpeg Setup
 if (-not (Test-Path "$ffmpegDir\bin\ffmpeg.exe")) {

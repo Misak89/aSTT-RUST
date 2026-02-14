@@ -4,10 +4,11 @@ This document defines how the aSTT-RUST project ensures permanent quality, secur
 
 ## 🛡️ Governance Matrix
 
-| Pillar | Watchdog (SW) | Mechanism | Trigger | Source of Truth |
+| Pillíř | Watchdog (SW) | Mechanismus | Trigger | Zdroj pravdy |
 | :--- | :--- | :--- | :--- | :--- |
-| **Data Privacy** | **Danger JS** | Checks for unauthorized network calls or local-first rule violations in code changes. | Pull Request | [CONSTITUTION.md](./CONSTITUTION.md) |
-| **Documentation** | **Autonomous Doc Controller** | `update_docs.ps1`: Verifies path integrity, cross-references, and machine readability. | Local Execution | [INDEX.md](./INDEX.md) |
+| **Data Privacy** | **Danger JS** | Kontrola nepovolených síťových volání nebo porušení local-first pravidel. | Pull Request | [CONSTITUTION.md](./CONSTITUTION.md) |
+| **Code Review** | **Review Workflow**| `/review`: Manuální/AI audit pro Spec-Kit a **Ralph Wiggum style**. | Pre-Commit / PR | [.agent/workflows/review.md](./.agent/workflows/review.md) |
+| **Documentation** | **Autonomous Doc Controller** | `update_docs.ps1`: Verifikace cest, křížových odkazů a strojové čitelnosti. | Lokální | [INDEX.md](./INDEX.md) |
 | **Code Integrity** | **GitHub CI** | `ci.yml`: Runs `cargo test` and `vitest` to prevent breaking changes. | Push / PR | [.specify/spec.md](./.specify/spec.md) |
 | **Release Quality**| **Release-Please**| Automates CHANGELOG and versioning based on Conventional Commits. | Merge to Master | [package.json](./package.json) |
 | **Doc Standards** | **MegaLinter** | Enforces Markdown formatting and link validity (preventing "rot"). | Push / PR | [documentation_analysis.md](./documentation_analysis.md) |
@@ -34,6 +35,10 @@ This document defines how the aSTT-RUST project ensures permanent quality, secur
 - **What it does**: Scans all 100+ document formats for errors.
 - **Example**: Checks if all internal links in `ARCHITECTURE.md` are valid.
 - **Pillar**: Documentation Professionalism.
+
+### 5. Review Workflow (The Spec-Kit Guardian)
+- **What it does**: Vynucuje **Nine Articles of Development** a **Ralph Wiggum style** (minimalismus, přímost, žádné „yapping“).
+- **Pillar**: Architektonická integrita.
 
 ---
 
