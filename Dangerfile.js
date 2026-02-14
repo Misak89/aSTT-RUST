@@ -24,7 +24,7 @@ const modifiedFiles = danger.git.modified_files.concat(danger.git.created_files)
 modifiedFiles.forEach(file => {
   if (file.endsWith(".md") || file.endsWith(".js") || file.endsWith(".rs")) {
     const diff = danger.git.diffForFile(file);
-    if (diff && diff.added.includes("TODO")) {
+    if (diff && diff.added && diff.added.includes("TODO")) {
       warn(`Soubor ${file} obsahuje 'TODO' - nezapomeň to vyřešit před finálním releasem.`);
     }
   }
