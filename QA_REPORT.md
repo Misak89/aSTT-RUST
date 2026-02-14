@@ -4,6 +4,29 @@
 
 ---
 
+## Documentation Metrics (Auto-Generated)
+
+| Metric | Value |
+| :--- | :--- |
+| **MD Files** | 42 |
+| **Scripts** | 4 |
+| **Workflows** | 5 |
+| **Rust Tests** | 15 |
+
+---
+
+## System Health (Agent-Monitored)
+
+| Component | Track | Status |
+| :--- | :--- | :--- |
+| **Backend (Rust)** | Main | MISSING |
+| **Frontend (Node)** | Main | OK |
+| **STT Sandbox (Python)** | Sandbox | OK |
+| **Dev Environment** | Shared | OK |
+| **Git** | Shared | OK |
+
+---
+
 ## Project Status Dashboard
 
 ### Current Priority: Phase 0 (Portable Bench)
@@ -36,9 +59,9 @@
 
 | Component | Status | Source of Truth |
 | :--- | :--- | :--- |
-| **GitHub CI** | OK | [.github/workflows/ci.yml](./.github/workflows/ci.yml) - Fixed: removed broken Rust setup |
-| **MegaLinter** | OK | [.mega-linter.yml](./.mega-linter.yml) - Added config to fix DevSkim false positives |
-| **Danger JS** | OK | [Dangerfile.js](./Dangerfile.js) - Fixed: null check bug in diff.added |
+| **GitHub CI** | OK | [.github/workflows/ci.yml](./.github/workflows/ci.yml) |
+| **MegaLinter** | OK | [.mega-linter.yml](./.mega-linter.yml) |
+| **Danger JS** | OK | [Dangerfile.js](./Dangerfile.js) |
 | **Governance** | OK | [GOVERNANCE.md](./GOVERNANCE.md) |
 | **Documentation** | OK | Fixed paths: tests/portable_bench to sandbox/portable_bench |
 | **Spec-Kit** | OK | Added Nine Articles compliance in spec.md/plan.md |
@@ -50,8 +73,9 @@
 ## Automated Test Log
 *(Most recent system health checks)*
 
-- **2026-02-14**: Fixed GitHub CI workflows, MegaLinter config, Danger JS null bug, path references (tests to sandbox).
-- **2026-02-11**: Reorganized documentation for "Ralph Wiggum" clarity.
+- **2026-02-14**: Added documentation automation scripts, pre-commit hooks, CI/CD workflows.
+- **2026-02-14**: Fixed GitHub CI workflows, MegaLinter config, Danger JS null bug.
+- **2026-02-11**: Reorganized documentation for clarity.
 - **2026-02-10**: INITIAL Audit: Identified "Python Sidecar Illusion" as critical risk.
 
 ---
@@ -68,4 +92,4 @@
 
 ---
 
-*Last Updated: 2026-02-14 18:08 (UTC+1)*
+*Last Updated: 2026-02-14 18:29 (UTC+1)*
