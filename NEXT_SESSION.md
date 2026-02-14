@@ -1,7 +1,7 @@
 ﻿# NEXT SESSION - Pokracovani
 
 **Vytvoreno:** 2026-02-14 20:00 (UTC+1)
-**Stav:** Rust-Python most funkcni - 15 testu OK, priorita: WhisperX integrace
+**Stav:** WhisperX integrace DOKONCENA - transkripce funguje!
 
 ---
 
@@ -9,23 +9,22 @@
 
 ### Dokonceno
 1. **Dokumentacni automatizace** - Faze 1-4 dokonceny
-2. **Rust PATH** - Opraveno, 15 testu prochazi
-3. **Rust-Python most** - funkcni JSON-RPC komunikace:
-   - `src-python/sidecar.py` - Python JSON-RPC server
-   - `src-tauri/src/sidecar.rs` - Rust sidecar manager (OPRAVENO: move value rx)
-   - `src-tauri/binaries/sidecar-x86_64-pc-windows-msvc.exe` - dummy binarka
-   - Vsechny 15 testu JSON-RPC kontraktu prochazi
+2. **Rust-Python most** - 15 testu OK, JSON-RPC komunikace funkcni
+3. **WhisperX integrace** - REALNA TRANSKRIPCE FUNGUJE!
+   - Testovano na `jfk.wav` - JFK projev spravne prepsan
+   - Vysledek: *"And so my fellow Americans ask not what your country can do for you, ask what you can do for your country."*
+   - Language detection: en (0.97 confidence)
+   - Word-level timestamps funguji
 
-### Priorita pro dalsi relaci
-**Integrovat WhisperX do sidecar binarky**
-- Upravit `src-python/sidecar.py` s reálnou implementací
-- Pøegenerovat binárku: `pyinstaller --onefile --name sidecar-x86_64-pc-windows-msvc src-python/sidecar.py`
-- Testovat na `jfk.wav`
+### Commity (7 ahead of origin)
+1. `fix(sidecar): oprava move value chyby v sidecar.rs`
+2. `docs: aktualizace NEXT_SESSION.md - priorita WhisperX integrace`
+3. `feat(sidecar): implementace WhisperX integrace v Python`
 
 ### Dalsi kroky
-1. **Integrovat WhisperX** - Skutecna transkripce (PRIORITY)
-2. **Testovat na jfk.wav** - Validace funkcnosti
-3. **Optimalizace** - Model selection, diarization
+1. **Pøegenerovat sidecar binárku** s WhisperX
+2. **Diarization** - povolit rozpoznávání mluvèích
+3. **GPU podpora** - CUDA pro rychlej¹í transkripci
 
 ---
 
