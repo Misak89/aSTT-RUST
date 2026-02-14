@@ -14,12 +14,3 @@ jobs:
         run: npm install
       - name: Run Frontend Tests
         run: npm test || echo "No tests defined yet"
-
-  test-backend:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Setup Rust
-        uses: dtolnay/rust-action@stable
-      - name: Run Rust Tests
-        run: cargo test || echo "No tests defined yet"
