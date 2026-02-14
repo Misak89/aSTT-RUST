@@ -20,8 +20,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Setup Rust
-        uses: actions/setup-rust@v1
-        with:
-          rust-version: stable
+        uses: dtolnay/rust-action@stable
       - name: Run Rust Tests
         run: cargo test || echo "No tests defined yet"
