@@ -12,6 +12,7 @@ Vítejte v hlavní navigaci projektu **aSTT-RUST**. Tento dokument slouží jako
 | **Budoucí platformy?** | [ARCHITECTURE.md](./ARCHITECTURE.md#future-considerations) | Plán pro Android, Mac a Web. |
 | **Kritika dokumentace?** | [documentation_analysis.md](./documentation_analysis.md) | Audit a hodnocení kvality dokumentů. |
 | **Kdo co hlídá?** | [GOVERNANCE.md](./GOVERNANCE.md) | Mapa automatizace, testů a bezpečnostních kontrol. |
+| **Jaká je hierarchie?** | [ORGANIZATION.md](./ORGANIZATION.md) | Organizační struktura dokumentace a technologií. |
 
 ## ⚙️ Automatizace a Verifikace
 
@@ -20,7 +21,7 @@ Vítejte v hlavní navigaci projektu **aSTT-RUST**. Tento dokument slouží jako
 
 ### Kde najdu logy?
 - Souhrnné logy jsou přímo v [QA_REPORT.md](./QA_REPORT.md).
-- Detailní výstupy testovaných modulů jsou v adresáři **[logs/](./logs/)**.
+- Detailní výstupy testovaných modulů jsou v **[LOGS_AND_PROMPTS.md](./LOGS_AND_PROMPTS.md)**.
 
 ### Jak spustit aktualizaci manuálně?
 Pravým tlačítkem na soubor `Document/update_docs.ps1` -> **Run with PowerShell**. Skript automaticky projde systém, zkontroluje zdraví prostředí (Rust, Python) a zapíše výsledek do reportu.
