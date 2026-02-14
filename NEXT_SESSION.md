@@ -1,80 +1,72 @@
-﻿# Pokyny pro dalsi Kilo Code Session
+﻿# NEXT SESSION - Pokracovani
 
-**Datum:** 2026-02-14
-**Posledni aktualizace:** 18:08 (UTC+1)
-
----
-
-## DOKONCENO (2026-02-14)
-
-### Opravene duplicitni soubory:
-| Soubor | Puvodni radky | Opraveno na |
-|--------|---------------|-------------|
-| `src-tauri/src/rpc.rs` | 260 | 216 |
-| `src-tauri/tests/rpc_contract_test.rs` | 443 | 148 |
-| `CHANGE_LOG.md` | 74 | 38 |
-| `NEXT_SESSION.md` | 162 | 81 |
-
-### Dalsi zmeny:
-- Pridano `pub mod rpc;` do `src-tauri/src/lib.rs`
-- Opraven test `test_rpc_request_serialization` (ID assertion)
-- **Vsechny 15 cargo testu prosly**
-
-### Nove skripty (2026-02-14 18:08):
-- `scripts/check_duplicates.ps1` - Detekce duplicitnich radku
-- `scripts/fix_duplicates.ps1` - Automaticka oprava duplicit
-- `scripts/validate_timestamps.ps1` - Validace timestampu
+**Vytvoreno:** 2026-02-14 20:00 (UTC+1)
+**Stav:** Implementace Rust-Python mostu (Faze 1) - zaklad vytvoren
 
 ---
 
-## Dalsi ukoly (Faze 1: Core Prototype)
+## Aktualni stav
 
-1. **Definovat JSON-RPC kontrakt** - Castecne hotovo (rpc.rs)
-2. **Implementovat Rust-Python most** - Sidecar management
-3. **Vytvorit Python sidecar** - WhisperX integration
-4. **UI pro Start/Stop logiku** - Svelte frontend
+### Dokonceno
+1. **Dokumentacni automatizace** - Faze 1-4 dokonceny (skripty, CI/CD, pre-commit hooks)
+2. **Rust PATH** - Opraveno, 15 testu prochazi
+3. **Rust-Python most - zaklad**:
+   - `src-python/sidecar.py` - Python JSON-RPC server
+   - `src-tauri/src/sidecar.rs` - Rust sidecar manager
+   - `src-tauri/src/lib.rs` - Tauri commandy
+   - `src-tauri/Cargo.toml` - tauri-plugin-shell, tokio
+   - `src-tauri/tauri.conf.json` - externalBin konfigurace
+   - `src-tauri/capabilities/default.json` - shell opravneni
+
+### Rozpracovano
+- `cargo check` bezi - kontrola Rust kodu
+
+### Dalsi kroky
+1. **Dokoncit cargo check** - Opravit pripadne chyby
+2. **Vytvorit sidecar binarku** - Zabalit Python skript
+3. **Testovat komunikaci** - `cargo test` + manualni test
+4. **Integrovat WhisperX** - Skutecna transkripce
 
 ---
 
-## ZNAMY BUG: Platformove nastroje
+## Vytvorene soubory
 
-### Priznaky:
-- `write_to_file` pridava obsah na konec misto nahrazeni
-- `search_and_replace` pridava duplicitni obsah
-
-### Workarounds:
-1. Pouzivej `git restore` po kazde chybe
-2. Pouzivej PowerShell skripty pres `execute_command`
-3. Pro .rs soubory pouzivej `edit_file` opatrne
+| Soubor | Popis |
+|--------|-------|
+| `src-python/sidecar.py` | Python JSON-RPC server (init, transcribe, recording) |
+| `src-tauri/src/sidecar.rs` | Rust sidecar lifecycle manager |
+| `src-tauri/src/rpc.rs` | JSON-RPC datove struktury (upraveno) |
 
 ---
 
-## Prikazy pro dalsi session:
+## Prikazy
 
 ```powershell
-# Spust testy
+# Kontrola Rust kodu
+cd src-tauri && C:\Users\adamf\.rustup\toolchains\stable-x86_64-pc-windows-msvc\bin\cargo.exe check
+
+# Test Rust
 cd src-tauri && C:\Users\adamf\.rustup\toolchains\stable-x86_64-pc-windows-msvc\bin\cargo.exe test
 
-# Zkontroluj stav
-git status
-
-# Obnov soubor z Git (pokud je poskozen)
-git restore <file>
-
-# Kontrola duplicit
-powershell -ExecutionPolicy Bypass -File scripts/check_duplicates.ps1
+# Test Python sidecar (manualni)
+echo '{"jsonrpc":"2.0","method":"init","params":{"config":{"model":"base"}},"id":1}' | python ../src-python/sidecar.py
 ```
 
 ---
 
-## Aktualni stav projektu
+## Commit pripraven
 
-- **Faze 0: Portable Bench** - IN PROGRESS (validace HW)
-- **Faze 1: Core Prototype** - READY TO START
-  - JSON-RPC kontrakt definovan
-  - Rust strana pripravena
-  - Ceka na Python sidecar implementaci
+Nove soubory:
+- src-python/sidecar.py
+- src-tauri/src/sidecar.rs
+
+Upravene soubory:
+- src-tauri/src/lib.rs
+- src-tauri/src/rpc.rs
+- src-tauri/Cargo.toml
+- src-tauri/tauri.conf.json
+- src-tauri/capabilities/default.json
 
 ---
 
-*Posledni aktualizace: 2026-02-14 18:08 (UTC+1)*
+*Posledni aktualizace: 2026-02-14 20:00 (UTC+1)*
