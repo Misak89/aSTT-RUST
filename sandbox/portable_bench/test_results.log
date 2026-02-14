@@ -1,0 +1,64 @@
+TEST RUN: 2026-02-12 00:35:44.045011
+======================================================================
+
+[PASS] platform, subprocess, ctypes
+
+[PASS] numpy
+  Details: verze 2.2.6
+
+[PASS] scipy
+  Details: verze 1.15.3
+
+[PASS] sounddevice
+  Details: verze 0.5.5
+
+[PASS] requests
+  Details: verze 2.32.5
+
+[FAIL] playsound
+  Details: OPTIONAL: No module named 'playsound'
+
+[PASS] pycaw + comtypes
+
+[PASS] pyaudiowpatch
+
+[PASS] whisperx
+  Details: STT engine ready
+
+[PASS] OS detekce
+  Details: Windows 10
+
+[PASS] CPU detekce
+  Details: 12 jader, AMD64 Family 25 Model 120 Stepping 0, AuthenticAMD
+
+[PASS] RAM detekce
+  Details: 10.36 GB / 31.17 GB
+
+[PASS] GPU detekce
+  Details: Unknown
+
+[PASS] Audio INPUT zařízení
+  Details: Nalezeno 8 vstupních zařízení
+
+[PASS] Audio OUTPUT zařízení
+  Details: Nalezeno 11 výstupních zařízení
+
+[FAIL] Windows Audio Meter
+  Details: 'AudioDevice' object has no attribute 'Activate'
+
+[PASS] FFmpeg executable
+  Details: C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\sandbox\portable_bench\ffmpeg\ffmpeg-8.0.1-essentials_build\bin\ffmpeg.exe
+
+[PASS] FFmpeg funkční
+  Details: ffmpeg version 8.0.1-essentials_build-www.gyan.dev Copyright
+
+[PASS] HTTP download
+  Details: Staženo 1024 bytů
+
+[PASS] WhisperX import
+
+[PASS] WhisperX load_audio
+  Details: Načteno 16000 vzorků
+
+
+Summary: 19/21 passed (90.5%)

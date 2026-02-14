@@ -1,0 +1,186 @@
+2026-02-11 23:07:19,704 - 
+=== FÁZE 1: SKENOVÁNÍ AUDIO VSTUPÙ ===
+2026-02-11 23:07:19,704 - Testuji ID 0: Microsoft Sound Mapper - Input (0)
+2026-02-11 23:07:20,869 -   -> Namìøeno RMS: 0.000133
+2026-02-11 23:07:20,869 -   -> \u274c TICHO
+2026-02-11 23:07:20,869 - Testuji ID 1: Mikrofon (Realtek(R) Audio) (0)
+2026-02-11 23:07:21,951 -   -> Namìøeno RMS: 0.000138
+2026-02-11 23:07:21,951 -   -> \u274c TICHO
+2026-02-11 23:07:21,951 - Testuji ID 5: Primary Sound Capture Driver (1)
+2026-02-11 23:07:23,064 -   -> Namìøeno RMS: 0.000138
+2026-02-11 23:07:23,065 -   -> \u274c TICHO
+2026-02-11 23:07:23,065 - Testuji ID 6: Mikrofon (Realtek(R) Audio) (1)
+2026-02-11 23:07:24,200 -   -> Namìøeno RMS: 0.000138
+2026-02-11 23:07:24,200 -   -> \u274c TICHO
+2026-02-11 23:07:24,200 - Testuji ID 12: Mikrofon (Realtek(R) Audio) (2)
+2026-02-11 23:07:24,201 -   -> \u274c CHYBA OTEVØENÍ: Error opening InputStream: Invalid sample rate [PaErrorCode -9997]
+2026-02-11 23:07:24,201 - Testuji ID 13: Smìšovaè stereo (Realtek HD Audio Stereo input) (3)
+2026-02-11 23:07:25,217 -   -> Namìøeno RMS: 0.000147
+2026-02-11 23:07:25,218 -   -> \u274c TICHO
+2026-02-11 23:07:25,218 - Testuji ID 14: Mikrofon (Realtek HD Audio Mic input) (3)
+2026-02-11 23:07:26,228 -   -> Namìøeno RMS: 0.000219
+2026-02-11 23:07:26,228 -   -> \u274c TICHO
+2026-02-11 23:07:26,228 - Testuji ID 16: Vstup (Realtek HD Audio Line input) (3)
+2026-02-11 23:07:27,286 -   -> Namìøeno RMS: 0.000000
+2026-02-11 23:07:27,288 -   -> \u274c TICHO
+2026-02-11 23:07:27,288 - 
+\u274c KRITICKÁ CHYBA: Žádný vstup nemá signál! Zkontrolujte HW Mute nebo soukromí Windows.
+2026-02-11 23:07:27,288 - 
+\u274c === CELKOVÝ VÝSLEDEK: SELHÁNÍ AUDIA ===
+2026-02-11 23:22:59,709 - 
+============================================================
+2026-02-11 23:22:59,709 -  1. HARDWARE AUDIT
+2026-02-11 23:22:59,709 - ============================================================
+2026-02-11 23:22:59,735 - OS:       Windows 10 (10.0.26100)
+2026-02-11 23:22:59,736 - CPU:      12 Cores (AMD64)
+2026-02-11 23:22:59,736 - RAM:      11.73 GB Free / 31.17 GB Total
+2026-02-11 23:22:59,736 - GPU:      Unknown/None
+2026-02-11 23:22:59,736 - 
+============================================================
+2026-02-11 23:22:59,736 -  2. AUDIO HARDWARE SCAN
+2026-02-11 23:22:59,736 - ============================================================
+2026-02-11 23:22:59,736 - Nalezeno 8 vstupních zaøízení:
+2026-02-11 23:22:59,736 -   [ID 0] Microsoft Sound Mapper - Input
+2026-02-11 23:22:59,737 -        API: MME, Channels: 2, Rate: 44100.0Hz
+2026-02-11 23:22:59,737 -   [ID 1] Mikrofon (Realtek(R) Audio)
+2026-02-11 23:22:59,737 -        API: MME, Channels: 2, Rate: 44100.0Hz
+2026-02-11 23:22:59,737 -   [ID 5] Primary Sound Capture Driver
+2026-02-11 23:22:59,737 -        API: Windows DirectSound, Channels: 2, Rate: 44100.0Hz
+2026-02-11 23:22:59,737 -   [ID 6] Mikrofon (Realtek(R) Audio)
+2026-02-11 23:22:59,737 -        API: Windows DirectSound, Channels: 2, Rate: 44100.0Hz
+2026-02-11 23:22:59,737 -   [ID 12] Mikrofon (Realtek(R) Audio)
+2026-02-11 23:22:59,737 -        API: Windows WASAPI, Channels: 2, Rate: 48000.0Hz
+2026-02-11 23:22:59,737 -   [ID 13] Smìšovaè stereo (Realtek HD Audio Stereo input)
+2026-02-11 23:22:59,738 -        API: Windows WDM-KS, Channels: 2, Rate: 44100.0Hz
+2026-02-11 23:22:59,738 -   [ID 14] Mikrofon (Realtek HD Audio Mic input)
+2026-02-11 23:22:59,738 -        API: Windows WDM-KS, Channels: 2, Rate: 44100.0Hz
+2026-02-11 23:22:59,738 -   [ID 16] Vstup (Realtek HD Audio Line input)
+2026-02-11 23:22:59,738 -        API: Windows WDM-KS, Channels: 2, Rate: 44100.0Hz
+2026-02-11 23:22:59,738 - 
+============================================================
+2026-02-11 23:22:59,738 -  3. SIGNAL TEST (5.0s per device)
+2026-02-11 23:22:59,738 - ============================================================
+2026-02-11 23:22:59,738 - PØIPRAVTE SI ZVUK! (Puste video/hudbu). Zaèínám za 3 sekundy...
+2026-02-11 23:23:02,750 - 
+Testuji ID 0: Microsoft Sound Mapper - Input...
+2026-02-11 23:23:08,318 -   -> RMS: 0.000151
+2026-02-11 23:23:08,318 -   -> \u274c TICHO
+2026-02-11 23:23:08,318 - 
+Testuji ID 1: Mikrofon (Realtek(R) Audio)...
+2026-02-11 23:23:13,869 -   -> RMS: 0.000146
+2026-02-11 23:23:13,870 -   -> \u274c TICHO
+2026-02-11 23:23:13,870 - 
+Testuji ID 5: Primary Sound Capture Driver...
+2026-02-11 23:23:19,025 -   -> RMS: 0.000139
+2026-02-11 23:23:19,025 -   -> \u274c TICHO
+2026-02-11 23:23:19,026 - 
+Testuji ID 6: Mikrofon (Realtek(R) Audio)...
+2026-02-11 23:23:24,149 -   -> RMS: 0.000182
+2026-02-11 23:23:24,149 -   -> \u274c TICHO
+2026-02-11 23:23:24,149 - 
+Testuji ID 12: Mikrofon (Realtek(R) Audio)...
+2026-02-11 23:23:29,270 -   -> RMS: 0.000201
+2026-02-11 23:23:29,270 -   -> \u274c TICHO
+2026-02-11 23:23:29,271 - 
+Testuji ID 13: Smìšovaè stereo (Realtek HD Audio Stereo input)...
+2026-02-11 23:23:34,719 -   -> RMS: 0.000068
+2026-02-11 23:23:34,720 -   -> \u274c TICHO
+2026-02-11 23:23:34,720 - 
+Testuji ID 14: Mikrofon (Realtek HD Audio Mic input)...
+2026-02-11 23:23:40,168 -   -> RMS: 0.000151
+2026-02-11 23:23:40,169 -   -> \u274c TICHO
+2026-02-11 23:23:40,169 - 
+Testuji ID 16: Vstup (Realtek HD Audio Line input)...
+2026-02-11 23:23:45,656 -   -> RMS: 0.000000
+2026-02-11 23:23:45,657 -   -> \u274c TICHO
+2026-02-11 23:23:45,657 - 
+\u274c [FAILURE] Nepodaøilo se zachytit žádný zvuk. Zkontrolujte HW.
+2026-02-11 23:25:51,226 - 
+============================================================
+2026-02-11 23:25:51,227 -  1. HARDWARE AUDIT
+2026-02-11 23:25:51,227 - ============================================================
+2026-02-11 23:25:51,257 - OS:       Windows 10 (10.0.26100)
+2026-02-11 23:25:51,257 - CPU:      12 Cores (AMD64)
+2026-02-11 23:25:51,257 - RAM:      10.79 GB Free / 31.17 GB Total
+2026-02-11 23:25:51,257 - GPU:      Unknown/None
+2026-02-11 23:25:51,257 - 
+============================================================
+2026-02-11 23:25:51,257 -  2. AUDIO HARDWARE SCAN
+2026-02-11 23:25:51,258 - ============================================================
+2026-02-11 23:25:51,258 - Nalezeno 8 vstupních zaøízení:
+2026-02-11 23:25:51,258 -   [ID 0] Microsoft Sound Mapper - Input
+2026-02-11 23:25:51,258 -        API: MME, Channels: 2, Rate: 44100.0Hz
+2026-02-11 23:25:51,258 -   [ID 1] Mikrofon (Realtek(R) Audio)
+2026-02-11 23:25:51,258 -        API: MME, Channels: 2, Rate: 44100.0Hz
+2026-02-11 23:25:51,258 -   [ID 5] Primary Sound Capture Driver
+2026-02-11 23:25:51,258 -        API: Windows DirectSound, Channels: 2, Rate: 44100.0Hz
+2026-02-11 23:25:51,259 -   [ID 6] Mikrofon (Realtek(R) Audio)
+2026-02-11 23:25:51,259 -        API: Windows DirectSound, Channels: 2, Rate: 44100.0Hz
+2026-02-11 23:25:51,259 -   [ID 12] Mikrofon (Realtek(R) Audio)
+2026-02-11 23:25:51,259 -        API: Windows WASAPI, Channels: 2, Rate: 48000.0Hz
+2026-02-11 23:25:51,259 -   [ID 13] Smìšovaè stereo (Realtek HD Audio Stereo input)
+2026-02-11 23:25:51,259 -        API: Windows WDM-KS, Channels: 2, Rate: 44100.0Hz
+2026-02-11 23:25:51,259 -   [ID 14] Mikrofon (Realtek HD Audio Mic input)
+2026-02-11 23:25:51,259 -        API: Windows WDM-KS, Channels: 2, Rate: 44100.0Hz
+2026-02-11 23:25:51,259 -   [ID 16] Vstup (Realtek HD Audio Line input)
+2026-02-11 23:25:51,259 -        API: Windows WDM-KS, Channels: 2, Rate: 44100.0Hz
+2026-02-11 23:25:51,259 - 
+============================================================
+2026-02-11 23:25:51,259 -  3. SIGNAL TEST (5.0s per device)
+2026-02-11 23:25:51,259 - ============================================================
+2026-02-11 23:25:51,259 - PØIPRAVTE SI ZVUK! (Puste video/hudbu). Zaèínám za 3 sekundy...
+2026-02-11 23:25:54,268 - 
+Testuji ID 0: Microsoft Sound Mapper - Input...
+2026-02-11 23:25:59,827 -   -> RMS: 0.000155
+2026-02-11 23:25:59,827 -   -> \u274c TICHO
+2026-02-11 23:25:59,827 - 
+Testuji ID 1: Mikrofon (Realtek(R) Audio)...
+2026-02-11 23:26:05,346 -   -> RMS: 0.000159
+2026-02-11 23:26:05,346 -   -> \u274c TICHO
+2026-02-11 23:26:05,346 - 
+Testuji ID 5: Primary Sound Capture Driver...
+2026-02-11 23:26:10,520 -   -> RMS: 0.000150
+2026-02-11 23:26:10,521 -   -> \u274c TICHO
+2026-02-11 23:26:10,521 - 
+Testuji ID 6: Mikrofon (Realtek(R) Audio)...
+2026-02-11 23:26:15,702 -   -> RMS: 0.000163
+2026-02-11 23:26:15,702 -   -> \u274c TICHO
+2026-02-11 23:26:15,702 - 
+Testuji ID 12: Mikrofon (Realtek(R) Audio)...
+2026-02-11 23:26:20,803 -   -> RMS: 0.000159
+2026-02-11 23:26:20,803 -   -> \u274c TICHO
+2026-02-11 23:26:20,803 - 
+Testuji ID 13: Smìšovaè stereo (Realtek HD Audio Stereo input)...
+2026-02-11 23:26:26,251 -   -> RMS: 0.000064
+2026-02-11 23:26:26,251 -   -> \u274c TICHO
+2026-02-11 23:26:26,251 - 
+Testuji ID 14: Mikrofon (Realtek HD Audio Mic input)...
+2026-02-11 23:26:31,740 -   -> RMS: 0.000160
+2026-02-11 23:26:31,740 -   -> \u274c TICHO
+2026-02-11 23:26:31,741 - 
+Testuji ID 16: Vstup (Realtek HD Audio Line input)...
+2026-02-11 23:26:37,225 -   -> RMS: 0.000000
+2026-02-11 23:26:37,225 -   -> \u274c TICHO
+2026-02-11 23:26:37,225 - 
+\u274c [FAILURE] Nepodaøilo se zachytit žádný zvuk. Zkontrolujte HW.
+2026-02-12 00:08:47,371 - ============================================================
+2026-02-12 00:08:47,371 -  COMPREHENSIVE AUDIO VERIFICATION TOOL 
+2026-02-12 00:08:47,371 - ============================================================
+2026-02-12 00:08:47,419 - 
+OS: Windows 10
+2026-02-12 00:08:47,419 - CPU: 12 Cores
+2026-02-12 00:08:47,420 - RAM: 10.26 GB / 31.17 GB
+2026-02-12 00:08:47,420 - GPU: Unknown
+2026-02-12 00:08:47,420 - 
+--- OUTPUT ACTIVITY CHECK (Speakers) ---
+2026-02-12 00:08:47,442 - \u26a0\ufe0f Nelze mìøit výstup: 'AudioDevice' object has no attribute 'Activate'
+2026-02-12 00:08:47,442 - 
+--- HLEDÁM WASAPI LOOPBACK DEVICE ---
+2026-02-12 00:08:47,501 - \u274c Loopback device nenalezen. Zkuste povolit 'Stereo Mix' ve Windows.
+2026-02-12 00:08:47,502 - 
+\u26a0\ufe0f === VÝSLEDEK: LOOPBACK NENÍ K DISPOZICI ===
+2026-02-12 00:08:47,502 - Systém má funkèní audio output, ale nelze zachytit pøes loopback.
+2026-02-12 00:08:47,502 - Možnosti:
+2026-02-12 00:08:47,502 -   1. Povolit 'Stereo Mix' v Ovládacích panelech -> Zvuk -> Nahrávání
+2026-02-12 00:08:47,502 -   2. Použít externí mikrofon + reproduktory (akustická smyèka)
+2026-02-12 00:08:47,502 -   3. Použít pøeddefinovaný testovací WAV soubor (bez live recording)
