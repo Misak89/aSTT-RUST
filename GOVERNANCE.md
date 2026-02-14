@@ -44,3 +44,12 @@ This document defines how the aSTT-RUST project ensures permanent quality, secur
 
 ## 🔍 How to Verify?
 To see the current status of all watchdogs, visit the **[QA_REPORT.md](./QA_REPORT.md)** or the **[GitHub Actions Tab](https://github.com/Misak89/aSTT-RUST/actions)**.
+
+## 🤖 Agent Skills
+
+| Skill | Description | Use Case |
+| :--- | :--- | :--- |
+| **Code Skeptic** | Critical analysis, bug investigation | Debugging, verifying claims |
+| **Documentation Specialist** | Technical writing, markdown | README, ARCHITECTURE updates |
+| **Test Engineer** | TDD, unit tests | Writing failing tests first |
+| **Code Reviewer** | PR review, code quality | Pre-commit reviews

@@ -27,4 +27,4 @@ Vítejte v hlavní navigaci projektu **aSTT-RUST**. Tento dokument slouží jako
 Pravým tlačítkem na soubor `Document/update_docs.ps1` -> **Run with PowerShell**. Skript automaticky projde systém, zkontroluje zdraví prostředí (Rust, Python) a zapíše výsledek do reportu.
 
 ---
-*Poslední revize indexu: 2026-02-10 Tue 15:15*
+*Poslední revize indexu: 2026-02-14 Fri 12:00*
