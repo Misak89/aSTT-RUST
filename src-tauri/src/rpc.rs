@@ -1,4 +1,4 @@
-//! JSON-RPC Contract Module
+﻿//! JSON-RPC Contract Module
 //! 
 //! This module implements the JSON-RPC 2.0 specification for communication
 //! between the Rust backend and Python sidecar (WhisperX).
@@ -214,47 +214,3 @@ mod tests {
         assert_eq!(segments.len(), 2);
     }
 }
-//! 
-//! This module implements the JSON-RPC 2.0 specification for communication
-//! between the Rust backend and Python sidecar (WhisperX).
-//!
-//! Contract: JSON-RPC over Stdio
-//! - Request: {"jsonrpc": "2.0", "method": "...", "params": {...}, "id": 1}
-//! - Response: {"jsonrpc": "2.0", "result": {...}, "id": 1}
-//! - Error: {"jsonrpc": "2.0", "error": {"code": -32600, "message": "..."}, "id": 1}
-//!
-//! Robustness: Non-JSON stdout from Python is treated as internal log
-
-use serde::{Deserialize, Serialize};
-use serde_json::Value;
-
-/// JSON-RPC version constant
-pub const JSONRPC_VERSION: &str = "2.0";
-
-/// Supported RPC methods
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-#[serde(rename_all = "snake_case")]
-pub enum RpcMethod {
-    Init,
-    StartRecording,
-    StopRecording,
-    Transcribe,
-    GetConfig,
-    SetConfig,
-}
-
-impl std::fmt::Display for RpcMethod {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            RpcMethod::Init => write!(f, "init"),
-            RpcMethod::StartRecording => write!(f, "start_recording"),
-            RpcMethod::StopRecording => write!(f, "stop_recording"),
-            RpcMethod::Transcribe => write!(f, "transcribe"),
-            RpcMethod::GetConfig => write!(f, "get_config"),
-            RpcMethod::SetConfig => write!(f, "set_config"),
-        }
-    }
-}
-
-/// JSON-RPC Request
-#[derive(Debug, Clone, Serialize, Deserialize)]

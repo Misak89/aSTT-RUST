@@ -1,42 +1,33 @@
-# Pokyny pro další Kilo Code Session
+﻿# Pokyny pro další Kilo Code Session
 
 **Datum:** 2026-02-14
-**Předchozí stav:** Commitnuté změny e9d34fe
+**Poslední aktualizace:** 16:34 (UTC+1)
 
 ---
 
-## 🔴 AKUTNÍ: Opravit duplicitní soubory
+## ✅ DOKONČENO (2026-02-14 16:33)
 
-### Soubory s duplicitama (v Git - commit e9d34fe):
+### Opravené duplicitní soubory:
+| Soubor | Původní řádky | Opraveno na |
+|--------|---------------|-------------|
+| `src-tauri/src/rpc.rs` | 260 | 216 |
+| `src-tauri/tests/rpc_contract_test.rs` | 443 | 148 |
+| `CHANGE_LOG.md` | 74 | 38 |
+| `NEXT_SESSION.md` | 162 | 81 |
 
-| Soubor | Problém | Řešení |
-|--------|----------|---------|
-| `src-tauri/src/rpc.rs` | 2× obsah (12768 bytes) | Smazat nebo opravit |
-| `src-tauri/tests/rpc_contract_test.rs` | 2× obsah (14131 bytes) | Smazat nebo opravit |
-| `CHANGE_LOG.md` | Možná duplicita | Zkontrolovat |
-
-### Jak opravit (workaround):
-```powershell
-# Zkontroluj duplicity
-Select-String -Path "src-tauri/src/rpc.rs" -Pattern "pub struct RpcRequest"
-
-# Oprav přes PowerShell (zachovej pouze první polovinu)
-$lines = Get-Content "src-tauri/src/rpc.rs"
-$clean = $lines[0..(polovina-1)]
-Set-Content "src-tauri/src/rpc.rs" $clean
-```
+### Další změny:
+- Přidáno `pub mod rpc;` do `src-tauri/src/lib.rs`
+- Opraven test `test_rpc_request_serialization` (ID assertion)
+- **Všechny 15 cargo testů prošly**
 
 ---
 
-## ✅ Hotovo (v commitu):
+## 📋 Další úkoly (Fáze 1: Core Prototype)
 
-1. **GOVERNANCE.md** - Přidány 4 skilly:
-   - Code Skeptic
-   - Documentation Specialist  
-   - Test Engineer
-   - Code Reviewer
-
-2. **INDEX.md** - Aktualizován datum
+1. **Definovat JSON-RPC kontrakt** - Částečně hotovo (rpc.rs)
+2. **Implementovat Rust-Python most** - Sidecar management
+3. **Vytvořit Python sidecar** - WhisperX integration
+4. **UI pro Start/Stop logiku** - Svelte frontend
 
 ---
 
@@ -46,117 +37,32 @@ Set-Content "src-tauri/src/rpc.rs" $clean
 - `write_to_file` přidává obsah na konec místo nahrazení
 - `search_and_replace` přidává duplicitní obsah
 
-### Důkazy (v Git historii):
-- `LOGS_AND_PROMPTS.md` - 3× obsah
-- `PROMPT_HISTORY.md` - 2× obsah  
-- `GOVERNANCE.md` - opakovaně poškozeno
-
 ### Workarounds:
 1. Používej `git restore` po každé chybě
 2. Používej PowerShell skripty přes `execute_command`
-3. Nepoužívej `write_to_file` ani `search_and_replace`
-
----
-
-## 📋 Další úkoly (Spec-Kit):
-
-1. Opravit duplicitní soubory
-2. Definovat JSON-RPC kontrakt  
-3. Implementovat Rust-Python most
-4. Spustit cargo test
+3. Pro .rs soubory používej `edit_file` opatrně
 
 ---
 
 ## 🔧 Příkazy pro další session:
 
-```bash
-# Zkontroluj stav
-git status
-
-# Zkontroluj duplicity  
-powershell -Command "Select-String -Path 'src-tauri/src/rpc.rs' -Pattern 'pub struct RpcRequest'"
-
-# Obnov soubor z Git (pokud je poškozen)
-git restore src-tauri/src/rpc.rs
-```
-
-**Datum:** 2026-02-14
-**Předchozí stav:** Commitnuté změny e9d34fe
-
----
-
-## 🔴 AKUTNÍ: Opravit duplicitní soubory
-
-### Soubory s duplicitama (v Git - commit e9d34fe):
-
-| Soubor | Problém | Řešení |
-|--------|----------|---------|
-| `src-tauri/src/rpc.rs` | 2× obsah (12768 bytes) | Smazat nebo opravit |
-| `src-tauri/tests/rpc_contract_test.rs` | 2× obsah (14131 bytes) | Smazat nebo opravit |
-| `CHANGE_LOG.md` | Možná duplicita | Zkontrolovat |
-
-### Jak opravit (workaround):
 ```powershell
-# Zkontroluj duplicity
-Select-String -Path "src-tauri/src/rpc.rs" -Pattern "pub struct RpcRequest"
+# Spusť testy
+cd src-tauri && C:\Users\adamf\.rustup\toolchains\stable-x86_64-pc-windows-msvc\bin\cargo.exe test
 
-# Oprav přes PowerShell (zachovej pouze první polovinu)
-$lines = Get-Content "src-tauri/src/rpc.rs"
-$clean = $lines[0..(polovina-1)]
-Set-Content "src-tauri/src/rpc.rs" $clean
-```
-
----
-
-## ✅ Hotovo (v commitu):
-
-1. **GOVERNANCE.md** - Přidány 4 skilly:
-   - Code Skeptic
-   - Documentation Specialist  
-   - Test Engineer
-   - Code Reviewer
-
-2. **INDEX.md** - Aktualizován datum
-
----
-
-## ⚠️ ZNÁMÝ BUG: Platformové nástroje
-
-### Příznaky:
-- `write_to_file` přidává obsah na konec místo nahrazení
-- `search_and_replace` přidává duplicitní obsah
-
-### Důkazy (v Git historii):
-- `LOGS_AND_PROMPTS.md` - 3× obsah
-- `PROMPT_HISTORY.md` - 2× obsah  
-- `GOVERNANCE.md` - opakovaně poškozeno
-
-### Workarounds:
-1. Používej `git restore` po každé chybě
-2. Používej PowerShell skripty přes `execute_command`
-3. Nepoužívej `write_to_file` ani `search_and_replace`
-
----
-
-## 📋 Další úkoly (Spec-Kit):
-
-1. Opravit duplicitní soubory
-2. Definovat JSON-RPC kontrakt  
-3. Implementovat Rust-Python most
-4. Spustit cargo test
-
----
-
-## 🔧 Příkazy pro další session:
-
-```bash
 # Zkontroluj stav
 git status
 
-# Zkontroluj duplicity  
-powershell -Command "Select-String -Path 'src-tauri/src/rpc.rs' -Pattern 'pub struct RpcRequest'"
-
 # Obnov soubor z Git (pokud je poškozen)
-git restore src-tauri/src/rpc.rs
+git restore <file>
 ```
 
+---
+
+## 📍 Aktuální stav projektu
+
+- **Fáze 0: Portable Bench** - IN PROGRESS (validace HW)
+- **Fáze 1: Core Prototype** - READY TO START
+  - JSON-RPC kontrakt definován
+  - Rust strana připravena
+  - Čeká na Python sidecar implementaci
