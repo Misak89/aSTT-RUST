@@ -1,0 +1,137 @@
+{
+  "$schema": "./workflow-steps.schema.json",
+  "version": "1.0",
+  "steps": [
+    {
+      "id": "check-duplicates",
+      "name": "Kontrola duplicit",
+      "description": "Detekce duplicitnich radku v souborech",
+      "trigger": "pre-commit",
+      "required": true,
+      "command": "powershell -ExecutionPolicy Bypass -File scripts/check_duplicates.ps1 -IgnoreEmptyLines",
+      "timeout": 60,
+      "expectedOutput": "--- [DUPLICATE CHECK PASSED] ---",
+      "onFailure": "block"
+    },
+    {
+      "id": "validate-timestamps",
+      "name": "Validace timestampu",
+      "description": "Kontrola, ze vsechny dokumenty maji aktualni timestamp",
+      "trigger": "pre-commit",
+      "required": true,
+      "command": "powershell -ExecutionPolicy Bypass -File scripts/validate_timestamps.ps1",
+      "timeout": 30,
+      "expectedOutput": "--- [TIMESTAMP VALIDATION ",
+      "onFailure": "block"
+    },
+    {
+      "id": "validate-document-metadata",
+      "name": "Validace metadat dokumentu",
+      "description": "Kontrola verze, timestampu a historie zmen vsech .md souboru",
+      "trigger": "pre-commit",
+      "required": true,
+      "command": "powershell -ExecutionPolicy Bypass -File scripts/validate_document_metadata.ps1",
+      "timeout": 60,
+      "expectedOutput": "--- DOCUMENT METADATA VALIDATION PASSED ---",
+      "onFailure": "block"
+    },
+    {
+      "id": "update-docs",
+      "name": "Aktualizace dokumentace",
+      "description": "Aktualizace QA_REPORT.md a CHANGE_LOG.md",
+      "trigger": "pre-commit",
+      "required": true,
+      "command": "powershell -ExecutionPolicy Bypass -File scripts/update_docs.ps1",
+      "timeout": 120,
+      "expectedOutput": "--- [CONTROLLER DONE] ---",
+      "onFailure": "block"
+    },
+    {
+      "id": "validate-constitution",
+      "name": "Kontrola souladu s ustavou",
+      "description": "Overeni, ze zmeny jsou v souladu s CONSTITUTION.md",
+      "trigger": "pre-commit",
+      "required": true,
+      "command": "powershell -ExecutionPolicy Bypass -File scripts/validate_constitution.ps1",
+      "timeout": 60,
+      "expectedOutput": "--- CONSTITUTION VALIDATION PASSED ---",
+      "onFailure": "block"
+    },
+    {
+      "id": "rust-tests",
+      "name": "Rust testy",
+      "description": "Spusteni Rust unit testu",
+      "trigger": "pre-push",
+      "required": true,
+      "command": "cd src-tauri && cargo test --quiet",
+      "timeout": 300,
+      "expectedOutput": "test result: ok",
+      "retry": {
+        "maxAttempts": 2,
+        "delaySeconds": 8,
+        "retryOn": ["error", "timeout"]
+      },
+      "onFailure": "block"
+    },
+    {
+      "id": "validate-next-session",
+      "name": "Kontrola NEXT_SESSION.md",
+      "description": "Overeni, ze NEXT_SESSION.md je aktualni a obsahuje platne informace",
+      "trigger": "pre-push",
+      "required": true,
+      "command": "powershell -ExecutionPolicy Bypass -File scripts/validate_next_session.ps1",
+      "timeout": 30,
+      "expectedOutput": "--- NEXT SESSION VALIDATION PASSED ---",
+      "onFailure": "block"
+    },
+    {
+      "id": "archive-next-session",
+      "name": "Archivace NEXT_SESSION.md",
+      "description": "Archivace NEXT_SESSION.md s timestampem ve formatu NEXT_SESSION_TimeStamp.md",
+      "trigger": "pre-push",
+      "required": true,
+      "command": "powershell -ExecutionPolicy Bypass -File scripts/archive_next_session.ps1",
+      "timeout": 30,
+      "expectedOutput": "--- NEXT SESSION ARCHIVED ---",
+      "onFailure": "block"
+    },
+    {
+      "id": "check-duplicates-ci",
+      "name": "CI: Kontrola duplicit",
+      "description": "Detekce duplicitnich radku v souborech (CI)",
+      "trigger": "ci",
+      "required": true,
+      "command": "powershell -ExecutionPolicy Bypass -File scripts/check_duplicates.ps1 -IgnoreEmptyLines",
+      "timeout": 120,
+      "expectedOutput": "--- [DUPLICATE CHECK PASSED] ---",
+      "onFailure": "block"
+    },
+    {
+      "id": "validate-metadata-ci",
+      "name": "CI: Validace metadat dokumentu",
+      "description": "Kontrola verze, timestampu a historie zmen vsech .md souboru (CI)",
+      "trigger": "ci",
+      "required": true,
+      "command": "powershell -ExecutionPolicy Bypass -File scripts/validate_document_metadata.ps1",
+      "timeout": 120,
+      "expectedOutput": "--- DOCUMENT METADATA VALIDATION PASSED ---",
+      "onFailure": "block"
+    },
+    {
+      "id": "rust-tests-ci",
+      "name": "CI: Rust testy",
+      "description": "Spusteni Rust unit testu (CI)",
+      "trigger": "ci",
+      "required": true,
+      "command": "cd src-tauri && cargo test --quiet",
+      "timeout": 600,
+      "expectedOutput": "test result: ok",
+      "retry": {
+        "maxAttempts": 2,
+        "delaySeconds": 10,
+        "retryOn": ["error", "timeout"]
+      },
+      "onFailure": "block"
+    }
+  ]
+}
