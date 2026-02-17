@@ -1,6 +1,12 @@
 {
   "$schema": "./workflow-steps.schema.json",
-  "version": "1.0",
+  "version": "1.1",
+  "config": {
+    "logPath": "logs/execution-log.json",
+    "auditLogPath": "logs/force-audit.log",
+    "schemaPath": "workflow-steps.schema.json",
+    "maxLogEntries": 30
+  },
   "steps": [
     {
       "id": "check-duplicates",

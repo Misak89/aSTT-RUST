@@ -1,6 +1,23 @@
 ﻿# QA & Quality Dashboard (Autonomous)
 
-**Project**: aSTT-RUST | **Current Phase**: 0 (Portable Bench) | **Status**: DEFICIENT
+**Cesta:** QA_REPORT.md
+**Verze:** 1.0
+**Vytvoreno:** 2026-02-15 19:28 (UTC+1)
+**Posledni zmena:** 2026-02-15 19:28 (UTC+1)
+
+## Historie zmen
+
+| Datum | Verze | Popis zmeny |
+|-------|-------|-------------|
+| 2026-02-15 | 1.0 | Pridana metadata |
+
+## Stav
+
+- [x] Metadata pridana
+- [ ] Obsah dokumentu kompletni
+
+---
+**Project**: aSTT-RUST | **Current Phase**: 1 (Core Prototype) | **Status**: IN PROGRESS
 
 ---
 
@@ -8,10 +25,10 @@
 
 | Metric | Value |
 | :--- | :--- |
-| **MD Files** | 42 |
-| **Scripts** | 4 |
-| **Workflows** | 5 |
-| **Rust Tests** | 15 |
+| **MD Files** | 139 |
+| **Scripts** | 12 |
+| **Workflows** | 6 |
+| **Rust Tests** | ERROR |
 
 ---
 
@@ -19,7 +36,7 @@
 
 | Component | Track | Status |
 | :--- | :--- | :--- |
-| **Backend (Rust)** | Main | MISSING |
+| **Backend (Rust)** | Main | OK |
 | **Frontend (Node)** | Main | OK |
 | **STT Sandbox (Python)** | Sandbox | OK |
 | **Dev Environment** | Shared | OK |
@@ -29,22 +46,24 @@
 
 ## Project Status Dashboard
 
-### Current Priority: Phase 0 (Portable Bench)
-**Goal**: Standalone HW benchmark for physicians (CPU-only).
+### Current Priority: Phase 1 (Core Prototype)
+**Goal**: Rust-Python bridge with real WhisperX transcription.
 
 | Status | Task | Description |
 | :--- | :--- | :--- |
-| DONE | Basic Inference | WhisperX running in simple venv. |
-| READY | Mic/Audio | Implemented in `demo.py` via `sounddevice`. |
-| READY | Portable Env | Updated `setup.ps1` and `run_demo.bat` for portable use. |
+| DONE | JSON-RPC Bridge | 15 tests passing, Rust-Python communication OK. |
+| DONE | WhisperX Integration | Real transcription tested on `jfk.wav`. |
+| DONE | Sidecar Binary | Dummy binary created, real binary pending. |
+| PENDING | UI Scaffolding | Svelte frontend not started. |
 | PENDING | Real Data | Need 2-3 participant medical samples. |
 
 ---
 
 ## Roadmap & Future Plans
 
-### Phase 1: Core Prototype (Next)
-- [ ] Rust-Python JSON-RPC bridge.
+### Phase 1: Core Prototype (In Progress)
+- [x] Rust-Python JSON-RPC bridge.
+- [x] WhisperX integration.
 - [ ] Svelte UI Scaffolding (Clean Swiss Style).
 - [ ] Sidecar lifecycle management.
 
@@ -65,7 +84,7 @@
 | **Governance** | OK | [GOVERNANCE.md](./GOVERNANCE.md) |
 | **Documentation** | OK | Fixed paths: tests/portable_bench to sandbox/portable_bench |
 | **Spec-Kit** | OK | Added Nine Articles compliance in spec.md/plan.md |
-| **Main Track** | BLOCKED | Rust not installed locally; CI validates on push |
+| **Main Track** | OK | Rust installed, 15 tests passing |
 | **Sandbox Track**| DEFICIENT | Needs real audio samples from physicians |
 
 ---
@@ -92,4 +111,10 @@
 
 ---
 
-*Last Updated: 2026-02-14 18:29 (UTC+1)*
+*Last Updated: 2026-02-16 17:54 (UTC+01:00 Belgrade, Bratislava, Budapest, Ljubljana, Prague)
+
+
+
+
+
+

@@ -58,31 +58,97 @@ function Test-JsonSchema {
     )
     
     try {
-        # Základní validace - pro plnou validaci by bylo potřeba použít .NET knihovnu
         if (-not (Test-Path $SchemaPath)) {
             Write-Log "Schema file not found: $SchemaPath" -Level "WARN"
             return $true
         }
         
         $schema = Get-Content $SchemaPath | ConvertFrom-Json
+        $errors = @()
         
-        # Základní kontrola struktury
+        # Validace version
         if (-not $JsonData.version) {
-            Write-Log "Missing 'version' in configuration" -Level "ERROR"
-            return $false
+            $errors += "Missing 'version' in configuration"
+        } elseif ($JsonData.version -notmatch '^\d+\.\d+$') {
+            $errors += "Invalid version format: '$($JsonData.version)' (expected: X.Y)"
         }
         
+        # Validace steps
         if (-not $JsonData.steps -or $JsonData.steps.Count -eq 0) {
-            Write-Log "Missing or empty 'steps' in configuration" -Level "ERROR"
-            return $false
+            $errors += "Missing or empty 'steps' in configuration"
+        } else {
+            $validTriggers = @("pre-commit", "pre-push", "pre-build", "ci")
+            $validOnFailure = @("block", "warn", "ignore")
+            $seenIds = @{}
+            
+            for ($i = 0; $i -lt $JsonData.steps.Count; $i++) {
+                $step = $JsonData.steps[$i]
+                $stepPrefix = "Step[$i]"
+                
+                # Required fields
+                if (-not $step.id) {
+                    $errors += "${stepPrefix}: missing 'id'"
+                } elseif ($step.id -notmatch '^[a-z0-9-]+$') {
+                    $errors += "${stepPrefix}: invalid id format '$($step.id)' (lowercase, numbers, hyphens only)"
+                } elseif ($seenIds.ContainsKey($step.id)) {
+                    $errors += "${stepPrefix}: duplicate id '$($step.id)'"
+                } else {
+                    $seenIds[$step.id] = $true
+                }
+                
+                if (-not $step.name) {
+                    $errors += "${stepPrefix}: missing 'name'"
+                }
+                
+                if (-not $step.trigger) {
+                    $errors += "${stepPrefix}: missing 'trigger'"
+                } elseif ($step.trigger -notin $validTriggers) {
+                    $errors += "${stepPrefix}: invalid trigger '$($step.trigger)' (valid: $($validTriggers -join ', '))"
+                }
+                
+                if (-not $step.PSObject.Properties.Match('required')) {
+                    $errors += "${stepPrefix}: missing 'required' property"
+                }
+                
+                if (-not $step.command) {
+                    $errors += "${stepPrefix}: missing 'command'"
+                }
+                
+                # Optional fields validation
+                if ($step.timeout -and $step.timeout -lt 1) {
+                    $errors += "${stepPrefix}: timeout must be >= 1 (got: $($step.timeout))"
+                }
+                
+                if ($step.onFailure -and $step.onFailure -notin $validOnFailure) {
+                    $errors += "${stepPrefix}: invalid onFailure '$($step.onFailure)' (valid: $($validOnFailure -join ', '))"
+                }
+                
+                # Retry validation
+                if ($step.retry) {
+                    if ($step.retry.maxAttempts -and $step.retry.maxAttempts -lt 1) {
+                        $errors += "${stepPrefix}: retry.maxAttempts must be >= 1"
+                    }
+                    if ($step.retry.delaySeconds -and $step.retry.delaySeconds -lt 0) {
+                        $errors += "${stepPrefix}: retry.delaySeconds must be >= 0"
+                    }
+                    if ($step.retry.retryOn) {
+                        $validRetryOn = @("error", "timeout", "failed")
+                        foreach ($ro in $step.retry.retryOn) {
+                            if ($ro -notin $validRetryOn) {
+                                $errors += "${stepPrefix}: invalid retryOn '$ro'"
+                            }
+                        }
+                    }
+                }
+            }
         }
         
-        # Validace každého kroku
-        foreach ($step in $JsonData.steps) {
-            if (-not $step.id -or -not $step.name -or -not $step.trigger -or -not $step.command) {
-                Write-Log "Invalid step definition: missing required fields" -Level "ERROR"
-                return $false
+        if ($errors.Count -gt 0) {
+            Write-Log "Schema validation failed with $($errors.Count) error(s):" -Level "ERROR"
+            foreach ($err in $errors) {
+                Write-Log "  - $err" -Level "ERROR"
             }
+            return $false
         }
         
         Write-Log "Schema validation passed" -Level "INFO"
@@ -235,9 +301,10 @@ function Save-ExecutionLog {
         
         $log.executions += $newExecution
         
-        # Rotace logů - ponechat posledních 30 logovacích dní
-        if ($log.executions.Count -gt 30) {
-            $log.executions = $log.executions | Select-Object -Last 30
+        # Rotace logů - ponechat posledních N záznamů (konfigurovatelné)
+        $maxEntries = if ($script:MaxLogEntries) { $script:MaxLogEntries } else { 30 }
+        if ($log.executions.Count -gt $maxEntries) {
+            $log.executions = $log.executions | Select-Object -Last $maxEntries
         }
         
         # Uložení
@@ -274,6 +341,21 @@ if (-not (Test-Path $ConfigPath)) {
 try {
     $config = Get-Content $ConfigPath | ConvertFrom-Json
     Write-Log "Configuration loaded: $($config.steps.Count) steps defined" -Level "INFO"
+    
+    # Aplikace konfigurace, pokud existuje
+    if ($config.config) {
+        if ($config.config.logPath -and -not $PSBoundParameters.ContainsKey('LogPath')) {
+            $LogPath = $config.config.logPath
+        }
+        if ($config.config.schemaPath -and -not $PSBoundParameters.ContainsKey('SchemaPath')) {
+            $SchemaPath = $config.config.schemaPath
+        }
+        $script:MaxLogEntries = if ($config.config.maxLogEntries) { $config.config.maxLogEntries } else { 30 }
+        $script:AuditLogPath = if ($config.config.auditLogPath) { $config.config.auditLogPath } else { "logs/force-audit.log" }
+    } else {
+        $script:MaxLogEntries = 30
+        $script:AuditLogPath = "logs/force-audit.log"
+    }
 }
 catch {
     Write-Log "Failed to load configuration: $_" -Level "ERROR"
@@ -345,6 +427,31 @@ Write-Host ""
 
 # Výsledek
 if ($allPassed -or $Force) {
+    # Audit log pro Force přepínač
+    if ($Force -and -not $allPassed) {
+        $auditLogPath = if ($script:AuditLogPath) { $script:AuditLogPath } else { "logs/force-audit.log" }
+        $failedStepNames = $script:Results | Where-Object { $_.Status -eq "failed" } | ForEach-Object { $_.Name }
+        $auditEntry = @{
+            Timestamp = Get-Date -Format "yyyy-MM-ddTHH:mm:ss"
+            User = $env:USERNAME
+            Trigger = $Trigger
+            FailedSteps = $failedStepNames
+            Summary = $script:Summary
+        }
+        $auditLine = "$($auditEntry.Timestamp) | User: $($auditEntry.User) | Trigger: $($auditEntry.Trigger) | Failed: $($auditEntry.FailedSteps -join ', ') | Total: $($auditEntry.Summary.Total), Passed: $($auditEntry.Summary.Passed), Failed: $($auditEntry.Summary.Failed)"
+        
+        try {
+            $auditDir = Split-Path $auditLogPath -Parent
+            if (-not (Test-Path $auditDir)) {
+                New-Item -ItemType Directory -Path $auditDir -Force | Out-Null
+            }
+            Add-Content -Path $auditLogPath -Value $auditLine
+            Write-Log "Force override logged to: $auditLogPath" -Level "WARN"
+        } catch {
+            Write-Log "Failed to write audit log: $_" -Level "WARN"
+        }
+    }
+    
     Write-Host "--- WORKFLOW GUARD PASSED ---" -ForegroundColor Green
     exit 0
 }
