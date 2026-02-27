@@ -41,6 +41,13 @@ function Get-AgeDaysText {
     return ("{0:N1}" -f $delta.TotalDays)
 }
 
+function Get-AgeDays {
+    param([DateTimeOffset]$When, [DateTimeOffset]$NowUtc)
+    if ($null -eq $When) { return [double]::PositiveInfinity }
+    $delta = $NowUtc - $When.ToUniversalTime()
+    return $delta.TotalDays
+}
+
 function Test-WorkflowDeploySignal {
     param([string]$RepoRoot)
     $wfDir = Join-Path $RepoRoot ".github/workflows"
@@ -69,15 +76,34 @@ if (-not [string]::IsNullOrWhiteSpace($currentBranch)) {
     }
 }
 
-$masterAge = if ($masterCommit) { [double](Get-AgeDaysText -When $masterCommit.Date -NowUtc $nowUtc) } else { 9999.0 }
-$verifyAge = if ($verifyCommit) { [double](Get-AgeDaysText -When $verifyCommit.Date -NowUtc $nowUtc) } else { 9999.0 }
-$isOlderThanWeek = (($masterAge -gt 7.0) -or ($verifyAge -gt 7.0))
+$masterAge = if ($masterCommit) { Get-AgeDays -When $masterCommit.Date -NowUtc $nowUtc } else { [double]::PositiveInfinity }
+$verifyAge = if ($verifyCommit) { Get-AgeDays -When $verifyCommit.Date -NowUtc $nowUtc } else { [double]::PositiveInfinity }
+
+$latestCandidates = @()
+if ($masterCommit -and $masterCommit.Date) {
+    $latestCandidates += [pscustomobject]@{ Branch = "origin/master"; Commit = $masterCommit }
+}
+if ($verifyCommit -and $verifyCommit.Date) {
+    $latestCandidates += [pscustomobject]@{ Branch = "origin/test/verify-danger"; Commit = $verifyCommit }
+}
+$latestRemote = $null
+if ($latestCandidates.Count -gt 0) {
+    $latestRemote = $latestCandidates | Sort-Object { $_.Commit.Date.UtcDateTime } -Descending | Select-Object -First 1
+}
+$latestAge = if ($latestRemote) { Get-AgeDays -When $latestRemote.Commit.Date -NowUtc $nowUtc } else { [double]::PositiveInfinity }
+$isOlderThanWeek = ($latestAge -gt 7.0)
 $hasDeploySignal = Test-WorkflowDeploySignal -RepoRoot $repoRoot
 
-$conclusion = if ($isOlderThanWeek) {
-    "ZAVER: posledni update na GitHub je starsi nez 7 dni -> stav je STALE a v dokumentaci chybi primo log GitHub update/deploy."
+if ($latestRemote) {
+    $latestDateUtcText = $latestRemote.Commit.Date.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ")
+    $latestAgeText = ("{0:N1}" -f $latestAge)
+    $conclusion = if ($isOlderThanWeek) {
+        "ZAVER: posledni update na GitHub ($($latestRemote.Branch), $latestDateUtcText, age $latestAgeText dne) je starsi nez 7 dni -> stav je STALE."
+    } else {
+        "ZAVER: posledni update na GitHub ($($latestRemote.Branch), $latestDateUtcText, age $latestAgeText dne) je v poslednich 7 dnech."
+    }
 } else {
-    "ZAVER: posledni update na GitHub je v poslednich 7 dnech."
+    $conclusion = "ZAVER: nelze zjistit zadny remote update (chybi data z origin/*)."
 }
 
 $deployLine = if ($hasDeploySignal) {
@@ -91,7 +117,10 @@ $lines.Add("# GitHub Update+Deploy Log (Generated)")
 $lines.Add("")
 $lines.Add("- Generated at (UTC): " + $nowUtc.ToString("yyyy-MM-ddTHH:mm:ssZ"))
 $lines.Add('- Repo root: `' + ($repoRoot -replace '\\', '/') + '`')
-$lines.Add('- GitHub update/deploy log page existed before: `NO`')
+$target = Join-Path $repoRoot $OutputPath
+$hadOutputBefore = Test-Path $target
+$hadOutputBeforeText = if ($hadOutputBefore) { "YES" } else { "NO" }
+$lines.Add('- GitHub update/deploy log page existed before: `' + $hadOutputBeforeText + '`')
 $lines.Add("")
 $lines.Add("## Last Remote Updates")
 $lines.Add("")
@@ -125,11 +154,10 @@ $lines.Add("## Analysis")
 $lines.Add("")
 $lines.Add("- " + $conclusion)
 if ($isOlderThanWeek) {
-    $lines.Add("- Doporuceni: pushnout lokalni dokumentacni commity na GitHub a nasledne sledovat Actions/Commits.")
+    $lines.Add("- Doporuceni: pushnout aktualni dokumentacni commity na GitHub a nasledne sledovat Actions/Commits.")
 }
 
 $content = ($lines -join "`n") + "`n"
-$target = Join-Path $repoRoot $OutputPath
 $parent = Split-Path -Path $target -Parent
 if (-not (Test-Path $parent)) { New-Item -ItemType Directory -Path $parent -Force | Out-Null }
 [System.IO.File]::WriteAllText($target, $content, (New-Object System.Text.UTF8Encoding($false)))
