@@ -1,0 +1,15 @@
+/* Soften header title/logo contrast in dark mode only */
+[data-md-color-scheme="slate"] .md-header__title .md-ellipsis {
+  color: #c2c7d0;
+}
+
+[data-md-color-scheme="slate"] .md-header__button.md-logo,
+[data-md-color-scheme="slate"] .md-header__button.md-logo svg {
+  color: #c2c7d0;
+  fill: currentColor;
+}
+
+.nav-interactive-red {
+  color: #dc2626;
+  font-weight: 700;
+}
