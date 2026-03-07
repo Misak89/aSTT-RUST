@@ -1,0 +1,323 @@
+{
+  "schema_version": "1.0",
+  "source_of_truth": "docs_control/task_status.json",
+  "notes": [
+    "Canonical registry for process/batch claims. Purpose: claim = evidence.",
+    "Status VERIFIED_* without evidence in docs_control/verify_runs.json is governance violation (P0).",
+    "Batch verifier computes observed status from artifact checks + verify step evidence."
+  ],
+  "policy": {
+    "allowed_statuses": [
+      "UNKNOWN",
+      "EXISTS_UNVERIFIED",
+      "IMPLEMENTED_UNVERIFIED",
+      "VERIFIED_LOCAL",
+      "VERIFIED_CI",
+      "LEGACY_EXEMPT"
+    ],
+    "claim_rule": "Never claim VERIFIED_* without machine-verifiable evidence (run_id + required step PASS).",
+    "default_evidence_source": "docs_control/verify_runs.json"
+  },
+  "batches": [
+    {
+      "batch_id": "batch.json-first-traceability-p0",
+      "title": "JSON-first / hybrid-strong NEXT_SESSION + traceability P0 control plane",
+      "status": "VERIFIED_LOCAL",
+      "classification": "process_control_batch",
+      "owner": "user+agent",
+      "notes": "Evidence may come from a verify_fast run that fails later on unrelated code checks; batch-specific steps still count.",
+      "verification": {
+        "verify_stage": "fast",
+        "evidence_source": "docs_control/verify_runs.json",
+        "required_step_names": [
+          "Validate workflow alignment",
+          "Validate traceability registry",
+          "Validate NEXT_SESSION control (JSON-first)",
+          "Enforce NEXT_SESSION flow",
+          "Control docs stale-check"
+        ],
+        "required_artifacts": [
+          {
+            "path": "docs_control/next_session.json",
+            "kind": "file"
+          },
+          {
+            "path": "docs_control/next_session.schema.json",
+            "kind": "file"
+          },
+          {
+            "path": "docs_control/traceability.json",
+            "kind": "file"
+          },
+          {
+            "path": "docs_control/traceability.schema.json",
+            "kind": "file"
+          },
+          {
+            "path": "scripts/validate_next_session.ps1",
+            "kind": "file"
+          },
+          {
+            "path": "scripts/validate_traceability.ps1",
+            "kind": "file"
+          },
+          {
+            "path": "scripts/generate_control_docs.ps1",
+            "kind": "file",
+            "contains_all": [
+              "NEXT_SESSION.md",
+              "TRACEABILITY_SUMMARY.md"
+            ]
+          }
+        ]
+      },
+      "last_verified": {
+        "run_id": "vr-b0e78bd15bc74a60af0f581e2adba399",
+        "verified_at_utc": "2026-02-26T18:46:16.410Z",
+        "run_status": "PASS",
+        "notes": "Required governance steps PASS in latest verify_fast PASS run."
+      }
+    },
+    {
+      "batch_id": "batch.markdownlint-policy-a",
+      "title": "Batch A - markdownlint blocking scope + backlog policy and mkdocs strict stabilization",
+      "status": "VERIFIED_LOCAL",
+      "classification": "quality_policy_batch",
+      "owner": "user+agent",
+      "verification": {
+        "verify_stage": "fast",
+        "evidence_source": "docs_control/verify_runs.json",
+        "required_step_names": [
+          "Markdown lint (pre-commit, blocking scope)",
+          "Markdown lint backlog report (non-blocking)",
+          "MkDocs build --strict"
+        ],
+        "required_artifacts": [
+          {
+            "path": ".markdownlint-cli2.yaml",
+            "kind": "file"
+          },
+          {
+            "path": ".pre-commit-config.yaml",
+            "kind": "file",
+            "contains_all": [
+              "markdownlint-cli2 (blocking scope, P0 curated)",
+              "id: markdownlint-cli2"
+            ]
+          },
+          {
+            "path": ".pre-commit-config.markdownlint-backlog.yaml",
+            "kind": "file"
+          },
+          {
+            "path": "scripts/report_markdownlint_backlog.ps1",
+            "kind": "file"
+          },
+          {
+            "path": "scripts/verify_stage.ps1",
+            "kind": "file",
+            "contains_all": [
+              "Markdown lint (pre-commit, blocking scope)",
+              "Markdown lint backlog report (non-blocking)"
+            ]
+          }
+        ]
+      },
+      "last_verified": {
+        "run_id": "vr-b0e78bd15bc74a60af0f581e2adba399",
+        "verified_at_utc": "2026-02-26T18:46:16.410Z",
+        "run_status": "PASS",
+        "notes": "Batch A steps PASS in latest verify_fast PASS run."
+      }
+    },
+    {
+      "batch_id": "batch.vale-policy-b",
+      "title": "Batch B - Vale critical + changed-file + backlog no-regression policy",
+      "status": "VERIFIED_LOCAL",
+      "classification": "quality_policy_batch",
+      "owner": "user+agent",
+      "verification": {
+        "verify_stage": "fast",
+        "evidence_source": "docs_control/verify_runs.json",
+        "required_step_names": [
+          "Vale prose lint (critical blocking, pre-commit)",
+          "Vale backlog report + no-regression"
+        ],
+        "required_artifacts": [
+          {
+            "path": ".vale.ini",
+            "kind": "file",
+            "contains_all": [
+              "MinAlertLevel = error"
+            ]
+          },
+          {
+            "path": ".vale.backlog.ini",
+            "kind": "file",
+            "contains_all": [
+              "MinAlertLevel = warning"
+            ]
+          },
+          {
+            "path": ".pre-commit-config.yaml",
+            "kind": "file",
+            "contains_all": [
+              "id: vale-critical",
+              "name: vale (changed markdown, blocking errors-only)"
+            ]
+          },
+          {
+            "path": "scripts/report_vale_backlog.ps1",
+            "kind": "file",
+            "contains_all": [
+              "EnforceNoRegression",
+              "vale_backlog_summary.json"
+            ]
+          },
+          {
+            "path": "docs_control/vale_backlog_baseline.json",
+            "kind": "file"
+          },
+          {
+            "path": "scripts/verify_stage.ps1",
+            "kind": "file",
+            "contains_all": [
+              "vale-critical",
+              "report_vale_backlog.ps1"
+            ]
+          }
+        ]
+      },
+      "last_verified": {
+        "run_id": "vr-b0e78bd15bc74a60af0f581e2adba399",
+        "verified_at_utc": "2026-02-26T18:46:16.410Z",
+        "run_status": "PASS",
+        "notes": "Batch B steps PASS in latest verify_fast PASS run."
+      }
+    },
+    {
+      "batch_id": "batch.claim-evidence-guard-p0",
+      "title": "Claim=evidence guard - task status registry + preflight discovery + batch verifier",
+      "status": "IMPLEMENTED_UNVERIFIED",
+      "classification": "process_governance_batch",
+      "owner": "user+agent",
+      "notes": "Bootstrapped and verified in verify_fast; evidence run may still be overall FAIL due unrelated code checks.",
+      "verification": {
+        "verify_stage": "fast",
+        "evidence_source": "docs_control/verify_runs.json",
+        "require_clean_worktree_for_verified": true,
+        "required_step_names": [
+          "Preflight state discovery (claim=evidence)",
+          "Verify batch status claims (claim=evidence)"
+        ],
+        "required_artifacts": [
+          {
+            "path": "docs_control/task_status.json",
+            "kind": "file"
+          },
+          {
+            "path": "docs_control/task_status.schema.json",
+            "kind": "file"
+          },
+          {
+            "path": "scripts/preflight_state_discovery.ps1",
+            "kind": "file"
+          },
+          {
+            "path": "scripts/verify_batch_status.ps1",
+            "kind": "file"
+          },
+          {
+            "path": "scripts/verify_stage.ps1",
+            "kind": "file",
+            "contains_all": [
+              "Preflight state discovery (claim=evidence)",
+              "Verify batch status claims (claim=evidence)"
+            ]
+          },
+          {
+            "path": "scripts/validate_workflow_alignment.ps1",
+            "kind": "file",
+            "contains_all": [
+              "task_status",
+              "verify_batch_status"
+            ]
+          }
+        ]
+      },
+      "last_verified": {
+        "run_id": "vr-b0e78bd15bc74a60af0f581e2adba399",
+        "verified_at_utc": "2026-02-26T18:46:16.410Z",
+        "run_status": "PASS",
+        "notes": "Claim=evidence guard steps PASS in latest verify_fast PASS run; status remains IMPLEMENTED_UNVERIFIED because require_clean_worktree_for_verified is active and artifacts are dirty."
+      }
+    },
+    {
+      "batch_id": "batch.capability-audit-gate-p0",
+      "title": "Capability audit gate - external tool capability claims + source-backed evidence",
+      "status": "VERIFIED_LOCAL",
+      "classification": "process_governance_batch",
+      "owner": "user+agent",
+      "notes": "Blocking capability audit gate is synced across verify/CI/write-guard and verified in latest verify_fast PASS run; Mermaid CLI remains optional with pinned target version policy.",
+      "verification": {
+        "verify_stage": "fast",
+        "evidence_source": "docs_control/verify_runs.json",
+        "required_step_names": [
+          "Validate workflow control alignment (refresh observed)",
+          "Capability audit (tools + sources)",
+          "Preflight state discovery (claim=evidence)",
+          "Verify batch status claims (claim=evidence)"
+        ],
+        "required_artifacts": [
+          {
+            "path": "docs_control/capability_audit.json",
+            "kind": "file"
+          },
+          {
+            "path": "docs_control/capability_audit.schema.json",
+            "kind": "file"
+          },
+          {
+            "path": "scripts/validate_capability_audit.ps1",
+            "kind": "file",
+            "contains_all": [
+              "toolchain_capabilities.json",
+              "capability_audit_summary.json",
+              "official source"
+            ]
+          },
+          {
+            "path": "scripts/assert_preflight_write_guard.ps1",
+            "kind": "file",
+            "contains_all": [
+              "capability_audit_summary.json",
+              "Expected order: capability audit -> preflight -> batch verify"
+            ]
+          },
+          {
+            "path": "scripts/verify_stage.ps1",
+            "kind": "file",
+            "contains_all": [
+              "Capability audit (tools + sources)",
+              "validate_capability_audit.ps1"
+            ]
+          },
+          {
+            "path": "scripts/validate_workflow_alignment.ps1",
+            "kind": "file",
+            "contains_all": [
+              "Capability audit \\(tools \\+ sources\\)",
+              "validate_capability_audit"
+            ]
+          }
+        ]
+      },
+      "last_verified": {
+        "run_id": "vr-b0e78bd15bc74a60af0f581e2adba399",
+        "verified_at_utc": "2026-02-26T18:46:16.410Z",
+        "run_status": "PASS",
+        "notes": "Capability audit + preflight/batch steps PASS in latest verify_fast PASS run after SSOT/diagram/traceability sync and Mermaid CLI pin policy update."
+      }
+    }
+  ]
+}

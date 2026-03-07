@@ -1,0 +1,16 @@
+# aSTT Transcript Export
+export_unix_ms=1772670493275
+source=https://example.com/demo.mp4
+language=cs
+engine=faster-whisper
+format_version=2
+section_1=full_transcript
+section_2=numbered_segments_with_time
+segment_line_format=NNN | HH:MM:SS.mmm -> HH:MM:SS.mmm | speaker=<value-or-> | text=<segment_text>
+
+[full_transcript]
+Ahoj. Toto je test.
+
+[numbered_segments_with_time]
+001 | 00:00:00.000 -> 00:00:01.230 | speaker=- | text=Ahoj.
+002 | 00:00:01.230 -> 00:00:03.010 | speaker=- | text=Toto je test.

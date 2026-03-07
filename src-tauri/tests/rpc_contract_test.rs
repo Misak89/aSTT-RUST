@@ -1,5 +1,5 @@
-﻿//! JSON-RPC Contract Tests
-//! 
+//! JSON-RPC Contract Tests
+//!
 //! These tests verify the contract between Rust backend and Python sidecar.
 //! According to Spec-Kit TDD: These tests MUST FAIL until implementation is complete.
 //!
@@ -8,18 +8,21 @@
 //! - Response: {"jsonrpc": "2.0", "result": {...}, "id": 1}
 //! - Error: {"jsonrpc": "2.0", "error": {"code": -32600, "message": "..."}, "id": 1}
 
-use app_temp_lib::rpc::{RpcRequest, RpcResponse, RpcError, RpcMethod};
+use app_temp_lib::rpc::{RpcMethod, RpcRequest, RpcResponse};
 
 /// FR-04.1: Request serialization must produce valid JSON-RPC 2.0
 #[test]
 fn test_rpc_request_serialization() {
-    let request = RpcRequest::new(RpcMethod::Init, serde_json::json!({
-        "model": "base",
-        "device": "cpu"
-    }));
-    
+    let request = RpcRequest::new(
+        RpcMethod::Init,
+        serde_json::json!({
+            "model": "base",
+            "device": "cpu"
+        }),
+    );
+
     let json = serde_json::to_string(&request).expect("Failed to serialize");
-    
+
     // Verify JSON-RPC 2.0 format
     assert!(json.contains(r#""jsonrpc":"2.0""#));
     assert!(json.contains(r#""method":"init""#));
@@ -31,9 +34,9 @@ fn test_rpc_request_serialization() {
 #[test]
 fn test_rpc_response_deserialization() {
     let json = r#"{"jsonrpc":"2.0","result":{"status":"ready"},"id":1}"#;
-    
+
     let response: RpcResponse = serde_json::from_str(json).expect("Failed to deserialize");
-    
+
     assert!(response.result.is_some());
     assert!(response.error.is_none());
     assert_eq!(response.id, 1);
@@ -43,9 +46,9 @@ fn test_rpc_response_deserialization() {
 #[test]
 fn test_rpc_error_response() {
     let json = r#"{"jsonrpc":"2.0","error":{"code":-32600,"message":"Invalid Request"},"id":1}"#;
-    
+
     let response: RpcResponse = serde_json::from_str(json).expect("Failed to deserialize");
-    
+
     assert!(response.result.is_none());
     assert!(response.error.is_some());
     assert_eq!(response.error.unwrap().code, -32600);
@@ -56,10 +59,10 @@ fn test_rpc_error_response() {
 fn test_non_json_filtering() {
     // Python might output logs to stdout that are not JSON
     // These should be ignored by the RPC parser
-    
+
     let non_json = "DEBUG: Loading whisper model...";
     let result = app_temp_lib::rpc::parse_response(non_json);
-    
+
     // Should return None for non-JSON input (filtering)
     assert!(result.is_none());
 }
@@ -68,10 +71,10 @@ fn test_non_json_filtering() {
 #[test]
 fn test_init_method_request() {
     let request = RpcRequest::new(
-        RpcMethod::Init, 
-        serde_json::json!({"model": "base", "language": "en"})
+        RpcMethod::Init,
+        serde_json::json!({"model": "base", "language": "en"}),
     );
-    
+
     assert_eq!(request.method, RpcMethod::Init);
     assert_eq!(request.params.get("model").unwrap(), "base");
 }
@@ -80,21 +83,18 @@ fn test_init_method_request() {
 #[test]
 fn test_start_recording_request() {
     let request = RpcRequest::new(
-        RpcMethod::StartRecording, 
-        serde_json::json!({"sample_rate": 16000})
+        RpcMethod::StartRecording,
+        serde_json::json!({"sample_rate": 16000}),
     );
-    
+
     assert_eq!(request.method, RpcMethod::StartRecording);
 }
 
 /// FR-04.7: stop_recording method
 #[test]
 fn test_stop_recording_request() {
-    let request = RpcRequest::new(
-        RpcMethod::StopRecording, 
-        serde_json::json!({})
-    );
-    
+    let request = RpcRequest::new(RpcMethod::StopRecording, serde_json::json!({}));
+
     assert_eq!(request.method, RpcMethod::StopRecording);
 }
 
@@ -102,24 +102,21 @@ fn test_stop_recording_request() {
 #[test]
 fn test_transcribe_request() {
     let request = RpcRequest::new(
-        RpcMethod::Transcribe, 
-        serde_json::json!({"audio_data": "base64_encoded"})
+        RpcMethod::Transcribe,
+        serde_json::json!({"audio_data": "base64_encoded"}),
     );
-    
+
     assert_eq!(request.method, RpcMethod::Transcribe);
 }
 
 /// FR-04.9: Full round-trip (serialize -> deserialize)
 #[test]
 fn test_full_round_trip() {
-    let original = RpcRequest::new(
-        RpcMethod::Init,
-        serde_json::json!({"model": "large-v2"})
-    );
-    
+    let original = RpcRequest::new(RpcMethod::Init, serde_json::json!({"model": "large-v2"}));
+
     let json = serde_json::to_string(&original).expect("Serialize failed");
     let parsed: RpcRequest = serde_json::from_str(&json).expect("Deserialize failed");
-    
+
     assert_eq!(original.method, parsed.method);
     assert_eq!(original.id, parsed.id);
 }
@@ -137,12 +134,12 @@ fn test_diarization_response() {
         },
         "id": 1
     }"#;
-    
+
     let response: RpcResponse = serde_json::from_str(json).expect("Failed to deserialize");
-    
+
     let result = response.result.unwrap();
     let segments = result.get("segments").unwrap().as_array().unwrap();
-    
+
     assert_eq!(segments.len(), 2);
     assert_eq!(segments[0].get("speaker").unwrap(), "SPEAKER_00");
     assert_eq!(segments[1].get("speaker").unwrap(), "SPEAKER_01");

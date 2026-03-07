@@ -1,0 +1,76 @@
+[LOG] 2026-03-04 21:00:13,700 - INFO - Sidecar log file: C:\Users\adamf\AppData\Local\Temp\astt_demo_a004\sidecar.log
+[LOG] 2026-03-04 21:00:13,707 - INFO - Initializing with params: {'config': {'model': 'tiny', 'language': 'en', 'device': 'cpu', 'compute_type': 'int8', 'diarization': False}}
+[LOG] 2026-03-04 21:00:13,708 - WARNING - WhisperX init failed: No module named 'whisperx'
+[LOG] 2026-03-04 21:00:14,020 - INFO - Loading faster-whisper model: tiny on cpu
+[LOG] 2026-03-04 21:00:15,032 - INFO - HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+[LOG] 2026-03-04 21:00:15,373 - INFO - faster-whisper model loaded successfully
+[LOG] 2026-03-04 21:00:15,373 - INFO - Initialized with config: {'model': 'tiny', 'language': 'en', 'device': 'cpu', 'compute_type': 'int8', 'diarization': False}
+[LOG] 2026-03-04 21:00:15,374 - INFO - Transcribing source: https://www.youtube.com/watch?v=3LHFu3Hnufs
+[LOG] 2026-03-04 21:00:15,382 - INFO - Downloading linked video/audio via yt-dlp: https://www.youtube.com/watch?v=3LHFu3Hnufs
+[LOG] 2026-03-04 21:00:18,983 - INFO - yt-dlp downloaded media to C:\Users\adamf\AppData\Local\Temp\astt_ytdlp_zskrt3mc\3LHFu3Hnufs.webm (11484949 bytes)
+[LOG] 2026-03-04 21:00:19,103 - INFO - Processing audio with duration 00:05.000
+[LOG] 2026-03-04 21:00:19,274 - INFO - VAD filter removed 00:00.000 of audio
+[LOG] 2026-03-04 21:04:09,830 - INFO - Sidecar log file: C:\Users\adamf\AppData\Local\Temp\astt_demo_a004\sidecar.log
+[LOG] 2026-03-04 21:04:09,833 - INFO - Initializing with params: {'config': {'model': 'tiny', 'language': 'en', 'device': 'cpu', 'compute_type': 'int8', 'diarization': False}}
+[LOG] 2026-03-04 21:04:09,833 - WARNING - WhisperX init failed: No module named 'whisperx'
+[LOG] 2026-03-04 21:04:10,035 - INFO - Loading faster-whisper model: tiny on cpu
+[LOG] 2026-03-04 21:04:10,726 - INFO - HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+[LOG] 2026-03-04 21:04:10,983 - INFO - faster-whisper model loaded successfully
+[LOG] 2026-03-04 21:04:10,983 - INFO - Initialized with config: {'model': 'tiny', 'language': 'en', 'device': 'cpu', 'compute_type': 'int8', 'diarization': False}
+[LOG] 2026-03-04 21:04:10,983 - INFO - Transcribe request options: clip_seconds=5
+[LOG] 2026-03-04 21:04:10,983 - INFO - Transcribing source: https://www.youtube.com/watch?v=3LHFu3Hnufs
+[LOG] 2026-03-04 21:04:10,989 - INFO - Downloading linked video/audio via yt-dlp: https://www.youtube.com/watch?v=3LHFu3Hnufs
+[LOG] 2026-03-04 21:04:14,024 - INFO - yt-dlp downloaded media to C:\Users\adamf\AppData\Local\Temp\astt_ytdlp_j8e2e035\3LHFu3Hnufs.webm (11484949 bytes)
+[LOG] 2026-03-04 21:04:14,135 - INFO - Processing audio with duration 00:05.000
+[LOG] 2026-03-04 21:04:14,306 - INFO - VAD filter removed 00:00.000 of audio
+[LOG] 2026-03-04 21:06:45,239 - INFO - Sidecar log file: C:\Users\adamf\AppData\Local\Temp\astt_demo_a004\sidecar.log
+[LOG] 2026-03-04 21:06:45,240 - INFO - Python sidecar starting...
+[LOG] 2026-03-04 21:06:45,240 - INFO - Sidecar ready, waiting for requests...
+[LOG] 2026-03-04 21:06:45,240 - INFO - Initializing with params: {'compute_type': 'int8', 'device': 'cpu', 'diarization': False, 'language': 'cs', 'model': 'tiny'}
+[LOG] 2026-03-04 21:06:45,241 - WARNING - WhisperX init failed: No module named 'whisperx'
+[LOG] 2026-03-04 21:06:45,437 - INFO - Loading faster-whisper model: tiny on cpu
+[LOG] 2026-03-04 21:06:46,004 - INFO - HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+[LOG] 2026-03-04 21:06:46,257 - INFO - faster-whisper model loaded successfully
+[LOG] 2026-03-04 21:06:46,257 - INFO - Initialized with config: {'model': 'tiny', 'language': 'cs', 'device': 'cpu', 'compute_type': 'int8', 'diarization': False}
+[LOG] 2026-03-04 21:06:46,257 - INFO - Sent response for request id=1
+[LOG] 2026-03-04 21:07:06,510 - INFO - Sent response for request id=2
+[LOG] 2026-03-04 21:07:17,656 - INFO - Sent response for request id=3
+[LOG] 2026-03-04 21:22:13,272 - INFO - Sidecar log file: C:\Users\adamf\AppData\Local\Temp\astt_demo_a004\sidecar.log
+[LOG] 2026-03-04 21:22:13,273 - INFO - Python sidecar starting...
+[LOG] 2026-03-04 21:22:13,273 - INFO - Sidecar ready, waiting for requests...
+[LOG] 2026-03-04 21:22:13,273 - INFO - Initializing with params: {'compute_type': 'int8', 'device': 'cpu', 'diarization': False, 'language': 'cs', 'model': 'tiny'}
+[LOG] 2026-03-04 21:22:13,274 - WARNING - WhisperX init failed: No module named 'whisperx'
+[LOG] 2026-03-04 21:22:13,466 - INFO - Loading faster-whisper model: tiny on cpu
+[LOG] 2026-03-04 21:22:14,060 - INFO - HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+[LOG] 2026-03-04 21:22:14,371 - INFO - faster-whisper model loaded successfully
+[LOG] 2026-03-04 21:22:14,372 - INFO - Initialized with config: {'model': 'tiny', 'language': 'cs', 'device': 'cpu', 'compute_type': 'int8', 'diarization': False}
+[LOG] 2026-03-04 21:22:14,372 - INFO - Sent response for request id=1
+[LOG] 2026-03-04 21:22:17,671 - INFO - Starting recording with params: {}
+[LOG] 2026-03-04 21:22:17,873 - INFO - Sent response for request id=2
+[LOG] 2026-03-04 21:22:17,916 - INFO - Recording started (sample_rate=16000, channels=1) -> C:\Users\adamf\AppData\Local\Temp\astt_recording_20260304_212217.wav
+[LOG] 2026-03-04 21:22:40,397 - INFO - Stopping recording with params: {}
+[LOG] 2026-03-04 21:22:40,464 - INFO - Recording worker finished
+[LOG] 2026-03-04 21:22:40,464 - INFO - Sent response for request id=3
+[LOG] 2026-03-04 22:14:20,841 - INFO - Sidecar log file: C:\Users\adamf\AppData\Local\Temp\astt_demo_a004\sidecar.log
+[LOG] 2026-03-04 22:14:20,841 - INFO - Python sidecar starting...
+[LOG] 2026-03-04 22:14:20,841 - INFO - Sidecar ready, waiting for requests...
+[LOG] 2026-03-04 22:14:20,841 - INFO - Starting recording with params: {}
+[LOG] 2026-03-04 22:14:20,841 - INFO - Sent response for request id=1
+[LOG] 2026-03-04 22:14:20,841 - INFO - Initializing with params: {'config': {}}
+[LOG] 2026-03-04 22:14:20,841 - WARNING - WhisperX init failed: No module named 'whisperx'
+[LOG] 2026-03-04 22:14:21,450 - INFO - Loading faster-whisper model: base on cpu
+[LOG] 2026-03-04 22:14:22,186 - INFO - HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-base/revision/main "HTTP/1.1 200 OK"
+[LOG] 2026-03-04 22:14:22,794 - INFO - faster-whisper model loaded successfully
+[LOG] 2026-03-04 22:14:22,794 - INFO - Initialized with config: {'model': 'base', 'language': 'cs', 'device': 'cpu', 'compute_type': 'int8'}
+[LOG] 2026-03-04 22:14:22,794 - INFO - Sent response for request id=2
+[LOG] 2026-03-04 22:14:22,794 - INFO - Starting recording with params: {}
+[LOG] 2026-03-04 22:14:22,968 - INFO - Sent response for request id=3
+[LOG] 2026-03-04 22:14:23,020 - INFO - Recording started (sample_rate=16000, channels=1) -> C:\Users\adamf\AppData\Local\Temp\astt_recording_20260304_221422.wav
+[LOG] 2026-03-04 22:14:34,420 - INFO - Stopping recording with params: {}
+[LOG] 2026-03-04 22:14:34,492 - INFO - Recording worker finished
+[LOG] 2026-03-04 22:14:34,492 - INFO - Sent response for request id=4
+[LOG] 2026-03-04 22:14:34,498 - INFO - Transcribe request options: clip_seconds=full-source
+[LOG] 2026-03-04 22:14:34,498 - INFO - Transcribing source: C:\Users\adamf\AppData\Local\Temp\astt_recording_20260304_221422.wav
+[LOG] 2026-03-04 22:14:34,520 - INFO - Processing audio with duration 00:11.414
+[LOG] 2026-03-04 22:14:34,751 - INFO - VAD filter removed 00:00.000 of audio
+[LOG] 2026-03-04 22:14:35,376 - INFO - Sent response for request id=5

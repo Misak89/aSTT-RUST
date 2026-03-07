@@ -1,0 +1,206 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "docs_control/traceability.schema.json",
+  "title": "Traceability Registry (P0 Minimum)",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "source_of_truth",
+    "entities",
+    "links"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+$"
+    },
+    "source_of_truth": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "entities": {
+      "type": "object",
+      "required": [
+        "specs",
+        "plans",
+        "tasks",
+        "code_refs",
+        "tests",
+        "docs",
+        "logs",
+        "evidence"
+      ],
+      "properties": {
+        "specs": { "type": "array", "items": { "$ref": "#/$defs/spec" } },
+        "plans": { "type": "array", "items": { "$ref": "#/$defs/plan" } },
+        "tasks": { "type": "array", "items": { "$ref": "#/$defs/task" } },
+        "code_refs": { "type": "array", "items": { "$ref": "#/$defs/codeRef" } },
+        "tests": { "type": "array", "items": { "$ref": "#/$defs/test" } },
+        "docs": { "type": "array", "items": { "$ref": "#/$defs/doc" } },
+        "logs": { "type": "array", "items": { "$ref": "#/$defs/log" } },
+        "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidence" } }
+      },
+      "additionalProperties": true
+    },
+    "links": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/link" }
+    }
+  },
+  "$defs": {
+    "baseEntity": {
+      "type": "object",
+      "required": [
+        "title"
+      ],
+      "properties": {
+        "title": { "type": "string" },
+        "status": { "type": "string" },
+        "path": { "type": "string" },
+        "notes": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "spec": {
+      "allOf": [
+        { "$ref": "#/$defs/baseEntity" },
+        {
+          "type": "object",
+          "required": [ "spec_id" ],
+          "properties": {
+            "spec_id": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "plan": {
+      "allOf": [
+        { "$ref": "#/$defs/baseEntity" },
+        {
+          "type": "object",
+          "required": [ "plan_id" ],
+          "properties": {
+            "plan_id": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "task": {
+      "allOf": [
+        { "$ref": "#/$defs/baseEntity" },
+        {
+          "type": "object",
+          "required": [ "task_id" ],
+          "properties": {
+            "task_id": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "codeRef": {
+      "allOf": [
+        { "$ref": "#/$defs/baseEntity" },
+        {
+          "type": "object",
+          "required": [ "code_ref_id", "path" ],
+          "properties": {
+            "code_ref_id": { "type": "string" },
+            "path": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "test": {
+      "allOf": [
+        { "$ref": "#/$defs/baseEntity" },
+        {
+          "type": "object",
+          "required": [ "test_id" ],
+          "properties": {
+            "test_id": { "type": "string" },
+            "command": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "doc": {
+      "allOf": [
+        { "$ref": "#/$defs/baseEntity" },
+        {
+          "type": "object",
+          "required": [ "doc_id", "path" ],
+          "properties": {
+            "doc_id": { "type": "string" },
+            "kind": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "log": {
+      "allOf": [
+        { "$ref": "#/$defs/baseEntity" },
+        {
+          "type": "object",
+          "required": [ "log_id", "path" ],
+          "properties": {
+            "log_id": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "evidence": {
+      "allOf": [
+        { "$ref": "#/$defs/baseEntity" },
+        {
+          "type": "object",
+          "required": [ "evidence_id" ],
+          "properties": {
+            "evidence_id": { "type": "string" },
+            "result": {
+              "type": "string",
+              "enum": [ "PASS", "FAIL", "WARN", "INFO", "OBSERVED" ]
+            }
+          }
+        }
+      ]
+    },
+    "link": {
+      "type": "object",
+      "required": [
+        "link_id",
+        "task_id"
+      ],
+      "properties": {
+        "link_id": { "type": "string" },
+        "spec_id": { "type": "string" },
+        "plan_id": { "type": "string" },
+        "task_id": { "type": "string" },
+        "code_ref_ids": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "test_ids": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "doc_ids": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "log_ids": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,27 @@
+An unexpected error has occurred: OperationalError: attempt to write a readonly database
+Check the log at C:\Users\adamf\.cache\pre-commit\pre-commit.log
+Traceback (most recent call last):
+  File "C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\.venv\Lib\site-packages\pre_commit\error_handler.py", line 73, in error_handler
+    yield
+  File "C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\.venv\Lib\site-packages\pre_commit\main.py", line 384, in main
+    store.mark_config_used(args.config)
+  File "C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\.venv\Lib\site-packages\pre_commit\store.py", line 235, in mark_config_used
+    db.execute('INSERT OR IGNORE INTO configs VALUES (?)', (path,))
+sqlite3.OperationalError: attempt to write a readonly database
+System.Management.Automation.RemoteException
+During handling of the above exception, another exception occurred:
+System.Management.Automation.RemoteException
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\.venv\Scripts\pre-commit.exe\__main__.py", line 7, in <module>
+  File "C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\.venv\Lib\site-packages\pre_commit\main.py", line 377, in main
+    with error_handler(), logging_handler(args.color):
+  File "C:\Program Files\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\.venv\Lib\site-packages\pre_commit\error_handler.py", line 81, in error_handler
+    _log_and_exit(msg, ret_code, e, traceback.format_exc())
+  File "C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\.venv\Lib\site-packages\pre_commit\error_handler.py", line 36, in _log_and_exit
+    log: IO[bytes] = ctx.enter_context(open(log_path, 'wb'))
+                                       ^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: 'C:\\Users\\adamf\\.cache\\pre-commit\\pre-commit.log'

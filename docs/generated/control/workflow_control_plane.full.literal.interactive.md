@@ -36,7 +36,7 @@
     <span data-role="zoom-value">100%</span>
   </div>
   <div class="viewport" data-role="viewport" tabindex="0">
-    <div class="overlay-meta" data-role="overlay-meta">workflow-control-plane v0.2.0 | data 2026-02-26T16:40:00Z | generated svg: loading...</div>
+    <div class="overlay-meta" data-role="overlay-meta">workflow-control-plane v0.3.0 | data 2026-02-28T16:55:00Z | generated svg: loading...</div>
     <div class="stage" data-role="stage">
       <div class="canvas" data-role="canvas">
         <img src="/generated/control/workflow_control_plane.full.literal.svg" alt="Workflow control plane literal rotated SVG" draggable="false" data-role="image" />
@@ -46,7 +46,7 @@
   <div class="hint">Mouse wheel = zoom, left-button drag = pan, scrollbars remain available.</div>
   <div class="hint">Mode: zoom + pan (scrollbars + mouse drag), range 5-800%.</div>
   <div class="hint-cz-panel">
-    <p><strong>Component:</strong> <code>workflow-control-plane v0.2.0 | data 2026-02-26T16:40:00Z</code></p>
+    <p><strong>Component:</strong> <code>workflow-control-plane v0.3.0 | data 2026-02-28T16:55:00Z</code></p>
     <p><strong>SVG timestamp (Last-Modified or server Date):</strong> <span data-role="generated-at">loading...</span></p>
     <p><strong>CZ data source:</strong> <code>docs_control/workflow_control_plane.json</code></p>
     <p><strong>Aktualizace dat:</strong></p>
@@ -77,7 +77,7 @@
   var minZoom = 0.05;
   var maxZoom = 8.0;
   var panPadding = 12000;
-  var componentMeta = 'workflow-control-plane v0.2.0 | data 2026-02-26T16:40:00Z';
+  var componentMeta = 'workflow-control-plane v0.3.0 | data 2026-02-28T16:55:00Z';
   var baseWidth = 0;
   var baseHeight = 0;
   var dragging = false;

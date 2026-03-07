@@ -1,0 +1,8 @@
+[WARNING] Unstaged files detected.
+[INFO] Stashing unstaged files to C:\Users\adamf\.cache\pre-commit\patch1772051252-54800.
+markdownlint-cli2....................................(no files to check)Skipped
+lychee...............................................(no files to check)Skipped
+validate-workflow-alignment..........................(no files to check)Skipped
+vale.................................................(no files to check)Skipped
+enforce-next-session-flow............................(no files to check)Skipped
+[INFO] Restored changes from C:\Users\adamf\.cache\pre-commit\patch1772051252-54800.

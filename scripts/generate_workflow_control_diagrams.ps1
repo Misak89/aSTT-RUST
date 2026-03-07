@@ -125,6 +125,28 @@ function Get-Map {
     return $h
 }
 
+function Get-StableHashBand {
+    param(
+        [string]$Value,
+        [int]$Modulo = 3
+    )
+
+    if ($Modulo -le 0 -or [string]::IsNullOrWhiteSpace($Value)) {
+        return 0
+    }
+
+    $sha = [System.Security.Cryptography.SHA256]::Create()
+    try {
+        $bytes = [System.Text.Encoding]::UTF8.GetBytes($Value.ToLowerInvariant())
+        $hash = $sha.ComputeHash($bytes)
+        $num = [BitConverter]::ToUInt32($hash, 0)
+        return [int]($num % [uint32]$Modulo)
+    }
+    finally {
+        $sha.Dispose()
+    }
+}
+
 function Test-TagMatch {
     param([object]$Item, [string[]]$Tags)
     if (@($Tags).Count -eq 0) { return $false }
@@ -825,7 +847,7 @@ function Get-DotContent {
                 $edgeFontColor = [string]$artifactPalette.Font
 
                 if ($relation -in @("writes", "generates", "reads", "logs_to", "produces_evidence")) {
-                    $hashBand = [Math]::Abs(([string]$artifactEndpointId).GetHashCode()) % 3
+                    $hashBand = Get-StableHashBand -Value ([string]$artifactEndpointId) -Modulo 3
                     if ($relation -eq "reads") {
                         $edgeStyle = @("dashed", "dotted", "solid")[$hashBand]
                         $arrowhead = "vee"

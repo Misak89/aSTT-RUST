@@ -1,0 +1,503 @@
+{
+  "schema_version": "1.0",
+  "source_of_truth": "logs/verify/preflight_state.json",
+  "generated_at_utc": "2026-02-27T10:37:46.048Z",
+  "root_path": "C:/Users/adamf/OneDrive/Dokumenty/aSTT-RUST",
+  "registry_path": "docs_control/task_status.json",
+  "schema_path": "docs_control/task_status.schema.json",
+  "verify_runs_path": "docs_control/verify_runs.json",
+  "auto_downgrade_requested": false,
+  "auto_downgrade_applied_count": 0,
+  "auto_downgraded_batches": [],
+  "report_only": true,
+  "selected_batch_count": 5,
+  "latest_fast_run": {
+    "run_id": "vr-b0e78bd15bc74a60af0f581e2adba399",
+    "created_at_utc": "2026-02-26T18:45:55.402Z",
+    "status": "PASS",
+    "task_id": "verify-fast-20260226T184526Z"
+  },
+  "error_count": 0,
+  "warning_count": 5,
+  "errors": [],
+  "warnings": [
+    "batch[batch.json-first-traceability-p0]: required artifacts have uncommitted changes: docs_control/next_session.json, docs_control/next_session.schema.json, docs_control/traceability.json, docs_control/traceability.schema.json, scripts/generate_control_docs.ps1",
+    "batch[batch.markdownlint-policy-a]: required artifacts have uncommitted changes: .markdownlint-cli2.yaml, .pre-commit-config.markdownlint-backlog.yaml, .pre-commit-config.yaml, scripts/report_markdownlint_backlog.ps1, scripts/verify_stage.ps1",
+    "batch[batch.vale-policy-b]: required artifacts have uncommitted changes: .pre-commit-config.yaml, .vale.backlog.ini, .vale.ini, docs_control/vale_backlog_baseline.json, scripts/report_vale_backlog.ps1",
+    "batch[batch.claim-evidence-guard-p0]: required artifacts have uncommitted changes: docs_control/task_status.json, docs_control/task_status.schema.json, scripts/preflight_state_discovery.ps1, scripts/validate_workflow_alignment.ps1, scripts/verify_batch_status.ps1",
+    "batch[batch.capability-audit-gate-p0]: required artifacts have uncommitted changes: docs_control/capability_audit.json, docs_control/capability_audit.schema.json, scripts/assert_preflight_write_guard.ps1, scripts/validate_capability_audit.ps1, scripts/validate_workflow_alignment.ps1"
+  ],
+  "batches": [
+    {
+      "batch_id": "batch.json-first-traceability-p0",
+      "title": "JSON-first / hybrid-strong NEXT_SESSION + traceability P0 control plane",
+      "claimed_status": "VERIFIED_LOCAL",
+      "observed_status": "VERIFIED_LOCAL",
+      "artifact_only_observed_status": "IMPLEMENTED_UNVERIFIED",
+      "artifact_checks": {
+        "total": 7,
+        "missing_required": 0,
+        "marker_failures": 0,
+        "pass": true,
+        "details": [
+          {
+            "path": "docs_control/next_session.json",
+            "kind": "file",
+            "optional": false,
+            "exists": true,
+            "status": "PASS",
+            "marker_pass_count": 0,
+            "marker_failures": []
+          },
+          {
+            "path": "docs_control/next_session.schema.json",
+            "kind": "file",
+            "optional": false,
+            "exists": true,
+            "status": "PASS",
+            "marker_pass_count": 0,
+            "marker_failures": []
+          },
+          {
+            "path": "docs_control/traceability.json",
+            "kind": "file",
+            "optional": false,
+            "exists": true,
+            "status": "PASS",
+            "marker_pass_count": 0,
+            "marker_failures": []
+          },
+          {
+            "path": "docs_control/traceability.schema.json",
+            "kind": "file",
+            "optional": false,
+            "exists": true,
+            "status": "PASS",
+            "marker_pass_count": 0,
+            "marker_failures": []
+          },
+          {
+            "path": "scripts/validate_next_session.ps1",
+            "kind": "file",
+            "optional": false,
+            "exists": true,
+            "status": "PASS",
+            "marker_pass_count": 0,
+            "marker_failures": []
+          },
+          {
+            "path": "scripts/validate_traceability.ps1",
+            "kind": "file",
+            "optional": false,
+            "exists": true,
+            "status": "PASS",
+            "marker_pass_count": 0,
+            "marker_failures": []
+          },
+          {
+            "path": "scripts/generate_control_docs.ps1",
+            "kind": "file",
+            "optional": false,
+            "exists": true,
+            "status": "PASS",
+            "marker_pass_count": 2,
+            "marker_failures": []
+          }
+        ]
+      },
+      "evidence_checks": {
+        "verify_stage": "fast",
+        "required_step_names": [
+          "Validate workflow alignment",
+          "Validate traceability registry",
+          "Validate NEXT_SESSION control (JSON-first)",
+          "Enforce NEXT_SESSION flow",
+          "Control docs stale-check"
+        ],
+        "latest_matching_run_id": "vr-b0e78bd15bc74a60af0f581e2adba399",
+        "latest_matching_run_created_at_utc": "2026-02-26T18:45:55.402Z",
+        "last_verified_run_id": "vr-b0e78bd15bc74a60af0f581e2adba399",
+        "last_verified_run_valid": true,
+        "last_verified_run_status": "PASS"
+      },
+      "dirty_worktree": {
+        "check_available": true,
+        "dirty_paths": [
+          "docs_control/next_session.json",
+          "docs_control/next_session.schema.json",
+          "docs_control/traceability.json",
+          "docs_control/traceability.schema.json",
+          "scripts/generate_control_docs.ps1",
+          "scripts/validate_next_session.ps1",
+          "scripts/validate_traceability.ps1"
+        ],
+        "require_clean_for_verified": false
+      }
+    },
+    {
+      "batch_id": "batch.markdownlint-policy-a",
+      "title": "Batch A - markdownlint blocking scope + backlog policy and mkdocs strict stabilization",
+      "claimed_status": "VERIFIED_LOCAL",
+      "observed_status": "VERIFIED_LOCAL",
+      "artifact_only_observed_status": "IMPLEMENTED_UNVERIFIED",
+      "artifact_checks": {
+        "total": 5,
+        "missing_required": 0,
+        "marker_failures": 0,
+        "pass": true,
+        "details": [
+          {
+            "path": ".markdownlint-cli2.yaml",
+            "kind": "file",
+            "optional": false,
+            "exists": true,
+            "status": "PASS",
+            "marker_pass_count": 0,
+            "marker_failures": []
+          },
+          {
+            "path": ".pre-commit-config.yaml",
+            "kind": "file",
+            "optional": false,
+            "exists": true,
+            "status": "PASS",
+            "marker_pass_count": 2,
+            "marker_failures": []
+          },
+          {
+            "path": ".pre-commit-config.markdownlint-backlog.yaml",
+            "kind": "file",
+            "optional": false,
+            "exists": true,
+            "status": "PASS",
+            "marker_pass_count": 0,
+            "marker_failures": []
+          },
+          {
+            "path": "scripts/report_markdownlint_backlog.ps1",
+            "kind": "file",
+            "optional": false,
+            "exists": true,
+            "status": "PASS",
+            "marker_pass_count": 0,
+            "marker_failures": []
+          },
+          {
+            "path": "scripts/verify_stage.ps1",
+            "kind": "file",
+            "optional": false,
+            "exists": true,
+            "status": "PASS",
+            "marker_pass_count": 2,
+            "marker_failures": []
+          }
+        ]
+      },
+      "evidence_checks": {
+        "verify_stage": "fast",
+        "required_step_names": [
+          "Markdown lint (pre-commit, blocking scope)",
+          "Markdown lint backlog report (non-blocking)",
+          "MkDocs build --strict"
+        ],
+        "latest_matching_run_id": "vr-b0e78bd15bc74a60af0f581e2adba399",
+        "latest_matching_run_created_at_utc": "2026-02-26T18:45:55.402Z",
+        "last_verified_run_id": "vr-b0e78bd15bc74a60af0f581e2adba399",
+        "last_verified_run_valid": true,
+        "last_verified_run_status": "PASS"
+      },
+      "dirty_worktree": {
+        "check_available": true,
+        "dirty_paths": [
+          ".markdownlint-cli2.yaml",
+          ".pre-commit-config.markdownlint-backlog.yaml",
+          ".pre-commit-config.yaml",
+          "scripts/report_markdownlint_backlog.ps1",
+          "scripts/verify_stage.ps1"
+        ],
+        "require_clean_for_verified": false
+      }
+    },
+    {
+      "batch_id": "batch.vale-policy-b",
+      "title": "Batch B - Vale critical + changed-file + backlog no-regression policy",
+      "claimed_status": "VERIFIED_LOCAL",
+      "observed_status": "VERIFIED_LOCAL",
+      "artifact_only_observed_status": "IMPLEMENTED_UNVERIFIED",
+      "artifact_checks": {
+        "total": 6,
+        "missing_required": 0,
+        "marker_failures": 0,
+        "pass": true,
+        "details": [
+          {
+            "path": ".vale.ini",
+            "kind": "file",
+            "optional": false,
+            "exists": true,
+            "status": "PASS",
+            "marker_pass_count": 1,
+            "marker_failures": []
+          },
+          {
+            "path": ".vale.backlog.ini",
+            "kind": "file",
+            "optional": false,
+            "exists": true,
+            "status": "PASS",
+            "marker_pass_count": 1,
+            "marker_failures": []
+          },
+          {
+            "path": ".pre-commit-config.yaml",
+            "kind": "file",
+            "optional": false,
+            "exists": true,
+            "status": "PASS",
+            "marker_pass_count": 2,
+            "marker_failures": []
+          },
+          {
+            "path": "scripts/report_vale_backlog.ps1",
+            "kind": "file",
+            "optional": false,
+            "exists": true,
+            "status": "PASS",
+            "marker_pass_count": 2,
+            "marker_failures": []
+          },
+          {
+            "path": "docs_control/vale_backlog_baseline.json",
+            "kind": "file",
+            "optional": false,
+            "exists": true,
+            "status": "PASS",
+            "marker_pass_count": 0,
+            "marker_failures": []
+          },
+          {
+            "path": "scripts/verify_stage.ps1",
+            "kind": "file",
+            "optional": false,
+            "exists": true,
+            "status": "PASS",
+            "marker_pass_count": 2,
+            "marker_failures": []
+          }
+        ]
+      },
+      "evidence_checks": {
+        "verify_stage": "fast",
+        "required_step_names": [
+          "Vale prose lint (critical blocking, pre-commit)",
+          "Vale backlog report + no-regression"
+        ],
+        "latest_matching_run_id": "vr-b0e78bd15bc74a60af0f581e2adba399",
+        "latest_matching_run_created_at_utc": "2026-02-26T18:45:55.402Z",
+        "last_verified_run_id": "vr-b0e78bd15bc74a60af0f581e2adba399",
+        "last_verified_run_valid": true,
+        "last_verified_run_status": "PASS"
+      },
+      "dirty_worktree": {
+        "check_available": true,
+        "dirty_paths": [
+          ".pre-commit-config.yaml",
+          ".vale.backlog.ini",
+          ".vale.ini",
+          "docs_control/vale_backlog_baseline.json",
+          "scripts/report_vale_backlog.ps1",
+          "scripts/verify_stage.ps1"
+        ],
+        "require_clean_for_verified": false
+      }
+    },
+    {
+      "batch_id": "batch.claim-evidence-guard-p0",
+      "title": "Claim=evidence guard - task status registry + preflight discovery + batch verifier",
+      "claimed_status": "IMPLEMENTED_UNVERIFIED",
+      "observed_status": "IMPLEMENTED_UNVERIFIED",
+      "artifact_only_observed_status": "IMPLEMENTED_UNVERIFIED",
+      "artifact_checks": {
+        "total": 6,
+        "missing_required": 0,
+        "marker_failures": 0,
+        "pass": true,
+        "details": [
+          {
+            "path": "docs_control/task_status.json",
+            "kind": "file",
+            "optional": false,
+            "exists": true,
+            "status": "PASS",
+            "marker_pass_count": 0,
+            "marker_failures": []
+          },
+          {
+            "path": "docs_control/task_status.schema.json",
+            "kind": "file",
+            "optional": false,
+            "exists": true,
+            "status": "PASS",
+            "marker_pass_count": 0,
+            "marker_failures": []
+          },
+          {
+            "path": "scripts/preflight_state_discovery.ps1",
+            "kind": "file",
+            "optional": false,
+            "exists": true,
+            "status": "PASS",
+            "marker_pass_count": 0,
+            "marker_failures": []
+          },
+          {
+            "path": "scripts/verify_batch_status.ps1",
+            "kind": "file",
+            "optional": false,
+            "exists": true,
+            "status": "PASS",
+            "marker_pass_count": 0,
+            "marker_failures": []
+          },
+          {
+            "path": "scripts/verify_stage.ps1",
+            "kind": "file",
+            "optional": false,
+            "exists": true,
+            "status": "PASS",
+            "marker_pass_count": 2,
+            "marker_failures": []
+          },
+          {
+            "path": "scripts/validate_workflow_alignment.ps1",
+            "kind": "file",
+            "optional": false,
+            "exists": true,
+            "status": "PASS",
+            "marker_pass_count": 2,
+            "marker_failures": []
+          }
+        ]
+      },
+      "evidence_checks": {
+        "verify_stage": "fast",
+        "required_step_names": [
+          "Preflight state discovery (claim=evidence)",
+          "Verify batch status claims (claim=evidence)"
+        ],
+        "latest_matching_run_id": "vr-b0e78bd15bc74a60af0f581e2adba399",
+        "latest_matching_run_created_at_utc": "2026-02-26T18:45:55.402Z",
+        "last_verified_run_id": "vr-b0e78bd15bc74a60af0f581e2adba399",
+        "last_verified_run_valid": true,
+        "last_verified_run_status": "PASS"
+      },
+      "dirty_worktree": {
+        "check_available": true,
+        "dirty_paths": [
+          "docs_control/task_status.json",
+          "docs_control/task_status.schema.json",
+          "scripts/preflight_state_discovery.ps1",
+          "scripts/validate_workflow_alignment.ps1",
+          "scripts/verify_batch_status.ps1",
+          "scripts/verify_stage.ps1"
+        ],
+        "require_clean_for_verified": true
+      }
+    },
+    {
+      "batch_id": "batch.capability-audit-gate-p0",
+      "title": "Capability audit gate - external tool capability claims + source-backed evidence",
+      "claimed_status": "VERIFIED_LOCAL",
+      "observed_status": "VERIFIED_LOCAL",
+      "artifact_only_observed_status": "IMPLEMENTED_UNVERIFIED",
+      "artifact_checks": {
+        "total": 6,
+        "missing_required": 0,
+        "marker_failures": 0,
+        "pass": true,
+        "details": [
+          {
+            "path": "docs_control/capability_audit.json",
+            "kind": "file",
+            "optional": false,
+            "exists": true,
+            "status": "PASS",
+            "marker_pass_count": 0,
+            "marker_failures": []
+          },
+          {
+            "path": "docs_control/capability_audit.schema.json",
+            "kind": "file",
+            "optional": false,
+            "exists": true,
+            "status": "PASS",
+            "marker_pass_count": 0,
+            "marker_failures": []
+          },
+          {
+            "path": "scripts/validate_capability_audit.ps1",
+            "kind": "file",
+            "optional": false,
+            "exists": true,
+            "status": "PASS",
+            "marker_pass_count": 3,
+            "marker_failures": []
+          },
+          {
+            "path": "scripts/assert_preflight_write_guard.ps1",
+            "kind": "file",
+            "optional": false,
+            "exists": true,
+            "status": "PASS",
+            "marker_pass_count": 2,
+            "marker_failures": []
+          },
+          {
+            "path": "scripts/verify_stage.ps1",
+            "kind": "file",
+            "optional": false,
+            "exists": true,
+            "status": "PASS",
+            "marker_pass_count": 2,
+            "marker_failures": []
+          },
+          {
+            "path": "scripts/validate_workflow_alignment.ps1",
+            "kind": "file",
+            "optional": false,
+            "exists": true,
+            "status": "PASS",
+            "marker_pass_count": 2,
+            "marker_failures": []
+          }
+        ]
+      },
+      "evidence_checks": {
+        "verify_stage": "fast",
+        "required_step_names": [
+          "Validate workflow control alignment (refresh observed)",
+          "Capability audit (tools + sources)",
+          "Preflight state discovery (claim=evidence)",
+          "Verify batch status claims (claim=evidence)"
+        ],
+        "latest_matching_run_id": "vr-b0e78bd15bc74a60af0f581e2adba399",
+        "latest_matching_run_created_at_utc": "2026-02-26T18:45:55.402Z",
+        "last_verified_run_id": "vr-b0e78bd15bc74a60af0f581e2adba399",
+        "last_verified_run_valid": true,
+        "last_verified_run_status": "PASS"
+      },
+      "dirty_worktree": {
+        "check_available": true,
+        "dirty_paths": [
+          "docs_control/capability_audit.json",
+          "docs_control/capability_audit.schema.json",
+          "scripts/assert_preflight_write_guard.ps1",
+          "scripts/validate_capability_audit.ps1",
+          "scripts/validate_workflow_alignment.ps1",
+          "scripts/verify_stage.ps1"
+        ],
+        "require_clean_for_verified": false
+      }
+    }
+  ]
+}

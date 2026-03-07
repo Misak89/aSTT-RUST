@@ -1,0 +1,297 @@
+{
+  "schema_version": "1.0",
+  "source_of_truth": "docs_control/next_session.json",
+  "document": {
+    "title": "NEXT_SESSION - Control View (Hybrid-Strong)",
+    "path": "docs/generated/control/NEXT_SESSION.md",
+    "version": "5.8",
+    "created_at": "2026-02-15 19:36 (UTC+1)",
+    "updated_at": "2026-02-26 18:58 (UTC+1)",
+    "status_text": "ROZPRACOVANE - workflow control plane D1-D6 + capability audit gate synced; ASR scope/zadani + reconcile stale P0 pred dalsim kodovanim"
+  },
+  "lifecycle_state": "ROZPRACOVANE",
+  "state_realization": {
+    "neprovedeno": [
+      {
+        "item_id": "todo.asr_module",
+        "text": "Implementace ASR modulu (Mic Capture + WhisperX integration)"
+      },
+      {
+        "item_id": "todo.real_project_validation",
+        "text": "Uzamknout diagram + ASR zadani/scope a az pak pokracovat v implementaci (stav po predcasnem kodovani je zmrazen)"
+      }
+    ],
+    "rozpracovane": [
+      {
+        "item_id": "wip.next_session_json_first",
+        "text": "Migrace NEXT_SESSION z Markdown-first na JSON-first hybrid-strong"
+      },
+      {
+        "item_id": "wip.traceability_p0",
+        "text": "Zavedeni traceability registru a integrity validatoru (P0 minimum)"
+      }
+    ],
+    "provedeno": [
+      {
+        "item_id": "done.verify_runs_json_ssot",
+        "text": "Verify dashboard funguje jako canonical JSON (docs_control/verify_runs.json) -> generated docs views"
+      },
+      {
+        "item_id": "done.verify_orchestrator",
+        "text": "Jednotny verify orchestrator (verify_fast/verify_stage/verify_full) s fail-fast logikou je zaveden"
+      },
+      {
+        "item_id": "done.batch_a_mkdocs_markdownlint",
+        "text": "Batch A dokoncen: mkdocs --strict green + markdownlint blocking/backlog policy"
+      },
+      {
+        "item_id": "done.process_diagram_json_first",
+        "text": "Procesni diagram JSON-first control plane doplnen v docs/core/GOVERNANCE.md"
+      },
+      {
+        "item_id": "done.real_project_verify_fast_pilot",
+        "text": "Pilotni verify_fast na realnem projektu spusten; prvni blokujici FAIL je Vale prose lint (repo-wide)"
+      },
+      {
+        "item_id": "done.vale_batch_b_policy",
+        "text": "Vale Batch B: critical blocking + changed-file blocking + backlog report/no-regression baseline"
+      },
+      {
+        "item_id": "done.verify_stage_npm_wrapper_fix",
+        "text": "Verify orchestrator opraven pro npm.cmd (PowerShell npm.ps1 wrapper uz nedeformuje argumenty)"
+      },
+      {
+        "item_id": "done.real_project_verify_fast_pilot_round2",
+        "text": "Pilotni verify_fast po Vale Batch B dosel az na Rust fmt check (realny kodovy blocker)"
+      },
+      {
+        "item_id": "done.claim_evidence_guard_p0",
+        "text": "Claim=evidence guard zaveden: docs_control/task_status.json + preflight_state_discovery + verify_batch_status (napojeno do verify_fast/CI/governance)"
+      },
+      {
+        "item_id": "done.claim_evidence_guard_strict_clean_pilot",
+        "text": "Pilotne zapnuto require_clean_worktree_for_verified pro claim=evidence batch + auto downgrade claimu pri dirty artefaktech"
+      },
+      {
+        "item_id": "done.real_project_verify_fast_pilot_round3",
+        "text": "cargo fmt provedeno, Vale backlog no-regression opraven a verify_fast se posunul z Rust fmt check na Rust clippy"
+      },
+      {
+        "item_id": "done.verify_stage_log_pass_run_fix",
+        "text": "Opraven verify_stage logger pro PASS beh bez errors (empty ErrorsJson -> []), verify_fast PASS beh se korektne zaloguje"
+      },
+      {
+        "item_id": "done.real_project_verify_fast_pilot_round4",
+        "text": "Rust clippy chyby opraveny a plny verify_fast probehl do PASS vcetne zalogovani runu do docs_control/verify_runs.json"
+      },
+      {
+        "item_id": "done.asr_mvp_pre_diagram_coding_round1",
+        "text": "Predcasne (procesne mimo poradi) doplnen ASR MVP kod: UI panel, Rust get/set config + dev python sidecar fallback, Python sidecar recording/config/error handling"
+      },
+      {
+        "item_id": "done.asr_post_coding_verify_fast_pass_freeze",
+        "text": "Po ASR kodovani znovu spusten verify_fast a PASS run zalogovan (vr-724c30a3a0774258bd88318d1b1b2b95); stav zmrazen pred diagramem/zadanim"
+      },
+      {
+        "item_id": "done.workflow_control_plane_d1_d6_baseline",
+        "text": "Novy diagramovy system workflow control plane: JSON SSOT + schema + coverage validator + observed manifests + alignment validator + generator/stale-check + napojeni do verify_fast/CI/MkDocs"
+      },
+      {
+        "item_id": "done.capability_audit_gate_p0",
+        "text": "Capability Audit gate zaveden: docs_control/capability_audit.json + validate_capability_audit.ps1 + JSON evidence outputs + napojeni do verify_fast/CI + preflight write guard"
+      }
+    ],
+    "poznamka": "Ridici cast je v JSON. Markdown view se generuje a nesmi se rucne upravovat."
+  },
+  "current_context": {
+    "summary": "JSON-first / hybrid-strong NEXT_SESSION + traceability P0 minimum jsou zavedene a verify_fast baseline byl overen. Po predcasnem ASR kodovani (pred diagramem/scope) byl dodelan novy workflow control plane diagram system (JSON SSOT + validace + alignment + stale-check + CI/verify integrace) a nyni take Capability Audit gate pro tvrzeni o externim SW (zdrojove overeni + tool observation evidence + poradi pred preflightem). Dalsi krok je vratit se k procesu a uzamknout ASR scope/zadani + udelat reconcile audit predcasneho kodu.",
+    "hotovo": [
+      "JSON-first NEXT_SESSION + traceability validatory/generator + stale-check",
+      "mkdocs build --strict green po oprave audit dashboard link generatoru",
+      "markdownlint blocking scope (curated P0) + backlog report (non-blocking)",
+      "Vale critical blocking + changed-file blocking + backlog report/no-regression baseline",
+      "Claim=evidence guard: task_status registry + preflight state discovery + batch status verifier v verify_fast/CI",
+      "Claim=evidence strict-clean pilot: require_clean_worktree_for_verified + auto downgrade pro guard batch (claim se snizi pri dirty artefaktech)",
+      "Procesni diagram JSON-first control plane v docs/core/GOVERNANCE.md",
+      "Verify orchestrator fix: npm.cmd misto npm.ps1 wrapperu pro Node check step",
+      "cargo fmt provedeno nad src-tauri a verify_fast se posunul az na Rust clippy",
+      "Rust clippy chyby opraveny a plny verify_fast PASS run je korektne zalogovan v docs_control/verify_runs.json (vr-efd18ac7747242a8983c62987b43c7d7)",
+      "verify_stage logger bug opraven: PASS beh s prazdnym seznamem errors uz neposila prazdny argument -ErrorsJson"
+      ,
+      "ASR MVP kod doplnen: Svelte UI panel (init/config/record/transcribe), Rust Tauri get/set config commandy, Python sidecar recording/config/error handling",
+      "Tauri sidecar spawn preferuje v dev rezimu python src-python/sidecar.py (realny WhisperX), fallback na bundled sidecar"
+      ,
+      "Workflow control plane diagram system baseline: docs_control/workflow_control_plane.json + validate_workflow_control_plane + validate_workflow_control_alignment + generate_workflow_control_diagrams (napojeno do verify_fast/CI)"
+      ,
+      "Capability Audit gate: docs_control/capability_audit.json + validate_capability_audit.ps1 + toolchain_capabilities/capability_audit_summary evidence + enforcement pred preflightem"
+    ],
+    "kriticky_problem": [
+      "Procesni chyba: ASR kodovani probehlo pred uzavrenym zadanim/scope; diagramovy system baseline je hotovy, ale dalsi kodovani ma byt zastaveno do uzamceni ASR scope + reconcile auditu",
+      "verify_fast baseline je aktualne green; dalsi realny blocker vznikne az pri navazujici implementacni praci",
+      "Bundled sidecar .exe uz neni dummy, ale v aktualnim PyInstaller baleni bezi bez WhisperX zavislosti v placeholder rezimu (produkcniparity gap)",
+      "Mic recording v Python sidecar vyzaduje sounddevice + PortAudio; bez nich vraci explicitni error (spravne, ale je to deployment zavislost)",
+      "Node check uz probehne, ale deprecation warningy v Svelte config zustavaji technicky dluh ke zvazeni",
+      "Claim-evidence strict-clean pilot batch zustava IMPLEMENTED_UNVERIFIED, dokud jsou jeho artefakty lokalne dirty (zamerne chovani)"
+    ]
+  },
+  "next_steps": [
+    {
+      "step_id": "step.p0.json-first-complete",
+      "title": "Zmrazeni kodu respektovat a uzamknout ASR zadani/scope + reconcile pred dalsi implementaci",
+      "priority": "P0",
+      "actions": [
+        "Pouzit novy workflow control plane system (generated views + validators) jako canonical diagramovy podklad pro schvaleni procesu",
+        "Uzamknout ASR MVP zadani/scope (co je MVP, co neni MVP, co z predcasneho kodu se ponecha)",
+        "Udelat reconcile audit predcasne napsaneho ASR kodu proti schvalenemu diagramu a zadani"
+      ],
+      "acceptance": [
+        "Diagramovy system / generated views jsou schvalene a odpovidaji realnemu verify/control flow",
+        "ASR scope je explicitne schvaleny (MVP / mimo MVP / open questions)",
+        "Je rozhodnuto co z predcasneho ASR kodu ponechat/upravit/revertovat pred dalsi implementaci"
+      ]
+    },
+    {
+      "step_id": "step.process-diagram",
+      "title": "Udrzovat workflow control plane diagram system synchronni s verify/CI/hooky",
+      "priority": "P0",
+      "actions": [
+        "Overit po kazde zmene gate, ze docs_control/workflow_control_plane.json + generated views stale sedi na verify_stage/CI/hooky",
+        "Pouzivat validate_workflow_control_alignment + generate_workflow_control_diagrams -CheckOnly jako standardni drift guard"
+      ]
+    },
+    {
+      "step_id": "step.real-project-validation",
+      "title": "Otestovat novy model na realnem projektu (navrat k hlavni praci)",
+      "priority": "P0",
+      "actions": [
+        "Po odmrznuti (diagram + scope) pokracovat v implementaci a po kazde vetsi zmene spustit verify_fast bez skipu",
+        "Zapsat evidence a traceability vazby na realne tasky a testy",
+        "Overit, ze docs zustavaji synchronni s kodem a CI take pri realne implementacni praci"
+      ]
+    }
+  ],
+  "first_next_session_actions": {
+    "commands": [
+      "pwsh -NoProfile -ExecutionPolicy Bypass -File scripts/validate_workflow_control_plane.ps1 -RootPath .",
+      "pwsh -NoProfile -ExecutionPolicy Bypass -File scripts/validate_workflow_control_alignment.ps1 -RootPath . -RefreshObserved",
+      "pwsh -NoProfile -ExecutionPolicy Bypass -File scripts/validate_capability_audit.ps1 -RootPath .",
+      "pwsh -NoProfile -ExecutionPolicy Bypass -File scripts/generate_workflow_control_diagrams.ps1 -RootPath . -CheckOnly"
+    ],
+    "after_commands": [
+      "Uzamknout ASR zadani/scope a zapsat rozhodnuti o ponechani/uprave/revertu predcasneho kodu",
+      "Teprve potom pokracovat v dalsim kodovani a zapsat novy verify run do NEXT_SESSION JSON"
+    ]
+  },
+  "workflow_alignment_checkpoint": {
+    "hook": [
+      ".pre-commit-config.yaml -> validate-workflow-alignment",
+      ".pre-commit-config.yaml -> enforce-next-session-flow",
+      ".pre-commit-config.yaml -> validate-workflow-alignment sleduje take task_status + claim/evidence guard skripty",
+      "scripts/enforce_next_session_flow.ps1 -> validate_next_session.ps1 + generate_control_docs.ps1 -CheckOnly"
+    ],
+    "ci": [
+      ".github/workflows/ci.yml -> preflight_state_discovery.ps1",
+      ".github/workflows/ci.yml -> validate_workflow_control_plane.ps1",
+      ".github/workflows/ci.yml -> validate_workflow_control_alignment.ps1 -RefreshObserved",
+      ".github/workflows/ci.yml -> validate_capability_audit.ps1",
+      ".github/workflows/ci.yml -> generate_workflow_control_diagrams.ps1 -CheckOnly",
+      ".github/workflows/ci.yml -> verify_batch_status.ps1",
+      ".github/workflows/ci.yml -> validate_traceability.ps1",
+      ".github/workflows/ci.yml -> validate_next_session.ps1",
+      ".github/workflows/ci.yml -> generate_control_docs.ps1 -CheckOnly",
+      ".github/workflows/quality-gate.yml -> validate_workflow_control_plane.ps1 + validate_workflow_control_alignment.ps1 -RefreshObserved + validate_capability_audit.ps1 + generate_workflow_control_diagrams.ps1 -CheckOnly",
+      ".github/workflows/quality-gate.yml -> preflight_state_discovery.ps1 + verify_batch_status.ps1 + stejne kontroly"
+    ],
+    "docs": [
+      "docs/core/GOVERNANCE.md",
+      "docs/generated/control/NEXT_SESSION.md",
+      "docs/generated/control/TRACEABILITY_SUMMARY.md",
+      "docs/generated/control/WORKFLOW_CONTROL_PLANE.md",
+      "docs/generated/control/workflow_control_plane.verify_evidence_path.md"
+    ],
+    "notes": [
+      "Generated NEXT_SESSION view obsahuje sekci 'Checkpoint (workflow alignment)' jako lidsky citelny checkpoint nad JSON daty.",
+      "Markdown note (`docs_control/next_session_note.md`) nesmi obsahovat ridici checklists/stavy/metadata."
+    ]
+  },
+  "evidence_policy": {
+    "implemented_requires": [
+      "local_hook_pass",
+      "ci_pass",
+      "docs_sync_pass"
+    ]
+  },
+  "evidence": [
+    {
+      "evidence_id": "evidence.verify.fast.latest",
+      "kind": "verify_run",
+      "result": "PASS",
+      "source": "docs_control/verify_runs.json",
+      "notes": "verify_fast (docs-heavy smoke se skip Node/Rust/Render) probehl do PASS po finalnim SSOT/docs syncu workflow control plane diagram systemu a byl korektne zalogovan (vr-30576c0c84324c90b8442e9a6f670775)."
+    },
+    {
+      "evidence_id": "evidence.batch-status.verify.latest",
+      "kind": "batch_status_verify",
+      "result": "PASS",
+      "source": "logs/verify/batch_status_verify_summary.json",
+      "notes": "Batch verifier potvrzuje claim=evidence konzistenci; claim-evidence batch je v strict-clean pilotu a pri dirty artefaktech se drzi na IMPLEMENTED_UNVERIFIED (auto downgrade)."
+    },
+    {
+      "evidence_id": "evidence.capability-audit.latest",
+      "kind": "capability_audit",
+      "result": "PASS",
+      "source": "logs/verify/capability_audit_summary.json",
+      "notes": "Capability audit gate validuje source-backed tvrzeni o schopnostech nastroju a zapisuje tool observation + summary evidence; aktualne warning zustava jen pro volitelny mmdc (neni nainstalovan)."
+    }
+  ],
+  "traceability_refs": {
+    "spec_ids": [
+      "spec.docs-control-json-first-p0"
+    ],
+    "plan_ids": [
+      "plan.deterministic-docs-automation-v0_5-draft"
+    ],
+    "task_ids": [
+      "task.next-session-json-first-hybrid-strong",
+      "task.traceability-p0-minimum",
+      "task.claim-evidence-guard-p0",
+      "task.capability-audit-gate-p0"
+    ],
+    "code_ref_ids": [
+      "code.scripts.validate_workflow_alignment",
+      "code.scripts.validate_capability_audit",
+      "code.scripts.assert_preflight_write_guard",
+      "code.scripts.preflight_state_discovery",
+      "code.scripts.verify_batch_status",
+      "code.scripts.validate_next_session",
+      "code.scripts.enforce_next_session_flow",
+      "code.scripts.generate_control_docs",
+      "code.scripts.validate_traceability",
+      "code.scripts.verify_stage"
+    ],
+    "test_ids": [
+      "test.verify.fast.stage",
+      "test.mkdocs.strict.build",
+      "test.batch_status.verify",
+      "test.capability_audit.validate"
+    ],
+    "doc_ids": [
+      "doc.control.next_session_json",
+      "doc.control.next_session_note",
+      "doc.generated.next_session_view",
+      "doc.control.traceability_json",
+      "doc.generated.traceability_summary",
+      "doc.control.task_status_json",
+      "doc.control.capability_audit_json"
+    ],
+    "log_ids": [
+      "log.verify_runs",
+      "log.capability_audit_summary"
+    ],
+    "evidence_ids": [
+      "evidence.verify.fast.latest",
+      "evidence.batch-status.verify.latest",
+      "evidence.capability-audit.latest"
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+Running Vale backlog scan (repo-wide, non-blocking report)...
+Vale backlog report:
+  total alerts: 6302
+  errors: 1798, warnings: 4504, suggestions: 0
+  summary json: logs/verify/vale_backlog_summary.json
+  raw json: logs/verify/vale_backlog_latest.json
+  no-regression: PASS

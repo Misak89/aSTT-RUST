@@ -1,0 +1,167 @@
+name: Project Unified
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+concurrency:
+  group: project-unified-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    name: ci
+    uses: ./.github/workflows/ci.yml
+    secrets: inherit
+
+  quality_gate:
+    name: quality-gate
+    uses: ./.github/workflows/quality-gate.yml
+    secrets: inherit
+
+  docs:
+    name: docs
+    uses: ./.github/workflows/docs.yml
+    secrets: inherit
+
+  determinism:
+    name: determinism
+    uses: ./.github/workflows/determinism.yml
+    secrets: inherit
+
+  clean_clone_smoke:
+    name: clean-clone-smoke
+    uses: ./.github/workflows/clean-clone-smoke.yml
+    secrets: inherit
+
+  sandbox_docs:
+    name: sandbox-docs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Sandbox markdown lint
+        uses: DavidAnson/markdownlint-cli2-action@v18
+        with:
+          globs: |
+            sandbox/TestDocu_a001/**/*.md
+
+      - name: Sandbox link audit
+        uses: lycheeverse/lychee-action@v2
+        with:
+          fail: true
+          args: >-
+            --no-progress
+            --exclude-mail
+            --accept 200,206,301,302,303,307,308
+            "sandbox/TestDocu_a001/**/*.md"
+
+  run_report:
+    name: run-report
+    runs-on: ubuntu-latest
+    if: ${{ always() }}
+    needs:
+      - ci
+      - quality_gate
+      - docs
+      - determinism
+      - clean_clone_smoke
+      - sandbox_docs
+    steps:
+      - name: Build unified run report
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          New-Item -ItemType Directory -Path artifacts -Force | Out-Null
+          $finishedUtc = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ")
+
+          $runReport = [ordered]@{
+            workflow = "${{ github.workflow }}"
+            run_id = "${{ github.run_id }}"
+            run_attempt = "${{ github.run_attempt }}"
+            run_number = "${{ github.run_number }}"
+            repository = "${{ github.repository }}"
+            ref = "${{ github.ref }}"
+            sha = "${{ github.sha }}"
+            event_name = "${{ github.event_name }}"
+            started_at_utc = "${{ github.run_started_at }}"
+            finished_at_utc = $finishedUtc
+            jobs = [ordered]@{
+              ci = "${{ needs.ci.result }}"
+              quality_gate = "${{ needs.quality_gate.result }}"
+              docs = "${{ needs.docs.result }}"
+              determinism = "${{ needs.determinism.result }}"
+              clean_clone_smoke = "${{ needs.clean_clone_smoke.result }}"
+              sandbox_docs = "${{ needs.sandbox_docs.result }}"
+            }
+          }
+          $runReport | ConvertTo-Json -Depth 10 | Set-Content artifacts/project_unified_run_report.json -Encoding UTF8
+
+          $reportMd = @(
+            "# Project Unified Run Report"
+            ""
+            "- workflow: ${{ github.workflow }}"
+            "- run_id: ${{ github.run_id }}"
+            "- run_attempt: ${{ github.run_attempt }}"
+            "- repository: ${{ github.repository }}"
+            "- ref: ${{ github.ref }}"
+            "- sha: ${{ github.sha }}"
+            "- event: ${{ github.event_name }}"
+            "- coding_from_utc: ${{ github.run_started_at }}"
+            "- coding_to_utc: $finishedUtc"
+            ""
+            "## Jobs"
+            ""
+            "| Job | Result |"
+            "| :--- | :--- |"
+            "| ci | ${{ needs.ci.result }} |"
+            "| quality_gate | ${{ needs.quality_gate.result }} |"
+            "| docs | ${{ needs.docs.result }} |"
+            "| determinism | ${{ needs.determinism.result }} |"
+            "| clean_clone_smoke | ${{ needs.clean_clone_smoke.result }} |"
+            "| sandbox_docs | ${{ needs.sandbox_docs.result }} |"
+          ) -join "`n"
+          $reportMd | Set-Content artifacts/project_unified_run_report.md -Encoding UTF8
+
+      - name: Upload run report artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: project-unified-run-report-${{ github.run_id }}-${{ github.run_attempt }}
+          path: artifacts/project_unified_run_report.*
+
+  project-required-check:
+    name: project-required-check
+    runs-on: ubuntu-latest
+    if: ${{ always() }}
+    needs:
+      - ci
+      - quality_gate
+      - docs
+      - determinism
+      - clean_clone_smoke
+      - sandbox_docs
+      - run_report
+    steps:
+      - name: Enforce unified success
+        shell: bash
+        run: |
+          results=(
+            "${{ needs.ci.result }}"
+            "${{ needs.quality_gate.result }}"
+            "${{ needs.docs.result }}"
+            "${{ needs.determinism.result }}"
+            "${{ needs.clean_clone_smoke.result }}"
+            "${{ needs.sandbox_docs.result }}"
+            "${{ needs.run_report.result }}"
+          )
+          for r in "${results[@]}"; do
+            if [ "$r" != "success" ]; then
+              echo "Unified workflow failed, upstream result: $r"
+              exit 1
+            fi
+          done
+          echo "Project unified check PASS."

@@ -1,0 +1,7 @@
+
+=================================================
+  Generate Workflow Control Diagrams (D1/D5-lite)
+=================================================
+
+WARN: Graphviz 'dot' not available. Writing placeholder SVG for view view.full_control_plane.
+PASS: workflow control diagrams stale-check passed

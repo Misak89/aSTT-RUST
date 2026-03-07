@@ -1,0 +1,127 @@
+{
+  "schema_version": "1.0",
+  "source_of_truth": "docs_control/capability_audit.json",
+  "model": {
+    "model_id": "capability-audit",
+    "model_version": "0.2.0",
+    "status": "DRAFT",
+    "scope_statement": "Canonical registry of externally claimed tool capabilities used for workflow/diagram decisions.",
+    "created_at_utc": "2026-02-26T00:00:00Z",
+    "updated_at_utc": "2026-02-26T18:46:41.541Z",
+    "approved_at_utc": null,
+    "approved_by": null
+  },
+  "policies": {
+    "unknown_default": true,
+    "verified_requires_official_source": true,
+    "decision_use_requires_verified": true,
+    "tool_observation_output_path": "logs/verify/toolchain_capabilities.json",
+    "summary_output_path": "logs/verify/capability_audit_summary.json"
+  },
+  "tools": [
+    {
+      "tool_id": "tool.graphviz.dot",
+      "label": "Graphviz dot renderer",
+      "command_candidates": [
+        "tools/graphviz/Graphviz-14.1.2-win64/bin/dot.exe",
+        "tools/graphviz/bin/dot.exe",
+        "dot"
+      ],
+      "version_args": ["-V"],
+      "notes": "Local portable Graphviz is preferred; PATH fallback allowed.",
+      "order_index": 10
+    },
+    {
+      "tool_id": "tool.mkdocs",
+      "label": "MkDocs CLI (python -m mkdocs)",
+      "command_candidates": [
+        ".venv/Scripts/python.exe",
+        "python"
+      ],
+      "version_args": ["-X", "utf8", "-m", "mkdocs", "--version"],
+      "notes": "Used to confirm local docs server/build tool availability via Python module entrypoint.",
+      "order_index": 20
+    },
+    {
+      "tool_id": "tool.mermaid_cli",
+      "label": "Mermaid CLI (mmdc)",
+      "command_candidates": [
+        "node_modules/.bin/mmdc.cmd",
+        "node_modules/.bin/mmdc",
+        "mmdc"
+      ],
+      "version_args": ["--version"],
+      "version_pin_regex": "11\\.12\\.0",
+      "version_pin_enforcement": "warn",
+      "preferred_install_package": "@mermaid-js/mermaid-cli@11.12.0",
+      "notes": "Optional renderer; currently not required in this repo. If installed locally, prefer the pinned version via npm devDependency.",
+      "order_index": 30
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "claim.graphviz.dot_renders_svg",
+      "tool_id": "tool.graphviz.dot",
+      "statement": "Graphviz dot can render DOT input to SVG output (dot -Tsvg).",
+      "scope": "Workflow control plane generated SVG views.",
+      "status": "verified",
+      "used_for_decisions": true,
+      "local_observation_required": true,
+      "sources": [
+        {
+          "kind": "official_docs",
+          "title": "Graphviz Documentation",
+          "url": "https://graphviz.org/documentation/"
+        }
+      ],
+      "notes": "Local tool availability is separately observed in toolchain_capabilities.json.",
+      "order_index": 10
+    },
+    {
+      "claim_id": "claim.graphviz.groups_colors_labels_legend_patterns",
+      "tool_id": "tool.graphviz.dot",
+      "statement": "Graphviz supports grouped process views (clusters/subgraphs), styling (colors/fill), and labels, enabling colored grouped workflow diagrams and legend patterns.",
+      "scope": "Planned grouped views, color coding, labels, and legend for workflow control plane diagrams.",
+      "status": "verified",
+      "used_for_decisions": true,
+      "local_observation_required": false,
+      "sources": [
+        {
+          "kind": "official_gallery",
+          "title": "Graphviz Gallery",
+          "url": "https://graphviz.org/gallery/"
+        },
+        {
+          "kind": "official_docs",
+          "title": "Graphviz Documentation",
+          "url": "https://graphviz.org/documentation/"
+        }
+      ],
+      "notes": "Exact visual conventions remain repo-specific and must be implemented in generator.",
+      "order_index": 20
+    },
+    {
+      "claim_id": "claim.mermaid_cli_optional_renderer_for_this_repo",
+      "tool_id": "tool.mermaid_cli",
+      "statement": "Mermaid CLI is available and suitable as a maintained SVG renderer in this repository workflow.",
+      "scope": "Optional future renderer path for generated workflow diagram views.",
+      "status": "unknown",
+      "used_for_decisions": false,
+      "local_observation_required": false,
+      "sources": [
+        {
+          "kind": "official_repo",
+          "title": "Mermaid CLI (official repository)",
+          "url": "https://github.com/mermaid-js/mermaid-cli"
+        }
+      ],
+      "notes": "Repo policy decision: optional, pinned target is @mermaid-js/mermaid-cli@11.12.0 when adopted. Current workflow uses Graphviz for SVG rendering.",
+      "order_index": 30
+    }
+  ],
+  "notes": [
+    "Purpose: prevent unsupported categorical statements about external tool capabilities in workflow decisions.",
+    "Policy: capability claims used for decisions must be verified and source-backed; otherwise status must remain unknown.",
+    "Mermaid CLI policy: optional path only; if installed locally, prefer pinned @mermaid-js/mermaid-cli@11.12.0 and treat version mismatch as warning until promoted to active renderer."
+  ]
+}

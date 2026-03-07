@@ -1,0 +1,5 @@
+project:
+  name: app_temp
+  tz: Europe/Prague
+  adrFolder: ./docs/adr
+  packages: []

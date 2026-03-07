@@ -1,0 +1,92 @@
+name: Workflow Guard
+
+on:
+  push:
+    branches: [master, develop]
+  pull_request:
+    branches: [master]
+
+jobs:
+  guard:
+    runs-on: windows-latest
+    permissions:
+      contents: read
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Setup PowerShell
+        shell: pwsh
+        run: |
+          Write-Host "PowerShell version: $($PSVersionTable.PSVersion)"
+      
+      - name: Setup Graphviz
+        uses: ts-graphviz/setup-graphviz@v2
+      
+      - name: Run Workflow Guard - CI
+        shell: pwsh
+        run: |
+          powershell -ExecutionPolicy Bypass -File scripts/workflow_guard.ps1 -Trigger ci -Verbose
+      
+      - name: Generate Workflow Diagram
+        shell: pwsh
+        run: |
+          powershell -ExecutionPolicy Bypass -File scripts/generate_workflow_diagram.ps1 -Verbose
+      
+      - name: Upload Execution Log
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: execution-log
+          path: logs/execution-log.json
+          retention-days: 30
+      
+      - name: Upload Workflow Diagram
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: workflow-diagram
+          path: docs/workflow-diagram.svg
+          retention-days: 30
+      
+      - name: Comment on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const log = JSON.parse(fs.readFileSync('logs/execution-log.json', 'utf8'));
+            const executions = Array.isArray(log.executions) ? log.executions : [];
+            if (executions.length === 0) {
+              core.info('No executions found in logs/execution-log.json, skipping PR comment.');
+              return;
+            }
+            const latest = executions[executions.length - 1];
+            const summary = latest.Summary || latest.summary || {};
+            const results = latest.Results || latest.results || [];
+            const failedRows = results.filter((r) => String(r.Status || r.status || '').toLowerCase() === 'failed');
+            const failedSection = failedRows.length > 0
+              ? '### Failed Steps\n' + failedRows.map((r) => `- ${r.Name || r.name || 'unknown step'}`).join('\n')
+              : '';
+            
+            const body = `## Workflow Guard Report
+            
+            | Metric | Value |
+            |--------|-------|
+            | Total | ${summary.Total ?? summary.total ?? 0} |
+            | Passed | ${summary.Passed ?? summary.passed ?? 0} |
+            | Failed | ${summary.Failed ?? summary.failed ?? 0} |
+            | Errors | ${summary.Errors ?? summary.errors ?? 0} |
+            
+            ${failedSection}
+            `;
+            
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: body
+            });

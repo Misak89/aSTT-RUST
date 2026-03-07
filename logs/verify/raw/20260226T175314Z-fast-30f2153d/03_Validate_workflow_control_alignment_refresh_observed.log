@@ -1,0 +1,24 @@
+
+==================================================
+  Validate Workflow Control Alignment (D4)
+==================================================
+
+
+==========================================
+  Extract verify_stage observed manifest
+==========================================
+
+PASS: wrote observed verify_stage manifest -> docs_control/observed_workflow/verify_stage.json (functions=9, fast_steps=20)
+
+===============================
+  Extract CI observed manifest
+===============================
+
+PASS: wrote observed CI manifest -> docs_control/observed_workflow/ci_jobs.json (workflows=2, jobs=7)
+
+=====================================
+  Extract pre-commit observed hooks
+=====================================
+
+PASS: wrote observed hooks manifest -> docs_control/observed_workflow/hooks.json (hooks=6)
+PASS: workflow control alignment validated (targets=4, nodes=34, warnings=0)

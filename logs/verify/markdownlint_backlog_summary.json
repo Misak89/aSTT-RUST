@@ -1,0 +1,165 @@
+{
+  "schema_version": "1.0",
+  "source_of_truth": "logs/verify/markdownlint_backlog_summary.json",
+  "generated_at_utc": "2026-02-26T18:45:41.796Z",
+  "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run -c C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.pre-commit-config.markdownlint-backlog.yaml markdownlint-cli2 --all-files",
+  "runner": "pre-commit",
+  "non_blocking": true,
+  "pre_commit_exit_code": 1,
+  "error_count": 1706,
+  "top_rules": [
+    {
+      "rule": "MD012",
+      "count": 1016
+    },
+    {
+      "rule": "MD024",
+      "count": 207
+    },
+    {
+      "rule": "MD032",
+      "count": 206
+    },
+    {
+      "rule": "MD022",
+      "count": 152
+    },
+    {
+      "rule": "MD013",
+      "count": 40
+    },
+    {
+      "rule": "MD058",
+      "count": 18
+    },
+    {
+      "rule": "MD036",
+      "count": 15
+    },
+    {
+      "rule": "MD040",
+      "count": 14
+    },
+    {
+      "rule": "MD007",
+      "count": 9
+    },
+    {
+      "rule": "MD031",
+      "count": 9
+    },
+    {
+      "rule": "MD026",
+      "count": 7
+    },
+    {
+      "rule": "MD030",
+      "count": 6
+    },
+    {
+      "rule": "MD009",
+      "count": 4
+    },
+    {
+      "rule": "MD003",
+      "count": 1
+    },
+    {
+      "rule": "MD025",
+      "count": 1
+    }
+  ],
+  "top_dirs": [
+    {
+      "dir": "(root)",
+      "count": 1504
+    },
+    {
+      "dir": ".specify",
+      "count": 94
+    },
+    {
+      "dir": "plans",
+      "count": 43
+    },
+    {
+      "dir": "sandbox",
+      "count": 38
+    },
+    {
+      "dir": ".agent",
+      "count": 22
+    },
+    {
+      "dir": "logs",
+      "count": 3
+    },
+    {
+      "dir": ".kilocode",
+      "count": 2
+    }
+  ],
+  "top_files": [
+    {
+      "file": "QA_REPORT.md",
+      "count": 1016
+    },
+    {
+      "file": "CRITICAL_ANALYSIS.md",
+      "count": 314
+    },
+    {
+      "file": "LOGS_AND_PROMPTS.md",
+      "count": 54
+    },
+    {
+      "file": ".specify/plan.md",
+      "count": 44
+    },
+    {
+      "file": ".specify/spec.md",
+      "count": 31
+    },
+    {
+      "file": "plans/documentation_automation_improvements_v2.md",
+      "count": 28
+    },
+    {
+      "file": ".agent/workflows/review.md",
+      "count": 22
+    },
+    {
+      "file": "CHANGE_LOG.md",
+      "count": 22
+    },
+    {
+      "file": "sandbox/portable_bench/TEST_REPORT.md",
+      "count": 21
+    },
+    {
+      "file": "PROMPT_HISTORY.md",
+      "count": 20
+    },
+    {
+      "file": ".specify/documentation_analysis.md",
+      "count": 19
+    },
+    {
+      "file": "TEST_INSPIRATION.md",
+      "count": 17
+    },
+    {
+      "file": "documentation_analysis.md",
+      "count": 16
+    },
+    {
+      "file": "PROPOSED_FIXES.md",
+      "count": 16
+    },
+    {
+      "file": "automation_audit.md",
+      "count": 15
+    }
+  ],
+  "raw_log_path": "logs/verify/markdownlint_backlog_latest.log"
+}

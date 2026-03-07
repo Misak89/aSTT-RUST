@@ -1,0 +1,8 @@
+
+========================================
+  Capability Audit Gate v1.0
+========================================
+
+PASS: capability audit JSON schema validation
+WARN: Tool 'tool.mermaid_cli' not found locally (capability claim may remain source-only).
+PASS: capability audit validated (claims=3, tools_found=2/3, warnings=1)

@@ -1,7 +1,50 @@
 name: Continuous Testing (CI)
-on: [push, pull_request]
+on:
+  workflow_call:
+  workflow_dispatch:
 
 jobs:
+  next-session-governance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate workflow alignment
+        shell: pwsh
+        run: ./scripts/validate_workflow_alignment.ps1
+      - name: Validate workflow control plane model
+        shell: pwsh
+        run: ./scripts/validate_workflow_control_plane.ps1
+      - name: Validate workflow control alignment (refresh observed)
+        shell: pwsh
+        run: ./scripts/validate_workflow_control_alignment.ps1 -RefreshObserved
+      - name: Capability audit (tools + sources)
+        shell: pwsh
+        run: ./scripts/validate_capability_audit.ps1
+      - name: Preflight state discovery (claim=evidence)
+        shell: pwsh
+        run: ./scripts/preflight_state_discovery.ps1
+      - name: Verify batch status claims (claim=evidence)
+        shell: pwsh
+        run: ./scripts/verify_batch_status.ps1
+      - name: Validate traceability registry
+        shell: pwsh
+        run: ./scripts/validate_traceability.ps1
+      - name: Validate NEXT_SESSION structure
+        shell: pwsh
+        run: ./scripts/validate_next_session.ps1 -SkipGeneratedFreshnessCheck
+      - name: Control docs stale-check
+        shell: pwsh
+        run: ./scripts/generate_control_docs.ps1 -CheckOnly
+      - name: Verify dashboard stale-check
+        shell: pwsh
+        run: ./scripts/generate_verify_dashboard.ps1 -CheckOnly
+      - name: Workflow control diagrams stale-check
+        shell: pwsh
+        run: ./scripts/generate_workflow_control_diagrams.ps1 -CheckOnly
+      - name: Enforce NEXT_SESSION flow
+        shell: pwsh
+        run: ./scripts/enforce_next_session_flow.ps1
+
   test-ui:
     runs-on: ubuntu-latest
     steps:

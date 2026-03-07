@@ -1,0 +1,11 @@
+[LOG] 2026-03-04 21:00:15,374 - INFO - Transcribing source: https://www.youtube.com/watch?v=3LHFu3Hnufs
+[LOG] 2026-03-04 21:04:10,983 - INFO - Transcribe request options: clip_seconds=5
+[LOG] 2026-03-04 21:04:10,983 - INFO - Transcribing source: https://www.youtube.com/watch?v=3LHFu3Hnufs
+[LOG] 2026-03-04 21:22:17,671 - INFO - Starting recording with params: {}
+[LOG] 2026-03-04 21:22:40,397 - INFO - Stopping recording with params: {}
+[LOG] 2026-03-04 22:14:20,841 - INFO - Starting recording with params: {}
+[LOG] 2026-03-04 22:14:22,794 - INFO - Starting recording with params: {}
+[LOG] 2026-03-04 22:14:23,020 - INFO - Recording started (sample_rate=16000, channels=1) -> C:\Users\adamf\AppData\Local\Temp\astt_recording_20260304_221422.wav
+[LOG] 2026-03-04 22:14:34,420 - INFO - Stopping recording with params: {}
+[LOG] 2026-03-04 22:14:34,498 - INFO - Transcribe request options: clip_seconds=full-source
+[LOG] 2026-03-04 22:14:34,498 - INFO - Transcribing source: C:\Users\adamf\AppData\Local\Temp\astt_recording_20260304_221422.wav

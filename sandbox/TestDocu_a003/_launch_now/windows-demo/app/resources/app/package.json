@@ -1,0 +1,7 @@
+{
+  "name": "astt-demo-electron",
+  "productName": "aSTT-demo-electron",
+  "version": "0.1.0",
+  "private": true,
+  "main": "electron/main.cjs"
+}

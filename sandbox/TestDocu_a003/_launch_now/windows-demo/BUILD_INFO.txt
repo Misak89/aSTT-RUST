@@ -1,0 +1,7 @@
+build_time_local=2026-03-04T15:03:34.7640685+01:00
+build_time_utc=2026-03-04T14:03:34.7640685Z
+root_path=c:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST
+selected_pack_dir=c:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\dist-electron\win-unpacked
+selected_pack_exe=c:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\dist-electron\win-unpacked\aSTT-demo-electron.exe
+selected_pack_exe_last_write_utc=2026-03-04T01:32:39.0102557Z
+build_performed=True

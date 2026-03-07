@@ -1,0 +1,3655 @@
+{
+  "schema_version": "1.0",
+  "source_of_truth": "docs_control/verify_runs.json",
+  "notes": [
+    "Canonical verify run log for deterministic ERROR LOOP / MkDocs generated views.",
+    "Markdown pages in docs/generated/control are generated views only."
+  ],
+  "runs": [
+    {
+      "run_id": "vr-b0e78bd15bc74a60af0f581e2adba399",
+      "created_at_utc": "2026-02-26T18:45:55.402Z",
+      "created_at_epoch_ms": 1772127955402,
+      "task_id": "verify-fast-20260226T184526Z",
+      "commit_sha": "2ef8b818874d0e2d2ce47d9a2ecaacb4dba53d4f",
+      "stage": "fast",
+      "scope": "repo",
+      "status": "PASS",
+      "steps": [
+        {
+          "name": "Validate workflow alignment",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_alignment.ps1",
+          "status": "PASS",
+          "duration_ms": 434,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate workflow control plane model",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_control_plane.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 655,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate workflow control alignment (refresh observed)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_control_alignment.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -RefreshObserved",
+          "status": "PASS",
+          "duration_ms": 1904,
+          "exit_code": 0
+        },
+        {
+          "name": "Capability audit (tools + sources)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_capability_audit.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 779,
+          "exit_code": 0
+        },
+        {
+          "name": "Preflight state discovery (claim=evidence)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\preflight_state_discovery.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 1320,
+          "exit_code": 0
+        },
+        {
+          "name": "Verify batch status claims (claim=evidence)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\verify_batch_status.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 1059,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate traceability registry",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_traceability.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 460,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate NEXT_SESSION control (JSON-first)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_next_session.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -SkipGeneratedFreshnessCheck",
+          "status": "PASS",
+          "duration_ms": 482,
+          "exit_code": 0
+        },
+        {
+          "name": "Enforce NEXT_SESSION flow",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\enforce_next_session_flow.ps1",
+          "status": "PASS",
+          "duration_ms": 2450,
+          "exit_code": 0
+        },
+        {
+          "name": "Control docs stale-check",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\generate_control_docs.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -CheckOnly",
+          "status": "PASS",
+          "duration_ms": 525,
+          "exit_code": 0
+        },
+        {
+          "name": "Workflow control diagrams stale-check",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\generate_workflow_control_diagrams.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -CheckOnly",
+          "status": "PASS",
+          "duration_ms": 1298,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint (pre-commit, blocking scope)",
+          "tool": "markdownlint-cli2",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run markdownlint-cli2 --all-files",
+          "status": "PASS",
+          "duration_ms": 1508,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint backlog report (non-blocking)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_markdownlint_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 2094,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale prose lint (critical blocking, pre-commit)",
+          "tool": "vale",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run vale-critical --all-files",
+          "status": "PASS",
+          "duration_ms": 1203,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale backlog report + no-regression",
+          "tool": "vale",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_vale_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -EnforceNoRegression",
+          "status": "PASS",
+          "duration_ms": 9815,
+          "exit_code": 0
+        },
+        {
+          "name": "Link audit (lychee, optional)",
+          "tool": "lychee",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run lychee --all-files",
+          "status": "SKIP",
+          "duration_ms": 0,
+          "exit_code": null
+        },
+        {
+          "name": "MkDocs build --strict",
+          "tool": "mkdocs",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\python.exe -X utf8 -m mkdocs build --strict -f C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\mkdocs.yml",
+          "status": "PASS",
+          "duration_ms": 1872,
+          "exit_code": 0
+        }
+      ],
+      "errors": [],
+      "error_count": 0,
+      "fingerprints": [],
+      "root_cause": null,
+      "evidence_refs": [
+        "logs/verify/raw/20260226T184526Z-fast-cec8fc98/01_Validate_workflow_alignment.log",
+        "logs/verify/raw/20260226T184526Z-fast-cec8fc98/02_Validate_workflow_control_plane_model.log",
+        "logs/verify/raw/20260226T184526Z-fast-cec8fc98/03_Validate_workflow_control_alignment_refresh_observed.log",
+        "logs/verify/raw/20260226T184526Z-fast-cec8fc98/04_Capability_audit_tools_sources.log",
+        "logs/verify/raw/20260226T184526Z-fast-cec8fc98/05_Preflight_state_discovery_claim_evidence.log",
+        "logs/verify/raw/20260226T184526Z-fast-cec8fc98/06_Verify_batch_status_claims_claim_evidence.log",
+        "logs/verify/raw/20260226T184526Z-fast-cec8fc98/07_Validate_traceability_registry.log",
+        "logs/verify/raw/20260226T184526Z-fast-cec8fc98/08_Validate_NEXT_SESSION_control_JSON-first.log",
+        "logs/verify/raw/20260226T184526Z-fast-cec8fc98/09_Enforce_NEXT_SESSION_flow.log",
+        "logs/verify/raw/20260226T184526Z-fast-cec8fc98/10_Control_docs_stale-check.log",
+        "logs/verify/raw/20260226T184526Z-fast-cec8fc98/11_Workflow_control_diagrams_stale-check.log",
+        "logs/verify/raw/20260226T184526Z-fast-cec8fc98/12_Markdown_lint_pre-commit_blocking_scope.log",
+        "logs/verify/raw/20260226T184526Z-fast-cec8fc98/13_Markdown_lint_backlog_report_non-blocking.log",
+        "logs/verify/raw/20260226T184526Z-fast-cec8fc98/14_Vale_prose_lint_critical_blocking_pre-commit.log",
+        "logs/verify/raw/20260226T184526Z-fast-cec8fc98/15_Vale_backlog_report_no-regression.log",
+        "logs/verify/raw/20260226T184526Z-fast-cec8fc98/17_MkDocs_build_--strict.log"
+      ]
+    },
+    {
+      "run_id": "vr-0e4a2c518b064bdebfc1c237d02f3a15",
+      "created_at_utc": "2026-02-26T18:38:13.672Z",
+      "created_at_epoch_ms": 1772127493672,
+      "task_id": "verify-fast-20260226T183743Z",
+      "commit_sha": "2ef8b818874d0e2d2ce47d9a2ecaacb4dba53d4f",
+      "stage": "fast",
+      "scope": "repo",
+      "status": "PASS",
+      "steps": [
+        {
+          "name": "Validate workflow alignment",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_alignment.ps1",
+          "status": "PASS",
+          "duration_ms": 407,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate workflow control plane model",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_control_plane.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 637,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate workflow control alignment (refresh observed)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_control_alignment.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -RefreshObserved",
+          "status": "PASS",
+          "duration_ms": 2016,
+          "exit_code": 0
+        },
+        {
+          "name": "Capability audit (tools + sources)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_capability_audit.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 793,
+          "exit_code": 0
+        },
+        {
+          "name": "Preflight state discovery (claim=evidence)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\preflight_state_discovery.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 1443,
+          "exit_code": 0
+        },
+        {
+          "name": "Verify batch status claims (claim=evidence)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\verify_batch_status.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 1328,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate traceability registry",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_traceability.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 503,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate NEXT_SESSION control (JSON-first)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_next_session.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -SkipGeneratedFreshnessCheck",
+          "status": "PASS",
+          "duration_ms": 481,
+          "exit_code": 0
+        },
+        {
+          "name": "Enforce NEXT_SESSION flow",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\enforce_next_session_flow.ps1",
+          "status": "PASS",
+          "duration_ms": 2706,
+          "exit_code": 0
+        },
+        {
+          "name": "Control docs stale-check",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\generate_control_docs.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -CheckOnly",
+          "status": "PASS",
+          "duration_ms": 503,
+          "exit_code": 0
+        },
+        {
+          "name": "Workflow control diagrams stale-check",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\generate_workflow_control_diagrams.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -CheckOnly",
+          "status": "PASS",
+          "duration_ms": 871,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint (pre-commit, blocking scope)",
+          "tool": "markdownlint-cli2",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run markdownlint-cli2 --all-files",
+          "status": "PASS",
+          "duration_ms": 1184,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint backlog report (non-blocking)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_markdownlint_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 2131,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale prose lint (critical blocking, pre-commit)",
+          "tool": "vale",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run vale-critical --all-files",
+          "status": "PASS",
+          "duration_ms": 1240,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale backlog report + no-regression",
+          "tool": "vale",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_vale_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -EnforceNoRegression",
+          "status": "PASS",
+          "duration_ms": 11249,
+          "exit_code": 0
+        },
+        {
+          "name": "Link audit (lychee, optional)",
+          "tool": "lychee",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run lychee --all-files",
+          "status": "SKIP",
+          "duration_ms": 0,
+          "exit_code": null
+        },
+        {
+          "name": "MkDocs build --strict",
+          "tool": "mkdocs",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\python.exe -X utf8 -m mkdocs build --strict -f C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\mkdocs.yml",
+          "status": "PASS",
+          "duration_ms": 1715,
+          "exit_code": 0
+        }
+      ],
+      "errors": [],
+      "error_count": 0,
+      "fingerprints": [],
+      "root_cause": null,
+      "evidence_refs": [
+        "logs/verify/raw/20260226T183743Z-fast-8eeabfd5/01_Validate_workflow_alignment.log",
+        "logs/verify/raw/20260226T183743Z-fast-8eeabfd5/02_Validate_workflow_control_plane_model.log",
+        "logs/verify/raw/20260226T183743Z-fast-8eeabfd5/03_Validate_workflow_control_alignment_refresh_observed.log",
+        "logs/verify/raw/20260226T183743Z-fast-8eeabfd5/04_Capability_audit_tools_sources.log",
+        "logs/verify/raw/20260226T183743Z-fast-8eeabfd5/05_Preflight_state_discovery_claim_evidence.log",
+        "logs/verify/raw/20260226T183743Z-fast-8eeabfd5/06_Verify_batch_status_claims_claim_evidence.log",
+        "logs/verify/raw/20260226T183743Z-fast-8eeabfd5/07_Validate_traceability_registry.log",
+        "logs/verify/raw/20260226T183743Z-fast-8eeabfd5/08_Validate_NEXT_SESSION_control_JSON-first.log",
+        "logs/verify/raw/20260226T183743Z-fast-8eeabfd5/09_Enforce_NEXT_SESSION_flow.log",
+        "logs/verify/raw/20260226T183743Z-fast-8eeabfd5/10_Control_docs_stale-check.log",
+        "logs/verify/raw/20260226T183743Z-fast-8eeabfd5/11_Workflow_control_diagrams_stale-check.log",
+        "logs/verify/raw/20260226T183743Z-fast-8eeabfd5/12_Markdown_lint_pre-commit_blocking_scope.log",
+        "logs/verify/raw/20260226T183743Z-fast-8eeabfd5/13_Markdown_lint_backlog_report_non-blocking.log",
+        "logs/verify/raw/20260226T183743Z-fast-8eeabfd5/14_Vale_prose_lint_critical_blocking_pre-commit.log",
+        "logs/verify/raw/20260226T183743Z-fast-8eeabfd5/15_Vale_backlog_report_no-regression.log",
+        "logs/verify/raw/20260226T183743Z-fast-8eeabfd5/17_MkDocs_build_--strict.log"
+      ]
+    },
+    {
+      "run_id": "vr-740f0e5364b04fb58c6689c703482a10",
+      "created_at_utc": "2026-02-26T18:27:29.117Z",
+      "created_at_epoch_ms": 1772126849117,
+      "task_id": "verify-fast-20260226T182657Z",
+      "commit_sha": "2ef8b818874d0e2d2ce47d9a2ecaacb4dba53d4f",
+      "stage": "fast",
+      "scope": "repo",
+      "status": "FAIL",
+      "steps": [
+        {
+          "name": "Validate workflow alignment",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_alignment.ps1",
+          "status": "PASS",
+          "duration_ms": 441,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate workflow control plane model",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_control_plane.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 714,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate workflow control alignment (refresh observed)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_control_alignment.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -RefreshObserved",
+          "status": "PASS",
+          "duration_ms": 1942,
+          "exit_code": 0
+        },
+        {
+          "name": "Capability audit (tools + sources)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_capability_audit.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 926,
+          "exit_code": 0
+        },
+        {
+          "name": "Preflight state discovery (claim=evidence)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\preflight_state_discovery.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 1242,
+          "exit_code": 0
+        },
+        {
+          "name": "Verify batch status claims (claim=evidence)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\verify_batch_status.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 1060,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate traceability registry",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_traceability.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 558,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate NEXT_SESSION control (JSON-first)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_next_session.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -SkipGeneratedFreshnessCheck",
+          "status": "PASS",
+          "duration_ms": 582,
+          "exit_code": 0
+        },
+        {
+          "name": "Enforce NEXT_SESSION flow",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\enforce_next_session_flow.ps1",
+          "status": "PASS",
+          "duration_ms": 2504,
+          "exit_code": 0
+        },
+        {
+          "name": "Control docs stale-check",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\generate_control_docs.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -CheckOnly",
+          "status": "PASS",
+          "duration_ms": 476,
+          "exit_code": 0
+        },
+        {
+          "name": "Workflow control diagrams stale-check",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\generate_workflow_control_diagrams.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -CheckOnly",
+          "status": "PASS",
+          "duration_ms": 835,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint (pre-commit, blocking scope)",
+          "tool": "markdownlint-cli2",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run markdownlint-cli2 --all-files",
+          "status": "PASS",
+          "duration_ms": 1827,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint backlog report (non-blocking)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_markdownlint_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 2123,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale prose lint (critical blocking, pre-commit)",
+          "tool": "vale",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run vale-critical --all-files",
+          "status": "PASS",
+          "duration_ms": 1655,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale backlog report + no-regression",
+          "tool": "vale",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_vale_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -EnforceNoRegression",
+          "status": "FAIL",
+          "duration_ms": 13577,
+          "exit_code": 1
+        }
+      ],
+      "errors": [
+        {
+          "tool": "vale",
+          "type": "report",
+          "file": "**/*.md",
+          "rule": "vale_backlog_no_regression",
+          "line": null,
+          "step_index": 15,
+          "message": "Running Vale backlog scan (repo-wide, non-blocking report)..."
+        }
+      ],
+      "error_count": 1,
+      "fingerprints": [
+        {
+          "fingerprint": "2852eaf2e687",
+          "key": "report|**/*.md|vale_backlog_no_regression",
+          "type": "report",
+          "file": "**/*.md",
+          "rule": "vale_backlog_no_regression",
+          "count": 1,
+          "historical_count_before": 3,
+          "historical_count_total": 4,
+          "docs_rule_candidate": true
+        }
+      ],
+      "root_cause": {
+        "tool": "vale",
+        "type": "report",
+        "file": "**/*.md",
+        "rule": "vale_backlog_no_regression",
+        "line": null,
+        "step_index": 15,
+        "message": "Running Vale backlog scan (repo-wide, non-blocking report)..."
+      },
+      "evidence_refs": [
+        "logs/verify/raw/20260226T182657Z-fast-45b317fa/01_Validate_workflow_alignment.log",
+        "logs/verify/raw/20260226T182657Z-fast-45b317fa/02_Validate_workflow_control_plane_model.log",
+        "logs/verify/raw/20260226T182657Z-fast-45b317fa/03_Validate_workflow_control_alignment_refresh_observed.log",
+        "logs/verify/raw/20260226T182657Z-fast-45b317fa/04_Capability_audit_tools_sources.log",
+        "logs/verify/raw/20260226T182657Z-fast-45b317fa/05_Preflight_state_discovery_claim_evidence.log",
+        "logs/verify/raw/20260226T182657Z-fast-45b317fa/06_Verify_batch_status_claims_claim_evidence.log",
+        "logs/verify/raw/20260226T182657Z-fast-45b317fa/07_Validate_traceability_registry.log",
+        "logs/verify/raw/20260226T182657Z-fast-45b317fa/08_Validate_NEXT_SESSION_control_JSON-first.log",
+        "logs/verify/raw/20260226T182657Z-fast-45b317fa/09_Enforce_NEXT_SESSION_flow.log",
+        "logs/verify/raw/20260226T182657Z-fast-45b317fa/10_Control_docs_stale-check.log",
+        "logs/verify/raw/20260226T182657Z-fast-45b317fa/11_Workflow_control_diagrams_stale-check.log",
+        "logs/verify/raw/20260226T182657Z-fast-45b317fa/12_Markdown_lint_pre-commit_blocking_scope.log",
+        "logs/verify/raw/20260226T182657Z-fast-45b317fa/13_Markdown_lint_backlog_report_non-blocking.log",
+        "logs/verify/raw/20260226T182657Z-fast-45b317fa/14_Vale_prose_lint_critical_blocking_pre-commit.log",
+        "logs/verify/raw/20260226T182657Z-fast-45b317fa/15_Vale_backlog_report_no-regression.log"
+      ]
+    },
+    {
+      "run_id": "vr-3e935137afef47e3a25712431448872d",
+      "created_at_utc": "2026-02-26T17:53:27.458Z",
+      "created_at_epoch_ms": 1772124807458,
+      "task_id": "verify-fast-20260226T175314Z",
+      "commit_sha": "2ef8b818874d0e2d2ce47d9a2ecaacb4dba53d4f",
+      "stage": "fast",
+      "scope": "repo",
+      "status": "FAIL",
+      "steps": [
+        {
+          "name": "Validate workflow alignment",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_alignment.ps1",
+          "status": "PASS",
+          "duration_ms": 397,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate workflow control plane model",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_control_plane.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 674,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate workflow control alignment (refresh observed)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_control_alignment.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -RefreshObserved",
+          "status": "PASS",
+          "duration_ms": 1766,
+          "exit_code": 0
+        },
+        {
+          "name": "Capability audit (tools + sources)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_capability_audit.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 915,
+          "exit_code": 0
+        },
+        {
+          "name": "Preflight state discovery (claim=evidence)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\preflight_state_discovery.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 1328,
+          "exit_code": 0
+        },
+        {
+          "name": "Verify batch status claims (claim=evidence)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\verify_batch_status.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 916,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate traceability registry",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_traceability.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 450,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate NEXT_SESSION control (JSON-first)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_next_session.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -SkipGeneratedFreshnessCheck",
+          "status": "PASS",
+          "duration_ms": 443,
+          "exit_code": 0
+        },
+        {
+          "name": "Enforce NEXT_SESSION flow",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\enforce_next_session_flow.ps1",
+          "status": "PASS",
+          "duration_ms": 2416,
+          "exit_code": 0
+        },
+        {
+          "name": "Control docs stale-check",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\generate_control_docs.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -CheckOnly",
+          "status": "PASS",
+          "duration_ms": 478,
+          "exit_code": 0
+        },
+        {
+          "name": "Workflow control diagrams stale-check",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\generate_workflow_control_diagrams.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -CheckOnly",
+          "status": "PASS",
+          "duration_ms": 1088,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint (pre-commit, blocking scope)",
+          "tool": "markdownlint-cli2",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run markdownlint-cli2 --all-files",
+          "status": "FAIL",
+          "duration_ms": 1213,
+          "exit_code": 1
+        }
+      ],
+      "errors": [
+        {
+          "tool": "markdownlint-cli2",
+          "type": "lint",
+          "file": "**/*.md",
+          "rule": "markdownlint-cli2",
+          "line": null,
+          "step_index": 12,
+          "message": "An unexpected error has occurred: OperationalError: attempt to write a readonly database"
+        }
+      ],
+      "error_count": 1,
+      "fingerprints": [
+        {
+          "fingerprint": "7c09182b1b06",
+          "key": "lint|**/*.md|markdownlint-cli2",
+          "type": "lint",
+          "file": "**/*.md",
+          "rule": "markdownlint-cli2",
+          "count": 1,
+          "historical_count_before": 3,
+          "historical_count_total": 4,
+          "docs_rule_candidate": true
+        }
+      ],
+      "root_cause": {
+        "tool": "markdownlint-cli2",
+        "type": "lint",
+        "file": "**/*.md",
+        "rule": "markdownlint-cli2",
+        "line": null,
+        "step_index": 12,
+        "message": "An unexpected error has occurred: OperationalError: attempt to write a readonly database"
+      },
+      "evidence_refs": [
+        "logs/verify/raw/20260226T175314Z-fast-30f2153d/01_Validate_workflow_alignment.log",
+        "logs/verify/raw/20260226T175314Z-fast-30f2153d/02_Validate_workflow_control_plane_model.log",
+        "logs/verify/raw/20260226T175314Z-fast-30f2153d/03_Validate_workflow_control_alignment_refresh_observed.log",
+        "logs/verify/raw/20260226T175314Z-fast-30f2153d/04_Capability_audit_tools_sources.log",
+        "logs/verify/raw/20260226T175314Z-fast-30f2153d/05_Preflight_state_discovery_claim_evidence.log",
+        "logs/verify/raw/20260226T175314Z-fast-30f2153d/06_Verify_batch_status_claims_claim_evidence.log",
+        "logs/verify/raw/20260226T175314Z-fast-30f2153d/07_Validate_traceability_registry.log",
+        "logs/verify/raw/20260226T175314Z-fast-30f2153d/08_Validate_NEXT_SESSION_control_JSON-first.log",
+        "logs/verify/raw/20260226T175314Z-fast-30f2153d/09_Enforce_NEXT_SESSION_flow.log",
+        "logs/verify/raw/20260226T175314Z-fast-30f2153d/10_Control_docs_stale-check.log",
+        "logs/verify/raw/20260226T175314Z-fast-30f2153d/11_Workflow_control_diagrams_stale-check.log",
+        "logs/verify/raw/20260226T175314Z-fast-30f2153d/12_Markdown_lint_pre-commit_blocking_scope.log"
+      ]
+    },
+    {
+      "run_id": "vr-80c108c27f904c27af641f2da5045883",
+      "created_at_utc": "2026-02-26T14:47:40.187Z",
+      "created_at_epoch_ms": 1772113660187,
+      "task_id": "verify-fast-20260226T144712Z",
+      "commit_sha": "2ef8b818874d0e2d2ce47d9a2ecaacb4dba53d4f",
+      "stage": "fast",
+      "scope": "repo",
+      "status": "PASS",
+      "steps": [
+        {
+          "name": "Validate workflow alignment",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_alignment.ps1",
+          "status": "PASS",
+          "duration_ms": 421,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate workflow control plane model",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_control_plane.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 687,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate workflow control alignment (refresh observed)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_control_alignment.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -RefreshObserved",
+          "status": "PASS",
+          "duration_ms": 1793,
+          "exit_code": 0
+        },
+        {
+          "name": "Preflight state discovery (claim=evidence)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\preflight_state_discovery.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 1155,
+          "exit_code": 0
+        },
+        {
+          "name": "Verify batch status claims (claim=evidence)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\verify_batch_status.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 891,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate traceability registry",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_traceability.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 437,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate NEXT_SESSION control (JSON-first)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_next_session.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -SkipGeneratedFreshnessCheck",
+          "status": "PASS",
+          "duration_ms": 480,
+          "exit_code": 0
+        },
+        {
+          "name": "Enforce NEXT_SESSION flow",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\enforce_next_session_flow.ps1",
+          "status": "PASS",
+          "duration_ms": 2252,
+          "exit_code": 0
+        },
+        {
+          "name": "Control docs stale-check",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\generate_control_docs.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -CheckOnly",
+          "status": "PASS",
+          "duration_ms": 469,
+          "exit_code": 0
+        },
+        {
+          "name": "Workflow control diagrams stale-check",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\generate_workflow_control_diagrams.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -CheckOnly",
+          "status": "PASS",
+          "duration_ms": 782,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint (pre-commit, blocking scope)",
+          "tool": "markdownlint-cli2",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run markdownlint-cli2 --all-files",
+          "status": "PASS",
+          "duration_ms": 1219,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint backlog report (non-blocking)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_markdownlint_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 2038,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale prose lint (critical blocking, pre-commit)",
+          "tool": "vale",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run vale-critical --all-files",
+          "status": "PASS",
+          "duration_ms": 1211,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale backlog report + no-regression",
+          "tool": "vale",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_vale_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -EnforceNoRegression",
+          "status": "PASS",
+          "duration_ms": 11525,
+          "exit_code": 0
+        },
+        {
+          "name": "Link audit (lychee, optional)",
+          "tool": "lychee",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run lychee --all-files",
+          "status": "SKIP",
+          "duration_ms": 0,
+          "exit_code": null
+        },
+        {
+          "name": "MkDocs build --strict",
+          "tool": "mkdocs",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\python.exe -X utf8 -m mkdocs build --strict -f C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\mkdocs.yml",
+          "status": "PASS",
+          "duration_ms": 1757,
+          "exit_code": 0
+        }
+      ],
+      "errors": [],
+      "error_count": 0,
+      "fingerprints": [],
+      "root_cause": null,
+      "evidence_refs": [
+        "logs/verify/raw/20260226T144712Z-fast-faf5dbee/01_Validate_workflow_alignment.log",
+        "logs/verify/raw/20260226T144712Z-fast-faf5dbee/02_Validate_workflow_control_plane_model.log",
+        "logs/verify/raw/20260226T144712Z-fast-faf5dbee/03_Validate_workflow_control_alignment_refresh_observed.log",
+        "logs/verify/raw/20260226T144712Z-fast-faf5dbee/04_Preflight_state_discovery_claim_evidence.log",
+        "logs/verify/raw/20260226T144712Z-fast-faf5dbee/05_Verify_batch_status_claims_claim_evidence.log",
+        "logs/verify/raw/20260226T144712Z-fast-faf5dbee/06_Validate_traceability_registry.log",
+        "logs/verify/raw/20260226T144712Z-fast-faf5dbee/07_Validate_NEXT_SESSION_control_JSON-first.log",
+        "logs/verify/raw/20260226T144712Z-fast-faf5dbee/08_Enforce_NEXT_SESSION_flow.log",
+        "logs/verify/raw/20260226T144712Z-fast-faf5dbee/09_Control_docs_stale-check.log",
+        "logs/verify/raw/20260226T144712Z-fast-faf5dbee/10_Workflow_control_diagrams_stale-check.log",
+        "logs/verify/raw/20260226T144712Z-fast-faf5dbee/11_Markdown_lint_pre-commit_blocking_scope.log",
+        "logs/verify/raw/20260226T144712Z-fast-faf5dbee/12_Markdown_lint_backlog_report_non-blocking.log",
+        "logs/verify/raw/20260226T144712Z-fast-faf5dbee/13_Vale_prose_lint_critical_blocking_pre-commit.log",
+        "logs/verify/raw/20260226T144712Z-fast-faf5dbee/14_Vale_backlog_report_no-regression.log",
+        "logs/verify/raw/20260226T144712Z-fast-faf5dbee/16_MkDocs_build_--strict.log"
+      ]
+    },
+    {
+      "run_id": "vr-0b8e810124a04aae89e086e1aa26f32d",
+      "created_at_utc": "2026-02-26T14:46:27.846Z",
+      "created_at_epoch_ms": 1772113587846,
+      "task_id": "verify-fast-20260226T144615Z",
+      "commit_sha": "2ef8b818874d0e2d2ce47d9a2ecaacb4dba53d4f",
+      "stage": "fast",
+      "scope": "repo",
+      "status": "FAIL",
+      "steps": [
+        {
+          "name": "Validate workflow alignment",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_alignment.ps1",
+          "status": "PASS",
+          "duration_ms": 421,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate workflow control plane model",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_control_plane.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 635,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate workflow control alignment (refresh observed)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_control_alignment.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -RefreshObserved",
+          "status": "PASS",
+          "duration_ms": 1882,
+          "exit_code": 0
+        },
+        {
+          "name": "Preflight state discovery (claim=evidence)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\preflight_state_discovery.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 1373,
+          "exit_code": 0
+        },
+        {
+          "name": "Verify batch status claims (claim=evidence)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\verify_batch_status.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 1056,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate traceability registry",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_traceability.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 476,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate NEXT_SESSION control (JSON-first)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_next_session.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -SkipGeneratedFreshnessCheck",
+          "status": "PASS",
+          "duration_ms": 473,
+          "exit_code": 0
+        },
+        {
+          "name": "Enforce NEXT_SESSION flow",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\enforce_next_session_flow.ps1",
+          "status": "PASS",
+          "duration_ms": 2284,
+          "exit_code": 0
+        },
+        {
+          "name": "Control docs stale-check",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\generate_control_docs.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -CheckOnly",
+          "status": "PASS",
+          "duration_ms": 521,
+          "exit_code": 0
+        },
+        {
+          "name": "Workflow control diagrams stale-check",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\generate_workflow_control_diagrams.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -CheckOnly",
+          "status": "PASS",
+          "duration_ms": 855,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint (pre-commit, blocking scope)",
+          "tool": "markdownlint-cli2",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run markdownlint-cli2 --all-files",
+          "status": "FAIL",
+          "duration_ms": 1878,
+          "exit_code": 1
+        }
+      ],
+      "errors": [
+        {
+          "tool": "markdownlint-cli2",
+          "type": "lint",
+          "file": "**/*.md",
+          "rule": "markdownlint-cli2",
+          "line": null,
+          "step_index": 11,
+          "message": "markdownlint-cli2 (blocking scope, P0 curated)...........................Failed"
+        }
+      ],
+      "error_count": 1,
+      "fingerprints": [
+        {
+          "fingerprint": "7c09182b1b06",
+          "key": "lint|**/*.md|markdownlint-cli2",
+          "type": "lint",
+          "file": "**/*.md",
+          "rule": "markdownlint-cli2",
+          "count": 1,
+          "historical_count_before": 2,
+          "historical_count_total": 3,
+          "docs_rule_candidate": true
+        }
+      ],
+      "root_cause": {
+        "tool": "markdownlint-cli2",
+        "type": "lint",
+        "file": "**/*.md",
+        "rule": "markdownlint-cli2",
+        "line": null,
+        "step_index": 11,
+        "message": "markdownlint-cli2 (blocking scope, P0 curated)...........................Failed"
+      },
+      "evidence_refs": [
+        "logs/verify/raw/20260226T144615Z-fast-37d6fe47/01_Validate_workflow_alignment.log",
+        "logs/verify/raw/20260226T144615Z-fast-37d6fe47/02_Validate_workflow_control_plane_model.log",
+        "logs/verify/raw/20260226T144615Z-fast-37d6fe47/03_Validate_workflow_control_alignment_refresh_observed.log",
+        "logs/verify/raw/20260226T144615Z-fast-37d6fe47/04_Preflight_state_discovery_claim_evidence.log",
+        "logs/verify/raw/20260226T144615Z-fast-37d6fe47/05_Verify_batch_status_claims_claim_evidence.log",
+        "logs/verify/raw/20260226T144615Z-fast-37d6fe47/06_Validate_traceability_registry.log",
+        "logs/verify/raw/20260226T144615Z-fast-37d6fe47/07_Validate_NEXT_SESSION_control_JSON-first.log",
+        "logs/verify/raw/20260226T144615Z-fast-37d6fe47/08_Enforce_NEXT_SESSION_flow.log",
+        "logs/verify/raw/20260226T144615Z-fast-37d6fe47/09_Control_docs_stale-check.log",
+        "logs/verify/raw/20260226T144615Z-fast-37d6fe47/10_Workflow_control_diagrams_stale-check.log",
+        "logs/verify/raw/20260226T144615Z-fast-37d6fe47/11_Markdown_lint_pre-commit_blocking_scope.log"
+      ]
+    },
+    {
+      "run_id": "vr-dcbaabdfa1a34d0ca5f23e3349ecbc70",
+      "created_at_utc": "2026-02-26T14:21:34.223Z",
+      "created_at_epoch_ms": 1772112094223,
+      "task_id": "verify-fast-20260226T142106Z",
+      "commit_sha": "2ef8b818874d0e2d2ce47d9a2ecaacb4dba53d4f",
+      "stage": "fast",
+      "scope": "repo",
+      "status": "PASS",
+      "steps": [
+        {
+          "name": "Validate workflow alignment",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_alignment.ps1",
+          "status": "PASS",
+          "duration_ms": 427,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate workflow control plane model",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_control_plane.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 714,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate workflow control alignment (refresh observed)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_control_alignment.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -RefreshObserved",
+          "status": "PASS",
+          "duration_ms": 1976,
+          "exit_code": 0
+        },
+        {
+          "name": "Preflight state discovery (claim=evidence)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\preflight_state_discovery.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 1353,
+          "exit_code": 0
+        },
+        {
+          "name": "Verify batch status claims (claim=evidence)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\verify_batch_status.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 992,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate traceability registry",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_traceability.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 523,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate NEXT_SESSION control (JSON-first)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_next_session.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -SkipGeneratedFreshnessCheck",
+          "status": "PASS",
+          "duration_ms": 577,
+          "exit_code": 0
+        },
+        {
+          "name": "Enforce NEXT_SESSION flow",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\enforce_next_session_flow.ps1",
+          "status": "PASS",
+          "duration_ms": 2560,
+          "exit_code": 0
+        },
+        {
+          "name": "Control docs stale-check",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\generate_control_docs.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -CheckOnly",
+          "status": "PASS",
+          "duration_ms": 584,
+          "exit_code": 0
+        },
+        {
+          "name": "Workflow control diagrams stale-check",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\generate_workflow_control_diagrams.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -CheckOnly",
+          "status": "PASS",
+          "duration_ms": 906,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint (pre-commit, blocking scope)",
+          "tool": "markdownlint-cli2",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run markdownlint-cli2 --all-files",
+          "status": "PASS",
+          "duration_ms": 1210,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint backlog report (non-blocking)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_markdownlint_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 2110,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale prose lint (critical blocking, pre-commit)",
+          "tool": "vale",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run vale-critical --all-files",
+          "status": "PASS",
+          "duration_ms": 1204,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale backlog report + no-regression",
+          "tool": "vale",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_vale_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -EnforceNoRegression",
+          "status": "PASS",
+          "duration_ms": 10058,
+          "exit_code": 0
+        },
+        {
+          "name": "Link audit (lychee, optional)",
+          "tool": "lychee",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run lychee --all-files",
+          "status": "SKIP",
+          "duration_ms": 0,
+          "exit_code": null
+        },
+        {
+          "name": "MkDocs build --strict",
+          "tool": "mkdocs",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\python.exe -X utf8 -m mkdocs build --strict -f C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\mkdocs.yml",
+          "status": "PASS",
+          "duration_ms": 1890,
+          "exit_code": 0
+        }
+      ],
+      "errors": [],
+      "error_count": 0,
+      "fingerprints": [],
+      "root_cause": null,
+      "evidence_refs": [
+        "logs/verify/raw/20260226T142106Z-fast-5eb29276/01_Validate_workflow_alignment.log",
+        "logs/verify/raw/20260226T142106Z-fast-5eb29276/02_Validate_workflow_control_plane_model.log",
+        "logs/verify/raw/20260226T142106Z-fast-5eb29276/03_Validate_workflow_control_alignment_refresh_observed.log",
+        "logs/verify/raw/20260226T142106Z-fast-5eb29276/04_Preflight_state_discovery_claim_evidence.log",
+        "logs/verify/raw/20260226T142106Z-fast-5eb29276/05_Verify_batch_status_claims_claim_evidence.log",
+        "logs/verify/raw/20260226T142106Z-fast-5eb29276/06_Validate_traceability_registry.log",
+        "logs/verify/raw/20260226T142106Z-fast-5eb29276/07_Validate_NEXT_SESSION_control_JSON-first.log",
+        "logs/verify/raw/20260226T142106Z-fast-5eb29276/08_Enforce_NEXT_SESSION_flow.log",
+        "logs/verify/raw/20260226T142106Z-fast-5eb29276/09_Control_docs_stale-check.log",
+        "logs/verify/raw/20260226T142106Z-fast-5eb29276/10_Workflow_control_diagrams_stale-check.log",
+        "logs/verify/raw/20260226T142106Z-fast-5eb29276/11_Markdown_lint_pre-commit_blocking_scope.log",
+        "logs/verify/raw/20260226T142106Z-fast-5eb29276/12_Markdown_lint_backlog_report_non-blocking.log",
+        "logs/verify/raw/20260226T142106Z-fast-5eb29276/13_Vale_prose_lint_critical_blocking_pre-commit.log",
+        "logs/verify/raw/20260226T142106Z-fast-5eb29276/14_Vale_backlog_report_no-regression.log",
+        "logs/verify/raw/20260226T142106Z-fast-5eb29276/16_MkDocs_build_--strict.log"
+      ]
+    },
+    {
+      "run_id": "vr-3d939df514664cb1a662932a6f6eee22",
+      "created_at_utc": "2026-02-26T14:18:55.678Z",
+      "created_at_epoch_ms": 1772111935678,
+      "task_id": "verify-fast-20260226T141828Z",
+      "commit_sha": "2ef8b818874d0e2d2ce47d9a2ecaacb4dba53d4f",
+      "stage": "fast",
+      "scope": "repo",
+      "status": "FAIL",
+      "steps": [
+        {
+          "name": "Validate workflow alignment",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_alignment.ps1",
+          "status": "PASS",
+          "duration_ms": 436,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate workflow control plane model",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_control_plane.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 686,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate workflow control alignment (refresh observed)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_control_alignment.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -RefreshObserved",
+          "status": "PASS",
+          "duration_ms": 2009,
+          "exit_code": 0
+        },
+        {
+          "name": "Preflight state discovery (claim=evidence)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\preflight_state_discovery.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 1350,
+          "exit_code": 0
+        },
+        {
+          "name": "Verify batch status claims (claim=evidence)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\verify_batch_status.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 989,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate traceability registry",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_traceability.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 456,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate NEXT_SESSION control (JSON-first)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_next_session.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -SkipGeneratedFreshnessCheck",
+          "status": "PASS",
+          "duration_ms": 471,
+          "exit_code": 0
+        },
+        {
+          "name": "Enforce NEXT_SESSION flow",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\enforce_next_session_flow.ps1",
+          "status": "PASS",
+          "duration_ms": 2442,
+          "exit_code": 0
+        },
+        {
+          "name": "Control docs stale-check",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\generate_control_docs.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -CheckOnly",
+          "status": "PASS",
+          "duration_ms": 585,
+          "exit_code": 0
+        },
+        {
+          "name": "Workflow control diagrams stale-check",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\generate_workflow_control_diagrams.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -CheckOnly",
+          "status": "PASS",
+          "duration_ms": 1067,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint (pre-commit, blocking scope)",
+          "tool": "markdownlint-cli2",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run markdownlint-cli2 --all-files",
+          "status": "PASS",
+          "duration_ms": 1639,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint backlog report (non-blocking)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_markdownlint_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 2429,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale prose lint (critical blocking, pre-commit)",
+          "tool": "vale",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run vale-critical --all-files",
+          "status": "PASS",
+          "duration_ms": 1498,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale backlog report + no-regression",
+          "tool": "vale",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_vale_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -EnforceNoRegression",
+          "status": "FAIL",
+          "duration_ms": 10688,
+          "exit_code": 1
+        }
+      ],
+      "errors": [
+        {
+          "tool": "vale",
+          "type": "report",
+          "file": "**/*.md",
+          "rule": "vale_backlog_no_regression",
+          "line": null,
+          "step_index": 14,
+          "message": "Running Vale backlog scan (repo-wide, non-blocking report)..."
+        }
+      ],
+      "error_count": 1,
+      "fingerprints": [
+        {
+          "fingerprint": "2852eaf2e687",
+          "key": "report|**/*.md|vale_backlog_no_regression",
+          "type": "report",
+          "file": "**/*.md",
+          "rule": "vale_backlog_no_regression",
+          "count": 1,
+          "historical_count_before": 2,
+          "historical_count_total": 3,
+          "docs_rule_candidate": true
+        }
+      ],
+      "root_cause": {
+        "tool": "vale",
+        "type": "report",
+        "file": "**/*.md",
+        "rule": "vale_backlog_no_regression",
+        "line": null,
+        "step_index": 14,
+        "message": "Running Vale backlog scan (repo-wide, non-blocking report)..."
+      },
+      "evidence_refs": [
+        "logs/verify/raw/20260226T141828Z-fast-8c11c964/01_Validate_workflow_alignment.log",
+        "logs/verify/raw/20260226T141828Z-fast-8c11c964/02_Validate_workflow_control_plane_model.log",
+        "logs/verify/raw/20260226T141828Z-fast-8c11c964/03_Validate_workflow_control_alignment_refresh_observed.log",
+        "logs/verify/raw/20260226T141828Z-fast-8c11c964/04_Preflight_state_discovery_claim_evidence.log",
+        "logs/verify/raw/20260226T141828Z-fast-8c11c964/05_Verify_batch_status_claims_claim_evidence.log",
+        "logs/verify/raw/20260226T141828Z-fast-8c11c964/06_Validate_traceability_registry.log",
+        "logs/verify/raw/20260226T141828Z-fast-8c11c964/07_Validate_NEXT_SESSION_control_JSON-first.log",
+        "logs/verify/raw/20260226T141828Z-fast-8c11c964/08_Enforce_NEXT_SESSION_flow.log",
+        "logs/verify/raw/20260226T141828Z-fast-8c11c964/09_Control_docs_stale-check.log",
+        "logs/verify/raw/20260226T141828Z-fast-8c11c964/10_Workflow_control_diagrams_stale-check.log",
+        "logs/verify/raw/20260226T141828Z-fast-8c11c964/11_Markdown_lint_pre-commit_blocking_scope.log",
+        "logs/verify/raw/20260226T141828Z-fast-8c11c964/12_Markdown_lint_backlog_report_non-blocking.log",
+        "logs/verify/raw/20260226T141828Z-fast-8c11c964/13_Vale_prose_lint_critical_blocking_pre-commit.log",
+        "logs/verify/raw/20260226T141828Z-fast-8c11c964/14_Vale_backlog_report_no-regression.log"
+      ]
+    },
+    {
+      "run_id": "vr-30576c0c84324c90b8442e9a6f670775",
+      "created_at_utc": "2026-02-26T13:39:36.532Z",
+      "created_at_epoch_ms": 1772109576532,
+      "task_id": "verify-fast-20260226T133908Z",
+      "commit_sha": "2ef8b818874d0e2d2ce47d9a2ecaacb4dba53d4f",
+      "stage": "fast",
+      "scope": "repo",
+      "status": "PASS",
+      "steps": [
+        {
+          "name": "Validate workflow alignment",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_alignment.ps1",
+          "status": "PASS",
+          "duration_ms": 389,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate workflow control plane model",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_control_plane.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 570,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate workflow control alignment (refresh observed)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_control_alignment.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -RefreshObserved",
+          "status": "PASS",
+          "duration_ms": 1780,
+          "exit_code": 0
+        },
+        {
+          "name": "Preflight state discovery (claim=evidence)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\preflight_state_discovery.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 1207,
+          "exit_code": 0
+        },
+        {
+          "name": "Verify batch status claims (claim=evidence)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\verify_batch_status.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 928,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate traceability registry",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_traceability.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 462,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate NEXT_SESSION control (JSON-first)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_next_session.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -SkipGeneratedFreshnessCheck",
+          "status": "PASS",
+          "duration_ms": 461,
+          "exit_code": 0
+        },
+        {
+          "name": "Enforce NEXT_SESSION flow",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\enforce_next_session_flow.ps1",
+          "status": "PASS",
+          "duration_ms": 2355,
+          "exit_code": 0
+        },
+        {
+          "name": "Control docs stale-check",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\generate_control_docs.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -CheckOnly",
+          "status": "PASS",
+          "duration_ms": 523,
+          "exit_code": 0
+        },
+        {
+          "name": "Workflow control diagrams stale-check",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\generate_workflow_control_diagrams.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -CheckOnly",
+          "status": "PASS",
+          "duration_ms": 653,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint (pre-commit, blocking scope)",
+          "tool": "markdownlint-cli2",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run markdownlint-cli2 --all-files",
+          "status": "PASS",
+          "duration_ms": 1189,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint backlog report (non-blocking)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_markdownlint_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 2066,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale prose lint (critical blocking, pre-commit)",
+          "tool": "vale",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run vale-critical --all-files",
+          "status": "PASS",
+          "duration_ms": 1156,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale backlog report + no-regression",
+          "tool": "vale",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_vale_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -EnforceNoRegression",
+          "status": "PASS",
+          "duration_ms": 11350,
+          "exit_code": 0
+        },
+        {
+          "name": "Link audit (lychee, optional)",
+          "tool": "lychee",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run lychee --all-files",
+          "status": "SKIP",
+          "duration_ms": 0,
+          "exit_code": null
+        },
+        {
+          "name": "MkDocs build --strict",
+          "tool": "mkdocs",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\python.exe -X utf8 -m mkdocs build --strict -f C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\mkdocs.yml",
+          "status": "PASS",
+          "duration_ms": 1776,
+          "exit_code": 0
+        }
+      ],
+      "errors": [],
+      "error_count": 0,
+      "fingerprints": [],
+      "root_cause": null,
+      "evidence_refs": [
+        "logs/verify/raw/20260226T133908Z-fast-75e92448/01_Validate_workflow_alignment.log",
+        "logs/verify/raw/20260226T133908Z-fast-75e92448/02_Validate_workflow_control_plane_model.log",
+        "logs/verify/raw/20260226T133908Z-fast-75e92448/03_Validate_workflow_control_alignment_refresh_observed.log",
+        "logs/verify/raw/20260226T133908Z-fast-75e92448/04_Preflight_state_discovery_claim_evidence.log",
+        "logs/verify/raw/20260226T133908Z-fast-75e92448/05_Verify_batch_status_claims_claim_evidence.log",
+        "logs/verify/raw/20260226T133908Z-fast-75e92448/06_Validate_traceability_registry.log",
+        "logs/verify/raw/20260226T133908Z-fast-75e92448/07_Validate_NEXT_SESSION_control_JSON-first.log",
+        "logs/verify/raw/20260226T133908Z-fast-75e92448/08_Enforce_NEXT_SESSION_flow.log",
+        "logs/verify/raw/20260226T133908Z-fast-75e92448/09_Control_docs_stale-check.log",
+        "logs/verify/raw/20260226T133908Z-fast-75e92448/10_Workflow_control_diagrams_stale-check.log",
+        "logs/verify/raw/20260226T133908Z-fast-75e92448/11_Markdown_lint_pre-commit_blocking_scope.log",
+        "logs/verify/raw/20260226T133908Z-fast-75e92448/12_Markdown_lint_backlog_report_non-blocking.log",
+        "logs/verify/raw/20260226T133908Z-fast-75e92448/13_Vale_prose_lint_critical_blocking_pre-commit.log",
+        "logs/verify/raw/20260226T133908Z-fast-75e92448/14_Vale_backlog_report_no-regression.log",
+        "logs/verify/raw/20260226T133908Z-fast-75e92448/16_MkDocs_build_--strict.log"
+      ]
+    },
+    {
+      "run_id": "vr-d1688d5cbb3b4a2fa13a86a7b4681a08",
+      "created_at_utc": "2026-02-26T13:35:25.601Z",
+      "created_at_epoch_ms": 1772109325601,
+      "task_id": "verify-fast-20260226T133459Z",
+      "commit_sha": "2ef8b818874d0e2d2ce47d9a2ecaacb4dba53d4f",
+      "stage": "fast",
+      "scope": "repo",
+      "status": "PASS",
+      "steps": [
+        {
+          "name": "Validate workflow alignment",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_alignment.ps1",
+          "status": "PASS",
+          "duration_ms": 416,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate workflow control plane model",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_control_plane.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 598,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate workflow control alignment (refresh observed)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_control_alignment.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -RefreshObserved",
+          "status": "PASS",
+          "duration_ms": 1862,
+          "exit_code": 0
+        },
+        {
+          "name": "Preflight state discovery (claim=evidence)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\preflight_state_discovery.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 1269,
+          "exit_code": 0
+        },
+        {
+          "name": "Verify batch status claims (claim=evidence)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\verify_batch_status.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 981,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate traceability registry",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_traceability.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 497,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate NEXT_SESSION control (JSON-first)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_next_session.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -SkipGeneratedFreshnessCheck",
+          "status": "PASS",
+          "duration_ms": 482,
+          "exit_code": 0
+        },
+        {
+          "name": "Enforce NEXT_SESSION flow",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\enforce_next_session_flow.ps1",
+          "status": "PASS",
+          "duration_ms": 2341,
+          "exit_code": 0
+        },
+        {
+          "name": "Control docs stale-check",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\generate_control_docs.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -CheckOnly",
+          "status": "PASS",
+          "duration_ms": 501,
+          "exit_code": 0
+        },
+        {
+          "name": "Workflow control diagrams stale-check",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\generate_workflow_control_diagrams.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -CheckOnly",
+          "status": "PASS",
+          "duration_ms": 594,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint (pre-commit, blocking scope)",
+          "tool": "markdownlint-cli2",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run markdownlint-cli2 --all-files",
+          "status": "PASS",
+          "duration_ms": 1181,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint backlog report (non-blocking)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_markdownlint_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 1974,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale prose lint (critical blocking, pre-commit)",
+          "tool": "vale",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run vale-critical --all-files",
+          "status": "PASS",
+          "duration_ms": 1134,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale backlog report + no-regression",
+          "tool": "vale",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_vale_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -EnforceNoRegression",
+          "status": "PASS",
+          "duration_ms": 9526,
+          "exit_code": 0
+        },
+        {
+          "name": "Link audit (lychee, optional)",
+          "tool": "lychee",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run lychee --all-files",
+          "status": "SKIP",
+          "duration_ms": 0,
+          "exit_code": null
+        },
+        {
+          "name": "MkDocs build --strict",
+          "tool": "mkdocs",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\python.exe -X utf8 -m mkdocs build --strict -f C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\mkdocs.yml",
+          "status": "PASS",
+          "duration_ms": 1568,
+          "exit_code": 0
+        }
+      ],
+      "errors": [],
+      "error_count": 0,
+      "fingerprints": [],
+      "root_cause": null,
+      "evidence_refs": [
+        "logs/verify/raw/20260226T133459Z-fast-4973e834/01_Validate_workflow_alignment.log",
+        "logs/verify/raw/20260226T133459Z-fast-4973e834/02_Validate_workflow_control_plane_model.log",
+        "logs/verify/raw/20260226T133459Z-fast-4973e834/03_Validate_workflow_control_alignment_refresh_observed.log",
+        "logs/verify/raw/20260226T133459Z-fast-4973e834/04_Preflight_state_discovery_claim_evidence.log",
+        "logs/verify/raw/20260226T133459Z-fast-4973e834/05_Verify_batch_status_claims_claim_evidence.log",
+        "logs/verify/raw/20260226T133459Z-fast-4973e834/06_Validate_traceability_registry.log",
+        "logs/verify/raw/20260226T133459Z-fast-4973e834/07_Validate_NEXT_SESSION_control_JSON-first.log",
+        "logs/verify/raw/20260226T133459Z-fast-4973e834/08_Enforce_NEXT_SESSION_flow.log",
+        "logs/verify/raw/20260226T133459Z-fast-4973e834/09_Control_docs_stale-check.log",
+        "logs/verify/raw/20260226T133459Z-fast-4973e834/10_Workflow_control_diagrams_stale-check.log",
+        "logs/verify/raw/20260226T133459Z-fast-4973e834/11_Markdown_lint_pre-commit_blocking_scope.log",
+        "logs/verify/raw/20260226T133459Z-fast-4973e834/12_Markdown_lint_backlog_report_non-blocking.log",
+        "logs/verify/raw/20260226T133459Z-fast-4973e834/13_Vale_prose_lint_critical_blocking_pre-commit.log",
+        "logs/verify/raw/20260226T133459Z-fast-4973e834/14_Vale_backlog_report_no-regression.log",
+        "logs/verify/raw/20260226T133459Z-fast-4973e834/16_MkDocs_build_--strict.log"
+      ]
+    },
+    {
+      "run_id": "vr-915ade1bb75541a686edfdb85e2ff9c9",
+      "created_at_utc": "2026-02-26T13:28:08.429Z",
+      "created_at_epoch_ms": 1772108888429,
+      "task_id": "verify-fast-20260226T132740Z",
+      "commit_sha": "2ef8b818874d0e2d2ce47d9a2ecaacb4dba53d4f",
+      "stage": "fast",
+      "scope": "repo",
+      "status": "FAIL",
+      "steps": [
+        {
+          "name": "Validate workflow alignment",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_alignment.ps1",
+          "status": "PASS",
+          "duration_ms": 444,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate workflow control plane model",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_control_plane.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 622,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate workflow control alignment (refresh observed)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_control_alignment.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -RefreshObserved",
+          "status": "PASS",
+          "duration_ms": 1966,
+          "exit_code": 0
+        },
+        {
+          "name": "Preflight state discovery (claim=evidence)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\preflight_state_discovery.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 1275,
+          "exit_code": 0
+        },
+        {
+          "name": "Verify batch status claims (claim=evidence)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\verify_batch_status.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 970,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate traceability registry",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_traceability.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 468,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate NEXT_SESSION control (JSON-first)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_next_session.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -SkipGeneratedFreshnessCheck",
+          "status": "PASS",
+          "duration_ms": 466,
+          "exit_code": 0
+        },
+        {
+          "name": "Enforce NEXT_SESSION flow",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\enforce_next_session_flow.ps1",
+          "status": "PASS",
+          "duration_ms": 2371,
+          "exit_code": 0
+        },
+        {
+          "name": "Control docs stale-check",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\generate_control_docs.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -CheckOnly",
+          "status": "PASS",
+          "duration_ms": 491,
+          "exit_code": 0
+        },
+        {
+          "name": "Workflow control diagrams stale-check",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\generate_workflow_control_diagrams.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -CheckOnly",
+          "status": "PASS",
+          "duration_ms": 628,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint (pre-commit, blocking scope)",
+          "tool": "markdownlint-cli2",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run markdownlint-cli2 --all-files",
+          "status": "PASS",
+          "duration_ms": 1122,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint backlog report (non-blocking)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_markdownlint_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 2084,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale prose lint (critical blocking, pre-commit)",
+          "tool": "vale",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run vale-critical --all-files",
+          "status": "PASS",
+          "duration_ms": 1513,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale backlog report + no-regression",
+          "tool": "vale",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_vale_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -EnforceNoRegression",
+          "status": "FAIL",
+          "duration_ms": 12724,
+          "exit_code": 1
+        }
+      ],
+      "errors": [
+        {
+          "tool": "vale",
+          "type": "report",
+          "file": "**/*.md",
+          "rule": "vale_backlog_no_regression",
+          "line": null,
+          "step_index": 14,
+          "message": "Running Vale backlog scan (repo-wide, non-blocking report)..."
+        }
+      ],
+      "error_count": 1,
+      "fingerprints": [
+        {
+          "fingerprint": "2852eaf2e687",
+          "key": "report|**/*.md|vale_backlog_no_regression",
+          "type": "report",
+          "file": "**/*.md",
+          "rule": "vale_backlog_no_regression",
+          "count": 1,
+          "historical_count_before": 1,
+          "historical_count_total": 2,
+          "docs_rule_candidate": false
+        }
+      ],
+      "root_cause": {
+        "tool": "vale",
+        "type": "report",
+        "file": "**/*.md",
+        "rule": "vale_backlog_no_regression",
+        "line": null,
+        "step_index": 14,
+        "message": "Running Vale backlog scan (repo-wide, non-blocking report)..."
+      },
+      "evidence_refs": [
+        "logs/verify/raw/20260226T132740Z-fast-b2750a47/01_Validate_workflow_alignment.log",
+        "logs/verify/raw/20260226T132740Z-fast-b2750a47/02_Validate_workflow_control_plane_model.log",
+        "logs/verify/raw/20260226T132740Z-fast-b2750a47/03_Validate_workflow_control_alignment_refresh_observed.log",
+        "logs/verify/raw/20260226T132740Z-fast-b2750a47/04_Preflight_state_discovery_claim_evidence.log",
+        "logs/verify/raw/20260226T132740Z-fast-b2750a47/05_Verify_batch_status_claims_claim_evidence.log",
+        "logs/verify/raw/20260226T132740Z-fast-b2750a47/06_Validate_traceability_registry.log",
+        "logs/verify/raw/20260226T132740Z-fast-b2750a47/07_Validate_NEXT_SESSION_control_JSON-first.log",
+        "logs/verify/raw/20260226T132740Z-fast-b2750a47/08_Enforce_NEXT_SESSION_flow.log",
+        "logs/verify/raw/20260226T132740Z-fast-b2750a47/09_Control_docs_stale-check.log",
+        "logs/verify/raw/20260226T132740Z-fast-b2750a47/10_Workflow_control_diagrams_stale-check.log",
+        "logs/verify/raw/20260226T132740Z-fast-b2750a47/11_Markdown_lint_pre-commit_blocking_scope.log",
+        "logs/verify/raw/20260226T132740Z-fast-b2750a47/12_Markdown_lint_backlog_report_non-blocking.log",
+        "logs/verify/raw/20260226T132740Z-fast-b2750a47/13_Vale_prose_lint_critical_blocking_pre-commit.log",
+        "logs/verify/raw/20260226T132740Z-fast-b2750a47/14_Vale_backlog_report_no-regression.log"
+      ]
+    },
+    {
+      "run_id": "vr-9cc5f6ed7a6d4bd59cd685ddfc1a6858",
+      "created_at_utc": "2026-02-26T13:26:33.121Z",
+      "created_at_epoch_ms": 1772108793121,
+      "task_id": "verify-fast-20260226T132621Z",
+      "commit_sha": "2ef8b818874d0e2d2ce47d9a2ecaacb4dba53d4f",
+      "stage": "fast",
+      "scope": "repo",
+      "status": "FAIL",
+      "steps": [
+        {
+          "name": "Validate workflow alignment",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_alignment.ps1",
+          "status": "PASS",
+          "duration_ms": 467,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate workflow control plane model",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_control_plane.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 707,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate workflow control alignment (refresh observed)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_control_alignment.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -RefreshObserved",
+          "status": "PASS",
+          "duration_ms": 2113,
+          "exit_code": 0
+        },
+        {
+          "name": "Preflight state discovery (claim=evidence)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\preflight_state_discovery.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 1309,
+          "exit_code": 0
+        },
+        {
+          "name": "Verify batch status claims (claim=evidence)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\verify_batch_status.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 937,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate traceability registry",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_traceability.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 495,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate NEXT_SESSION control (JSON-first)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_next_session.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -SkipGeneratedFreshnessCheck",
+          "status": "PASS",
+          "duration_ms": 474,
+          "exit_code": 0
+        },
+        {
+          "name": "Enforce NEXT_SESSION flow",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\enforce_next_session_flow.ps1",
+          "status": "PASS",
+          "duration_ms": 2478,
+          "exit_code": 0
+        },
+        {
+          "name": "Control docs stale-check",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\generate_control_docs.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -CheckOnly",
+          "status": "PASS",
+          "duration_ms": 521,
+          "exit_code": 0
+        },
+        {
+          "name": "Workflow control diagrams stale-check",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\generate_workflow_control_diagrams.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -CheckOnly",
+          "status": "PASS",
+          "duration_ms": 593,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint (pre-commit, blocking scope)",
+          "tool": "markdownlint-cli2",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run markdownlint-cli2 --all-files",
+          "status": "FAIL",
+          "duration_ms": 1161,
+          "exit_code": 1
+        }
+      ],
+      "errors": [
+        {
+          "tool": "markdownlint-cli2",
+          "type": "lint",
+          "file": "**/*.md",
+          "rule": "markdownlint-cli2",
+          "line": null,
+          "step_index": 11,
+          "message": "markdownlint-cli2 (blocking scope, P0 curated)...........................Failed"
+        }
+      ],
+      "error_count": 1,
+      "fingerprints": [
+        {
+          "fingerprint": "7c09182b1b06",
+          "key": "lint|**/*.md|markdownlint-cli2",
+          "type": "lint",
+          "file": "**/*.md",
+          "rule": "markdownlint-cli2",
+          "count": 1,
+          "historical_count_before": 1,
+          "historical_count_total": 2,
+          "docs_rule_candidate": false
+        }
+      ],
+      "root_cause": {
+        "tool": "markdownlint-cli2",
+        "type": "lint",
+        "file": "**/*.md",
+        "rule": "markdownlint-cli2",
+        "line": null,
+        "step_index": 11,
+        "message": "markdownlint-cli2 (blocking scope, P0 curated)...........................Failed"
+      },
+      "evidence_refs": [
+        "logs/verify/raw/20260226T132621Z-fast-f35deacd/01_Validate_workflow_alignment.log",
+        "logs/verify/raw/20260226T132621Z-fast-f35deacd/02_Validate_workflow_control_plane_model.log",
+        "logs/verify/raw/20260226T132621Z-fast-f35deacd/03_Validate_workflow_control_alignment_refresh_observed.log",
+        "logs/verify/raw/20260226T132621Z-fast-f35deacd/04_Preflight_state_discovery_claim_evidence.log",
+        "logs/verify/raw/20260226T132621Z-fast-f35deacd/05_Verify_batch_status_claims_claim_evidence.log",
+        "logs/verify/raw/20260226T132621Z-fast-f35deacd/06_Validate_traceability_registry.log",
+        "logs/verify/raw/20260226T132621Z-fast-f35deacd/07_Validate_NEXT_SESSION_control_JSON-first.log",
+        "logs/verify/raw/20260226T132621Z-fast-f35deacd/08_Enforce_NEXT_SESSION_flow.log",
+        "logs/verify/raw/20260226T132621Z-fast-f35deacd/09_Control_docs_stale-check.log",
+        "logs/verify/raw/20260226T132621Z-fast-f35deacd/10_Workflow_control_diagrams_stale-check.log",
+        "logs/verify/raw/20260226T132621Z-fast-f35deacd/11_Markdown_lint_pre-commit_blocking_scope.log"
+      ]
+    },
+    {
+      "run_id": "vr-724c30a3a0774258bd88318d1b1b2b95",
+      "created_at_utc": "2026-02-26T11:30:15.265Z",
+      "created_at_epoch_ms": 1772101815265,
+      "task_id": "verify-fast-20260226T112949Z",
+      "commit_sha": "2ef8b818874d0e2d2ce47d9a2ecaacb4dba53d4f",
+      "stage": "fast",
+      "scope": "repo",
+      "status": "PASS",
+      "steps": [
+        {
+          "name": "Validate workflow alignment",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_alignment.ps1",
+          "status": "PASS",
+          "duration_ms": 361,
+          "exit_code": 0
+        },
+        {
+          "name": "Preflight state discovery (claim=evidence)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\preflight_state_discovery.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 1134,
+          "exit_code": 0
+        },
+        {
+          "name": "Verify batch status claims (claim=evidence)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\verify_batch_status.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 832,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate traceability registry",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_traceability.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 432,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate NEXT_SESSION control (JSON-first)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_next_session.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -SkipGeneratedFreshnessCheck",
+          "status": "PASS",
+          "duration_ms": 415,
+          "exit_code": 0
+        },
+        {
+          "name": "Enforce NEXT_SESSION flow",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\enforce_next_session_flow.ps1",
+          "status": "PASS",
+          "duration_ms": 2136,
+          "exit_code": 0
+        },
+        {
+          "name": "Control docs stale-check",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\generate_control_docs.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -CheckOnly",
+          "status": "PASS",
+          "duration_ms": 442,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint (pre-commit, blocking scope)",
+          "tool": "markdownlint-cli2",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run markdownlint-cli2 --all-files",
+          "status": "PASS",
+          "duration_ms": 1514,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint backlog report (non-blocking)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_markdownlint_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 1773,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale prose lint (critical blocking, pre-commit)",
+          "tool": "vale",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run vale-critical --all-files",
+          "status": "PASS",
+          "duration_ms": 1007,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale backlog report + no-regression",
+          "tool": "vale",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_vale_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -EnforceNoRegression",
+          "status": "PASS",
+          "duration_ms": 9681,
+          "exit_code": 0
+        },
+        {
+          "name": "Link audit (lychee, optional)",
+          "tool": "lychee",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run lychee --all-files",
+          "status": "SKIP",
+          "duration_ms": 0,
+          "exit_code": null
+        },
+        {
+          "name": "MkDocs build --strict",
+          "tool": "mkdocs",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\python.exe -X utf8 -m mkdocs build --strict -f C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\mkdocs.yml",
+          "status": "PASS",
+          "duration_ms": 1477,
+          "exit_code": 0
+        },
+        {
+          "name": "Node check (svelte-check)",
+          "tool": "npm",
+          "command": "npm.cmd run check --if-present",
+          "status": "PASS",
+          "duration_ms": 3680,
+          "exit_code": 0
+        },
+        {
+          "name": "Rust fmt check",
+          "tool": "cargo",
+          "command": "cargo fmt --manifest-path C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\src-tauri\\Cargo.toml --all -- --check",
+          "status": "PASS",
+          "duration_ms": 217,
+          "exit_code": 0
+        },
+        {
+          "name": "Rust clippy",
+          "tool": "cargo",
+          "command": "cargo clippy --manifest-path C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\src-tauri\\Cargo.toml --all-targets --all-features -- -D warnings",
+          "status": "PASS",
+          "duration_ms": 523,
+          "exit_code": 0
+        }
+      ],
+      "errors": [],
+      "error_count": 0,
+      "fingerprints": [],
+      "root_cause": null,
+      "evidence_refs": [
+        "logs/verify/raw/20260226T112949Z-fast-290a1dc7/01_Validate_workflow_alignment.log",
+        "logs/verify/raw/20260226T112949Z-fast-290a1dc7/02_Preflight_state_discovery_claim_evidence.log",
+        "logs/verify/raw/20260226T112949Z-fast-290a1dc7/03_Verify_batch_status_claims_claim_evidence.log",
+        "logs/verify/raw/20260226T112949Z-fast-290a1dc7/04_Validate_traceability_registry.log",
+        "logs/verify/raw/20260226T112949Z-fast-290a1dc7/05_Validate_NEXT_SESSION_control_JSON-first.log",
+        "logs/verify/raw/20260226T112949Z-fast-290a1dc7/06_Enforce_NEXT_SESSION_flow.log",
+        "logs/verify/raw/20260226T112949Z-fast-290a1dc7/07_Control_docs_stale-check.log",
+        "logs/verify/raw/20260226T112949Z-fast-290a1dc7/08_Markdown_lint_pre-commit_blocking_scope.log",
+        "logs/verify/raw/20260226T112949Z-fast-290a1dc7/09_Markdown_lint_backlog_report_non-blocking.log",
+        "logs/verify/raw/20260226T112949Z-fast-290a1dc7/10_Vale_prose_lint_critical_blocking_pre-commit.log",
+        "logs/verify/raw/20260226T112949Z-fast-290a1dc7/11_Vale_backlog_report_no-regression.log",
+        "logs/verify/raw/20260226T112949Z-fast-290a1dc7/13_MkDocs_build_--strict.log",
+        "logs/verify/raw/20260226T112949Z-fast-290a1dc7/14_Node_check_svelte-check.log",
+        "logs/verify/raw/20260226T112949Z-fast-290a1dc7/16_Rust_clippy.log"
+      ]
+    },
+    {
+      "run_id": "vr-efd18ac7747242a8983c62987b43c7d7",
+      "created_at_utc": "2026-02-26T11:05:20.719Z",
+      "created_at_epoch_ms": 1772100320719,
+      "task_id": "verify-fast-20260226T110453Z",
+      "commit_sha": "2ef8b818874d0e2d2ce47d9a2ecaacb4dba53d4f",
+      "stage": "fast",
+      "scope": "repo",
+      "status": "PASS",
+      "steps": [
+        {
+          "name": "Validate workflow alignment",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_alignment.ps1",
+          "status": "PASS",
+          "duration_ms": 386,
+          "exit_code": 0
+        },
+        {
+          "name": "Preflight state discovery (claim=evidence)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\preflight_state_discovery.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 1261,
+          "exit_code": 0
+        },
+        {
+          "name": "Verify batch status claims (claim=evidence)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\verify_batch_status.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 913,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate traceability registry",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_traceability.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 483,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate NEXT_SESSION control (JSON-first)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_next_session.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -SkipGeneratedFreshnessCheck",
+          "status": "PASS",
+          "duration_ms": 467,
+          "exit_code": 0
+        },
+        {
+          "name": "Enforce NEXT_SESSION flow",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\enforce_next_session_flow.ps1",
+          "status": "PASS",
+          "duration_ms": 2398,
+          "exit_code": 0
+        },
+        {
+          "name": "Control docs stale-check",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\generate_control_docs.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -CheckOnly",
+          "status": "PASS",
+          "duration_ms": 502,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint (pre-commit, blocking scope)",
+          "tool": "markdownlint-cli2",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run markdownlint-cli2 --all-files",
+          "status": "PASS",
+          "duration_ms": 1114,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint backlog report (non-blocking)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_markdownlint_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 1897,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale prose lint (critical blocking, pre-commit)",
+          "tool": "vale",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run vale-critical --all-files",
+          "status": "PASS",
+          "duration_ms": 956,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale backlog report + no-regression",
+          "tool": "vale",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_vale_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -EnforceNoRegression",
+          "status": "PASS",
+          "duration_ms": 9768,
+          "exit_code": 0
+        },
+        {
+          "name": "Link audit (lychee, optional)",
+          "tool": "lychee",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run lychee --all-files",
+          "status": "SKIP",
+          "duration_ms": 0,
+          "exit_code": null
+        },
+        {
+          "name": "MkDocs build --strict",
+          "tool": "mkdocs",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\python.exe -X utf8 -m mkdocs build --strict -f C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\mkdocs.yml",
+          "status": "PASS",
+          "duration_ms": 1580,
+          "exit_code": 0
+        },
+        {
+          "name": "Node check (svelte-check)",
+          "tool": "npm",
+          "command": "npm.cmd run check --if-present",
+          "status": "PASS",
+          "duration_ms": 3862,
+          "exit_code": 0
+        },
+        {
+          "name": "Rust fmt check",
+          "tool": "cargo",
+          "command": "cargo fmt --manifest-path C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\src-tauri\\Cargo.toml --all -- --check",
+          "status": "PASS",
+          "duration_ms": 234,
+          "exit_code": 0
+        },
+        {
+          "name": "Rust clippy",
+          "tool": "cargo",
+          "command": "cargo clippy --manifest-path C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\src-tauri\\Cargo.toml --all-targets --all-features -- -D warnings",
+          "status": "PASS",
+          "duration_ms": 602,
+          "exit_code": 0
+        }
+      ],
+      "errors": [],
+      "error_count": 0,
+      "fingerprints": [],
+      "root_cause": null,
+      "evidence_refs": [
+        "logs/verify/raw/20260226T110453Z-fast-1e93ec80/01_Validate_workflow_alignment.log",
+        "logs/verify/raw/20260226T110453Z-fast-1e93ec80/02_Preflight_state_discovery_claim_evidence.log",
+        "logs/verify/raw/20260226T110453Z-fast-1e93ec80/03_Verify_batch_status_claims_claim_evidence.log",
+        "logs/verify/raw/20260226T110453Z-fast-1e93ec80/04_Validate_traceability_registry.log",
+        "logs/verify/raw/20260226T110453Z-fast-1e93ec80/05_Validate_NEXT_SESSION_control_JSON-first.log",
+        "logs/verify/raw/20260226T110453Z-fast-1e93ec80/06_Enforce_NEXT_SESSION_flow.log",
+        "logs/verify/raw/20260226T110453Z-fast-1e93ec80/07_Control_docs_stale-check.log",
+        "logs/verify/raw/20260226T110453Z-fast-1e93ec80/08_Markdown_lint_pre-commit_blocking_scope.log",
+        "logs/verify/raw/20260226T110453Z-fast-1e93ec80/09_Markdown_lint_backlog_report_non-blocking.log",
+        "logs/verify/raw/20260226T110453Z-fast-1e93ec80/10_Vale_prose_lint_critical_blocking_pre-commit.log",
+        "logs/verify/raw/20260226T110453Z-fast-1e93ec80/11_Vale_backlog_report_no-regression.log",
+        "logs/verify/raw/20260226T110453Z-fast-1e93ec80/13_MkDocs_build_--strict.log",
+        "logs/verify/raw/20260226T110453Z-fast-1e93ec80/14_Node_check_svelte-check.log",
+        "logs/verify/raw/20260226T110453Z-fast-1e93ec80/16_Rust_clippy.log"
+      ]
+    },
+    {
+      "run_id": "vr-4dbd94eb06d14a15afa250bd4cbb4ccd",
+      "created_at_utc": "2026-02-26T10:46:45.428Z",
+      "created_at_epoch_ms": 1772099205428,
+      "task_id": "verify-fast-20260226T104610Z",
+      "commit_sha": "2ef8b818874d0e2d2ce47d9a2ecaacb4dba53d4f",
+      "stage": "fast",
+      "scope": "repo",
+      "status": "FAIL",
+      "steps": [
+        {
+          "name": "Validate workflow alignment",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_alignment.ps1",
+          "status": "PASS",
+          "duration_ms": 393,
+          "exit_code": 0
+        },
+        {
+          "name": "Preflight state discovery (claim=evidence)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\preflight_state_discovery.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 1232,
+          "exit_code": 0
+        },
+        {
+          "name": "Verify batch status claims (claim=evidence)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\verify_batch_status.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 879,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate traceability registry",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_traceability.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 451,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate NEXT_SESSION control (JSON-first)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_next_session.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -SkipGeneratedFreshnessCheck",
+          "status": "PASS",
+          "duration_ms": 453,
+          "exit_code": 0
+        },
+        {
+          "name": "Enforce NEXT_SESSION flow",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\enforce_next_session_flow.ps1",
+          "status": "PASS",
+          "duration_ms": 2293,
+          "exit_code": 0
+        },
+        {
+          "name": "Control docs stale-check",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\generate_control_docs.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -CheckOnly",
+          "status": "PASS",
+          "duration_ms": 483,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint (pre-commit, blocking scope)",
+          "tool": "markdownlint-cli2",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run markdownlint-cli2 --all-files",
+          "status": "PASS",
+          "duration_ms": 950,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint backlog report (non-blocking)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_markdownlint_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 1768,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale prose lint (critical blocking, pre-commit)",
+          "tool": "vale",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run vale-critical --all-files",
+          "status": "PASS",
+          "duration_ms": 915,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale backlog report + no-regression",
+          "tool": "vale",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_vale_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -EnforceNoRegression",
+          "status": "PASS",
+          "duration_ms": 9451,
+          "exit_code": 0
+        },
+        {
+          "name": "Link audit (lychee, optional)",
+          "tool": "lychee",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run lychee --all-files",
+          "status": "SKIP",
+          "duration_ms": 0,
+          "exit_code": null
+        },
+        {
+          "name": "MkDocs build --strict",
+          "tool": "mkdocs",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\python.exe -X utf8 -m mkdocs build --strict -f C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\mkdocs.yml",
+          "status": "PASS",
+          "duration_ms": 1556,
+          "exit_code": 0
+        },
+        {
+          "name": "Node check (svelte-check)",
+          "tool": "npm",
+          "command": "npm.cmd run check --if-present",
+          "status": "PASS",
+          "duration_ms": 3971,
+          "exit_code": 0
+        },
+        {
+          "name": "Rust fmt check",
+          "tool": "cargo",
+          "command": "cargo fmt --manifest-path C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\src-tauri\\Cargo.toml --all -- --check",
+          "status": "PASS",
+          "duration_ms": 222,
+          "exit_code": 0
+        },
+        {
+          "name": "Rust clippy",
+          "tool": "cargo",
+          "command": "cargo clippy --manifest-path C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\src-tauri\\Cargo.toml --all-targets --all-features -- -D warnings",
+          "status": "FAIL",
+          "duration_ms": 8750,
+          "exit_code": 101
+        }
+      ],
+      "errors": [
+        {
+          "tool": "cargo",
+          "type": "lint",
+          "file": "src-tauri",
+          "rule": "cargo_clippy",
+          "line": null,
+          "step_index": 16,
+          "message": "Compiling app_temp v0.1.0 (C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\src-tauri)"
+        }
+      ],
+      "error_count": 1,
+      "fingerprints": [
+        {
+          "fingerprint": "c5d8cce818cd",
+          "key": "lint|src-tauri|cargo_clippy",
+          "type": "lint",
+          "file": "src-tauri",
+          "rule": "cargo_clippy",
+          "count": 1,
+          "historical_count_before": 0,
+          "historical_count_total": 1,
+          "docs_rule_candidate": false
+        }
+      ],
+      "root_cause": {
+        "tool": "cargo",
+        "type": "lint",
+        "file": "src-tauri",
+        "rule": "cargo_clippy",
+        "line": null,
+        "step_index": 16,
+        "message": "Compiling app_temp v0.1.0 (C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\src-tauri)"
+      },
+      "evidence_refs": [
+        "logs/verify/raw/20260226T104610Z-fast-71f213ca/01_Validate_workflow_alignment.log",
+        "logs/verify/raw/20260226T104610Z-fast-71f213ca/02_Preflight_state_discovery_claim_evidence.log",
+        "logs/verify/raw/20260226T104610Z-fast-71f213ca/03_Verify_batch_status_claims_claim_evidence.log",
+        "logs/verify/raw/20260226T104610Z-fast-71f213ca/04_Validate_traceability_registry.log",
+        "logs/verify/raw/20260226T104610Z-fast-71f213ca/05_Validate_NEXT_SESSION_control_JSON-first.log",
+        "logs/verify/raw/20260226T104610Z-fast-71f213ca/06_Enforce_NEXT_SESSION_flow.log",
+        "logs/verify/raw/20260226T104610Z-fast-71f213ca/07_Control_docs_stale-check.log",
+        "logs/verify/raw/20260226T104610Z-fast-71f213ca/08_Markdown_lint_pre-commit_blocking_scope.log",
+        "logs/verify/raw/20260226T104610Z-fast-71f213ca/09_Markdown_lint_backlog_report_non-blocking.log",
+        "logs/verify/raw/20260226T104610Z-fast-71f213ca/10_Vale_prose_lint_critical_blocking_pre-commit.log",
+        "logs/verify/raw/20260226T104610Z-fast-71f213ca/11_Vale_backlog_report_no-regression.log",
+        "logs/verify/raw/20260226T104610Z-fast-71f213ca/13_MkDocs_build_--strict.log",
+        "logs/verify/raw/20260226T104610Z-fast-71f213ca/14_Node_check_svelte-check.log",
+        "logs/verify/raw/20260226T104610Z-fast-71f213ca/16_Rust_clippy.log"
+      ]
+    },
+    {
+      "run_id": "vr-8f780a62dcdc4a5291c52c90b0ea04a8",
+      "created_at_utc": "2026-02-26T10:44:45.341Z",
+      "created_at_epoch_ms": 1772099085341,
+      "task_id": "verify-fast-20260226T104425Z",
+      "commit_sha": "2ef8b818874d0e2d2ce47d9a2ecaacb4dba53d4f",
+      "stage": "fast",
+      "scope": "repo",
+      "status": "FAIL",
+      "steps": [
+        {
+          "name": "Validate workflow alignment",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_alignment.ps1",
+          "status": "PASS",
+          "duration_ms": 400,
+          "exit_code": 0
+        },
+        {
+          "name": "Preflight state discovery (claim=evidence)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\preflight_state_discovery.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 1196,
+          "exit_code": 0
+        },
+        {
+          "name": "Verify batch status claims (claim=evidence)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\verify_batch_status.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 859,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate traceability registry",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_traceability.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 466,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate NEXT_SESSION control (JSON-first)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_next_session.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -SkipGeneratedFreshnessCheck",
+          "status": "PASS",
+          "duration_ms": 462,
+          "exit_code": 0
+        },
+        {
+          "name": "Enforce NEXT_SESSION flow",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\enforce_next_session_flow.ps1",
+          "status": "PASS",
+          "duration_ms": 2314,
+          "exit_code": 0
+        },
+        {
+          "name": "Control docs stale-check",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\generate_control_docs.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -CheckOnly",
+          "status": "PASS",
+          "duration_ms": 505,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint (pre-commit, blocking scope)",
+          "tool": "markdownlint-cli2",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run markdownlint-cli2 --all-files",
+          "status": "PASS",
+          "duration_ms": 1059,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint backlog report (non-blocking)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_markdownlint_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 1818,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale prose lint (critical blocking, pre-commit)",
+          "tool": "vale",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run vale-critical --all-files",
+          "status": "PASS",
+          "duration_ms": 934,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale backlog report + no-regression",
+          "tool": "vale",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_vale_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -EnforceNoRegression",
+          "status": "FAIL",
+          "duration_ms": 9605,
+          "exit_code": 1
+        }
+      ],
+      "errors": [
+        {
+          "tool": "vale",
+          "type": "report",
+          "file": "**/*.md",
+          "rule": "vale_backlog_no_regression",
+          "line": null,
+          "step_index": 11,
+          "message": "Running Vale backlog scan (repo-wide, non-blocking report)..."
+        }
+      ],
+      "error_count": 1,
+      "fingerprints": [
+        {
+          "fingerprint": "2852eaf2e687",
+          "key": "report|**/*.md|vale_backlog_no_regression",
+          "type": "report",
+          "file": "**/*.md",
+          "rule": "vale_backlog_no_regression",
+          "count": 1,
+          "historical_count_before": 0,
+          "historical_count_total": 1,
+          "docs_rule_candidate": false
+        }
+      ],
+      "root_cause": {
+        "tool": "vale",
+        "type": "report",
+        "file": "**/*.md",
+        "rule": "vale_backlog_no_regression",
+        "line": null,
+        "step_index": 11,
+        "message": "Running Vale backlog scan (repo-wide, non-blocking report)..."
+      },
+      "evidence_refs": [
+        "logs/verify/raw/20260226T104425Z-fast-aef33970/01_Validate_workflow_alignment.log",
+        "logs/verify/raw/20260226T104425Z-fast-aef33970/02_Preflight_state_discovery_claim_evidence.log",
+        "logs/verify/raw/20260226T104425Z-fast-aef33970/03_Verify_batch_status_claims_claim_evidence.log",
+        "logs/verify/raw/20260226T104425Z-fast-aef33970/04_Validate_traceability_registry.log",
+        "logs/verify/raw/20260226T104425Z-fast-aef33970/05_Validate_NEXT_SESSION_control_JSON-first.log",
+        "logs/verify/raw/20260226T104425Z-fast-aef33970/06_Enforce_NEXT_SESSION_flow.log",
+        "logs/verify/raw/20260226T104425Z-fast-aef33970/07_Control_docs_stale-check.log",
+        "logs/verify/raw/20260226T104425Z-fast-aef33970/08_Markdown_lint_pre-commit_blocking_scope.log",
+        "logs/verify/raw/20260226T104425Z-fast-aef33970/09_Markdown_lint_backlog_report_non-blocking.log",
+        "logs/verify/raw/20260226T104425Z-fast-aef33970/10_Vale_prose_lint_critical_blocking_pre-commit.log",
+        "logs/verify/raw/20260226T104425Z-fast-aef33970/11_Vale_backlog_report_no-regression.log"
+      ]
+    },
+    {
+      "run_id": "vr-99b90f47445f4844aa63c90b58f28eef",
+      "created_at_utc": "2026-02-26T10:24:02.153Z",
+      "created_at_epoch_ms": 1772097842153,
+      "task_id": "verify-fast-20260226T102337Z",
+      "commit_sha": "2ef8b818874d0e2d2ce47d9a2ecaacb4dba53d4f",
+      "stage": "fast",
+      "scope": "repo",
+      "status": "FAIL",
+      "steps": [
+        {
+          "name": "Validate workflow alignment",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_alignment.ps1",
+          "status": "PASS",
+          "duration_ms": 366,
+          "exit_code": 0
+        },
+        {
+          "name": "Preflight state discovery (claim=evidence)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\preflight_state_discovery.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 1195,
+          "exit_code": 0
+        },
+        {
+          "name": "Verify batch status claims (claim=evidence)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\verify_batch_status.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 904,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate traceability registry",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_traceability.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 459,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate NEXT_SESSION control (JSON-first)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_next_session.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -SkipGeneratedFreshnessCheck",
+          "status": "PASS",
+          "duration_ms": 461,
+          "exit_code": 0
+        },
+        {
+          "name": "Enforce NEXT_SESSION flow",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\enforce_next_session_flow.ps1",
+          "status": "PASS",
+          "duration_ms": 2461,
+          "exit_code": 0
+        },
+        {
+          "name": "Control docs stale-check",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\generate_control_docs.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -CheckOnly",
+          "status": "PASS",
+          "duration_ms": 478,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint (pre-commit, blocking scope)",
+          "tool": "markdownlint-cli2",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run markdownlint-cli2 --all-files",
+          "status": "PASS",
+          "duration_ms": 1122,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint backlog report (non-blocking)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_markdownlint_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 1840,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale prose lint (critical blocking, pre-commit)",
+          "tool": "vale",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run vale-critical --all-files",
+          "status": "PASS",
+          "duration_ms": 886,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale backlog report + no-regression",
+          "tool": "vale",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_vale_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -EnforceNoRegression",
+          "status": "PASS",
+          "duration_ms": 8414,
+          "exit_code": 0
+        },
+        {
+          "name": "Link audit (lychee, optional)",
+          "tool": "lychee",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run lychee --all-files",
+          "status": "SKIP",
+          "duration_ms": 0,
+          "exit_code": null
+        },
+        {
+          "name": "MkDocs build --strict",
+          "tool": "mkdocs",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\python.exe -X utf8 -m mkdocs build --strict -f C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\mkdocs.yml",
+          "status": "PASS",
+          "duration_ms": 1436,
+          "exit_code": 0
+        },
+        {
+          "name": "Node check (svelte-check)",
+          "tool": "npm",
+          "command": "npm.cmd run check --if-present",
+          "status": "PASS",
+          "duration_ms": 3850,
+          "exit_code": 0
+        },
+        {
+          "name": "Rust fmt check",
+          "tool": "cargo",
+          "command": "cargo fmt --manifest-path C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\src-tauri\\Cargo.toml --all -- --check",
+          "status": "FAIL",
+          "duration_ms": 228,
+          "exit_code": 1
+        }
+      ],
+      "errors": [
+        {
+          "tool": "cargo",
+          "type": "format",
+          "file": "src-tauri",
+          "rule": "cargo_fmt_check",
+          "line": null,
+          "step_index": 15,
+          "message": "Diff in \\\\?\\C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\src-tauri\\src\\lib.rs:4:"
+        }
+      ],
+      "error_count": 1,
+      "fingerprints": [
+        {
+          "fingerprint": "0e6ea46004be",
+          "key": "format|src-tauri|cargo_fmt_check",
+          "type": "format",
+          "file": "src-tauri",
+          "rule": "cargo_fmt_check",
+          "count": 1,
+          "historical_count_before": 2,
+          "historical_count_total": 3,
+          "docs_rule_candidate": true
+        }
+      ],
+      "root_cause": {
+        "tool": "cargo",
+        "type": "format",
+        "file": "src-tauri",
+        "rule": "cargo_fmt_check",
+        "line": null,
+        "step_index": 15,
+        "message": "Diff in \\\\?\\C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\src-tauri\\src\\lib.rs:4:"
+      },
+      "evidence_refs": [
+        "logs/verify/raw/20260226T102337Z-fast-9b52abcd/01_Validate_workflow_alignment.log",
+        "logs/verify/raw/20260226T102337Z-fast-9b52abcd/02_Preflight_state_discovery_claim_evidence.log",
+        "logs/verify/raw/20260226T102337Z-fast-9b52abcd/03_Verify_batch_status_claims_claim_evidence.log",
+        "logs/verify/raw/20260226T102337Z-fast-9b52abcd/04_Validate_traceability_registry.log",
+        "logs/verify/raw/20260226T102337Z-fast-9b52abcd/05_Validate_NEXT_SESSION_control_JSON-first.log",
+        "logs/verify/raw/20260226T102337Z-fast-9b52abcd/06_Enforce_NEXT_SESSION_flow.log",
+        "logs/verify/raw/20260226T102337Z-fast-9b52abcd/07_Control_docs_stale-check.log",
+        "logs/verify/raw/20260226T102337Z-fast-9b52abcd/08_Markdown_lint_pre-commit_blocking_scope.log",
+        "logs/verify/raw/20260226T102337Z-fast-9b52abcd/09_Markdown_lint_backlog_report_non-blocking.log",
+        "logs/verify/raw/20260226T102337Z-fast-9b52abcd/10_Vale_prose_lint_critical_blocking_pre-commit.log",
+        "logs/verify/raw/20260226T102337Z-fast-9b52abcd/11_Vale_backlog_report_no-regression.log",
+        "logs/verify/raw/20260226T102337Z-fast-9b52abcd/13_MkDocs_build_--strict.log",
+        "logs/verify/raw/20260226T102337Z-fast-9b52abcd/14_Node_check_svelte-check.log",
+        "logs/verify/raw/20260226T102337Z-fast-9b52abcd/15_Rust_fmt_check.log"
+      ]
+    },
+    {
+      "run_id": "vr-1f90368cffcc4e899e7a621bef975273",
+      "created_at_utc": "2026-02-26T10:05:24.885Z",
+      "created_at_epoch_ms": 1772096724885,
+      "task_id": "verify-fast-20260226T100504Z",
+      "commit_sha": "2ef8b818874d0e2d2ce47d9a2ecaacb4dba53d4f",
+      "stage": "fast",
+      "scope": "repo",
+      "status": "FAIL",
+      "steps": [
+        {
+          "name": "Validate workflow alignment",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_alignment.ps1",
+          "status": "PASS",
+          "duration_ms": 350,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate traceability registry",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_traceability.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 526,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate NEXT_SESSION control (JSON-first)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_next_session.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -SkipGeneratedFreshnessCheck",
+          "status": "PASS",
+          "duration_ms": 474,
+          "exit_code": 0
+        },
+        {
+          "name": "Enforce NEXT_SESSION flow",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\enforce_next_session_flow.ps1",
+          "status": "PASS",
+          "duration_ms": 2236,
+          "exit_code": 0
+        },
+        {
+          "name": "Control docs stale-check",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\generate_control_docs.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -CheckOnly",
+          "status": "PASS",
+          "duration_ms": 436,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint (pre-commit, blocking scope)",
+          "tool": "markdownlint-cli2",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run markdownlint-cli2 --all-files",
+          "status": "PASS",
+          "duration_ms": 836,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint backlog report (non-blocking)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_markdownlint_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 1599,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale prose lint (critical blocking, pre-commit)",
+          "tool": "vale",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run vale-critical --all-files",
+          "status": "PASS",
+          "duration_ms": 802,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale backlog report + no-regression",
+          "tool": "vale",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_vale_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -EnforceNoRegression",
+          "status": "PASS",
+          "duration_ms": 7739,
+          "exit_code": 0
+        },
+        {
+          "name": "Link audit (lychee, optional)",
+          "tool": "lychee",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run lychee --all-files",
+          "status": "SKIP",
+          "duration_ms": 0,
+          "exit_code": null
+        },
+        {
+          "name": "MkDocs build --strict",
+          "tool": "mkdocs",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\python.exe -X utf8 -m mkdocs build --strict -f C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\mkdocs.yml",
+          "status": "PASS",
+          "duration_ms": 1384,
+          "exit_code": 0
+        },
+        {
+          "name": "Node check (svelte-check)",
+          "tool": "npm",
+          "command": "npm.cmd run check --if-present",
+          "status": "PASS",
+          "duration_ms": 3447,
+          "exit_code": 0
+        },
+        {
+          "name": "Rust fmt check",
+          "tool": "cargo",
+          "command": "cargo fmt --manifest-path C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\src-tauri\\Cargo.toml --all -- --check",
+          "status": "FAIL",
+          "duration_ms": 206,
+          "exit_code": 1
+        }
+      ],
+      "errors": [
+        {
+          "tool": "cargo",
+          "type": "format",
+          "file": "src-tauri",
+          "rule": "cargo_fmt_check",
+          "line": null,
+          "step_index": 13,
+          "message": "Diff in \\\\?\\C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\src-tauri\\src\\lib.rs:4:"
+        }
+      ],
+      "error_count": 1,
+      "fingerprints": [
+        {
+          "fingerprint": "0e6ea46004be",
+          "key": "format|src-tauri|cargo_fmt_check",
+          "type": "format",
+          "file": "src-tauri",
+          "rule": "cargo_fmt_check",
+          "count": 1,
+          "historical_count_before": 1,
+          "historical_count_total": 2,
+          "docs_rule_candidate": false
+        }
+      ],
+      "root_cause": {
+        "tool": "cargo",
+        "type": "format",
+        "file": "src-tauri",
+        "rule": "cargo_fmt_check",
+        "line": null,
+        "step_index": 13,
+        "message": "Diff in \\\\?\\C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\src-tauri\\src\\lib.rs:4:"
+      },
+      "evidence_refs": [
+        "logs/verify/raw/20260226T100504Z-fast-2450ee59/01_Validate_workflow_alignment.log",
+        "logs/verify/raw/20260226T100504Z-fast-2450ee59/02_Validate_traceability_registry.log",
+        "logs/verify/raw/20260226T100504Z-fast-2450ee59/03_Validate_NEXT_SESSION_control_JSON-first.log",
+        "logs/verify/raw/20260226T100504Z-fast-2450ee59/04_Enforce_NEXT_SESSION_flow.log",
+        "logs/verify/raw/20260226T100504Z-fast-2450ee59/05_Control_docs_stale-check.log",
+        "logs/verify/raw/20260226T100504Z-fast-2450ee59/06_Markdown_lint_pre-commit_blocking_scope.log",
+        "logs/verify/raw/20260226T100504Z-fast-2450ee59/07_Markdown_lint_backlog_report_non-blocking.log",
+        "logs/verify/raw/20260226T100504Z-fast-2450ee59/08_Vale_prose_lint_critical_blocking_pre-commit.log",
+        "logs/verify/raw/20260226T100504Z-fast-2450ee59/09_Vale_backlog_report_no-regression.log",
+        "logs/verify/raw/20260226T100504Z-fast-2450ee59/11_MkDocs_build_--strict.log",
+        "logs/verify/raw/20260226T100504Z-fast-2450ee59/12_Node_check_svelte-check.log",
+        "logs/verify/raw/20260226T100504Z-fast-2450ee59/13_Rust_fmt_check.log"
+      ]
+    },
+    {
+      "run_id": "vr-5e9cb00355e043f887a305af8e4ed322",
+      "created_at_utc": "2026-02-26T09:59:51.612Z",
+      "created_at_epoch_ms": 1772096391612,
+      "task_id": "verify-fast-20260226T095929Z",
+      "commit_sha": "2ef8b818874d0e2d2ce47d9a2ecaacb4dba53d4f",
+      "stage": "fast",
+      "scope": "repo",
+      "status": "FAIL",
+      "steps": [
+        {
+          "name": "Validate workflow alignment",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_alignment.ps1",
+          "status": "PASS",
+          "duration_ms": 359,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate traceability registry",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_traceability.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 483,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate NEXT_SESSION control (JSON-first)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_next_session.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -SkipGeneratedFreshnessCheck",
+          "status": "PASS",
+          "duration_ms": 459,
+          "exit_code": 0
+        },
+        {
+          "name": "Enforce NEXT_SESSION flow",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\enforce_next_session_flow.ps1",
+          "status": "PASS",
+          "duration_ms": 2202,
+          "exit_code": 0
+        },
+        {
+          "name": "Control docs stale-check",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\generate_control_docs.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -CheckOnly",
+          "status": "PASS",
+          "duration_ms": 453,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint (pre-commit, blocking scope)",
+          "tool": "markdownlint-cli2",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run markdownlint-cli2 --all-files",
+          "status": "PASS",
+          "duration_ms": 835,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint backlog report (non-blocking)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_markdownlint_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 1692,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale prose lint (critical blocking, pre-commit)",
+          "tool": "vale",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run vale-critical --all-files",
+          "status": "PASS",
+          "duration_ms": 815,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale backlog report + no-regression",
+          "tool": "vale",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_vale_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -EnforceNoRegression",
+          "status": "PASS",
+          "duration_ms": 7824,
+          "exit_code": 0
+        },
+        {
+          "name": "Link audit (lychee, optional)",
+          "tool": "lychee",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run lychee --all-files",
+          "status": "SKIP",
+          "duration_ms": 0,
+          "exit_code": null
+        },
+        {
+          "name": "MkDocs build --strict",
+          "tool": "mkdocs",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\python.exe -X utf8 -m mkdocs build --strict -f C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\mkdocs.yml",
+          "status": "PASS",
+          "duration_ms": 1358,
+          "exit_code": 0
+        },
+        {
+          "name": "Node check (svelte-check)",
+          "tool": "npm",
+          "command": "npm.cmd run check --if-present",
+          "status": "PASS",
+          "duration_ms": 4159,
+          "exit_code": 0
+        },
+        {
+          "name": "Rust fmt check",
+          "tool": "cargo",
+          "command": "cargo fmt --manifest-path C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\src-tauri\\Cargo.toml --all -- --check",
+          "status": "FAIL",
+          "duration_ms": 878,
+          "exit_code": 1
+        }
+      ],
+      "errors": [
+        {
+          "tool": "cargo",
+          "type": "format",
+          "file": "src-tauri",
+          "rule": "cargo_fmt_check",
+          "line": null,
+          "step_index": 13,
+          "message": "Diff in \\\\?\\C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\src-tauri\\src\\lib.rs:4:"
+        }
+      ],
+      "error_count": 1,
+      "fingerprints": [
+        {
+          "fingerprint": "0e6ea46004be",
+          "key": "format|src-tauri|cargo_fmt_check",
+          "type": "format",
+          "file": "src-tauri",
+          "rule": "cargo_fmt_check",
+          "count": 1,
+          "historical_count_before": 0,
+          "historical_count_total": 1,
+          "docs_rule_candidate": false
+        }
+      ],
+      "root_cause": {
+        "tool": "cargo",
+        "type": "format",
+        "file": "src-tauri",
+        "rule": "cargo_fmt_check",
+        "line": null,
+        "step_index": 13,
+        "message": "Diff in \\\\?\\C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\src-tauri\\src\\lib.rs:4:"
+      },
+      "evidence_refs": [
+        "logs/verify/raw/20260226T095929Z-fast-1d90fcfd/01_Validate_workflow_alignment.log",
+        "logs/verify/raw/20260226T095929Z-fast-1d90fcfd/02_Validate_traceability_registry.log",
+        "logs/verify/raw/20260226T095929Z-fast-1d90fcfd/03_Validate_NEXT_SESSION_control_JSON-first.log",
+        "logs/verify/raw/20260226T095929Z-fast-1d90fcfd/04_Enforce_NEXT_SESSION_flow.log",
+        "logs/verify/raw/20260226T095929Z-fast-1d90fcfd/05_Control_docs_stale-check.log",
+        "logs/verify/raw/20260226T095929Z-fast-1d90fcfd/06_Markdown_lint_pre-commit_blocking_scope.log",
+        "logs/verify/raw/20260226T095929Z-fast-1d90fcfd/07_Markdown_lint_backlog_report_non-blocking.log",
+        "logs/verify/raw/20260226T095929Z-fast-1d90fcfd/08_Vale_prose_lint_critical_blocking_pre-commit.log",
+        "logs/verify/raw/20260226T095929Z-fast-1d90fcfd/09_Vale_backlog_report_no-regression.log",
+        "logs/verify/raw/20260226T095929Z-fast-1d90fcfd/11_MkDocs_build_--strict.log",
+        "logs/verify/raw/20260226T095929Z-fast-1d90fcfd/12_Node_check_svelte-check.log",
+        "logs/verify/raw/20260226T095929Z-fast-1d90fcfd/13_Rust_fmt_check.log"
+      ]
+    },
+    {
+      "run_id": "vr-c291b805fd9749c1bc9f343b04f174a5",
+      "created_at_utc": "2026-02-26T09:58:50.799Z",
+      "created_at_epoch_ms": 1772096330799,
+      "task_id": "verify-fast-20260226T095833Z",
+      "commit_sha": "2ef8b818874d0e2d2ce47d9a2ecaacb4dba53d4f",
+      "stage": "fast",
+      "scope": "repo",
+      "status": "FAIL",
+      "steps": [
+        {
+          "name": "Validate workflow alignment",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_alignment.ps1",
+          "status": "PASS",
+          "duration_ms": 364,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate traceability registry",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_traceability.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 451,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate NEXT_SESSION control (JSON-first)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_next_session.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -SkipGeneratedFreshnessCheck",
+          "status": "PASS",
+          "duration_ms": 460,
+          "exit_code": 0
+        },
+        {
+          "name": "Enforce NEXT_SESSION flow",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\enforce_next_session_flow.ps1",
+          "status": "PASS",
+          "duration_ms": 2216,
+          "exit_code": 0
+        },
+        {
+          "name": "Control docs stale-check",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\generate_control_docs.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -CheckOnly",
+          "status": "PASS",
+          "duration_ms": 454,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint (pre-commit, blocking scope)",
+          "tool": "markdownlint-cli2",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run markdownlint-cli2 --all-files",
+          "status": "PASS",
+          "duration_ms": 829,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint backlog report (non-blocking)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_markdownlint_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 1634,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale prose lint (critical blocking, pre-commit)",
+          "tool": "vale",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run vale-critical --all-files",
+          "status": "PASS",
+          "duration_ms": 807,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale backlog report + no-regression",
+          "tool": "vale",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_vale_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -EnforceNoRegression",
+          "status": "PASS",
+          "duration_ms": 7818,
+          "exit_code": 0
+        },
+        {
+          "name": "Link audit (lychee, optional)",
+          "tool": "lychee",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run lychee --all-files",
+          "status": "SKIP",
+          "duration_ms": 0,
+          "exit_code": null
+        },
+        {
+          "name": "MkDocs build --strict",
+          "tool": "mkdocs",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\python.exe -X utf8 -m mkdocs build --strict -f C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\mkdocs.yml",
+          "status": "PASS",
+          "duration_ms": 1349,
+          "exit_code": 0
+        },
+        {
+          "name": "Node check (svelte-check)",
+          "tool": "npm",
+          "command": "npm run check --if-present",
+          "status": "FAIL",
+          "duration_ms": 229,
+          "exit_code": 1
+        }
+      ],
+      "errors": [
+        {
+          "tool": "npm",
+          "type": "typecheck",
+          "file": "src-ui",
+          "rule": "npm_check",
+          "line": null,
+          "step_index": 12,
+          "message": "Unknown command: \"stepExe\""
+        }
+      ],
+      "error_count": 1,
+      "fingerprints": [
+        {
+          "fingerprint": "514534c2f168",
+          "key": "typecheck|src-ui|npm_check",
+          "type": "typecheck",
+          "file": "src-ui",
+          "rule": "npm_check",
+          "count": 1,
+          "historical_count_before": 1,
+          "historical_count_total": 2,
+          "docs_rule_candidate": false
+        }
+      ],
+      "root_cause": {
+        "tool": "npm",
+        "type": "typecheck",
+        "file": "src-ui",
+        "rule": "npm_check",
+        "line": null,
+        "step_index": 12,
+        "message": "Unknown command: \"stepExe\""
+      },
+      "evidence_refs": [
+        "logs/verify/raw/20260226T095833Z-fast-d8884287/01_Validate_workflow_alignment.log",
+        "logs/verify/raw/20260226T095833Z-fast-d8884287/02_Validate_traceability_registry.log",
+        "logs/verify/raw/20260226T095833Z-fast-d8884287/03_Validate_NEXT_SESSION_control_JSON-first.log",
+        "logs/verify/raw/20260226T095833Z-fast-d8884287/04_Enforce_NEXT_SESSION_flow.log",
+        "logs/verify/raw/20260226T095833Z-fast-d8884287/05_Control_docs_stale-check.log",
+        "logs/verify/raw/20260226T095833Z-fast-d8884287/06_Markdown_lint_pre-commit_blocking_scope.log",
+        "logs/verify/raw/20260226T095833Z-fast-d8884287/07_Markdown_lint_backlog_report_non-blocking.log",
+        "logs/verify/raw/20260226T095833Z-fast-d8884287/08_Vale_prose_lint_critical_blocking_pre-commit.log",
+        "logs/verify/raw/20260226T095833Z-fast-d8884287/09_Vale_backlog_report_no-regression.log",
+        "logs/verify/raw/20260226T095833Z-fast-d8884287/11_MkDocs_build_--strict.log",
+        "logs/verify/raw/20260226T095833Z-fast-d8884287/12_Node_check_svelte-check.log"
+      ]
+    },
+    {
+      "run_id": "vr-501bcc68b89e4ede9e6057863adc5ed4",
+      "created_at_utc": "2026-02-26T09:58:03.144Z",
+      "created_at_epoch_ms": 1772096283144,
+      "task_id": "verify-fast-20260226T095745Z",
+      "commit_sha": "2ef8b818874d0e2d2ce47d9a2ecaacb4dba53d4f",
+      "stage": "fast",
+      "scope": "repo",
+      "status": "FAIL",
+      "steps": [
+        {
+          "name": "Validate workflow alignment",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_alignment.ps1",
+          "status": "PASS",
+          "duration_ms": 360,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate traceability registry",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_traceability.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 444,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate NEXT_SESSION control (JSON-first)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_next_session.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -SkipGeneratedFreshnessCheck",
+          "status": "PASS",
+          "duration_ms": 456,
+          "exit_code": 0
+        },
+        {
+          "name": "Enforce NEXT_SESSION flow",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\enforce_next_session_flow.ps1",
+          "status": "PASS",
+          "duration_ms": 2201,
+          "exit_code": 0
+        },
+        {
+          "name": "Control docs stale-check",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\generate_control_docs.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -CheckOnly",
+          "status": "PASS",
+          "duration_ms": 450,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint (pre-commit, blocking scope)",
+          "tool": "markdownlint-cli2",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run markdownlint-cli2 --all-files",
+          "status": "PASS",
+          "duration_ms": 825,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint backlog report (non-blocking)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_markdownlint_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 1678,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale prose lint (critical blocking, pre-commit)",
+          "tool": "vale",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run vale-critical --all-files",
+          "status": "PASS",
+          "duration_ms": 802,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale backlog report + no-regression",
+          "tool": "vale",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_vale_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -EnforceNoRegression",
+          "status": "PASS",
+          "duration_ms": 7996,
+          "exit_code": 0
+        },
+        {
+          "name": "Link audit (lychee, optional)",
+          "tool": "lychee",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run lychee --all-files",
+          "status": "SKIP",
+          "duration_ms": 0,
+          "exit_code": null
+        },
+        {
+          "name": "MkDocs build --strict",
+          "tool": "mkdocs",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\python.exe -X utf8 -m mkdocs build --strict -f C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\mkdocs.yml",
+          "status": "PASS",
+          "duration_ms": 1390,
+          "exit_code": 0
+        },
+        {
+          "name": "Node check (svelte-check)",
+          "tool": "npm",
+          "command": "npm run check --if-present",
+          "status": "FAIL",
+          "duration_ms": 393,
+          "exit_code": 1
+        }
+      ],
+      "errors": [
+        {
+          "tool": "npm",
+          "type": "typecheck",
+          "file": "src-ui",
+          "rule": "npm_check",
+          "line": null,
+          "step_index": 12,
+          "message": "Unknown command: \"stepExe\""
+        }
+      ],
+      "error_count": 1,
+      "fingerprints": [
+        {
+          "fingerprint": "514534c2f168",
+          "key": "typecheck|src-ui|npm_check",
+          "type": "typecheck",
+          "file": "src-ui",
+          "rule": "npm_check",
+          "count": 1,
+          "historical_count_before": 0,
+          "historical_count_total": 1,
+          "docs_rule_candidate": false
+        }
+      ],
+      "root_cause": {
+        "tool": "npm",
+        "type": "typecheck",
+        "file": "src-ui",
+        "rule": "npm_check",
+        "line": null,
+        "step_index": 12,
+        "message": "Unknown command: \"stepExe\""
+      },
+      "evidence_refs": [
+        "logs/verify/raw/20260226T095745Z-fast-90e6da9c/01_Validate_workflow_alignment.log",
+        "logs/verify/raw/20260226T095745Z-fast-90e6da9c/02_Validate_traceability_registry.log",
+        "logs/verify/raw/20260226T095745Z-fast-90e6da9c/03_Validate_NEXT_SESSION_control_JSON-first.log",
+        "logs/verify/raw/20260226T095745Z-fast-90e6da9c/04_Enforce_NEXT_SESSION_flow.log",
+        "logs/verify/raw/20260226T095745Z-fast-90e6da9c/05_Control_docs_stale-check.log",
+        "logs/verify/raw/20260226T095745Z-fast-90e6da9c/06_Markdown_lint_pre-commit_blocking_scope.log",
+        "logs/verify/raw/20260226T095745Z-fast-90e6da9c/07_Markdown_lint_backlog_report_non-blocking.log",
+        "logs/verify/raw/20260226T095745Z-fast-90e6da9c/08_Vale_prose_lint_critical_blocking_pre-commit.log",
+        "logs/verify/raw/20260226T095745Z-fast-90e6da9c/09_Vale_backlog_report_no-regression.log",
+        "logs/verify/raw/20260226T095745Z-fast-90e6da9c/11_MkDocs_build_--strict.log",
+        "logs/verify/raw/20260226T095745Z-fast-90e6da9c/12_Node_check_svelte-check.log"
+      ]
+    },
+    {
+      "run_id": "vr-1c309fbc868347faa41ffe1f5d5881fc",
+      "created_at_utc": "2026-02-26T09:26:21.791Z",
+      "created_at_epoch_ms": 1772094381791,
+      "task_id": "verify-fast-20260226T092611Z",
+      "commit_sha": "2ef8b818874d0e2d2ce47d9a2ecaacb4dba53d4f",
+      "stage": "fast",
+      "scope": "repo",
+      "status": "FAIL",
+      "steps": [
+        {
+          "name": "Validate workflow alignment",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_alignment.ps1",
+          "status": "PASS",
+          "duration_ms": 392,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate traceability registry",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_traceability.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 511,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate NEXT_SESSION control (JSON-first)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_next_session.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -SkipGeneratedFreshnessCheck",
+          "status": "PASS",
+          "duration_ms": 479,
+          "exit_code": 0
+        },
+        {
+          "name": "Enforce NEXT_SESSION flow",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\enforce_next_session_flow.ps1",
+          "status": "PASS",
+          "duration_ms": 2393,
+          "exit_code": 0
+        },
+        {
+          "name": "Control docs stale-check",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\generate_control_docs.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST -CheckOnly",
+          "status": "PASS",
+          "duration_ms": 485,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint (pre-commit, blocking scope)",
+          "tool": "markdownlint-cli2",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run markdownlint-cli2 --all-files",
+          "status": "PASS",
+          "duration_ms": 923,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint backlog report (non-blocking)",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\report_markdownlint_backlog.ps1 -RootPath C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+          "status": "PASS",
+          "duration_ms": 1802,
+          "exit_code": 0
+        },
+        {
+          "name": "Vale prose lint (pre-commit)",
+          "tool": "vale",
+          "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run vale --all-files",
+          "status": "FAIL",
+          "duration_ms": 1846,
+          "exit_code": 1
+        }
+      ],
+      "errors": [
+        {
+          "tool": "vale",
+          "type": "lint",
+          "file": "**/*.md",
+          "rule": "vale",
+          "line": null,
+          "step_index": 8,
+          "message": "vale.....................................................................Failed"
+        }
+      ],
+      "error_count": 1,
+      "fingerprints": [
+        {
+          "fingerprint": "700e31bacb37",
+          "key": "lint|**/*.md|vale",
+          "type": "lint",
+          "file": "**/*.md",
+          "rule": "vale",
+          "count": 1,
+          "historical_count_before": 0,
+          "historical_count_total": 1,
+          "docs_rule_candidate": false
+        }
+      ],
+      "root_cause": {
+        "tool": "vale",
+        "type": "lint",
+        "file": "**/*.md",
+        "rule": "vale",
+        "line": null,
+        "step_index": 8,
+        "message": "vale.....................................................................Failed"
+      },
+      "evidence_refs": [
+        "logs/verify/raw/20260226T092611Z-fast-83c0c0ae/01_Validate_workflow_alignment.log",
+        "logs/verify/raw/20260226T092611Z-fast-83c0c0ae/02_Validate_traceability_registry.log",
+        "logs/verify/raw/20260226T092611Z-fast-83c0c0ae/03_Validate_NEXT_SESSION_control_JSON-first.log",
+        "logs/verify/raw/20260226T092611Z-fast-83c0c0ae/04_Enforce_NEXT_SESSION_flow.log",
+        "logs/verify/raw/20260226T092611Z-fast-83c0c0ae/05_Control_docs_stale-check.log",
+        "logs/verify/raw/20260226T092611Z-fast-83c0c0ae/06_Markdown_lint_pre-commit_blocking_scope.log",
+        "logs/verify/raw/20260226T092611Z-fast-83c0c0ae/07_Markdown_lint_backlog_report_non-blocking.log",
+        "logs/verify/raw/20260226T092611Z-fast-83c0c0ae/08_Vale_prose_lint_pre-commit.log"
+      ]
+    },
+    {
+      "run_id": "vr-403baa3d774b4759af997a4b3a13a4b8",
+      "created_at_utc": "2026-02-25T20:31:35.662Z",
+      "created_at_epoch_ms": 1772047895662,
+      "task_id": "verify-fast-20260225T203130Z",
+      "commit_sha": "2ef8b818874d0e2d2ce47d9a2ecaacb4dba53d4f",
+      "stage": "fast",
+      "scope": "repo",
+      "status": "FAIL",
+      "steps": [
+        {
+          "name": "Validate workflow alignment",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File c:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_workflow_alignment.ps1",
+          "status": "PASS",
+          "duration_ms": 445,
+          "exit_code": 0
+        },
+        {
+          "name": "Validate NEXT_SESSION structure",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File c:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\validate_next_session.ps1 -NextSessionPath docs/core/NEXT_SESSION.md",
+          "status": "PASS",
+          "duration_ms": 459,
+          "exit_code": 0
+        },
+        {
+          "name": "Enforce NEXT_SESSION flow",
+          "tool": "pwsh",
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File c:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\scripts\\enforce_next_session_flow.ps1",
+          "status": "PASS",
+          "duration_ms": 1222,
+          "exit_code": 0
+        },
+        {
+          "name": "Markdown lint (pre-commit)",
+          "tool": "markdownlint-cli2",
+          "command": "c:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\pre-commit.exe run markdownlint-cli2 --all-files",
+          "status": "FAIL",
+          "duration_ms": 1613,
+          "exit_code": 1
+        }
+      ],
+      "errors": [
+        {
+          "tool": "markdownlint-cli2",
+          "type": "lint",
+          "file": "**/*.md",
+          "rule": "markdownlint-cli2",
+          "line": null,
+          "step_index": 4,
+          "message": "markdownlint-cli2........................................................Failed"
+        }
+      ],
+      "error_count": 1,
+      "fingerprints": [
+        {
+          "fingerprint": "7c09182b1b06",
+          "key": "lint|**/*.md|markdownlint-cli2",
+          "type": "lint",
+          "file": "**/*.md",
+          "rule": "markdownlint-cli2",
+          "count": 1,
+          "historical_count_before": 0,
+          "historical_count_total": 1,
+          "docs_rule_candidate": false
+        }
+      ],
+      "root_cause": {
+        "tool": "markdownlint-cli2",
+        "type": "lint",
+        "file": "**/*.md",
+        "rule": "markdownlint-cli2",
+        "line": null,
+        "step_index": 4,
+        "message": "markdownlint-cli2........................................................Failed"
+      },
+      "evidence_refs": [
+        "logs/verify/raw/20260225T203130Z-fast-364df13f/01_Validate_workflow_alignment.log",
+        "logs/verify/raw/20260225T203130Z-fast-364df13f/02_Validate_NEXT_SESSION_structure.log",
+        "logs/verify/raw/20260225T203130Z-fast-364df13f/04_Markdown_lint_pre-commit.log"
+      ]
+    }
+  ]
+}

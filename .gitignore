@@ -2,6 +2,9 @@
 .venv/
 sandbox/portable_bench/venv-system/
 sandbox/portable_bench/python-embed/
+
+# Python packages (external documentation)
+docs/spec-kit/
 sandbox/portable_bench/ffmpeg/
 sandbox/portable_bench/wheels/
 sandbox/portable_bench/*.wav
@@ -19,3 +22,12 @@ node_modules/
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 target/
+
+# Graphviz portable (local only)
+tools/graphviz/
+
+# Workflow Guard logs
+logs/execution-log.json
+
+# Graphviz intermediate files
+docs/workflow-diagram.dot

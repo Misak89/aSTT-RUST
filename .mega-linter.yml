@@ -6,19 +6,33 @@ DISABLE:
   - DEVSKIM
   - SECRETLINT
 
-# Enable only necessary linters
+# Enable linters
 ENABLE:
+  # Markdown
   - MARKDOWN_MARKDOWN_LINK_CHECK
   - MARKDOWN_MARKDOWNLINT
+  # YAML
   - YAML_YAMLLINT
   - YAML_PRETTIER
+  # Spelling
   - SPELL_CSPELL
   - SPELL_LYCHEE
+  # Copy/paste detection
   - COPYPASTE_JSCPD
+  # Security
   - REPOSITORY_CHECKOV
   - REPOSITORY_GRYPE
   - REPOSITORY_TRUFFLEHOG
   - REPOSITORY_GITLEAKS
+  # JavaScript/TypeScript (Sprint 11)
+  - JAVASCRIPT_ES
+  - TYPESCRIPT_ES
+  - JAVASCRIPT_PRETTIER
+  # Rust (Sprint 11)
+  - RUST_RUSTFMT
+  # Python (Sprint 11)
+  - PYTHON_PYLINT
+  - PYTHON_BLACK
 
 # File extensions to lint
 FILE_EXTENSIONS:

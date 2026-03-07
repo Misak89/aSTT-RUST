@@ -1,0 +1,26 @@
+
+========================================
+  NEXT_SESSION Validator v2.0
+========================================
+
+PASS: Metadata (Cesta)
+PASS: Metadata (Verze)
+PASS: Metadata (Vytvoreno)
+PASS: Metadata (Posledni zmena)
+PASS: Sekce Stav realizace
+PASS: Stav - Neprovedeno
+PASS: Stav - Rozpracovane
+PASS: Stav - Provedeno
+PASS: Stav - Poznamka
+PASS: Sekce Kontekst/Cil
+PASS: Sekce Plan/Dalsi kroky
+PASS: Sekce Dalsi kroky
+
+========================================
+  Summary
+========================================
+  Checks passed: 12 / 12
+  Errors: 0
+========================================
+
+--- NEXT SESSION VALIDATION PASSED ---

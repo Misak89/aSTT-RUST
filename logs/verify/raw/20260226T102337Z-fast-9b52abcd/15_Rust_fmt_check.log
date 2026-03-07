@@ -1,0 +1,449 @@
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\src\lib.rs:4:
+ pub mod rpc;
+ pub mod sidecar;
+ 
+[32m+use sidecar::SidecarManager;
+[0m use std::sync::Arc;
+ use tokio::sync::Mutex;
+[31m-use sidecar::SidecarManager;
+[0m 
+ /// Global sidecar manager state
+ pub struct AppState {
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\src\lib.rs:25:
+     config: serde_json::Value,
+ ) -> Result<serde_json::Value, String> {
+     let mut sidecar = state.sidecar.lock().await;
+[31m-    
+[0m[32m+
+[0m     // Spawn if not already spawned
+     sidecar.spawn(&app).await?;
+[31m-    
+[0m[32m+
+[0m     // Initialize with config
+     let response = sidecar.init(config).await?;
+[31m-    
+[0m[32m+
+[0m     Ok(serde_json::to_value(response).map_err(|e| e.to_string())?)
+ }
+ 
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\src\lib.rs:38:
+ #[tauri::command]
+[31m-async fn start_recording(
+[0m[31m-    state: tauri::State<'_, AppState>,
+[0m[31m-) -> Result<serde_json::Value, String> {
+[0m[32m+async fn start_recording(state: tauri::State<'_, AppState>) -> Result<serde_json::Value, String> {
+[0m     let mut sidecar = state.sidecar.lock().await;
+     let response = sidecar.start_recording().await?;
+     Ok(serde_json::to_value(response).map_err(|e| e.to_string())?)
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\src\lib.rs:45:
+ }
+ 
+ #[tauri::command]
+[31m-async fn stop_recording(
+[0m[31m-    state: tauri::State<'_, AppState>,
+[0m[31m-) -> Result<serde_json::Value, String> {
+[0m[32m+async fn stop_recording(state: tauri::State<'_, AppState>) -> Result<serde_json::Value, String> {
+[0m     let mut sidecar = state.sidecar.lock().await;
+     let response = sidecar.stop_recording().await?;
+     Ok(serde_json::to_value(response).map_err(|e| e.to_string())?)
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\src\rpc.rs:1:
+ //! JSON-RPC Contract Module
+[31m-//! 
+[0m[32m+//!
+[0m //! This module implements the JSON-RPC 2.0 specification for communication
+ //! between the Rust backend and Python sidecar (WhisperX).
+ //!
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\src\rpc.rs:56:
+     pub fn new(method: RpcMethod, params: Value) -> Self {
+         use std::sync::atomic::{AtomicU32, Ordering};
+         static ID: AtomicU32 = AtomicU32::new(1);
+[31m-        
+[0m[32m+
+[0m         Self {
+             version: JSONRPC_VERSION.to_string(),
+             method,
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\src\rpc.rs:84:
+             data: None,
+         }
+     }
+[31m-    
+[0m[32m+
+[0m     /// Invalid Request (-32600)
+     pub fn invalid_request(msg: &str) -> Self {
+         Self::new(-32600, msg)
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\src\rpc.rs:91:
+     }
+[31m-    
+[0m[32m+
+[0m     /// Method not found (-32601)
+     pub fn method_not_found(method: &str) -> Self {
+         Self::new(-32601, &format!("Method not found: {}", method))
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\src\rpc.rs:96:
+     }
+[31m-    
+[0m[32m+
+[0m     /// Internal error (-32603)
+     pub fn internal_error(msg: &str) -> Self {
+         Self::new(-32603, msg)
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\src\rpc.rs:124:
+             id,
+         }
+     }
+[31m-    
+[0m[32m+
+[0m     /// Create an error response
+     pub fn error(error: RpcError, id: u32) -> Self {
+         Self {
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\src\rpc.rs:137:
+ }
+ 
+ /// Parse a response from Python sidecar, filtering non-JSON output
+[31m-/// 
+[0m[32m+///
+[0m /// Python might output logs to stdout that are not JSON.
+ /// These should be ignored by the RPC parser (robustness requirement).
+ pub fn parse_response(output: &str) -> Option<RpcResponse> {
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\src\rpc.rs:148:
+ #[cfg(test)]
+ mod tests {
+     use super::*;
+[31m-    
+[0m[32m+
+[0m     #[test]
+     fn test_request_serialization() {
+         let request = RpcRequest::new(
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\src\rpc.rs:155:
+[31m-            RpcMethod::Init, 
+[0m[31m-            serde_json::json!({"model": "base", "device": "cpu"})
+[0m[32m+            RpcMethod::Init,
+[0m[32m+            serde_json::json!({"model": "base", "device": "cpu"}),
+[0m         );
+[31m-        
+[0m[32m+
+[0m         let json = serde_json::to_string(&request).expect("Failed to serialize");
+[31m-        
+[0m[32m+
+[0m         // Verify JSON-RPC 2.0 format
+         assert!(json.contains(r#""jsonrpc":"2.0""#));
+         assert!(json.contains(r#""method":"init""#));
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\src\rpc.rs:164:
+     }
+[31m-    
+[0m[32m+
+[0m     #[test]
+     fn test_response_deserialization() {
+         let json = r#"{"jsonrpc":"2.0","result":{"status":"ready"},"id":1}"#;
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\src\rpc.rs:169:
+[31m-        
+[0m[32m+
+[0m         let response: RpcResponse = serde_json::from_str(json).expect("Failed to deserialize");
+[31m-        
+[0m[32m+
+[0m         assert!(response.result.is_some());
+         assert!(response.error.is_none());
+         assert_eq!(response.id, 1);
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\src\rpc.rs:175:
+     }
+[31m-    
+[0m[32m+
+[0m     #[test]
+     fn test_error_response() {
+[31m-        let json = r#"{"jsonrpc":"2.0","error":{"code":-32600,"message":"Invalid Request"},"id":1}"#;
+[0m[31m-        
+[0m[32m+        let json =
+[0m[32m+            r#"{"jsonrpc":"2.0","error":{"code":-32600,"message":"Invalid Request"},"id":1}"#;
+[0m[32m+
+[0m         let response: RpcResponse = serde_json::from_str(json).expect("Failed to deserialize");
+[31m-        
+[0m[32m+
+[0m         assert!(response.result.is_none());
+         assert!(response.error.is_some());
+         assert_eq!(response.error.unwrap().code, -32600);
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\src\rpc.rs:186:
+     }
+[31m-    
+[0m[32m+
+[0m     #[test]
+     fn test_non_json_filtering() {
+         let non_json = "DEBUG: Loading whisper model...";
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\src\rpc.rs:191:
+         let result = parse_response(non_json);
+[31m-        
+[0m[32m+
+[0m         // Should return None for non-JSON input (filtering)
+         assert!(result.is_none());
+     }
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\src\rpc.rs:196:
+[31m-    
+[0m[32m+
+[0m     #[test]
+     fn test_diarization_response() {
+         let json = r#"{
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\src\rpc.rs:206:
+             },
+             "id": 1
+         }"#;
+[31m-        
+[0m[32m+
+[0m         let response: RpcResponse = serde_json::from_str(json).expect("Failed to deserialize");
+[31m-        
+[0m[32m+
+[0m         let result = response.result.unwrap();
+         let segments = result.get("segments").unwrap().as_array().unwrap();
+[31m-        
+[0m[32m+
+[0m         assert_eq!(segments.len(), 2);
+     }
+ }
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\src\sidecar.rs:1:
+ //! Sidecar Manager Module
+[31m-//! 
+[0m[32m+//!
+[0m //! Manages the Python sidecar process lifecycle for WhisperX transcription.
+[31m-//! 
+[0m[32m+//!
+[0m //! Features:
+ //! - Spawn sidecar process on app startup
+ //! - JSON-RPC communication via stdin/stdout
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\src\sidecar.rs:8:
+ //! - Graceful shutdown on app exit
+ 
+[32m+use serde_json::Value;
+[0m use std::sync::Arc;
+ use tauri::AppHandle;
+[31m-use tauri_plugin_shell::ShellExt;
+[0m use tauri_plugin_shell::process::CommandEvent;
+[32m+use tauri_plugin_shell::ShellExt;
+[0m use tokio::sync::Mutex;
+[31m-use serde_json::Value;
+[0m 
+[31m-use crate::rpc::{RpcRequest, RpcResponse, RpcMethod};
+[0m[32m+use crate::rpc::{RpcMethod, RpcRequest, RpcResponse};
+[0m 
+ /// Sidecar state wrapper
+ pub struct SidecarManager {
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\src\sidecar.rs:67:
+                         if let Ok(response) = serde_json::from_str::<RpcResponse>(&line) {
+                             // Find and complete pending request
+                             let mut pending_lock = pending.lock().await;
+[31m-                            if let Some(idx) = pending_lock.iter().position(|(id, _)| *id == response.id) {
+[0m[32m+                            if let Some(idx) =
+[0m[32m+                                pending_lock.iter().position(|(id, _)| *id == response.id)
+[0m[32m+                            {
+[0m                                 let (_, tx) = pending_lock.remove(idx);
+                                 let _ = tx.send(response);
+                             }
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\src\sidecar.rs:107:
+         let request_json = serde_json::to_string(&request)
+             .map_err(|e| format!("Failed to serialize request: {}", e))?;
+ 
+[31m-        child.write(format!("{}\n", request_json).as_bytes())
+[0m[32m+        child
+[0m[32m+            .write(format!("{}\n", request_json).as_bytes())
+[0m             .map_err(|e| format!("Failed to write to sidecar stdin: {}", e))?;
+ 
+         // Wait for response with timeout
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\src\sidecar.rs:114:
+[31m-        tokio::time::timeout(
+[0m[31m-            std::time::Duration::from_secs(30),
+[0m[31m-            rx
+[0m[31m-        )
+[0m[31m-        .await
+[0m[31m-        .map_err(|_| "Request timeout".to_string())?
+[0m[31m-        .map_err(|_| "Response channel closed".to_string())
+[0m[32m+        tokio::time::timeout(std::time::Duration::from_secs(30), rx)
+[0m[32m+            .await
+[0m[32m+            .map_err(|_| "Request timeout".to_string())?
+[0m[32m+            .map_err(|_| "Response channel closed".to_string())
+[0m     }
+ 
+     /// Initialize the sidecar with configuration
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\src\sidecar.rs:142:
+     pub async fn transcribe(&mut self, audio_path: &str) -> Result<RpcResponse, String> {
+         let request = RpcRequest::new(
+             RpcMethod::Transcribe,
+[31m-            serde_json::json!({ "audio_path": audio_path })
+[0m[32m+            serde_json::json!({ "audio_path": audio_path }),
+[0m         );
+         self.send_request(request).await
+     }
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\src\sidecar.rs:150:
+     /// Shutdown the sidecar gracefully
+     pub fn shutdown(&mut self) -> Result<(), String> {
+         if let Some(child) = self.child.take() {
+[31m-            child.kill().map_err(|e| format!("Failed to kill sidecar: {}", e))?;
+[0m[32m+            child
+[0m[32m+                .kill()
+[0m[32m+                .map_err(|e| format!("Failed to kill sidecar: {}", e))?;
+[0m         }
+         self.receiver = None;
+         Ok(())
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\src\sidecar.rs:165:
+ 
+ // Re-export for use in lib.rs
+ pub use tauri_plugin_shell::ShellExt as SidecarShellExt;
+[32m+
+[0mDiff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\tests\rpc_contract_test.rs:1:
+ //! JSON-RPC Contract Tests
+[31m-//! 
+[0m[32m+//!
+[0m //! These tests verify the contract between Rust backend and Python sidecar.
+ //! According to Spec-Kit TDD: These tests MUST FAIL until implementation is complete.
+ //!
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\tests\rpc_contract_test.rs:8:
+ //! - Response: {"jsonrpc": "2.0", "result": {...}, "id": 1}
+ //! - Error: {"jsonrpc": "2.0", "error": {"code": -32600, "message": "..."}, "id": 1}
+ 
+[31m-use app_temp_lib::rpc::{RpcRequest, RpcResponse, RpcMethod};
+[0m[32m+use app_temp_lib::rpc::{RpcMethod, RpcRequest, RpcResponse};
+[0m 
+ /// FR-04.1: Request serialization must produce valid JSON-RPC 2.0
+ #[test]
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\tests\rpc_contract_test.rs:15:
+ fn test_rpc_request_serialization() {
+[31m-    let request = RpcRequest::new(RpcMethod::Init, serde_json::json!({
+[0m[31m-        "model": "base",
+[0m[31m-        "device": "cpu"
+[0m[31m-    }));
+[0m[31m-    
+[0m[32m+    let request = RpcRequest::new(
+[0m[32m+        RpcMethod::Init,
+[0m[32m+        serde_json::json!({
+[0m[32m+            "model": "base",
+[0m[32m+            "device": "cpu"
+[0m[32m+        }),
+[0m[32m+    );
+[0m[32m+
+[0m     let json = serde_json::to_string(&request).expect("Failed to serialize");
+[31m-    
+[0m[32m+
+[0m     // Verify JSON-RPC 2.0 format
+     assert!(json.contains(r#""jsonrpc":"2.0""#));
+     assert!(json.contains(r#""method":"init""#));
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\tests\rpc_contract_test.rs:31:
+ #[test]
+ fn test_rpc_response_deserialization() {
+     let json = r#"{"jsonrpc":"2.0","result":{"status":"ready"},"id":1}"#;
+[31m-    
+[0m[32m+
+[0m     let response: RpcResponse = serde_json::from_str(json).expect("Failed to deserialize");
+[31m-    
+[0m[32m+
+[0m     assert!(response.result.is_some());
+     assert!(response.error.is_none());
+     assert_eq!(response.id, 1);
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\tests\rpc_contract_test.rs:43:
+ #[test]
+ fn test_rpc_error_response() {
+     let json = r#"{"jsonrpc":"2.0","error":{"code":-32600,"message":"Invalid Request"},"id":1}"#;
+[31m-    
+[0m[32m+
+[0m     let response: RpcResponse = serde_json::from_str(json).expect("Failed to deserialize");
+[31m-    
+[0m[32m+
+[0m     assert!(response.result.is_none());
+     assert!(response.error.is_some());
+     assert_eq!(response.error.unwrap().code, -32600);
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\tests\rpc_contract_test.rs:56:
+ fn test_non_json_filtering() {
+     // Python might output logs to stdout that are not JSON
+     // These should be ignored by the RPC parser
+[31m-    
+[0m[32m+
+[0m     let non_json = "DEBUG: Loading whisper model...";
+     let result = app_temp_lib::rpc::parse_response(non_json);
+[31m-    
+[0m[32m+
+[0m     // Should return None for non-JSON input (filtering)
+     assert!(result.is_none());
+ }
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\tests\rpc_contract_test.rs:68:
+ #[test]
+ fn test_init_method_request() {
+     let request = RpcRequest::new(
+[31m-        RpcMethod::Init, 
+[0m[31m-        serde_json::json!({"model": "base", "language": "en"})
+[0m[32m+        RpcMethod::Init,
+[0m[32m+        serde_json::json!({"model": "base", "language": "en"}),
+[0m     );
+[31m-    
+[0m[32m+
+[0m     assert_eq!(request.method, RpcMethod::Init);
+     assert_eq!(request.params.get("model").unwrap(), "base");
+ }
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\tests\rpc_contract_test.rs:80:
+ #[test]
+ fn test_start_recording_request() {
+     let request = RpcRequest::new(
+[31m-        RpcMethod::StartRecording, 
+[0m[31m-        serde_json::json!({"sample_rate": 16000})
+[0m[32m+        RpcMethod::StartRecording,
+[0m[32m+        serde_json::json!({"sample_rate": 16000}),
+[0m     );
+[31m-    
+[0m[32m+
+[0m     assert_eq!(request.method, RpcMethod::StartRecording);
+ }
+ 
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\tests\rpc_contract_test.rs:90:
+ /// FR-04.7: stop_recording method
+ #[test]
+ fn test_stop_recording_request() {
+[31m-    let request = RpcRequest::new(
+[0m[31m-        RpcMethod::StopRecording, 
+[0m[31m-        serde_json::json!({})
+[0m[31m-    );
+[0m[31m-    
+[0m[32m+    let request = RpcRequest::new(RpcMethod::StopRecording, serde_json::json!({}));
+[0m[32m+
+[0m     assert_eq!(request.method, RpcMethod::StopRecording);
+ }
+ 
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\tests\rpc_contract_test.rs:102:
+ #[test]
+ fn test_transcribe_request() {
+     let request = RpcRequest::new(
+[31m-        RpcMethod::Transcribe, 
+[0m[31m-        serde_json::json!({"audio_data": "base64_encoded"})
+[0m[32m+        RpcMethod::Transcribe,
+[0m[32m+        serde_json::json!({"audio_data": "base64_encoded"}),
+[0m     );
+[31m-    
+[0m[32m+
+[0m     assert_eq!(request.method, RpcMethod::Transcribe);
+ }
+ 
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\tests\rpc_contract_test.rs:112:
+ /// FR-04.9: Full round-trip (serialize -> deserialize)
+ #[test]
+ fn test_full_round_trip() {
+[31m-    let original = RpcRequest::new(
+[0m[31m-        RpcMethod::Init,
+[0m[31m-        serde_json::json!({"model": "large-v2"})
+[0m[31m-    );
+[0m[31m-    
+[0m[32m+    let original = RpcRequest::new(RpcMethod::Init, serde_json::json!({"model": "large-v2"}));
+[0m[32m+
+[0m     let json = serde_json::to_string(&original).expect("Serialize failed");
+     let parsed: RpcRequest = serde_json::from_str(&json).expect("Deserialize failed");
+[31m-    
+[0m[32m+
+[0m     assert_eq!(original.method, parsed.method);
+     assert_eq!(original.id, parsed.id);
+ }
+Diff in \\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\tests\rpc_contract_test.rs:137:
+         },
+         "id": 1
+     }"#;
+[31m-    
+[0m[32m+
+[0m     let response: RpcResponse = serde_json::from_str(json).expect("Failed to deserialize");
+[31m-    
+[0m[32m+
+[0m     let result = response.result.unwrap();
+     let segments = result.get("segments").unwrap().as_array().unwrap();
+[31m-    
+[0m[32m+
+[0m     assert_eq!(segments.len(), 2);
+     assert_eq!(segments[0].get("speaker").unwrap(), "SPEAKER_00");
+     assert_eq!(segments[1].get("speaker").unwrap(), "SPEAKER_01");

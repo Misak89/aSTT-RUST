@@ -1,0 +1,3753 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>Extension User Guide - aSTT-RUST Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#extension-user-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="aSTT-RUST Documentation" class="md-header__button md-logo" aria-label="aSTT-RUST Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            aSTT-RUST Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Extension User Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Prepnout na tmavy rezim"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Prepnout na tmavy rezim" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Prepnout na svetly rezim"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Prepnout na svetly rezim" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../core/" class="md-tabs__link">
+          
+  
+  
+  Core
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../software-inventory/" class="md-tabs__link">
+          
+  
+  
+  Audit
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../adr/" class="md-tabs__link">
+          
+  
+  
+  Internal
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="aSTT-RUST Documentation" class="md-nav__button md-logo" aria-label="aSTT-RUST Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    aSTT-RUST Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../core/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../core/ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../core/GOVERNANCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../core/DOCUMENTATION_AUDIT_PLAN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Audit Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../core/AUDIT_TRAIL_Log_dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audit Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../core/ANTIGRAVITY_TOOLS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Antigravity Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../core/ORGANIZATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Organization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../core/CONSTITUTION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Constitution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/NEXT_SESSION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Next Session
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../core/VISION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audit
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Audit
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software-inventory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Software Inventory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software-audit-method/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audit Method
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/VERIFY_STATUS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/VERIFY_RUNS_DESC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify Runs (DESC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/VERIFY_RUNS_ASC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify Runs (ASC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/VERIFY_RUNS_BY_SCOPE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify Runs By Scope
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/GITHUB_UPDATE_DEPLOY_LOG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GitHub Update+Deploy Log
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/TRACEABILITY_SUMMARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Traceability Summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/WORKFLOW_CONTROL_PLANE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Control Plane
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/workflow_control_plane.verify_evidence_path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Verify+Evidence View
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/workflow_control_plane.full.literal.interactive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Control Plane (SVG Literal Interactive)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/workflow_control_plane.full.svg" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Control Plane (SVG Full)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/workflow_control_plane.full.fit.svg" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Control Plane (SVG Fit Screen)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/workflow_control_plane.full.compact.fit.svg" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Control Plane (SVG Compact Fit)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/workflow_control_plane.full.literal.fit.svg" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Control Plane (SVG Literal Rotated)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/workflow_control_plane.verify_test_flow.svg" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Verify/Test Flow (SVG)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/workflow_control_plane.logging_evidence_claims.svg" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Logging+Evidence Claims (SVG)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/workflow_control_plane.docs_generation_stale_check.svg" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Docs Generation+Stale-Check (SVG)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/workflow_control_plane.hooks_ci_enforcement.svg" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Hooks+CI Enforcement (SVG)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Internal
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Internal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADRs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ADRs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../adr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../adr/20260219-use-log4brains-to-manage-the-adrs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use Log4brains
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../adr/20260219-use-markdown-architectural-decision-records/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Markdown ADRs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../adr/template/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Template
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spec-Kit
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Spec-Kit
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AGENTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AGENTS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CHANGELOG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CHANGELOG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SECURITY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SUPPORT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Support
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spec-driven/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spec-Driven
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docs/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docs/quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plans
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Plans
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../plans/2026-02-19-refactor-batch-c/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Refactor Batch C
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../inventory-refactor-playbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inventory Playbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table of Contents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-are-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What are Extensions?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-use-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Use Extensions?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting Started
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting Started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-your-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check Your Version
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#first-extension" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        First Extension
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#finding-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Finding Extensions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Finding Extensions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#browse-all-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Browse All Extensions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search-by-keyword" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Search by Keyword
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filter-by-tag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Filter by Tag
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filter-by-author" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Filter by Author
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#show-verified-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Show Verified Only
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-extension-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get Extension Details
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installing Extensions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing Extensions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-from-catalog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Install from Catalog
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-from-url" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Install from URL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-from-local-directory-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Install from Local Directory (Development)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installation-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation Output
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using Extensions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using Extensions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-extension-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using Extension Commands
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extension-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extension Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extension-hooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extension Hooks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#managing-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Managing Extensions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Managing Extensions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-installed-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        List Installed Extensions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Update Extensions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disable-extension-temporarily" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Disable Extension Temporarily
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#re-enable-extension" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Re-enable Extension
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remove-extension" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remove Extension
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration Files
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration Layers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-jira-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: Jira Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project-wide-extension-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project-Wide Extension Settings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Environment Variables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Environment Variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-using-a-custom-catalog-for-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: Using a custom catalog for testing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#organization-catalog-customization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Organization Catalog Customization
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Organization Catalog Customization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-the-default-catalog-is-empty" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why the Default Catalog is Empty
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-a-custom-catalog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setting Up a Custom Catalog
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting Up a Custom Catalog">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-create-your-catalog-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Create Your Catalog File
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-host-the-catalog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Host the Catalog
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-configure-your-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Configure Your Environment
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Configure Your Environment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-a-environment-variable-recommended-for-cicd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option A: Environment variable (recommended for CI/CD)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-b-per-project-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option B: Per-project configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-verify-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Verify Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#catalog-json-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Catalog JSON Schema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use Cases
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Use Cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#privateinternal-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Private/Internal Extensions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#curated-team-catalog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Curated Team Catalog
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#air-gapped-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Air-Gapped Environments
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#developmenttesting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Development/Testing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combining-with-direct-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Combining with Direct Installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#extension-not-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extension Not Found
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-not-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration Not Found
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command-not-available" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Command Not Available
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incompatible-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Incompatible Version
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mcp-tool-not-available" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MCP Tool Not Available
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permission-denied" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Permission Denied
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Best Practices
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-version-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Version Control
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-team-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Team Workflows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-local-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Local Development
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-environment-specific-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Environment-Specific Config
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-extension-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Extension Updates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-minimal-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Minimal Extensions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Documentation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FAQ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="FAQ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q-can-i-use-multiple-extensions-at-once" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Can I use multiple extensions at once?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-do-extensions-slow-down-spec-kit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Do extensions slow down spec-kit?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-can-i-create-private-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Can I create private extensions?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-how-do-i-know-if-an-extension-is-safe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: How do I know if an extension is safe?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-can-extensions-modify-spec-kit-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Can extensions modify spec-kit core?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-what-happens-if-two-extensions-have-the-same-command-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: What happens if two extensions have the same command name?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-can-i-contribute-to-existing-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Can I contribute to existing extensions?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-how-do-i-report-extension-bugs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: How do I report extension bugs?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-can-extensions-work-offline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Can extensions work offline?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-how-do-i-backup-my-extension-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: How do I backup my extension configuration?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Support
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="extension-user-guide">Extension User Guide</h1>
+<p>Complete guide for using Spec Kit extensions to enhance your workflow.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#finding-extensions">Finding Extensions</a></li>
+<li><a href="#installing-extensions">Installing Extensions</a></li>
+<li><a href="#using-extensions">Using Extensions</a></li>
+<li><a href="#managing-extensions">Managing Extensions</a></li>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+<li><a href="#best-practices">Best Practices</a></li>
+</ol>
+<hr />
+<h2 id="introduction">Introduction</h2>
+<h3 id="what-are-extensions">What are Extensions?</h3>
+<p>Extensions are modular packages that add new commands and functionality to Spec Kit without bloating the core framework. They allow you to:</p>
+<ul>
+<li><strong>Integrate</strong> with external tools (Jira, Linear, GitHub, etc.)</li>
+<li><strong>Automate</strong> repetitive tasks with hooks</li>
+<li><strong>Customize</strong> workflows for your team</li>
+<li><strong>Share</strong> solutions across projects</li>
+</ul>
+<h3 id="why-use-extensions">Why Use Extensions?</h3>
+<ul>
+<li><strong>Clean Core</strong>: Keeps spec-kit lightweight and focused</li>
+<li><strong>Optional Features</strong>: Only install what you need</li>
+<li><strong>Community Driven</strong>: Anyone can create and share extensions</li>
+<li><strong>Version Controlled</strong>: Extensions are versioned independently</li>
+</ul>
+<hr />
+<h2 id="getting-started">Getting Started</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>Spec Kit version 0.1.0 or higher</li>
+<li>A spec-kit project (directory with <code>.specify/</code> folder)</li>
+</ul>
+<h3 id="check-your-version">Check Your Version</h3>
+<div class="highlight"><pre><span></span><code>specify<span class="w"> </span>--version
+<span class="c1"># Should show 0.1.0 or higher</span>
+</code></pre></div>
+<h3 id="first-extension">First Extension</h3>
+<p>Let's install the Jira extension as an example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Search for the extension</span>
+specify<span class="w"> </span>extension<span class="w"> </span>search<span class="w"> </span>jira
+
+<span class="c1"># 2. Get detailed information</span>
+specify<span class="w"> </span>extension<span class="w"> </span>info<span class="w"> </span>jira
+
+<span class="c1"># 3. Install it</span>
+specify<span class="w"> </span>extension<span class="w"> </span>add<span class="w"> </span>jira
+
+<span class="c1"># 4. Configure it</span>
+vim<span class="w"> </span>.specify/extensions/jira/jira-config.yml
+
+<span class="c1"># 5. Use it</span>
+<span class="c1"># (Commands are now available in Claude Code)</span>
+/speckit.jira.specstoissues
+</code></pre></div>
+<hr />
+<h2 id="finding-extensions">Finding Extensions</h2>
+<h3 id="browse-all-extensions">Browse All Extensions</h3>
+<div class="highlight"><pre><span></span><code>specify<span class="w"> </span>extension<span class="w"> </span>search
+</code></pre></div>
+<p>Shows all available extensions in the catalog.</p>
+<h3 id="search-by-keyword">Search by Keyword</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Search for &quot;jira&quot;</span>
+specify<span class="w"> </span>extension<span class="w"> </span>search<span class="w"> </span>jira
+
+<span class="c1"># Search for &quot;issue tracking&quot;</span>
+specify<span class="w"> </span>extension<span class="w"> </span>search<span class="w"> </span>issue
+</code></pre></div>
+<h3 id="filter-by-tag">Filter by Tag</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Find all issue-tracking extensions</span>
+specify<span class="w"> </span>extension<span class="w"> </span>search<span class="w"> </span>--tag<span class="w"> </span>issue-tracking
+
+<span class="c1"># Find all Atlassian tools</span>
+specify<span class="w"> </span>extension<span class="w"> </span>search<span class="w"> </span>--tag<span class="w"> </span>atlassian
+</code></pre></div>
+<h3 id="filter-by-author">Filter by Author</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Extensions by Stats Perform</span>
+specify<span class="w"> </span>extension<span class="w"> </span>search<span class="w"> </span>--author<span class="w"> </span><span class="s2">&quot;Stats Perform&quot;</span>
+</code></pre></div>
+<h3 id="show-verified-only">Show Verified Only</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Only show verified extensions</span>
+specify<span class="w"> </span>extension<span class="w"> </span>search<span class="w"> </span>--verified
+</code></pre></div>
+<h3 id="get-extension-details">Get Extension Details</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Detailed information</span>
+specify<span class="w"> </span>extension<span class="w"> </span>info<span class="w"> </span>jira
+</code></pre></div>
+<p>Shows:</p>
+<ul>
+<li>Description</li>
+<li>Requirements</li>
+<li>Commands provided</li>
+<li>Hooks available</li>
+<li>Links (documentation, repository, changelog)</li>
+<li>Installation status</li>
+</ul>
+<hr />
+<h2 id="installing-extensions">Installing Extensions</h2>
+<h3 id="install-from-catalog">Install from Catalog</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># By name (from catalog)</span>
+specify<span class="w"> </span>extension<span class="w"> </span>add<span class="w"> </span>jira
+</code></pre></div>
+<p>This will:</p>
+<ol>
+<li>Download the extension from GitHub</li>
+<li>Validate the manifest</li>
+<li>Check compatibility with your spec-kit version</li>
+<li>Install to <code>.specify/extensions/jira/</code></li>
+<li>Register commands with your AI agent</li>
+<li>Create config template</li>
+</ol>
+<h3 id="install-from-url">Install from URL</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># From GitHub release</span>
+specify<span class="w"> </span>extension<span class="w"> </span>add<span class="w"> </span>--from<span class="w"> </span>https://github.com/org/spec-kit-ext/archive/refs/tags/v1.0.0.zip
+</code></pre></div>
+<h3 id="install-from-local-directory-development">Install from Local Directory (Development)</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># For testing or development</span>
+specify<span class="w"> </span>extension<span class="w"> </span>add<span class="w"> </span>--dev<span class="w"> </span>/path/to/extension
+</code></pre></div>
+<h3 id="installation-output">Installation Output</h3>
+<div class="highlight"><pre><span></span><code>✓ Extension installed successfully!
+
+Jira Integration (v1.0.0)
+  Create Jira Epics, Stories, and Issues from spec-kit artifacts
+
+Provided commands:
+  • speckit.jira.specstoissues - Create Jira hierarchy from spec and tasks
+  • speckit.jira.discover-fields - Discover Jira custom fields for configuration
+  • speckit.jira.sync-status - Sync task completion status to Jira
+
+⚠  Configuration may be required
+   Check: .specify/extensions/jira/
+</code></pre></div>
+<hr />
+<h2 id="using-extensions">Using Extensions</h2>
+<h3 id="using-extension-commands">Using Extension Commands</h3>
+<p>Extensions add commands that appear in your AI agent (Claude Code):</p>
+<div class="highlight"><pre><span></span><code># In Claude Code
+&gt; /speckit.jira.specstoissues
+
+# Or use short alias (if provided)
+&gt; /speckit.specstoissues
+</code></pre></div>
+<h3 id="extension-configuration">Extension Configuration</h3>
+<p>Most extensions require configuration:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Find the config file</span>
+ls<span class="w"> </span>.specify/extensions/jira/
+
+<span class="c1"># 2. Copy template to config</span>
+cp<span class="w"> </span>.specify/extensions/jira/jira-config.template.yml<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>.specify/extensions/jira/jira-config.yml
+
+<span class="c1"># 3. Edit configuration</span>
+vim<span class="w"> </span>.specify/extensions/jira/jira-config.yml
+
+<span class="c1"># 4. Use the extension</span>
+<span class="c1"># (Commands will now work with your config)</span>
+</code></pre></div>
+<h3 id="extension-hooks">Extension Hooks</h3>
+<p>Some extensions provide hooks that execute after core commands:</p>
+<p><strong>Example</strong>: Jira extension hooks into <code>/speckit.tasks</code></p>
+<div class="highlight"><pre><span></span><code># Run core command
+&gt; /speckit.tasks
+
+# Output includes:
+## Extension Hooks
+
+**Optional Hook**: jira
+Command: `/speckit.jira.specstoissues`
+Description: Automatically create Jira hierarchy after task generation
+
+Prompt: Create Jira issues from tasks?
+To execute: `/speckit.jira.specstoissues`
+</code></pre></div>
+<p>You can then choose to run the hook or skip it.</p>
+<hr />
+<h2 id="managing-extensions">Managing Extensions</h2>
+<h3 id="list-installed-extensions">List Installed Extensions</h3>
+<div class="highlight"><pre><span></span><code>specify<span class="w"> </span>extension<span class="w"> </span>list
+</code></pre></div>
+<p>Output:</p>
+<div class="highlight"><pre><span></span><code>Installed Extensions:
+
+  ✓ Jira Integration (v1.0.0)
+     Create Jira Epics, Stories, and Issues from spec-kit artifacts
+     Commands: 3 | Hooks: 1 | Status: Enabled
+</code></pre></div>
+<h3 id="update-extensions">Update Extensions</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check for updates (all extensions)</span>
+specify<span class="w"> </span>extension<span class="w"> </span>update
+
+<span class="c1"># Update specific extension</span>
+specify<span class="w"> </span>extension<span class="w"> </span>update<span class="w"> </span>jira
+</code></pre></div>
+<p>Output:</p>
+<div class="highlight"><pre><span></span><code>🔄 Checking for updates...
+
+Updates available:
+
+  • jira: 1.0.0 → 1.1.0
+
+Update these extensions? [y/N]:
+</code></pre></div>
+<h3 id="disable-extension-temporarily">Disable Extension Temporarily</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Disable without removing</span>
+specify<span class="w"> </span>extension<span class="w"> </span>disable<span class="w"> </span>jira
+
+✓<span class="w"> </span>Extension<span class="w"> </span><span class="s1">&#39;jira&#39;</span><span class="w"> </span>disabled
+
+Commands<span class="w"> </span>will<span class="w"> </span>no<span class="w"> </span>longer<span class="w"> </span>be<span class="w"> </span>available.<span class="w"> </span>Hooks<span class="w"> </span>will<span class="w"> </span>not<span class="w"> </span>execute.
+To<span class="w"> </span>re-enable:<span class="w"> </span>specify<span class="w"> </span>extension<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>jira
+</code></pre></div>
+<h3 id="re-enable-extension">Re-enable Extension</h3>
+<div class="highlight"><pre><span></span><code>specify<span class="w"> </span>extension<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>jira
+
+✓<span class="w"> </span>Extension<span class="w"> </span><span class="s1">&#39;jira&#39;</span><span class="w"> </span>enabled
+</code></pre></div>
+<h3 id="remove-extension">Remove Extension</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Remove extension (with confirmation)</span>
+specify<span class="w"> </span>extension<span class="w"> </span>remove<span class="w"> </span>jira
+
+<span class="c1"># Keep configuration when removing</span>
+specify<span class="w"> </span>extension<span class="w"> </span>remove<span class="w"> </span>jira<span class="w"> </span>--keep-config
+
+<span class="c1"># Force removal (no confirmation)</span>
+specify<span class="w"> </span>extension<span class="w"> </span>remove<span class="w"> </span>jira<span class="w"> </span>--force
+</code></pre></div>
+<hr />
+<h2 id="configuration">Configuration</h2>
+<h3 id="configuration-files">Configuration Files</h3>
+<p>Extensions can have multiple configuration files:</p>
+<div class="highlight"><pre><span></span><code>.specify/extensions/jira/
+├── jira-config.yml           # Main config (version controlled)
+├── jira-config.local.yml     # Local overrides (gitignored)
+└── jira-config.template.yml  # Template (reference)
+</code></pre></div>
+<h3 id="configuration-layers">Configuration Layers</h3>
+<p>Configuration is merged in this order (highest priority last):</p>
+<ol>
+<li><strong>Extension defaults</strong> (from <code>extension.yml</code>)</li>
+<li><strong>Project config</strong> (<code>jira-config.yml</code>)</li>
+<li><strong>Local overrides</strong> (<code>jira-config.local.yml</code>)</li>
+<li><strong>Environment variables</strong> (<code>SPECKIT_JIRA_*</code>)</li>
+</ol>
+<h3 id="example-jira-configuration">Example: Jira Configuration</h3>
+<p><strong>Project config</strong> (<code>.specify/extensions/jira/jira-config.yml</code>):</p>
+<div class="highlight"><pre><span></span><code><span class="nt">project</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;MSATS&quot;</span>
+
+<span class="nt">defaults</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">epic</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">labels</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;spec-driven&quot;</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<p><strong>Local override</strong> (<code>.specify/extensions/jira/jira-config.local.yml</code>):</p>
+<div class="highlight"><pre><span></span><code><span class="nt">project</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;MYTEST&quot;</span><span class="w">  </span><span class="c1"># Override for local development</span>
+</code></pre></div>
+<p><strong>Environment variable</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">SPECKIT_JIRA_PROJECT_KEY</span><span class="o">=</span><span class="s2">&quot;DEVTEST&quot;</span>
+</code></pre></div>
+<p>Final resolved config uses <code>DEVTEST</code> from environment variable.</p>
+<h3 id="project-wide-extension-settings">Project-Wide Extension Settings</h3>
+<p>File: <code>.specify/extensions.yml</code></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Extensions installed in this project</span>
+<span class="nt">installed</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jira</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">linear</span>
+
+<span class="c1"># Global settings</span>
+<span class="nt">settings</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">auto_execute_hooks</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="c1"># Hook configuration</span>
+<span class="nt">hooks</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">after_tasks</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">extension</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jira</span>
+<span class="w">      </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">speckit.jira.specstoissues</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">prompt</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Create</span><span class="nv"> </span><span class="s">Jira</span><span class="nv"> </span><span class="s">issues</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">tasks?&quot;</span>
+</code></pre></div>
+<h3 id="core-environment-variables">Core Environment Variables</h3>
+<p>In addition to extension-specific environment variables (<code>SPECKIT_{EXT_ID}_*</code>), spec-kit supports core environment variables:</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SPECKIT_CATALOG_URL</code></td>
+<td>Override the extension catalog URL</td>
+<td>GitHub-hosted catalog</td>
+</tr>
+<tr>
+<td><code>GH_TOKEN</code> / <code>GITHUB_TOKEN</code></td>
+<td>GitHub API token for downloads</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-using-a-custom-catalog-for-testing">Example: Using a custom catalog for testing</h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Point to a local or alternative catalog</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">SPECKIT_CATALOG_URL</span><span class="o">=</span><span class="s2">&quot;http://localhost:8000/catalog.json&quot;</span>
+
+<span class="c1"># Or use a staging catalog</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">SPECKIT_CATALOG_URL</span><span class="o">=</span><span class="s2">&quot;https://example.com/staging/catalog.json&quot;</span>
+</code></pre></div>
+<hr />
+<h2 id="organization-catalog-customization">Organization Catalog Customization</h2>
+<h3 id="why-the-default-catalog-is-empty">Why the Default Catalog is Empty</h3>
+<p>The default spec-kit catalog ships empty by design. This allows organizations to:</p>
+<ul>
+<li><strong>Control available extensions</strong> - Curate which extensions your team can install</li>
+<li><strong>Host private extensions</strong> - Internal tools that shouldn't be public</li>
+<li><strong>Customize for compliance</strong> - Meet security/audit requirements</li>
+<li><strong>Support air-gapped environments</strong> - Work without internet access</li>
+</ul>
+<h3 id="setting-up-a-custom-catalog">Setting Up a Custom Catalog</h3>
+<h4 id="1-create-your-catalog-file">1. Create Your Catalog File</h4>
+<p>Create a <code>catalog.json</code> file with your extensions:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;schema_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;updated_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-02-03T00:00:00Z&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;catalog_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://your-org.com/spec-kit/catalog.json&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;extensions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;jira&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Jira Integration&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jira&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Create Jira issues from spec-kit artifacts&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;author&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Your Organization&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.1.0&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;download_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/your-org/spec-kit-jira/archive/refs/tags/v2.1.0.zip&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;repository&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/your-org/spec-kit-jira&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;license&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MIT&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;requires&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;speckit_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&gt;=0.1.0&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;atlassian-mcp-server&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;provides&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;commands&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;hooks&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;jira&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;atlassian&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;issue-tracking&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;verified&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;internal-tool&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Internal Tool Integration&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;internal-tool&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Connect to internal company systems&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;author&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Your Organization&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;download_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://internal.your-org.com/extensions/internal-tool-1.0.0.zip&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;repository&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.internal.your-org.com/spec-kit-internal&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;license&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Proprietary&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;requires&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;speckit_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&gt;=0.1.0&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;provides&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;commands&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;internal&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;proprietary&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;verified&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="2-host-the-catalog">2. Host the Catalog</h4>
+<p>Options for hosting your catalog:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>URL Example</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GitHub Pages</td>
+<td><code>https://your-org.github.io/spec-kit-catalog/catalog.json</code></td>
+<td>Public or org-visible</td>
+</tr>
+<tr>
+<td>Internal web server</td>
+<td><code>https://internal.company.com/spec-kit/catalog.json</code></td>
+<td>Corporate network</td>
+</tr>
+<tr>
+<td>S3/Cloud storage</td>
+<td><code>https://s3.amazonaws.com/your-bucket/catalog.json</code></td>
+<td>Cloud-hosted teams</td>
+</tr>
+<tr>
+<td>Local file server</td>
+<td><code>http://localhost:8000/catalog.json</code></td>
+<td>Development/testing</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Security requirement</strong>: URLs must use HTTPS (except <code>localhost</code> for testing).</p>
+<h4 id="3-configure-your-environment">3. Configure Your Environment</h4>
+<h5 id="option-a-environment-variable-recommended-for-cicd">Option A: Environment variable (recommended for CI/CD)</h5>
+<div class="highlight"><pre><span></span><code><span class="c1"># In ~/.bashrc, ~/.zshrc, or CI pipeline</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">SPECKIT_CATALOG_URL</span><span class="o">=</span><span class="s2">&quot;https://your-org.com/spec-kit/catalog.json&quot;</span>
+</code></pre></div>
+<h5 id="option-b-per-project-configuration">Option B: Per-project configuration</h5>
+<p>Create <code>.env</code> or set in your shell before running spec-kit commands:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">SPECKIT_CATALOG_URL</span><span class="o">=</span><span class="s2">&quot;https://your-org.com/spec-kit/catalog.json&quot;</span><span class="w"> </span>specify<span class="w"> </span>extension<span class="w"> </span>search
+</code></pre></div>
+<h4 id="4-verify-configuration">4. Verify Configuration</h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Search should now show your catalog&#39;s extensions</span>
+specify<span class="w"> </span>extension<span class="w"> </span>search
+
+<span class="c1"># Install from your catalog</span>
+specify<span class="w"> </span>extension<span class="w"> </span>add<span class="w"> </span>jira
+</code></pre></div>
+<h3 id="catalog-json-schema">Catalog JSON Schema</h3>
+<p>Required fields for each extension entry:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Human-readable name</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Unique identifier (lowercase, hyphens)</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Semantic version (X.Y.Z)</td>
+</tr>
+<tr>
+<td><code>download_url</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>URL to ZIP archive</td>
+</tr>
+<tr>
+<td><code>repository</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Source code URL</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>string</td>
+<td>No</td>
+<td>Brief description</td>
+</tr>
+<tr>
+<td><code>author</code></td>
+<td>string</td>
+<td>No</td>
+<td>Author/organization</td>
+</tr>
+<tr>
+<td><code>license</code></td>
+<td>string</td>
+<td>No</td>
+<td>SPDX license identifier</td>
+</tr>
+<tr>
+<td><code>requires.speckit_version</code></td>
+<td>string</td>
+<td>No</td>
+<td>Version constraint</td>
+</tr>
+<tr>
+<td><code>requires.tools</code></td>
+<td>array</td>
+<td>No</td>
+<td>Required external tools</td>
+</tr>
+<tr>
+<td><code>provides.commands</code></td>
+<td>number</td>
+<td>No</td>
+<td>Number of commands</td>
+</tr>
+<tr>
+<td><code>provides.hooks</code></td>
+<td>number</td>
+<td>No</td>
+<td>Number of hooks</td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td>array</td>
+<td>No</td>
+<td>Search tags</td>
+</tr>
+<tr>
+<td><code>verified</code></td>
+<td>boolean</td>
+<td>No</td>
+<td>Verification status</td>
+</tr>
+</tbody>
+</table>
+<h3 id="use-cases">Use Cases</h3>
+<h4 id="privateinternal-extensions">Private/Internal Extensions</h4>
+<p>Host proprietary extensions that integrate with internal systems:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;internal-auth&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Internal SSO Integration&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;download_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://artifactory.company.com/spec-kit/internal-auth-1.0.0.zip&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;verified&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="curated-team-catalog">Curated Team Catalog</h4>
+<p>Limit which extensions your team can install:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;extensions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;jira&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;github&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Only <code>jira</code> and <code>github</code> will appear in <code>specify extension search</code>.</p>
+<h4 id="air-gapped-environments">Air-Gapped Environments</h4>
+<p>For networks without internet access:</p>
+<ol>
+<li>Download extension ZIPs to internal file server</li>
+<li>Create catalog pointing to internal URLs</li>
+<li>Host catalog on internal web server</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;jira&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;download_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://files.internal/spec-kit/jira-2.1.0.zip&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="developmenttesting">Development/Testing</h4>
+<p>Test new extensions before publishing:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Start local server</span>
+python<span class="w"> </span>-m<span class="w"> </span>http.server<span class="w"> </span><span class="m">8000</span><span class="w"> </span>--directory<span class="w"> </span>./my-catalog/
+
+<span class="c1"># Point spec-kit to local catalog</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">SPECKIT_CATALOG_URL</span><span class="o">=</span><span class="s2">&quot;http://localhost:8000/catalog.json&quot;</span>
+
+<span class="c1"># Test installation</span>
+specify<span class="w"> </span>extension<span class="w"> </span>add<span class="w"> </span>my-new-extension
+</code></pre></div>
+<h3 id="combining-with-direct-installation">Combining with Direct Installation</h3>
+<p>You can still install extensions not in your catalog using <code>--from</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># From catalog</span>
+specify<span class="w"> </span>extension<span class="w"> </span>add<span class="w"> </span>jira
+
+<span class="c1"># Direct URL (bypasses catalog)</span>
+specify<span class="w"> </span>extension<span class="w"> </span>add<span class="w"> </span>--from<span class="w"> </span>https://github.com/someone/spec-kit-ext/archive/v1.0.0.zip
+
+<span class="c1"># Local development</span>
+specify<span class="w"> </span>extension<span class="w"> </span>add<span class="w"> </span>--dev<span class="w"> </span>/path/to/extension
+</code></pre></div>
+<p><strong>Note</strong>: Direct URL installation shows a security warning since the extension isn't from your configured catalog.</p>
+<hr />
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="extension-not-found">Extension Not Found</h3>
+<p><strong>Error</strong>: `Extension 'jira' not found in catalog</p>
+<p><strong>Solutions</strong>:</p>
+<ol>
+<li>Check spelling: <code>specify extension search jira</code></li>
+<li>Refresh catalog: <code>specify extension search --help</code></li>
+<li>Check internet connection</li>
+<li>Extension may not be published yet</li>
+</ol>
+<h3 id="configuration-not-found">Configuration Not Found</h3>
+<p><strong>Error</strong>: <code>Jira configuration not found</code></p>
+<p><strong>Solutions</strong>:</p>
+<ol>
+<li>Check if extension is installed: <code>specify extension list</code></li>
+<li>Create config from template:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>cp<span class="w"> </span>.specify/extensions/jira/jira-config.template.yml<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>.specify/extensions/jira/jira-config.yml
+</code></pre></div>
+<ol>
+<li>Reinstall extension: <code>specify extension remove jira &amp;&amp; specify extension add jira</code></li>
+</ol>
+<h3 id="command-not-available">Command Not Available</h3>
+<p><strong>Issue</strong>: Extension command not appearing in AI agent</p>
+<p><strong>Solutions</strong>:</p>
+<ol>
+<li>Check extension is enabled: <code>specify extension list</code></li>
+<li>Restart AI agent (Claude Code)</li>
+<li>Check command file exists:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>.claude/commands/speckit.jira.*.md
+</code></pre></div>
+<ol>
+<li>Reinstall extension</li>
+</ol>
+<h3 id="incompatible-version">Incompatible Version</h3>
+<p><strong>Error</strong>: <code>Extension requires spec-kit &gt;=0.2.0, but you have 0.1.0</code></p>
+<p><strong>Solutions</strong>:</p>
+<ol>
+<li>Upgrade spec-kit:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>uv<span class="w"> </span>tool<span class="w"> </span>upgrade<span class="w"> </span>specify-cli
+</code></pre></div>
+<ol>
+<li>Install older version of extension:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>specify<span class="w"> </span>extension<span class="w"> </span>add<span class="w"> </span>--from<span class="w"> </span>https://github.com/org/ext/archive/v1.0.0.zip
+</code></pre></div>
+<h3 id="mcp-tool-not-available">MCP Tool Not Available</h3>
+<p><strong>Error</strong>: <code>Tool 'jira-mcp-server/epic_create' not found</code></p>
+<p><strong>Solutions</strong>:</p>
+<ol>
+<li>Check MCP server is installed</li>
+<li>Check AI agent MCP configuration</li>
+<li>Restart AI agent</li>
+<li>Check extension requirements: <code>specify extension info jira</code></li>
+</ol>
+<h3 id="permission-denied">Permission Denied</h3>
+<p><strong>Error</strong>: <code>Permission denied</code> when accessing Jira</p>
+<p><strong>Solutions</strong>:</p>
+<ol>
+<li>Check Jira credentials in MCP server config</li>
+<li>Verify project permissions in Jira</li>
+<li>Test MCP server connection independently</li>
+</ol>
+<hr />
+<h2 id="best-practices">Best Practices</h2>
+<h3 id="1-version-control">1. Version Control</h3>
+<p><strong>Do commit</strong>:</p>
+<ul>
+<li><code>.specify/extensions.yml</code> (project extension config)</li>
+<li><code>.specify/extensions/*/jira-config.yml</code> (project config)</li>
+</ul>
+<p><strong>Don't commit</strong>:</p>
+<ul>
+<li><code>.specify/extensions/.cache/</code> (catalog cache)</li>
+<li><code>.specify/extensions/.backup/</code> (config backups)</li>
+<li><code>.specify/extensions/*/*.local.yml</code> (local overrides)</li>
+<li><code>.specify/extensions/.registry</code> (installation state)</li>
+</ul>
+<p>Add to <code>.gitignore</code>:</p>
+<div class="highlight"><pre><span></span><code>.specify/extensions/.cache/
+.specify/extensions/.backup/
+.specify/extensions/*/*.local.yml
+.specify/extensions/.registry
+</code></pre></div>
+<h3 id="2-team-workflows">2. Team Workflows</h3>
+<p><strong>For teams</strong>:</p>
+<ol>
+<li>Agree on which extensions to use</li>
+<li>Commit extension configuration</li>
+<li>Document extension usage in README</li>
+<li>Keep extensions updated together</li>
+</ol>
+<p><strong>Example README section</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="gu">## Extensions</span>
+
+This project uses:
+<span class="k">-</span><span class="w"> </span><span class="gs">**jira**</span> (v1.0.0) - Jira integration
+<span class="w">  </span><span class="k">-</span><span class="w"> </span>Config: <span class="sb">`.specify/extensions/jira/jira-config.yml`</span>
+<span class="w">  </span><span class="k">-</span><span class="w"> </span>Requires: jira-mcp-server
+
+To install: <span class="sb">`specify extension add jira`</span>
+</code></pre></div>
+<h3 id="3-local-development">3. Local Development</h3>
+<p>Use local config for development:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># .specify/extensions/jira/jira-config.local.yml</span>
+<span class="nt">project</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;DEVTEST&quot;</span><span class="w">  </span><span class="c1"># Your test project</span>
+
+<span class="nt">defaults</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">task</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">custom_fields</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">customfield_10002</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w">  </span><span class="c1"># Lower story points for testing</span>
+</code></pre></div>
+<h3 id="4-environment-specific-config">4. Environment-Specific Config</h3>
+<p>Use environment variables for CI/CD:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># .github/workflows/deploy.yml</span>
+env:
+<span class="w">  </span>SPECKIT_JIRA_PROJECT_KEY:<span class="w"> </span><span class="si">${</span><span class="p">{ secrets.JIRA_PROJECT </span><span class="si">}</span><span class="o">}</span>
+
+-<span class="w"> </span>name:<span class="w"> </span>Create<span class="w"> </span>Jira<span class="w"> </span>Issues
+<span class="w">  </span>run:<span class="w"> </span>specify<span class="w"> </span>extension<span class="w"> </span>add<span class="w"> </span>jira<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>...
+</code></pre></div>
+<h3 id="5-extension-updates">5. Extension Updates</h3>
+<p><strong>Check for updates regularly</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Weekly or before major releases</span>
+specify<span class="w"> </span>extension<span class="w"> </span>update
+</code></pre></div>
+<p><strong>Pin versions for stability</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># .specify/extensions.yml</span>
+<span class="nt">installed</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jira</span>
+<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.0.0&quot;</span><span class="w">  </span><span class="c1"># Pin to specific version</span>
+</code></pre></div>
+<h3 id="6-minimal-extensions">6. Minimal Extensions</h3>
+<p>Only install extensions you actively use:</p>
+<ul>
+<li>Reduces complexity</li>
+<li>Faster command loading</li>
+<li>Less configuration</li>
+</ul>
+<h3 id="7-documentation">7. Documentation</h3>
+<p>Document extension usage in your project:</p>
+<div class="highlight"><pre><span></span><code><span class="gh"># PROJECT.md</span>
+
+<span class="gu">## Working with Jira</span>
+
+After creating tasks, sync to Jira:
+<span class="k">1.</span> Run <span class="sb">`/speckit.tasks`</span> to generate tasks
+<span class="k">2.</span> Run <span class="sb">`/speckit.jira.specstoissues`</span> to create Jira issues
+<span class="k">3.</span> Run <span class="sb">`/speckit.jira.sync-status`</span> to update status
+</code></pre></div>
+<hr />
+<h2 id="faq">FAQ</h2>
+<h3 id="q-can-i-use-multiple-extensions-at-once">Q: Can I use multiple extensions at once?</h3>
+<p><strong>A</strong>: Yes! Extensions are designed to work together. Install as many as you need.</p>
+<h3 id="q-do-extensions-slow-down-spec-kit">Q: Do extensions slow down spec-kit?</h3>
+<p><strong>A</strong>: No. Extensions are loaded on-demand and only when their commands are used.</p>
+<h3 id="q-can-i-create-private-extensions">Q: Can I create private extensions?</h3>
+<p><strong>A</strong>: Yes. Install with <code>--dev</code> or <code>--from</code> and keep private. Public catalog submission is optional.</p>
+<h3 id="q-how-do-i-know-if-an-extension-is-safe">Q: How do I know if an extension is safe?</h3>
+<p><strong>A</strong>: Look for the ✓ Verified badge. Verified extensions are reviewed by maintainers. Always review extension code before installing.</p>
+<h3 id="q-can-extensions-modify-spec-kit-core">Q: Can extensions modify spec-kit core?</h3>
+<p><strong>A</strong>: No. Extensions can only add commands and hooks. They cannot modify core functionality.</p>
+<h3 id="q-what-happens-if-two-extensions-have-the-same-command-name">Q: What happens if two extensions have the same command name?</h3>
+<p><strong>A</strong>: Extensions use namespaced commands (<code>speckit.{extension}.{command}</code>), so conflicts are very rare. The extension system will warn you if conflicts occur.</p>
+<h3 id="q-can-i-contribute-to-existing-extensions">Q: Can I contribute to existing extensions?</h3>
+<p><strong>A</strong>: Yes! Most extensions are open source. Check the repository link in <code>specify extension info {extension}</code>.</p>
+<h3 id="q-how-do-i-report-extension-bugs">Q: How do I report extension bugs?</h3>
+<p><strong>A</strong>: Go to the extension's repository (shown in <code>specify extension info</code>) and create an issue.</p>
+<h3 id="q-can-extensions-work-offline">Q: Can extensions work offline?</h3>
+<p><strong>A</strong>: Once installed, extensions work offline. However, some extensions may require internet for their functionality (e.g., Jira requires Jira API access).</p>
+<h3 id="q-how-do-i-backup-my-extension-configuration">Q: How do I backup my extension configuration?</h3>
+<p><strong>A</strong>: Extension configs are in <code>.specify/extensions/{extension}/</code>. Back up this directory or commit configs to git.</p>
+<hr />
+<h2 id="support">Support</h2>
+<ul>
+<li><strong>Extension Issues</strong>: Report to extension repository (see <code>specify extension info</code>)</li>
+<li><strong>Spec Kit Issues</strong>: <a href="https://github.com/statsperform/spec-kit/issues">https://github.com/statsperform/spec-kit/issues</a></li>
+<li><strong>Extension Catalog</strong>: <a href="https://github.com/statsperform/spec-kit/tree/main/extensions">https://github.com/statsperform/spec-kit/tree/main/extensions</a></li>
+<li><strong>Documentation</strong>: See EXTENSION-DEVELOPMENT-GUIDE.md and EXTENSION-PUBLISHING-GUIDE.md</li>
+</ul>
+<hr />
+<p><em>Last Updated: 2026-01-28</em>
+<em>Spec Kit Version: 0.1.0</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../javascripts/nav-interactive-highlight.js"></script>
+      
+    
+  </body>
+</html>

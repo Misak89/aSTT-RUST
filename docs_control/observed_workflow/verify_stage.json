@@ -1,0 +1,265 @@
+{
+  "schema_version": "1.0",
+  "manifest_type": "observed_verify_stage",
+  "source_path": "scripts/verify_stage.ps1",
+  "functions": [
+    {
+      "name": "New-StepConfig",
+      "line": 28
+    },
+    {
+      "name": "Join-CommandText",
+      "line": 54
+    },
+    {
+      "name": "Get-RelativePathOrOriginal",
+      "line": 67
+    },
+    {
+      "name": "Sanitize-FilePart",
+      "line": 86
+    },
+    {
+      "name": "ConvertTo-JsonArg",
+      "line": 92
+    },
+    {
+      "name": "Get-FirstMeaningfulLine",
+      "line": 113
+    },
+    {
+      "name": "Invoke-VerifyStep",
+      "line": 124
+    },
+    {
+      "name": "Get-FastSteps",
+      "line": 264
+    },
+    {
+      "name": "Get-FullSteps",
+      "line": 468
+    }
+  ],
+  "fast_steps": [
+    {
+      "order_index": 1,
+      "line": 275,
+      "name": "Validate workflow alignment",
+      "rule": "validate_workflow_alignment",
+      "tool": "pwsh",
+      "type": "governance",
+      "file": "scripts/validate_workflow_alignment.ps1",
+      "enabled_condition": "",
+      "skip_reason": ""
+    },
+    {
+      "order_index": 2,
+      "line": 284,
+      "name": "Validate workflow control plane model",
+      "rule": "validate_workflow_control_plane",
+      "tool": "pwsh",
+      "type": "governance",
+      "file": "docs_control/workflow_control_plane.json",
+      "enabled_condition": "",
+      "skip_reason": ""
+    },
+    {
+      "order_index": 3,
+      "line": 293,
+      "name": "Validate workflow control alignment (refresh observed)",
+      "rule": "validate_workflow_control_alignment",
+      "tool": "pwsh",
+      "type": "governance",
+      "file": "docs_control/workflow_control_plane.json",
+      "enabled_condition": "",
+      "skip_reason": ""
+    },
+    {
+      "order_index": 4,
+      "line": 302,
+      "name": "Capability audit (tools + sources)",
+      "rule": "validate_capability_audit",
+      "tool": "pwsh",
+      "type": "governance",
+      "file": "docs_control/capability_audit.json",
+      "enabled_condition": "",
+      "skip_reason": ""
+    },
+    {
+      "order_index": 5,
+      "line": 311,
+      "name": "Preflight state discovery (claim=evidence)",
+      "rule": "preflight_state_discovery",
+      "tool": "pwsh",
+      "type": "governance",
+      "file": "docs_control/task_status.json",
+      "enabled_condition": "",
+      "skip_reason": ""
+    },
+    {
+      "order_index": 6,
+      "line": 320,
+      "name": "Verify batch status claims (claim=evidence)",
+      "rule": "verify_batch_status",
+      "tool": "pwsh",
+      "type": "governance",
+      "file": "docs_control/task_status.json",
+      "enabled_condition": "",
+      "skip_reason": ""
+    },
+    {
+      "order_index": 7,
+      "line": 329,
+      "name": "Validate traceability registry",
+      "rule": "validate_traceability",
+      "tool": "pwsh",
+      "type": "governance",
+      "file": "docs_control/traceability.json",
+      "enabled_condition": "",
+      "skip_reason": ""
+    },
+    {
+      "order_index": 8,
+      "line": 338,
+      "name": "Validate NEXT_SESSION control (JSON-first)",
+      "rule": "validate_next_session",
+      "tool": "pwsh",
+      "type": "governance",
+      "file": "docs_control/next_session.json",
+      "enabled_condition": "",
+      "skip_reason": ""
+    },
+    {
+      "order_index": 9,
+      "line": 347,
+      "name": "Enforce NEXT_SESSION flow",
+      "rule": "enforce_next_session_flow",
+      "tool": "pwsh",
+      "type": "governance",
+      "file": "docs_control/next_session.json",
+      "enabled_condition": "",
+      "skip_reason": ""
+    },
+    {
+      "order_index": 10,
+      "line": 356,
+      "name": "Control docs stale-check",
+      "rule": "control_docs_stale_check",
+      "tool": "pwsh",
+      "type": "governance",
+      "file": "docs/generated/control/NEXT_SESSION.md",
+      "enabled_condition": "",
+      "skip_reason": ""
+    },
+    {
+      "order_index": 11,
+      "line": 365,
+      "name": "Workflow control diagrams stale-check",
+      "rule": "workflow_control_diagrams_stale_check",
+      "tool": "pwsh",
+      "type": "governance",
+      "file": "docs/generated/control/WORKFLOW_CONTROL_PLANE.md",
+      "enabled_condition": "",
+      "skip_reason": ""
+    },
+    {
+      "order_index": 12,
+      "line": 374,
+      "name": "Markdown lint (pre-commit, blocking scope)",
+      "rule": "markdownlint-cli2",
+      "tool": "markdownlint-cli2",
+      "type": "lint",
+      "file": "**/*.md",
+      "enabled_condition": "",
+      "skip_reason": ""
+    },
+    {
+      "order_index": 13,
+      "line": 383,
+      "name": "Markdown lint backlog report (non-blocking)",
+      "rule": "markdownlint_backlog_report",
+      "tool": "pwsh",
+      "type": "report",
+      "file": "**/*.md",
+      "enabled_condition": "",
+      "skip_reason": ""
+    },
+    {
+      "order_index": 14,
+      "line": 392,
+      "name": "Vale prose lint (critical blocking, pre-commit)",
+      "rule": "vale_critical",
+      "tool": "vale",
+      "type": "lint",
+      "file": "docs/core/GOVERNANCE.md",
+      "enabled_condition": "",
+      "skip_reason": ""
+    },
+    {
+      "order_index": 15,
+      "line": 401,
+      "name": "Vale backlog report + no-regression",
+      "rule": "vale_backlog_no_regression",
+      "tool": "vale",
+      "type": "report",
+      "file": "**/*.md",
+      "enabled_condition": "",
+      "skip_reason": ""
+    },
+    {
+      "order_index": 16,
+      "line": 410,
+      "name": "Link audit (lychee, optional)",
+      "rule": "lychee",
+      "tool": "lychee",
+      "type": "lint",
+      "file": "**/*.md",
+      "enabled_condition": "([bool]$IncludeLinkAudit.IsPresent)",
+      "skip_reason": "optional_network_sensitive"
+    },
+    {
+      "order_index": 17,
+      "line": 421,
+      "name": "MkDocs build --strict",
+      "rule": "mkdocs_strict",
+      "tool": "mkdocs",
+      "type": "build",
+      "file": "mkdocs.yml",
+      "enabled_condition": "(-not $SkipMkDocsBuild.IsPresent)",
+      "skip_reason": "disabled_by_flag"
+    },
+    {
+      "order_index": 18,
+      "line": 434,
+      "name": "Node check (svelte-check)",
+      "rule": "npm_check",
+      "tool": "npm",
+      "type": "typecheck",
+      "file": "src-ui",
+      "enabled_condition": "",
+      "skip_reason": ""
+    },
+    {
+      "order_index": 19,
+      "line": 446,
+      "name": "Rust fmt check",
+      "rule": "cargo_fmt_check",
+      "tool": "cargo",
+      "type": "format",
+      "file": "src-tauri",
+      "enabled_condition": "",
+      "skip_reason": ""
+    },
+    {
+      "order_index": 20,
+      "line": 455,
+      "name": "Rust clippy",
+      "rule": "cargo_clippy",
+      "tool": "cargo",
+      "type": "lint",
+      "file": "src-tauri",
+      "enabled_condition": "",
+      "skip_reason": ""
+    }
+  ]
+}

@@ -37,13 +37,7 @@
   },
   "plugins": {
     "shell": {
-      "sidecar": true,
-      "scope": [
-        {
-          "name": "binaries/sidecar",
-          "sidecar": true
-        }
-      ]
+      "open": false
     }
   }
 }

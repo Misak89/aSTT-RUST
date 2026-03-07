@@ -1,0 +1,207 @@
+name: Determinism Gate
+
+on:
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  determinism:
+    name: determinism (${{ matrix.os }} / node${{ matrix.node }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node: [20, 22]
+    env:
+      TZ: UTC
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Setup Graphviz
+        uses: ts-graphviz/setup-graphviz@v2
+
+      - name: Toolchain fingerprint
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          Write-Host "Runner OS: $env:RUNNER_OS"
+          Write-Host "TZ: $env:TZ"
+          pwsh --version
+          node --version
+          python --version
+          git --version
+          dot -V
+
+      - name: Hard clean repository
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          git reset --hard HEAD
+          git clean -fdx
+
+      - name: Assert checkout clean state
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          $dirty = @(git status --porcelain)
+          $ignorePattern = '^\s*[A-Za-z\?]{1,2}\s+docs/spec-kit$'
+          $effectiveDirty = @($dirty | Where-Object { $_ -notmatch $ignorePattern })
+          $ignoredDirty = @($dirty | Where-Object { $_ -match $ignorePattern })
+          if ($ignoredDirty.Count -gt 0) {
+            Write-Host "Ignoring known dirty path entries: docs/spec-kit"
+            $ignoredDirty | ForEach-Object { Write-Host $_ }
+          }
+          if ($effectiveDirty.Count -gt 0) {
+            $effectiveDirty | ForEach-Object { Write-Host $_ }
+            throw "Repository is not clean before determinism checks."
+          }
+
+      - name: Governance baseline checks
+        shell: pwsh
+        run: |
+          ./scripts/validate_workflow_alignment.ps1
+          ./scripts/validate_workflow_control_plane.ps1
+          ./scripts/validate_workflow_control_alignment.ps1 -RefreshObserved
+
+      - name: Assert observed manifests are committed
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          $drift = @(git status --porcelain -- docs_control/observed_workflow)
+          if ($drift.Count -gt 0) {
+            $drift | ForEach-Object { Write-Host $_ }
+            throw "Observed workflow manifests changed after refresh. Commit docs_control/observed_workflow/*.json."
+          }
+
+      - name: Baseline stale checks
+        shell: pwsh
+        run: |
+          ./scripts/generate_control_docs.ps1 -CheckOnly
+          ./scripts/generate_verify_dashboard.ps1 -CheckOnly
+          ./scripts/generate_workflow_control_diagrams.ps1 -CheckOnly
+
+      - name: Determinism pass #1 (generate + snapshot)
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          ./scripts/generate_control_docs.ps1 -SkipPreflightWriteGuard
+          ./scripts/generate_verify_dashboard.ps1 -SkipPreflightWriteGuard
+          ./scripts/generate_workflow_control_diagrams.ps1 -SkipPreflightWriteGuard
+
+          $dirty = @(git status --porcelain -- docs/generated/control docs_control/observed_workflow)
+          if ($dirty.Count -gt 0) {
+            $dirty | ForEach-Object { Write-Host $_ }
+            throw "Generated outputs drifted from committed state after pass #1."
+          }
+
+          $files = @(Get-ChildItem docs/generated/control -File -Recurse | Sort-Object FullName)
+          if ($files.Count -eq 0) {
+            throw "No generated control files found for determinism snapshot."
+          }
+
+          New-Item -ItemType Directory -Path artifacts -Force | Out-Null
+          $snapshot = foreach ($f in $files) {
+            $hash = Get-FileHash -Algorithm SHA256 -Path $f.FullName
+            [pscustomobject]@{
+              path = ($f.FullName -replace '\\', '/')
+              sha256 = $hash.Hash.ToLowerInvariant()
+            }
+          }
+          $snapshot | ConvertTo-Json -Depth 5 | Set-Content artifacts/determinism_snapshot_pass1.json -Encoding UTF8
+
+      - name: Determinism pass #2 (generate + snapshot)
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          ./scripts/generate_control_docs.ps1 -SkipPreflightWriteGuard
+          ./scripts/generate_verify_dashboard.ps1 -SkipPreflightWriteGuard
+          ./scripts/generate_workflow_control_diagrams.ps1 -SkipPreflightWriteGuard
+
+          $files = @(Get-ChildItem docs/generated/control -File -Recurse | Sort-Object FullName)
+          $snapshot = foreach ($f in $files) {
+            $hash = Get-FileHash -Algorithm SHA256 -Path $f.FullName
+            [pscustomobject]@{
+              path = ($f.FullName -replace '\\', '/')
+              sha256 = $hash.Hash.ToLowerInvariant()
+            }
+          }
+          $snapshot | ConvertTo-Json -Depth 5 | Set-Content artifacts/determinism_snapshot_pass2.json -Encoding UTF8
+
+      - name: Compare pass #1 vs pass #2 snapshots
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          $s1 = Get-Content artifacts/determinism_snapshot_pass1.json -Raw -Encoding UTF8 | ConvertFrom-Json -Depth 10
+          $s2 = Get-Content artifacts/determinism_snapshot_pass2.json -Raw -Encoding UTF8 | ConvertFrom-Json -Depth 10
+          $j1 = $s1 | ConvertTo-Json -Depth 10 -Compress
+          $j2 = $s2 | ConvertTo-Json -Depth 10 -Compress
+          if ($j1 -cne $j2) {
+            throw "Determinism mismatch: pass #1 and pass #2 snapshots differ."
+          }
+          Write-Host "Determinism snapshot compare PASS."
+
+      - name: Negative stale-check test (must fail on canonical input drift)
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          $path = "docs_control/next_session.json"
+          $original = Get-Content $path -Raw -Encoding UTF8
+          $utf8 = New-Object System.Text.UTF8Encoding($false)
+          try {
+            $data = $original | ConvertFrom-Json -Depth 100
+            $data.document.updated_at = "2099-12-31 23:59 (UTC+0)"
+            ($data | ConvertTo-Json -Depth 100) | Set-Content $path -Encoding UTF8
+
+            & ./scripts/generate_control_docs.ps1 -CheckOnly
+            $exitCode = $LASTEXITCODE
+            if ($exitCode -eq 0) {
+              throw "Negative stale-check FAILED: CheckOnly unexpectedly passed after canonical mutation."
+            }
+            Write-Host "Negative stale-check PASS (drift detected as expected)."
+          }
+          finally {
+            [System.IO.File]::WriteAllText($path, $original, $utf8)
+          }
+
+          ./scripts/generate_control_docs.ps1 -CheckOnly
+
+      - name: Upload determinism artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: determinism-${{ matrix.os }}-node${{ matrix.node }}
+          path: artifacts/*.json
+
+  determinism-required-check:
+    name: determinism-required-check
+    runs-on: ubuntu-latest
+    if: ${{ always() }}
+    needs:
+      - determinism
+    steps:
+      - name: Enforce matrix success
+        shell: bash
+        run: |
+          if [ "${{ needs.determinism.result }}" != "success" ]; then
+            echo "Determinism matrix result: ${{ needs.determinism.result }}"
+            exit 1
+          fi
+          echo "Determinism matrix PASS."

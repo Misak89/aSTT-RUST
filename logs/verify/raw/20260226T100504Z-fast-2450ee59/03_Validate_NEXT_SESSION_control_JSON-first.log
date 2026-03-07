@@ -1,0 +1,16 @@
+
+========================================
+  NEXT_SESSION Validator v3.0 (JSON-first)
+========================================
+
+PASS: JSON schema validation
+PASS: lifecycle_state = ROZPRACOVANE
+
+========================================
+  Summary
+========================================
+  Warnings: 0
+  Errors: 0
+========================================
+
+--- NEXT_SESSION VALIDATION PASSED ---

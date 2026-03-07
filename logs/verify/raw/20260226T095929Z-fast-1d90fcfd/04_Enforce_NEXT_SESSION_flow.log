@@ -1,0 +1,43 @@
+Running required check: Traceability validation
+
+========================================
+  Traceability Validator v1.0
+========================================
+
+PASS: JSON schema validation
+
+========================================
+  Summary
+========================================
+  Entity counts: specs=1, plans=1, tasks=2, code_refs=5, tests=2, docs=5, logs=1, evidence=1
+  Links: 2
+  Warnings: 0
+  Errors: 0
+========================================
+
+--- TRACEABILITY VALIDATION PASSED ---
+Running required check: NEXT_SESSION validation
+
+========================================
+  NEXT_SESSION Validator v3.0 (JSON-first)
+========================================
+
+PASS: JSON schema validation
+PASS: lifecycle_state = ROZPRACOVANE
+FRESH: .\docs\generated\control\NEXT_SESSION.md
+FRESH: .\docs\generated\control\TRACEABILITY_SUMMARY.md
+Control docs stale-check PASS
+PASS: generated control docs freshness
+
+========================================
+  Summary
+========================================
+  Warnings: 0
+  Errors: 0
+========================================
+
+--- NEXT_SESSION VALIDATION PASSED ---
+Running required check: Control docs stale-check
+Unchanged: C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\docs\generated\control\NEXT_SESSION.md
+Unchanged: C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\docs\generated\control\TRACEABILITY_SUMMARY.md
+Control docs generation completed.

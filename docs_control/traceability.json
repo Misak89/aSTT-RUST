@@ -1,0 +1,338 @@
+{
+  "schema_version": "1.0",
+  "source_of_truth": "docs_control/traceability.json",
+  "notes": [
+    "P0 traceability registry pro JSON-first ridici dokumentaci.",
+    "Markdown stranky v docs/generated/control jsou pouze generated view vrstva."
+  ],
+  "entities": {
+    "specs": [
+      {
+        "spec_id": "spec.docs-control-json-first-p0",
+        "title": "JSON-first / hybrid-strong control docs P0",
+        "status": "IN_PROGRESS",
+        "notes": "JSON = SSOT; Markdown = generated view nebo narrative-only note."
+      }
+    ],
+    "plans": [
+      {
+        "plan_id": "plan.deterministic-docs-automation-v0_5-draft",
+        "title": "Deterministic Docs Automation Plan (Draft v0.5)",
+        "status": "DRAFT",
+        "path": "plans/deterministic_docs_automation_plan_draft.md"
+      }
+    ],
+    "tasks": [
+      {
+        "task_id": "task.next-session-json-first-hybrid-strong",
+        "title": "Migrovat NEXT_SESSION na JSON-first / hybrid-strong",
+        "status": "IN_PROGRESS"
+      },
+      {
+        "task_id": "task.traceability-p0-minimum",
+        "title": "Zavest traceability registry + integrity validator (P0 minimum)",
+        "status": "IN_PROGRESS"
+      },
+      {
+        "task_id": "task.claim-evidence-guard-p0",
+        "title": "Zavest claim=evidence guard (task_status + preflight + batch verifier)",
+        "status": "IN_PROGRESS"
+      },
+      {
+        "task_id": "task.capability-audit-gate-p0",
+        "title": "Zavest Capability Audit gate pro tvrzeni o schopnostech externich nastroju",
+        "status": "IN_PROGRESS"
+      }
+    ],
+    "code_refs": [
+      {
+        "code_ref_id": "code.scripts.verify_stage",
+        "title": "verify_stage orchestration",
+        "path": "scripts/verify_stage.ps1",
+        "status": "ACTIVE"
+      },
+      {
+        "code_ref_id": "code.scripts.validate_next_session",
+        "title": "NEXT_SESSION hybrid-strong validator",
+        "path": "scripts/validate_next_session.ps1",
+        "status": "ACTIVE"
+      },
+      {
+        "code_ref_id": "code.scripts.enforce_next_session_flow",
+        "title": "NEXT_SESSION flow enforcement",
+        "path": "scripts/enforce_next_session_flow.ps1",
+        "status": "ACTIVE"
+      },
+      {
+        "code_ref_id": "code.scripts.generate_control_docs",
+        "title": "Control docs generator + stale-check",
+        "path": "scripts/generate_control_docs.ps1",
+        "status": "ACTIVE"
+      },
+      {
+        "code_ref_id": "code.scripts.validate_traceability",
+        "title": "Traceability schema + integrity validator",
+        "path": "scripts/validate_traceability.ps1",
+        "status": "ACTIVE"
+      },
+      {
+        "code_ref_id": "code.scripts.preflight_state_discovery",
+        "title": "Preflight state discovery snapshot for claim=evidence guard",
+        "path": "scripts/preflight_state_discovery.ps1",
+        "status": "ACTIVE"
+      },
+      {
+        "code_ref_id": "code.scripts.validate_workflow_alignment",
+        "title": "Workflow alignment validator (hooks + CI + docs + claim/evidence guard)",
+        "path": "scripts/validate_workflow_alignment.ps1",
+        "status": "ACTIVE"
+      },
+      {
+        "code_ref_id": "code.scripts.verify_batch_status",
+        "title": "Batch claim/evidence verifier against task_status and verify_runs",
+        "path": "scripts/verify_batch_status.ps1",
+        "status": "ACTIVE"
+      },
+      {
+        "code_ref_id": "code.scripts.validate_capability_audit",
+        "title": "Capability audit validator + tool observation evidence generator",
+        "path": "scripts/validate_capability_audit.ps1",
+        "status": "ACTIVE"
+      },
+      {
+        "code_ref_id": "code.scripts.assert_preflight_write_guard",
+        "title": "Preflight write guard (enforces capability audit -> preflight -> batch verify order)",
+        "path": "scripts/assert_preflight_write_guard.ps1",
+        "status": "ACTIVE"
+      }
+    ],
+    "tests": [
+      {
+        "test_id": "test.verify.fast.stage",
+        "title": "verify_fast governance/docs gate",
+        "status": "ACTIVE",
+        "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File scripts/verify_fast.ps1"
+      },
+      {
+        "test_id": "test.mkdocs.strict.build",
+        "title": "MkDocs strict build gate",
+        "status": "ACTIVE",
+        "command": "python -X utf8 -m mkdocs build --strict -f mkdocs.yml"
+      },
+      {
+        "test_id": "test.batch_status.verify",
+        "title": "Claim=evidence batch status verifier",
+        "status": "ACTIVE",
+        "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File scripts/verify_batch_status.ps1"
+      },
+      {
+        "test_id": "test.capability_audit.validate",
+        "title": "Capability audit gate validator (tools + sources + evidence outputs)",
+        "status": "ACTIVE",
+        "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File scripts/validate_capability_audit.ps1"
+      }
+    ],
+    "docs": [
+      {
+        "doc_id": "doc.control.next_session_json",
+        "title": "NEXT_SESSION canonical control JSON",
+        "kind": "canonical_json",
+        "path": "docs_control/next_session.json",
+        "status": "ACTIVE"
+      },
+      {
+        "doc_id": "doc.control.next_session_note",
+        "title": "NEXT_SESSION narrative note",
+        "kind": "narrative_note",
+        "path": "docs_control/next_session_note.md",
+        "status": "ACTIVE"
+      },
+      {
+        "doc_id": "doc.generated.next_session_view",
+        "title": "Generated NEXT_SESSION view",
+        "kind": "generated_markdown_view",
+        "path": "docs/generated/control/NEXT_SESSION.md",
+        "status": "ACTIVE"
+      },
+      {
+        "doc_id": "doc.control.traceability_json",
+        "title": "Traceability registry canonical JSON",
+        "kind": "canonical_json",
+        "path": "docs_control/traceability.json",
+        "status": "ACTIVE"
+      },
+      {
+        "doc_id": "doc.generated.traceability_summary",
+        "title": "Generated Traceability summary view",
+        "kind": "generated_markdown_view",
+        "path": "docs/generated/control/TRACEABILITY_SUMMARY.md",
+        "status": "ACTIVE"
+      },
+      {
+        "doc_id": "doc.control.task_status_json",
+        "title": "Batch status claim registry canonical JSON",
+        "kind": "canonical_json",
+        "path": "docs_control/task_status.json",
+        "status": "ACTIVE"
+      },
+      {
+        "doc_id": "doc.control.capability_audit_json",
+        "title": "Capability audit registry canonical JSON",
+        "kind": "canonical_json",
+        "path": "docs_control/capability_audit.json",
+        "status": "ACTIVE"
+      }
+    ],
+    "logs": [
+      {
+        "log_id": "log.verify_runs",
+        "title": "Canonical verify run log",
+        "path": "docs_control/verify_runs.json",
+        "status": "ACTIVE"
+      },
+      {
+        "log_id": "log.capability_audit_summary",
+        "title": "Capability audit summary log",
+        "path": "logs/verify/capability_audit_summary.json",
+        "status": "ACTIVE"
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_id": "evidence.verify.fast.latest",
+        "title": "Latest fast verify run baseline",
+        "result": "OBSERVED",
+        "path": "docs_control/verify_runs.json",
+        "status": "BASELINE"
+      },
+      {
+        "evidence_id": "evidence.batch-status.verify.latest",
+        "title": "Latest batch claim/evidence verification summary",
+        "result": "OBSERVED",
+        "path": "logs/verify/batch_status_verify_summary.json",
+        "status": "BASELINE"
+      },
+      {
+        "evidence_id": "evidence.capability-audit.latest",
+        "title": "Latest capability audit summary (tools + source-backed claims)",
+        "result": "OBSERVED",
+        "path": "logs/verify/capability_audit_summary.json",
+        "status": "BASELINE"
+      }
+    ]
+  },
+  "links": [
+    {
+      "link_id": "link.next-session-json-first",
+      "spec_id": "spec.docs-control-json-first-p0",
+      "plan_id": "plan.deterministic-docs-automation-v0_5-draft",
+      "task_id": "task.next-session-json-first-hybrid-strong",
+      "code_ref_ids": [
+        "code.scripts.verify_stage",
+        "code.scripts.validate_next_session",
+        "code.scripts.enforce_next_session_flow",
+        "code.scripts.generate_control_docs"
+      ],
+      "test_ids": [
+        "test.verify.fast.stage",
+        "test.mkdocs.strict.build"
+      ],
+      "doc_ids": [
+        "doc.control.next_session_json",
+        "doc.control.next_session_note",
+        "doc.generated.next_session_view"
+      ],
+      "log_ids": [
+        "log.verify_runs"
+      ],
+      "evidence_ids": [
+        "evidence.verify.fast.latest"
+      ]
+    },
+    {
+      "link_id": "link.traceability-p0",
+      "spec_id": "spec.docs-control-json-first-p0",
+      "plan_id": "plan.deterministic-docs-automation-v0_5-draft",
+      "task_id": "task.traceability-p0-minimum",
+      "code_ref_ids": [
+        "code.scripts.validate_traceability",
+        "code.scripts.generate_control_docs",
+        "code.scripts.verify_stage"
+      ],
+      "test_ids": [
+        "test.verify.fast.stage"
+      ],
+      "doc_ids": [
+        "doc.control.traceability_json",
+        "doc.generated.traceability_summary"
+      ],
+      "log_ids": [
+        "log.verify_runs"
+      ],
+      "evidence_ids": [
+        "evidence.verify.fast.latest"
+      ]
+    },
+    {
+      "link_id": "link.claim-evidence-guard-p0",
+      "spec_id": "spec.docs-control-json-first-p0",
+      "plan_id": "plan.deterministic-docs-automation-v0_5-draft",
+      "task_id": "task.claim-evidence-guard-p0",
+      "code_ref_ids": [
+        "code.scripts.verify_stage",
+        "code.scripts.validate_workflow_alignment",
+        "code.scripts.preflight_state_discovery",
+        "code.scripts.verify_batch_status"
+      ],
+      "test_ids": [
+        "test.verify.fast.stage",
+        "test.batch_status.verify"
+      ],
+      "doc_ids": [
+        "doc.control.task_status_json",
+        "doc.control.next_session_json",
+        "doc.generated.next_session_view"
+      ],
+      "log_ids": [
+        "log.verify_runs"
+      ],
+      "evidence_ids": [
+        "evidence.verify.fast.latest",
+        "evidence.batch-status.verify.latest"
+      ]
+    },
+    {
+      "link_id": "link.capability-audit-gate-p0",
+      "spec_id": "spec.docs-control-json-first-p0",
+      "plan_id": "plan.deterministic-docs-automation-v0_5-draft",
+      "task_id": "task.capability-audit-gate-p0",
+      "code_ref_ids": [
+        "code.scripts.verify_stage",
+        "code.scripts.validate_workflow_alignment",
+        "code.scripts.validate_capability_audit",
+        "code.scripts.assert_preflight_write_guard",
+        "code.scripts.preflight_state_discovery",
+        "code.scripts.verify_batch_status"
+      ],
+      "test_ids": [
+        "test.verify.fast.stage",
+        "test.capability_audit.validate",
+        "test.batch_status.verify"
+      ],
+      "doc_ids": [
+        "doc.control.capability_audit_json",
+        "doc.control.task_status_json",
+        "doc.control.next_session_json"
+      ],
+      "log_ids": [
+        "log.verify_runs",
+        "log.capability_audit_summary"
+      ],
+      "evidence_ids": [
+        "evidence.verify.fast.latest",
+        "evidence.capability-audit.latest",
+        "evidence.batch-status.verify.latest"
+      ]
+    }
+  ]
+}

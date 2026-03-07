@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "docs_control/task_status.schema.json",
+  "title": "Task Status Registry (Claim = Evidence Guard)",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "source_of_truth",
+    "policy",
+    "batches"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+$"
+    },
+    "source_of_truth": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "policy": {
+      "type": "object",
+      "required": [
+        "allowed_statuses",
+        "claim_rule"
+      ],
+      "properties": {
+        "allowed_statuses": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "UNKNOWN",
+              "EXISTS_UNVERIFIED",
+              "IMPLEMENTED_UNVERIFIED",
+              "VERIFIED_LOCAL",
+              "VERIFIED_CI",
+              "LEGACY_EXEMPT"
+            ]
+          }
+        },
+        "claim_rule": { "type": "string" },
+        "default_evidence_source": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "batches": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/batch" }
+    }
+  },
+  "$defs": {
+    "artifactCheck": {
+      "type": "object",
+      "required": [
+        "path"
+      ],
+      "properties": {
+        "path": { "type": "string" },
+        "kind": {
+          "type": "string",
+          "enum": [ "file", "directory" ],
+          "default": "file"
+        },
+        "contains_all": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "not_contains": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "optional": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": true
+    },
+    "verification": {
+      "type": "object",
+      "required": [
+        "verify_stage",
+        "required_step_names",
+        "required_artifacts"
+      ],
+      "properties": {
+        "verify_stage": {
+          "type": "string",
+          "enum": [ "fast", "full" ]
+        },
+        "evidence_source": { "type": "string" },
+        "required_step_names": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        },
+        "required_artifacts": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/artifactCheck" }
+        },
+        "require_clean_worktree_for_verified": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": true
+    },
+    "lastVerified": {
+      "type": "object",
+      "required": [
+        "run_id"
+      ],
+      "properties": {
+        "run_id": { "type": "string" },
+        "verified_at_utc": { "type": "string" },
+        "run_status": { "type": "string" },
+        "notes": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "batch": {
+      "type": "object",
+      "required": [
+        "batch_id",
+        "title",
+        "status",
+        "verification"
+      ],
+      "properties": {
+        "batch_id": { "type": "string" },
+        "title": { "type": "string" },
+        "status": {
+          "type": "string",
+          "enum": [
+            "UNKNOWN",
+            "EXISTS_UNVERIFIED",
+            "IMPLEMENTED_UNVERIFIED",
+            "VERIFIED_LOCAL",
+            "VERIFIED_CI",
+            "LEGACY_EXEMPT"
+          ]
+        },
+        "classification": { "type": "string" },
+        "owner": { "type": "string" },
+        "notes": { "type": "string" },
+        "verification": { "$ref": "#/$defs/verification" },
+        "last_verified": { "$ref": "#/$defs/lastVerified" }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

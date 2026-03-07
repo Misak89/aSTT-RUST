@@ -1,0 +1,16 @@
+
+> app_temp@0.1.0 electron:start
+> node electron/launch-main.mjs
+
+
+[ELECTRON] Static server ready: http://127.0.0.1:54970
+[ELECTRON] Renderer loaded: http://127.0.0.1:54970/
+[ELECTRON][renderer-console][L2] %cElectron Security Warning (Insecure Content-Security-Policy) font-weight: bold; This renderer process has either no Content Security
+  Policy set or a policy with "unsafe-eval" enabled. This exposes users of
+  this app to unnecessary security risks.
+
+For more information and help, consult
+https://electronjs.org/docs/tutorial/security.
+This warning will not show up
+once the app is packaged. (node:electron/js2c/renderer_init:2)
+[ELECTRON] Renderer snapshot: {"title":"aSTT Desktop App","hasMain":true,"bodyChildren":1,"textPreview":"ASTT-RUST\n\nASR Control Panel\n\nDesktop runtime -> Python sidecar (WhisperX) JSON-RPC workflow for init, recording and file transcription.\n\nDemo without STT: open /demo-a002\n\nReady\nR","elapsedMs":201}

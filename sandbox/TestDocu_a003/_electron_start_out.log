@@ -1,0 +1,7 @@
+
+> app_temp@0.1.0 electron:start
+> node electron/launch-main.mjs
+
+
+[ELECTRON] Static server ready: http://127.0.0.1:55387
+[ELECTRON] Renderer loaded: http://127.0.0.1:55387/

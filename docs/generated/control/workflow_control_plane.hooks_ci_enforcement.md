@@ -1,0 +1,95 @@
+# Hooks + CI enforcement
+
+Generated from `docs_control/workflow_control_plane.json`.
+
+- `view_id`: `view.hooks_ci_enforcement`
+- `purpose`: Entry-point and enforcement fanout view from local pre-commit and CI jobs into shared docs lint
+  and code-audit check paths.
+- `counts`: actors=2, nodes=13
+  artifacts=32, edges=14
+- `must_cover_domains`: hooks, ci, validate, lint, test, docs_publish
+
+## Mermaid
+
+```mermaid
+%% Generated from docs_control/workflow_control_plane.json
+%% view_id: view.hooks_ci_enforcement
+flowchart TB
+  actor_user{{"User"}}
+  actor_ci{{"CI Runner"}}
+  node_verify_fast_orchestrator["verify_fast / verify_stage"]
+  node_pre_commit_enforcement(["pre-commit enforcement"])
+  node_markdownlint_blocking(["markdownlint blocking"])
+  node_vale_blocking(["Vale blocking"])
+  node_ci_enforcement(["CI enforcement"])
+  node_node_check_svelte(["Node check (svelte-check)"])
+  node_ci_job_test_ui(["CI job: test-ui"])
+  node_ci_job_test_rust(["CI job: test-rust"])
+  node_ci_job_lint(["CI job: lint"])
+  node_ci_job_docs_security(["CI job: docs-security"])
+  node_ci_job_code_audit(["CI job: code-audit"])
+  node_ci_job_determinism_required_check(["CI job: determinism-required-check"])
+  node_ci_job_clean_clone_smoke_required_check(["CI job: clean-clone-smoke-required-check"])
+  artifact_workflow_control_plane_json[( "Workflow Control Plane SSOT" )]
+  artifact_workflow_control_plane_schema[( "Workflow Control Plane Schema" )]
+  artifact_verify_runs_json[( "Verify Runs Evidence Log" )]
+  artifact_traceability_json[( "Traceability Registry" )]
+  artifact_next_session_json[( "NEXT_SESSION Canonical JSON" )]
+  artifact_pre_commit_config[( "pre-commit Config" )]
+  artifact_verify_stage_script[( "verify_stage Script" )]
+  artifact_ci_workflow_ci[( "CI Workflow" )]
+  artifact_ci_workflow_quality_gate[( "Quality Gate Workflow" )]
+  artifact_ci_workflow_determinism[( "Determinism Workflow" )]
+  artifact_ci_workflow_clean_clone_smoke[( "Clean Clone Smoke Workflow" )]
+  artifact_mkdocs_yml[( "MkDocs Config" )]
+  artifact_task_status_json[( "Task Status Registry" )]
+  artifact_capability_audit_json[( "Capability Audit Registry" )]
+  artifact_capability_audit_schema[( "Capability Audit Schema" )]
+  artifact_generated_next_session_md[( "Generated NEXT_SESSION View" )]
+  artifact_generated_traceability_md[( "Generated Traceability View" )]
+  artifact_preflight_state_json[( "Preflight state snapshot" )]
+  artifact_batch_status_verify_summary_json[( "Batch status verify summary" )]
+  artifact_capability_audit_summary_json[( "Capability audit summary" )]
+  artifact_toolchain_capabilities_json[( "Toolchain capability observations" )]
+  artifact_markdownlint_backlog_summary_json[( "Markdownlint backlog summary" )]
+  artifact_vale_backlog_summary_json[( "Vale backlog summary" )]
+  artifact_observed_verify_stage_manifest[( "Observed verify_stage manifest" )]
+  artifact_observed_ci_jobs_manifest[( "Observed CI jobs manifest" )]
+  artifact_observed_hooks_manifest[( "Observed pre-commit hooks manifest" )]
+  artifact_workflow_control_plane_note_md[( "Workflow control plane note" )]
+  artifact_workflow_control_plane_full_md[( "Workflow control plane full view" )]
+  artifact_workflow_control_plane_verify_md[( "Workflow control plane verify+evidence view" )]
+  artifact_workflow_control_plane_full_mmd[( "Workflow control plane full Mermaid" )]
+  artifact_workflow_control_plane_full_dot[( "Workflow control plane full DOT" )]
+  artifact_workflow_control_plane_full_svg[( "Workflow control plane full SVG" )]
+  actor_user -->|if_changed / triggers| node_pre_commit_enforcement
+  node_pre_commit_enforcement -->|on_pass / triggers| node_verify_fast_orchestrator
+  node_markdownlint_blocking -->|on_pass / triggers| node_vale_blocking
+  actor_ci -->|always / triggers| node_ci_enforcement
+  node_ci_enforcement -->|always / triggers| node_ci_job_test_ui
+  node_ci_enforcement -->|always / triggers| node_ci_job_test_rust
+  node_ci_enforcement -->|always / triggers| node_ci_job_lint
+  node_ci_enforcement -->|always / triggers| node_ci_job_docs_security
+  node_ci_enforcement -->|always / triggers| node_ci_job_code_audit
+  node_ci_job_docs_security -->|always / feeds| node_markdownlint_blocking
+  node_ci_job_docs_security -->|always / feeds| node_vale_blocking
+  node_ci_job_code_audit -->|always / feeds| node_node_check_svelte
+  node_ci_enforcement -->|always / triggers| node_ci_job_determinism_required_check
+  node_ci_enforcement -->|always / triggers| node_ci_job_clean_clone_smoke_required_check
+```
+
+## Included nodes
+
+- `node.verify_fast_orchestrator`: verify_fast / verify_stage
+- `node.pre_commit_enforcement`: pre-commit enforcement
+- `node.markdownlint_blocking`: markdownlint blocking
+- `node.vale_blocking`: Vale blocking
+- `node.ci_enforcement`: CI enforcement
+- `node.node_check_svelte`: Node check (svelte-check)
+- `node.ci_job_test_ui`: CI job: test-ui
+- `node.ci_job_test_rust`: CI job: test-rust
+- `node.ci_job_lint`: CI job: lint
+- `node.ci_job_docs_security`: CI job: docs-security
+- `node.ci_job_code_audit`: CI job: code-audit
+- `node.ci_job_determinism_required_check`: CI job: determinism-required-check
+- `node.ci_job_clean_clone_smoke_required_check`: CI job: clean-clone-smoke-required-check

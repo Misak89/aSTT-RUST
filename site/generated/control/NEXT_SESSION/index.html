@@ -1,0 +1,2874 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../../core/CONSTITUTION/">
+      
+      
+        <link rel="next" href="../../../core/VISION/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>Next Session - aSTT-RUST Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#next_session-generated-control-view" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="aSTT-RUST Documentation" class="md-header__button md-logo" aria-label="aSTT-RUST Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            aSTT-RUST Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Next Session
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Prepnout na tmavy rezim"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Prepnout na tmavy rezim" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Prepnout na svetly rezim"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Prepnout na svetly rezim" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../core/" class="md-tabs__link">
+          
+  
+  
+  Core
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../software-inventory/" class="md-tabs__link">
+          
+  
+  
+  Audit
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../adr/" class="md-tabs__link">
+          
+  
+  
+  Internal
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="aSTT-RUST Documentation" class="md-nav__button md-logo" aria-label="aSTT-RUST Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    aSTT-RUST Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../core/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../core/ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../core/GOVERNANCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../core/DOCUMENTATION_AUDIT_PLAN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Audit Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../core/AUDIT_TRAIL_Log_dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audit Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../core/ANTIGRAVITY_TOOLS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Antigravity Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../core/ORGANIZATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Organization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../core/CONSTITUTION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Constitution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Next Session
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Next Session
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0-stav-realizace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0. Stav realizace
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0. Stav realizace">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neprovedeno" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Neprovedeno
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rozpracovane" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rozpracovane
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#provedeno" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Provedeno
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#poznamka" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Poznamka
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-aktualni-kontext" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Aktualni kontext
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Aktualni kontext">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#co-je-hotove" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Co je hotove
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kriticky-aktualni-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kriticky aktualni problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-dalsi-kroky-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Dalsi kroky (control)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Dalsi kroky (control)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#zmrazeni-kodu-respektovat-a-uzamknout-asr-zadaniscope-reconcile-pred-dalsi-implementaci-p0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zmrazeni kodu respektovat a uzamknout ASR zadani/scope + reconcile pred dalsi implementaci [P0]
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#udrzovat-workflow-control-plane-diagram-system-synchronni-s-verifycihooky-p0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Udrzovat workflow control plane diagram system synchronni s verify/CI/hooky [P0]
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otestovat-novy-model-na-realnem-projektu-navrat-k-hlavni-praci-p0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Otestovat novy model na realnem projektu (navrat k hlavni praci) [P0]
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-prvni-konkretni-krok-pristi-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Prvni konkretni krok pristi session
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checkpoint-workflow-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checkpoint (workflow alignment)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Checkpoint (workflow alignment)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hook
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evidence-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evidence policy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evidence-current" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evidence (current)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#traceability-refs-control-ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Traceability refs (control IDs)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#narativni-poznamka-manual-non-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Narativni poznamka (manual, non-control)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-of-truth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Source of Truth
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../core/VISION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audit
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Audit
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software-inventory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Software Inventory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software-audit-method/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audit Method
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VERIFY_STATUS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VERIFY_RUNS_DESC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify Runs (DESC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VERIFY_RUNS_ASC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify Runs (ASC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VERIFY_RUNS_BY_SCOPE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify Runs By Scope
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GITHUB_UPDATE_DEPLOY_LOG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GitHub Update+Deploy Log
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TRACEABILITY_SUMMARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Traceability Summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WORKFLOW_CONTROL_PLANE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Control Plane
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workflow_control_plane.verify_evidence_path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Verify+Evidence View
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workflow_control_plane.full.literal.interactive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Control Plane (SVG Literal Interactive)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workflow_control_plane.full.svg" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Control Plane (SVG Full)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workflow_control_plane.full.fit.svg" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Control Plane (SVG Fit Screen)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workflow_control_plane.full.compact.fit.svg" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Control Plane (SVG Compact Fit)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workflow_control_plane.full.literal.fit.svg" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Control Plane (SVG Literal Rotated)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workflow_control_plane.verify_test_flow.svg" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Verify/Test Flow (SVG)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workflow_control_plane.logging_evidence_claims.svg" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Logging+Evidence Claims (SVG)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workflow_control_plane.docs_generation_stale_check.svg" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Docs Generation+Stale-Check (SVG)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workflow_control_plane.hooks_ci_enforcement.svg" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Hooks+CI Enforcement (SVG)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Internal
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Internal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADRs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ADRs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../adr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../adr/20260219-use-log4brains-to-manage-the-adrs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use Log4brains
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../adr/20260219-use-markdown-architectural-decision-records/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Markdown ADRs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../adr/template/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Template
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spec-Kit
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Spec-Kit
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spec-kit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spec-kit/AGENTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AGENTS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spec-kit/CHANGELOG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CHANGELOG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spec-kit/SECURITY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spec-kit/SUPPORT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Support
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spec-kit/spec-driven/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spec-Driven
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spec-kit/docs/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spec-kit/docs/quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plans
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Plans
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../plans/2026-02-19-refactor-batch-c/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Refactor Batch C
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../inventory-refactor-playbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inventory Playbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0-stav-realizace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0. Stav realizace
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0. Stav realizace">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neprovedeno" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Neprovedeno
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rozpracovane" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rozpracovane
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#provedeno" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Provedeno
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#poznamka" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Poznamka
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-aktualni-kontext" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Aktualni kontext
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Aktualni kontext">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#co-je-hotove" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Co je hotove
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kriticky-aktualni-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kriticky aktualni problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-dalsi-kroky-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Dalsi kroky (control)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Dalsi kroky (control)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#zmrazeni-kodu-respektovat-a-uzamknout-asr-zadaniscope-reconcile-pred-dalsi-implementaci-p0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zmrazeni kodu respektovat a uzamknout ASR zadani/scope + reconcile pred dalsi implementaci [P0]
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#udrzovat-workflow-control-plane-diagram-system-synchronni-s-verifycihooky-p0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Udrzovat workflow control plane diagram system synchronni s verify/CI/hooky [P0]
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otestovat-novy-model-na-realnem-projektu-navrat-k-hlavni-praci-p0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Otestovat novy model na realnem projektu (navrat k hlavni praci) [P0]
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-prvni-konkretni-krok-pristi-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Prvni konkretni krok pristi session
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checkpoint-workflow-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checkpoint (workflow alignment)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Checkpoint (workflow alignment)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hook
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evidence-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evidence policy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evidence-current" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evidence (current)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#traceability-refs-control-ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Traceability refs (control IDs)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#narativni-poznamka-manual-non-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Narativni poznamka (manual, non-control)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-of-truth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Source of Truth
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="next_session-generated-control-view">NEXT_SESSION (Generated Control View)</h1>
+<p>Toto je generated view nad <code>docs_control/next_session.json</code> + <code>docs_control/next_session_note.md</code>.</p>
+<p><strong>Cesta:</strong> docs/generated/control/NEXT_SESSION.md
+<strong>Verze:</strong> 5.8
+<strong>Vytvoreno:</strong> 2026-02-15 19:36 (UTC+1)
+<strong>Posledni zmena:</strong> 2026-02-26 18:58 (UTC+1)
+<strong>Status:</strong> ROZPRACOVANE - workflow control plane D1-D6 + capability audit gate synced; ASR scope/zadani + reconcile stale P0 pred dalsim kodovanim
+<strong>Lifecycle state (control):</strong> ROZPRACOVANE</p>
+<h2 id="0-stav-realizace">0. Stav realizace</h2>
+<h3 id="neprovedeno">Neprovedeno</h3>
+<ul>
+<li>Implementace ASR modulu (Mic Capture + WhisperX integration)</li>
+<li>Uzamknout diagram + ASR zadani/scope a az pak pokracovat v implementaci (stav po predcasnem kodovani je zmrazen)</li>
+</ul>
+<h3 id="rozpracovane">Rozpracovane</h3>
+<ul>
+<li>Migrace NEXT_SESSION z Markdown-first na JSON-first hybrid-strong</li>
+<li>Zavedeni traceability registru a integrity validatoru (P0 minimum)</li>
+</ul>
+<h3 id="provedeno">Provedeno</h3>
+<ul>
+<li>Verify dashboard funguje jako canonical JSON (docs_control/verify_runs.json) -&gt; generated docs views</li>
+<li>Jednotny verify orchestrator (verify_fast/verify_stage/verify_full) s fail-fast logikou je zaveden</li>
+<li>Batch A dokoncen: mkdocs --strict green + markdownlint blocking/backlog policy</li>
+<li>Procesni diagram JSON-first control plane doplnen v docs/core/GOVERNANCE.md</li>
+<li>Pilotni verify_fast na realnem projektu spusten; prvni blokujici FAIL je Vale prose lint (repo-wide)</li>
+<li>Vale Batch B: critical blocking + changed-file blocking + backlog report/no-regression baseline</li>
+<li>Verify orchestrator opraven pro npm.cmd (PowerShell npm.ps1 wrapper uz nedeformuje argumenty)</li>
+<li>Pilotni verify_fast po Vale Batch B dosel az na Rust fmt check (realny kodovy blocker)</li>
+<li>Claim=evidence guard zaveden: docs_control/task_status.json + preflight_state_discovery + verify_batch_status
+  (napojeno do verify_fast/CI/governance)</li>
+<li>Pilotne zapnuto require_clean_worktree_for_verified pro claim=evidence batch + auto downgrade claimu pri dirty
+  artefaktech</li>
+<li>cargo fmt provedeno, Vale backlog no-regression opraven a verify_fast se posunul z Rust fmt check na Rust clippy</li>
+<li>Opraven verify_stage logger pro PASS beh bez errors (empty ErrorsJson -&gt; []), verify_fast PASS beh se korektne
+  zaloguje</li>
+<li>Rust clippy chyby opraveny a plny verify_fast probehl do PASS vcetne zalogovani runu do docs_control/verify_runs.json</li>
+<li>Predcasne (procesne mimo poradi) doplnen ASR MVP kod: UI panel, Rust get/set config + dev python sidecar fallback,
+  Python sidecar recording/config/error handling</li>
+<li>Po ASR kodovani znovu spusten verify_fast a PASS run zalogovan (vr-724c30a3a0774258bd88318d1b1b2b95); stav zmrazen
+  pred diagramem/zadanim</li>
+<li>Novy diagramovy system workflow control plane: JSON SSOT + schema + coverage validator + observed manifests +
+  alignment validator + generator/stale-check + napojeni do verify_fast/CI/MkDocs</li>
+<li>Capability Audit gate zaveden: docs_control/capability_audit.json + validate_capability_audit.ps1 + JSON evidence
+  outputs + napojeni do verify_fast/CI + preflight write guard</li>
+</ul>
+<h3 id="poznamka">Poznamka</h3>
+<p>Ridici cast je v JSON. Markdown view se generuje a nesmi se rucne upravovat.</p>
+<h2 id="1-aktualni-kontext">1. Aktualni kontext</h2>
+<p>JSON-first / hybrid-strong NEXT_SESSION + traceability P0 minimum jsou zavedene a verify_fast baseline byl overen. Po
+predcasnem ASR kodovani (pred diagramem/scope) byl dodelan novy workflow control plane diagram system (JSON SSOT +
+validace + alignment + stale-check + CI/verify integrace) a nyni take Capability Audit gate pro tvrzeni o externim SW
+(zdrojove overeni + tool observation evidence + poradi pred preflightem). Dalsi krok je vratit se k procesu a uzamknout
+ASR scope/zadani + udelat reconcile audit predcasneho kodu.</p>
+<h3 id="co-je-hotove">Co je hotove</h3>
+<ul>
+<li>JSON-first NEXT_SESSION + traceability validatory/generator + stale-check</li>
+<li>mkdocs build --strict green po oprave audit dashboard link generatoru</li>
+<li>markdownlint blocking scope (curated P0) + backlog report (non-blocking)</li>
+<li>Vale critical blocking + changed-file blocking + backlog report/no-regression baseline</li>
+<li>Claim=evidence guard: task_status registry + preflight state discovery + batch status verifier v verify_fast/CI</li>
+<li>Claim=evidence strict-clean pilot: require_clean_worktree_for_verified + auto downgrade pro guard batch (claim se
+  snizi pri dirty artefaktech)</li>
+<li>Procesni diagram JSON-first control plane v docs/core/GOVERNANCE.md</li>
+<li>Verify orchestrator fix: npm.cmd misto npm.ps1 wrapperu pro Node check step</li>
+<li>cargo fmt provedeno nad src-tauri a verify_fast se posunul az na Rust clippy</li>
+<li>Rust clippy chyby opraveny a plny verify_fast PASS run je korektne zalogovan v docs_control/verify_runs.json
+  (vr-efd18ac7747242a8983c62987b43c7d7)</li>
+<li>verify_stage logger bug opraven: PASS beh s prazdnym seznamem errors uz neposila prazdny argument -ErrorsJson</li>
+<li>ASR MVP kod doplnen: Svelte UI panel (init/config/record/transcribe), Rust Tauri get/set config commandy, Python
+  sidecar recording/config/error handling</li>
+<li>Tauri sidecar spawn preferuje v dev rezimu python src-python/sidecar.py (realny WhisperX), fallback na bundled sidecar</li>
+<li>Workflow control plane diagram system baseline: docs_control/workflow_control_plane.json +
+  validate_workflow_control_plane + validate_workflow_control_alignment + generate_workflow_control_diagrams (napojeno
+  do verify_fast/CI)</li>
+<li>Capability Audit gate: docs_control/capability_audit.json + validate_capability_audit.ps1 +
+  toolchain_capabilities/capability_audit_summary evidence + enforcement pred preflightem</li>
+</ul>
+<h3 id="kriticky-aktualni-problem">Kriticky aktualni problem</h3>
+<ul>
+<li>Procesni chyba: ASR kodovani probehlo pred uzavrenym zadanim/scope; diagramovy system baseline je hotovy, ale dalsi
+  kodovani ma byt zastaveno do uzamceni ASR scope + reconcile auditu</li>
+<li>verify_fast baseline je aktualne green; dalsi realny blocker vznikne az pri navazujici implementacni praci</li>
+<li>Bundled sidecar .exe uz neni dummy, ale v aktualnim PyInstaller baleni bezi bez WhisperX zavislosti v placeholder
+  rezimu (produkcniparity gap)</li>
+<li>Mic recording v Python sidecar vyzaduje sounddevice + PortAudio; bez nich vraci explicitni error (spravne, ale je to
+  deployment zavislost)</li>
+<li>Node check uz probehne, ale deprecation warningy v Svelte config zustavaji technicky dluh ke zvazeni</li>
+<li>Claim-evidence strict-clean pilot batch zustava IMPLEMENTED_UNVERIFIED, dokud jsou jeho artefakty lokalne dirty
+  (zamerne chovani)</li>
+</ul>
+<h2 id="2-dalsi-kroky-control">2. Dalsi kroky (control)</h2>
+<h3 id="zmrazeni-kodu-respektovat-a-uzamknout-asr-zadaniscope-reconcile-pred-dalsi-implementaci-p0">Zmrazeni kodu respektovat a uzamknout ASR zadani/scope + reconcile pred dalsi implementaci [P0]</h3>
+<ul>
+<li>Pouzit novy workflow control plane system (generated views + validators) jako canonical diagramovy podklad pro
+  schvaleni procesu</li>
+<li>Uzamknout ASR MVP zadani/scope (co je MVP, co neni MVP, co z predcasneho kodu se ponecha)</li>
+<li>Udelat reconcile audit predcasne napsaneho ASR kodu proti schvalenemu diagramu a zadani</li>
+</ul>
+<p>Akceptace:</p>
+<ul>
+<li>Diagramovy system / generated views jsou schvalene a odpovidaji realnemu verify/control flow</li>
+<li>ASR scope je explicitne schvaleny (MVP / mimo MVP / open questions)</li>
+<li>Je rozhodnuto co z predcasneho ASR kodu ponechat/upravit/revertovat pred dalsi implementaci</li>
+</ul>
+<h3 id="udrzovat-workflow-control-plane-diagram-system-synchronni-s-verifycihooky-p0">Udrzovat workflow control plane diagram system synchronni s verify/CI/hooky [P0]</h3>
+<ul>
+<li>Overit po kazde zmene gate, ze docs_control/workflow_control_plane.json + generated views stale sedi na
+  verify_stage/CI/hooky</li>
+<li>Pouzivat validate_workflow_control_alignment + generate_workflow_control_diagrams -CheckOnly jako standardni drift
+  guard</li>
+</ul>
+<h3 id="otestovat-novy-model-na-realnem-projektu-navrat-k-hlavni-praci-p0">Otestovat novy model na realnem projektu (navrat k hlavni praci) [P0]</h3>
+<ul>
+<li>Po odmrznuti (diagram + scope) pokracovat v implementaci a po kazde vetsi zmene spustit verify_fast bez skipu</li>
+<li>Zapsat evidence a traceability vazby na realne tasky a testy</li>
+<li>Overit, ze docs zustavaji synchronni s kodem a CI take pri realne implementacni praci</li>
+</ul>
+<h2 id="3-prvni-konkretni-krok-pristi-session">3. Prvni konkretni krok pristi session</h2>
+<div class="highlight"><pre><span></span><code><span class="n">pwsh</span> <span class="n">-NoProfile</span> <span class="n">-ExecutionPolicy</span> <span class="n">Bypass</span> <span class="o">-File</span> <span class="n">scripts</span><span class="p">/</span><span class="n">validate_workflow_control_plane</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-RootPath</span> <span class="p">.</span>
+<span class="n">pwsh</span> <span class="n">-NoProfile</span> <span class="n">-ExecutionPolicy</span> <span class="n">Bypass</span> <span class="o">-File</span> <span class="n">scripts</span><span class="p">/</span><span class="n">validate_workflow_control_alignment</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-RootPath</span> <span class="p">.</span> <span class="n">-RefreshObserved</span>
+<span class="n">pwsh</span> <span class="n">-NoProfile</span> <span class="n">-ExecutionPolicy</span> <span class="n">Bypass</span> <span class="o">-File</span> <span class="n">scripts</span><span class="p">/</span><span class="n">validate_capability_audit</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-RootPath</span> <span class="p">.</span>
+<span class="n">pwsh</span> <span class="n">-NoProfile</span> <span class="n">-ExecutionPolicy</span> <span class="n">Bypass</span> <span class="o">-File</span> <span class="n">scripts</span><span class="p">/</span><span class="n">generate_workflow_control_diagrams</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-RootPath</span> <span class="p">.</span> <span class="n">-CheckOnly</span>
+</code></pre></div>
+<ul>
+<li>Uzamknout ASR zadani/scope a zapsat rozhodnuti o ponechani/uprave/revertu predcasneho kodu</li>
+<li>Teprve potom pokracovat v dalsim kodovani a zapsat novy verify run do NEXT_SESSION JSON</li>
+</ul>
+<h2 id="checkpoint-workflow-alignment">Checkpoint (workflow alignment)</h2>
+<h3 id="hook">Hook</h3>
+<ul>
+<li>.pre-commit-config.yaml -&gt; validate-workflow-alignment</li>
+<li>.pre-commit-config.yaml -&gt; enforce-next-session-flow</li>
+<li>.pre-commit-config.yaml -&gt; validate-workflow-alignment sleduje take task_status + claim/evidence guard skripty</li>
+<li>scripts/enforce_next_session_flow.ps1 -&gt; validate_next_session.ps1 + generate_control_docs.ps1 -CheckOnly</li>
+</ul>
+<h3 id="ci">CI</h3>
+<ul>
+<li>.github/workflows/ci.yml -&gt; preflight_state_discovery.ps1</li>
+<li>.github/workflows/ci.yml -&gt; validate_workflow_control_plane.ps1</li>
+<li>.github/workflows/ci.yml -&gt; validate_workflow_control_alignment.ps1 -RefreshObserved</li>
+<li>.github/workflows/ci.yml -&gt; validate_capability_audit.ps1</li>
+<li>.github/workflows/ci.yml -&gt; generate_workflow_control_diagrams.ps1 -CheckOnly</li>
+<li>.github/workflows/ci.yml -&gt; verify_batch_status.ps1</li>
+<li>.github/workflows/ci.yml -&gt; validate_traceability.ps1</li>
+<li>.github/workflows/ci.yml -&gt; validate_next_session.ps1</li>
+<li>.github/workflows/ci.yml -&gt; generate_control_docs.ps1 -CheckOnly</li>
+<li>.github/workflows/quality-gate.yml -&gt; validate_workflow_control_plane.ps1 + validate_workflow_control_alignment.ps1
+  -RefreshObserved + validate_capability_audit.ps1 + generate_workflow_control_diagrams.ps1 -CheckOnly</li>
+<li>.github/workflows/quality-gate.yml -&gt; preflight_state_discovery.ps1 + verify_batch_status.ps1 + stejne kontroly</li>
+</ul>
+<h3 id="docs">Docs</h3>
+<ul>
+<li>docs/core/GOVERNANCE.md</li>
+<li>docs/generated/control/NEXT_SESSION.md</li>
+<li>docs/generated/control/TRACEABILITY_SUMMARY.md</li>
+<li>docs/generated/control/WORKFLOW_CONTROL_PLANE.md</li>
+<li>docs/generated/control/workflow_control_plane.verify_evidence_path.md</li>
+</ul>
+<p>Poznamky:</p>
+<ul>
+<li>Generated NEXT_SESSION view obsahuje sekci 'Checkpoint (workflow alignment)' jako lidsky citelny checkpoint nad JSON
+  daty.</li>
+<li>Markdown note (<code>docs_control/next_session_note.md</code>) nesmi obsahovat ridici checklists/stavy/metadata.</li>
+</ul>
+<h2 id="evidence-policy">Evidence policy</h2>
+<ul>
+<li>IMPLEMENTED/HOTOVO vyzaduje: local_hook_pass</li>
+<li>IMPLEMENTED/HOTOVO vyzaduje: ci_pass</li>
+<li>IMPLEMENTED/HOTOVO vyzaduje: docs_sync_pass</li>
+</ul>
+<h2 id="evidence-current">Evidence (current)</h2>
+<ul>
+<li><code>evidence.verify.fast.latest</code> | <code>PASS</code> | <code>verify_run</code> | docs_control/verify_runs.json</li>
+<li><code>evidence.batch-status.verify.latest</code> | <code>PASS</code> | <code>batch_status_verify</code> | logs/verify/batch_status_verify_summary.json</li>
+<li><code>evidence.capability-audit.latest</code> | <code>PASS</code> | <code>capability_audit</code> | logs/verify/capability_audit_summary.json</li>
+</ul>
+<h2 id="traceability-refs-control-ids">Traceability refs (control IDs)</h2>
+<ul>
+<li><code>spec_ids</code>:</li>
+<li><code>spec.docs-control-json-first-p0</code></li>
+<li><code>plan_ids</code>:</li>
+<li><code>plan.deterministic-docs-automation-v0_5-draft</code></li>
+<li><code>task_ids</code>:</li>
+<li><code>task.next-session-json-first-hybrid-strong</code></li>
+<li><code>task.traceability-p0-minimum</code></li>
+<li><code>task.claim-evidence-guard-p0</code></li>
+<li><code>task.capability-audit-gate-p0</code></li>
+<li><code>code_ref_ids</code>:</li>
+<li><code>code.scripts.validate_workflow_alignment</code></li>
+<li><code>code.scripts.validate_capability_audit</code></li>
+<li><code>code.scripts.assert_preflight_write_guard</code></li>
+<li><code>code.scripts.preflight_state_discovery</code></li>
+<li><code>code.scripts.verify_batch_status</code></li>
+<li><code>code.scripts.validate_next_session</code></li>
+<li><code>code.scripts.enforce_next_session_flow</code></li>
+<li><code>code.scripts.generate_control_docs</code></li>
+<li><code>code.scripts.validate_traceability</code></li>
+<li><code>code.scripts.verify_stage</code></li>
+<li><code>test_ids</code>:</li>
+<li><code>test.verify.fast.stage</code></li>
+<li><code>test.mkdocs.strict.build</code></li>
+<li><code>test.batch_status.verify</code></li>
+<li><code>test.capability_audit.validate</code></li>
+<li><code>doc_ids</code>:</li>
+<li><code>doc.control.next_session_json</code></li>
+<li><code>doc.control.next_session_note</code></li>
+<li><code>doc.generated.next_session_view</code></li>
+<li><code>doc.control.traceability_json</code></li>
+<li><code>doc.generated.traceability_summary</code></li>
+<li><code>doc.control.task_status_json</code></li>
+<li><code>doc.control.capability_audit_json</code></li>
+<li><code>log_ids</code>:</li>
+<li><code>log.verify_runs</code></li>
+<li><code>log.capability_audit_summary</code></li>
+<li><code>evidence_ids</code>:</li>
+<li><code>evidence.verify.fast.latest</code></li>
+<li><code>evidence.batch-status.verify.latest</code></li>
+<li><code>evidence.capability-audit.latest</code></li>
+</ul>
+<h2 id="narativni-poznamka-manual-non-control">Narativni poznamka (manual, non-control)</h2>
+<p>Tato poznamka je pouze narativni doplnek k ridicim datam v <code>docs_control/next_session.json</code>.</p>
+<p>Aktualni stav po Batch A + Batch B + claim=evidence guard (strict-clean pilot) +
+post-ASR-coding freeze + workflow-control-plane D1-D6 baseline + Capability Audit gate:</p>
+<ul>
+<li>JSON-first / hybrid-strong <code>NEXT_SESSION</code> + traceability P0 minimum je zavedene,</li>
+<li><code>mkdocs --strict</code> je green a markdownlint je rozdelen na blocking scope + backlog report,</li>
+<li>procesni diagram JSON-first control plane je doplnen v <code>docs/core/GOVERNANCE.md</code>,</li>
+<li>novy workflow control plane diagram system je zaveden
+  (<code>docs_control/workflow_control_plane.json</code> + schema + coverage validator +
+  observed manifests + alignment validator + generator/stale-check),</li>
+<li>Vale Batch B (critical + changed-file + backlog no-regression) je zaveden,</li>
+<li>claim=evidence guard je zaveden (<code>docs_control/task_status.json</code> + <code>scripts/preflight_state_discovery.ps1</code> + <code>scripts/verify_batch_status.ps1</code>),</li>
+<li>Capability Audit gate je zaveden (<code>docs_control/capability_audit.json</code> +
+  <code>scripts/validate_capability_audit.ps1</code> + JSON evidence outputs do
+  <code>logs/verify/toolchain_capabilities.json</code> a <code>logs/verify/capability_audit_summary.json</code>),</li>
+<li>capability audit je napojen do <code>verify_fast/CI</code> pred <code>preflight</code> a je vynucen take
+  v <code>scripts/assert_preflight_write_guard.ps1</code>,</li>
+<li>pro claim=evidence batch je pilotne zapnut <code>require_clean_worktree_for_verified</code> + auto downgrade claimu pri dirty artefaktech,</li>
+<li><code>cargo fmt</code> nad <code>src-tauri/*</code> je provedeno,</li>
+<li>Rust <code>clippy</code> chyby byly opraveny,</li>
+<li>byl opraven bug v <code>scripts/verify_stage.ps1</code> (PASS beh s prazdnym <code>ErrorsJson</code>),</li>
+<li>pilotni plny <code>verify_fast</code> na realnem projektu uz probehl do <code>PASS</code> a run se korektne zalogoval do <code>docs_control/verify_runs.json</code>,</li>
+<li>probehlo predcasne ASR kodovani (mimo dohodnute poradi) a stav je nyni zamerne zmrazen pred diagramem + zadanim,</li>
+<li>ASR MVP kod je funkcni v dev flow (UI -&gt; Rust -&gt; Python sidecar -&gt; WhisperX),
+  ale bundled sidecar <code>.exe</code> ma zatim packaging gap (placeholder rezim bez
+  WhisperX bundlingu).</li>
+</ul>
+<p>Fokus dalsiho postupu (bez dalsiho ASR kodovani):</p>
+<ul>
+<li>pouzit nove generated workflow control plane views jako canonical diagramovy podklad pro schvaleni procesu,</li>
+<li>udrzovat Capability Audit gate synchronni s workflow control plane diagram SSOT a traceability,</li>
+<li>uzamknout ASR zadani / scope (MVP vs mimo MVP),</li>
+<li>udelat reconcile audit predcasne napsaneho ASR kodu (ponechat / upravit / revertovat),</li>
+<li>teprve potom pokracovat v dalsim kodovani s aktivnim traceability/evidence flow.</li>
+</ul>
+<p>Dulezity operacni bod:</p>
+<ul>
+<li>verify orchestrator, verify dashboard
+  (<code>docs_control/verify_runs.json</code> -&gt; <code>docs/generated/control/*</code>)
+  uz existuji a slouzi jako referencni pattern pro dalsi control docs.</li>
+</ul>
+<p>Tato poznamka nesmi obsahovat ridici metadata, stavy nebo checklisty.
+Ty patri pouze do canonical JSON.</p>
+<h2 id="source-of-truth">Source of Truth</h2>
+<ul>
+<li>Canonical control data: <code>docs_control/next_session.json</code></li>
+<li>Canonical schema: <code>docs_control/next_session.schema.json</code></li>
+<li>Narrative note (manual): <code>docs_control/next_session_note.md</code></li>
+<li>This file is generated. Manual edits are forbidden.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../javascripts/nav-interactive-highlight.js"></script>
+      
+    
+  </body>
+</html>

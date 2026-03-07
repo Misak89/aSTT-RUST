@@ -1,17 +1,39 @@
 name: MegaLinter
-on: [push, pull_request]
+
+on:
+  push:
+    branches: [master, develop]
+  pull_request:
+    branches: [master]
 
 jobs:
-  build:
+  megalinter:
+    name: MegaLinter
     runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
+      pull-requests: write
+    
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
+      
       - name: MegaLinter
-        uses: oxsecurity/megalinter@v7
+        uses: oxsecurity/megalinter@v8
         env:
-          VALIDATE_ALL_CODEBASE: false # Only changed files
+          APPLY_FIXES: all
+          APPLY_FIXES_EVENT: pull_request
+          REPORT_OUTPUT_FOLDER: reports
+          VALIDATE_ALL_CODEBASE: false
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Upload Reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: megalinter-reports
+          path: reports
+          retention-days: 30

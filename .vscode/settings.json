@@ -1,3 +1,15 @@
 {
-  "svelte.enable-ts-plugin": true
+  "svelte.enable-ts-plugin": true,
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "match": ".*",
+        "isAsync": true,
+        "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File \"${workspaceFolder}\\scripts\\run_on_save.ps1\" -FilePath \"${file}\""
+      }
+    ],
+    "autoClearConsole": false,
+    "shell": "powershell.exe",
+    "exclude": "logs/.*|target/.*|node_modules/.*|site/.*|\\.git/.*"
+  }
 }

@@ -1,0 +1,685 @@
+{
+  "schema_version": "1.0",
+  "manifest_type": "observed_ci_jobs",
+  "source_paths": [
+    ".github/workflows/ci.yml",
+    ".github/workflows/quality-gate.yml",
+    ".github/workflows/determinism.yml",
+    ".github/workflows/clean-clone-smoke.yml"
+  ],
+  "workflows": [
+    {
+      "order_index": 1,
+      "path": ".github/workflows/ci.yml",
+      "workflow_name": "Continuous Testing (CI)",
+      "jobs": [
+        {
+          "order_index": 1,
+          "line": 7,
+          "job_id": "next-session-governance",
+          "name": "",
+          "runs_on": "ubuntu-latest",
+          "steps": [
+            {
+              "order_index": 1,
+              "line": 10,
+              "step_kind": "uses",
+              "label": "uses: actions/checkout@v4",
+              "value": "actions/checkout@v4"
+            },
+            {
+              "order_index": 2,
+              "line": 11,
+              "step_kind": "name",
+              "label": "Validate workflow alignment",
+              "value": "Validate workflow alignment"
+            },
+            {
+              "order_index": 3,
+              "line": 14,
+              "step_kind": "name",
+              "label": "Validate workflow control plane model",
+              "value": "Validate workflow control plane model"
+            },
+            {
+              "order_index": 4,
+              "line": 17,
+              "step_kind": "name",
+              "label": "Validate workflow control alignment (refresh observed)",
+              "value": "Validate workflow control alignment (refresh observed)"
+            },
+            {
+              "order_index": 5,
+              "line": 20,
+              "step_kind": "name",
+              "label": "Capability audit (tools + sources)",
+              "value": "Capability audit (tools + sources)"
+            },
+            {
+              "order_index": 6,
+              "line": 23,
+              "step_kind": "name",
+              "label": "Preflight state discovery (claim=evidence)",
+              "value": "Preflight state discovery (claim=evidence)"
+            },
+            {
+              "order_index": 7,
+              "line": 26,
+              "step_kind": "name",
+              "label": "Verify batch status claims (claim=evidence)",
+              "value": "Verify batch status claims (claim=evidence)"
+            },
+            {
+              "order_index": 8,
+              "line": 29,
+              "step_kind": "name",
+              "label": "Validate traceability registry",
+              "value": "Validate traceability registry"
+            },
+            {
+              "order_index": 9,
+              "line": 32,
+              "step_kind": "name",
+              "label": "Validate NEXT_SESSION structure",
+              "value": "Validate NEXT_SESSION structure"
+            },
+            {
+              "order_index": 10,
+              "line": 35,
+              "step_kind": "name",
+              "label": "Control docs stale-check",
+              "value": "Control docs stale-check"
+            },
+            {
+              "order_index": 11,
+              "line": 38,
+              "step_kind": "name",
+              "label": "Verify dashboard stale-check",
+              "value": "Verify dashboard stale-check"
+            },
+            {
+              "order_index": 12,
+              "line": 41,
+              "step_kind": "name",
+              "label": "Workflow control diagrams stale-check",
+              "value": "Workflow control diagrams stale-check"
+            },
+            {
+              "order_index": 13,
+              "line": 44,
+              "step_kind": "name",
+              "label": "Enforce NEXT_SESSION flow",
+              "value": "Enforce NEXT_SESSION flow"
+            }
+          ]
+        },
+        {
+          "order_index": 2,
+          "line": 48,
+          "job_id": "test-ui",
+          "name": "",
+          "runs_on": "ubuntu-latest",
+          "steps": [
+            {
+              "order_index": 1,
+              "line": 51,
+              "step_kind": "uses",
+              "label": "uses: actions/checkout@v4",
+              "value": "actions/checkout@v4"
+            },
+            {
+              "order_index": 2,
+              "line": 52,
+              "step_kind": "name",
+              "label": "Setup Node.js",
+              "value": "Setup Node.js"
+            },
+            {
+              "order_index": 3,
+              "line": 56,
+              "step_kind": "name",
+              "label": "Install dependencies",
+              "value": "Install dependencies"
+            },
+            {
+              "order_index": 4,
+              "line": 58,
+              "step_kind": "name",
+              "label": "Run Frontend Tests",
+              "value": "Run Frontend Tests"
+            }
+          ]
+        },
+        {
+          "order_index": 3,
+          "line": 61,
+          "job_id": "test-rust",
+          "name": "",
+          "runs_on": "windows-latest",
+          "steps": [
+            {
+              "order_index": 1,
+              "line": 64,
+              "step_kind": "uses",
+              "label": "uses: actions/checkout@v4",
+              "value": "actions/checkout@v4"
+            },
+            {
+              "order_index": 2,
+              "line": 65,
+              "step_kind": "name",
+              "label": "Setup Rust",
+              "value": "Setup Rust"
+            },
+            {
+              "order_index": 3,
+              "line": 67,
+              "step_kind": "name",
+              "label": "Cache Cargo",
+              "value": "Cache Cargo"
+            },
+            {
+              "order_index": 4,
+              "line": 77,
+              "step_kind": "name",
+              "label": "Run Rust Tests",
+              "value": "Run Rust Tests"
+            }
+          ]
+        },
+        {
+          "order_index": 4,
+          "line": 82,
+          "job_id": "lint",
+          "name": "",
+          "runs_on": "ubuntu-latest",
+          "steps": [
+            {
+              "order_index": 1,
+              "line": 85,
+              "step_kind": "uses",
+              "label": "uses: actions/checkout@v4",
+              "value": "actions/checkout@v4"
+            },
+            {
+              "order_index": 2,
+              "line": 86,
+              "step_kind": "name",
+              "label": "Setup Node.js",
+              "value": "Setup Node.js"
+            },
+            {
+              "order_index": 3,
+              "line": 90,
+              "step_kind": "name",
+              "label": "Install dependencies",
+              "value": "Install dependencies"
+            },
+            {
+              "order_index": 4,
+              "line": 92,
+              "step_kind": "name",
+              "label": "Run Linter",
+              "value": "Run Linter"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order_index": 2,
+      "path": ".github/workflows/quality-gate.yml",
+      "workflow_name": "Unified Quality Gate",
+      "jobs": [
+        {
+          "order_index": 1,
+          "line": 8,
+          "job_id": "governance-determinism",
+          "name": "",
+          "runs_on": "ubuntu-latest",
+          "steps": [
+            {
+              "order_index": 1,
+              "line": 11,
+              "step_kind": "uses",
+              "label": "uses: actions/checkout@v4",
+              "value": "actions/checkout@v4"
+            },
+            {
+              "order_index": 2,
+              "line": 13,
+              "step_kind": "name",
+              "label": "Validate workflow alignment",
+              "value": "Validate workflow alignment"
+            },
+            {
+              "order_index": 3,
+              "line": 17,
+              "step_kind": "name",
+              "label": "Validate workflow control plane model",
+              "value": "Validate workflow control plane model"
+            },
+            {
+              "order_index": 4,
+              "line": 21,
+              "step_kind": "name",
+              "label": "Validate workflow control alignment (refresh observed)",
+              "value": "Validate workflow control alignment (refresh observed)"
+            },
+            {
+              "order_index": 5,
+              "line": 25,
+              "step_kind": "name",
+              "label": "Capability audit (tools + sources)",
+              "value": "Capability audit (tools + sources)"
+            },
+            {
+              "order_index": 6,
+              "line": 29,
+              "step_kind": "name",
+              "label": "Preflight state discovery (claim=evidence)",
+              "value": "Preflight state discovery (claim=evidence)"
+            },
+            {
+              "order_index": 7,
+              "line": 33,
+              "step_kind": "name",
+              "label": "Verify batch status claims (claim=evidence)",
+              "value": "Verify batch status claims (claim=evidence)"
+            },
+            {
+              "order_index": 8,
+              "line": 37,
+              "step_kind": "name",
+              "label": "Validate traceability registry",
+              "value": "Validate traceability registry"
+            },
+            {
+              "order_index": 9,
+              "line": 41,
+              "step_kind": "name",
+              "label": "Validate NEXT_SESSION structure",
+              "value": "Validate NEXT_SESSION structure"
+            },
+            {
+              "order_index": 10,
+              "line": 45,
+              "step_kind": "name",
+              "label": "Control docs stale-check",
+              "value": "Control docs stale-check"
+            },
+            {
+              "order_index": 11,
+              "line": 49,
+              "step_kind": "name",
+              "label": "Verify dashboard stale-check",
+              "value": "Verify dashboard stale-check"
+            },
+            {
+              "order_index": 12,
+              "line": 53,
+              "step_kind": "name",
+              "label": "Workflow control diagrams stale-check",
+              "value": "Workflow control diagrams stale-check"
+            },
+            {
+              "order_index": 13,
+              "line": 57,
+              "step_kind": "name",
+              "label": "Enforce NEXT_SESSION flow",
+              "value": "Enforce NEXT_SESSION flow"
+            }
+          ]
+        },
+        {
+          "order_index": 2,
+          "line": 61,
+          "job_id": "docs-security",
+          "name": "",
+          "runs_on": "ubuntu-latest",
+          "steps": [
+            {
+              "order_index": 1,
+              "line": 64,
+              "step_kind": "uses",
+              "label": "uses: actions/checkout@v4",
+              "value": "actions/checkout@v4"
+            },
+            {
+              "order_index": 2,
+              "line": 66,
+              "step_kind": "name",
+              "label": "Markdown lint",
+              "value": "Markdown lint"
+            },
+            {
+              "order_index": 3,
+              "line": 78,
+              "step_kind": "name",
+              "label": "Markdown lint backlog (non-blocking)",
+              "value": "Markdown lint backlog (non-blocking)"
+            },
+            {
+              "order_index": 4,
+              "line": 84,
+              "step_kind": "name",
+              "label": "Vale prose lint (critical blocking)",
+              "value": "Vale prose lint (critical blocking)"
+            },
+            {
+              "order_index": 5,
+              "line": 95,
+              "step_kind": "name",
+              "label": "Vale prose lint backlog (non-blocking)",
+              "value": "Vale prose lint backlog (non-blocking)"
+            },
+            {
+              "order_index": 6,
+              "line": 103,
+              "step_kind": "name",
+              "label": "Link audit (lychee)",
+              "value": "Link audit (lychee)"
+            }
+          ]
+        },
+        {
+          "order_index": 3,
+          "line": 113,
+          "job_id": "code-audit",
+          "name": "",
+          "runs_on": "windows-latest",
+          "steps": [
+            {
+              "order_index": 1,
+              "line": 116,
+              "step_kind": "uses",
+              "label": "uses: actions/checkout@v4",
+              "value": "actions/checkout@v4"
+            },
+            {
+              "order_index": 2,
+              "line": 118,
+              "step_kind": "name",
+              "label": "Setup Node",
+              "value": "Setup Node"
+            },
+            {
+              "order_index": 3,
+              "line": 124,
+              "step_kind": "name",
+              "label": "Setup Rust",
+              "value": "Setup Rust"
+            },
+            {
+              "order_index": 4,
+              "line": 129,
+              "step_kind": "name",
+              "label": "Install Node dependencies",
+              "value": "Install Node dependencies"
+            },
+            {
+              "order_index": 5,
+              "line": 132,
+              "step_kind": "name",
+              "label": "Node checks",
+              "value": "Node checks"
+            },
+            {
+              "order_index": 6,
+              "line": 137,
+              "step_kind": "name",
+              "label": "Rust checks",
+              "value": "Rust checks"
+            },
+            {
+              "order_index": 7,
+              "line": 143,
+              "step_kind": "name",
+              "label": "Software inventory audit (CI mode)",
+              "value": "Software inventory audit (CI mode)"
+            },
+            {
+              "order_index": 8,
+              "line": 148,
+              "step_kind": "name",
+              "label": "Upload audit outputs",
+              "value": "Upload audit outputs"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order_index": 3,
+      "path": ".github/workflows/determinism.yml",
+      "workflow_name": "Determinism Gate",
+      "jobs": [
+        {
+          "order_index": 1,
+          "line": 8,
+          "job_id": "determinism",
+          "name": "determinism (${{ matrix.os }} / node${{ matrix.node }})",
+          "runs_on": "${{ matrix.os }}",
+          "steps": [
+            {
+              "order_index": 1,
+              "line": 19,
+              "step_kind": "name",
+              "label": "Checkout",
+              "value": "Checkout"
+            },
+            {
+              "order_index": 2,
+              "line": 25,
+              "step_kind": "name",
+              "label": "Setup Node",
+              "value": "Setup Node"
+            },
+            {
+              "order_index": 3,
+              "line": 30,
+              "step_kind": "name",
+              "label": "Setup Python",
+              "value": "Setup Python"
+            },
+            {
+              "order_index": 4,
+              "line": 35,
+              "step_kind": "name",
+              "label": "Setup Rust",
+              "value": "Setup Rust"
+            },
+            {
+              "order_index": 5,
+              "line": 38,
+              "step_kind": "name",
+              "label": "Setup Graphviz",
+              "value": "Setup Graphviz"
+            },
+            {
+              "order_index": 6,
+              "line": 41,
+              "step_kind": "name",
+              "label": "Toolchain fingerprint",
+              "value": "Toolchain fingerprint"
+            },
+            {
+              "order_index": 7,
+              "line": 53,
+              "step_kind": "name",
+              "label": "Hard clean repository",
+              "value": "Hard clean repository"
+            },
+            {
+              "order_index": 8,
+              "line": 60,
+              "step_kind": "name",
+              "label": "Assert checkout clean state",
+              "value": "Assert checkout clean state"
+            },
+            {
+              "order_index": 9,
+              "line": 77,
+              "step_kind": "name",
+              "label": "Governance baseline checks",
+              "value": "Governance baseline checks"
+            },
+            {
+              "order_index": 10,
+              "line": 84,
+              "step_kind": "name",
+              "label": "Assert observed manifests are committed",
+              "value": "Assert observed manifests are committed"
+            },
+            {
+              "order_index": 11,
+              "line": 94,
+              "step_kind": "name",
+              "label": "Baseline stale checks",
+              "value": "Baseline stale checks"
+            },
+            {
+              "order_index": 12,
+              "line": 101,
+              "step_kind": "name",
+              "label": "Determinism pass #1 (generate + snapshot)",
+              "value": "Determinism pass #1 (generate + snapshot)"
+            },
+            {
+              "order_index": 13,
+              "line": 130,
+              "step_kind": "name",
+              "label": "Determinism pass #2 (generate + snapshot)",
+              "value": "Determinism pass #2 (generate + snapshot)"
+            },
+            {
+              "order_index": 14,
+              "line": 148,
+              "step_kind": "name",
+              "label": "Compare pass #1 vs pass #2 snapshots",
+              "value": "Compare pass #1 vs pass #2 snapshots"
+            },
+            {
+              "order_index": 15,
+              "line": 161,
+              "step_kind": "name",
+              "label": "Negative stale-check test (must fail on canonical input drift)",
+              "value": "Negative stale-check test (must fail on canonical input drift)"
+            },
+            {
+              "order_index": 16,
+              "line": 186,
+              "step_kind": "name",
+              "label": "Upload determinism artifacts",
+              "value": "Upload determinism artifacts"
+            }
+          ]
+        },
+        {
+          "order_index": 2,
+          "line": 193,
+          "job_id": "determinism-required-check",
+          "name": "determinism-required-check",
+          "runs_on": "ubuntu-latest",
+          "steps": [
+            {
+              "order_index": 1,
+              "line": 200,
+              "step_kind": "name",
+              "label": "Enforce matrix success",
+              "value": "Enforce matrix success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order_index": 4,
+      "path": ".github/workflows/clean-clone-smoke.yml",
+      "workflow_name": "Clean Clone Smoke",
+      "jobs": [
+        {
+          "order_index": 1,
+          "line": 8,
+          "job_id": "clean-clone-smoke",
+          "name": "clean-clone-smoke-execution",
+          "runs_on": "ubuntu-latest",
+          "steps": [
+            {
+              "order_index": 1,
+              "line": 14,
+              "step_kind": "name",
+              "label": "Checkout",
+              "value": "Checkout"
+            },
+            {
+              "order_index": 2,
+              "line": 20,
+              "step_kind": "name",
+              "label": "Setup Node",
+              "value": "Setup Node"
+            },
+            {
+              "order_index": 3,
+              "line": 25,
+              "step_kind": "name",
+              "label": "Setup Python",
+              "value": "Setup Python"
+            },
+            {
+              "order_index": 4,
+              "line": 30,
+              "step_kind": "name",
+              "label": "Setup Rust",
+              "value": "Setup Rust"
+            },
+            {
+              "order_index": 5,
+              "line": 33,
+              "step_kind": "name",
+              "label": "Setup Graphviz",
+              "value": "Setup Graphviz"
+            },
+            {
+              "order_index": 6,
+              "line": 36,
+              "step_kind": "name",
+              "label": "Create fresh clean clone",
+              "value": "Create fresh clean clone"
+            },
+            {
+              "order_index": 7,
+              "line": 47,
+              "step_kind": "name",
+              "label": "Run smoke suite in clean clone",
+              "value": "Run smoke suite in clean clone"
+            },
+            {
+              "order_index": 8,
+              "line": 157,
+              "step_kind": "name",
+              "label": "Upload clean clone artifacts",
+              "value": "Upload clean clone artifacts"
+            }
+          ]
+        },
+        {
+          "order_index": 2,
+          "line": 166,
+          "job_id": "clean-clone-smoke-required-check",
+          "name": "clean-clone-smoke-required-check",
+          "runs_on": "ubuntu-latest",
+          "steps": [
+            {
+              "order_index": 1,
+              "line": 173,
+              "step_kind": "name",
+              "label": "Enforce smoke success",
+              "value": "Enforce smoke success"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
