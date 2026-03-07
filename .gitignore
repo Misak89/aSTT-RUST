@@ -22,6 +22,8 @@ node_modules/
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 target/
+dist-electron/
+sandbox/TestDocu_a003/_launch_now/windows-demo/app/*.exe
 
 # Graphviz portable (local only)
 tools/graphviz/
