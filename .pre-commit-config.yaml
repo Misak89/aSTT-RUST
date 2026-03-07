@@ -1,0 +1,62 @@
+repos:
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.15.0
+    hooks:
+      - id: markdownlint-cli2
+        name: markdownlint-cli2 (blocking scope, P0 curated)
+        always_run: true
+        pass_filenames: false
+        args:
+          - docs/index.md
+          - docs/core/GOVERNANCE.md
+          - docs/generated/control/NEXT_SESSION.md
+          - docs/generated/control/TRACEABILITY_SUMMARY.md
+          - docs/generated/control/WORKFLOW_CONTROL_PLANE.md
+          - docs/generated/control/workflow_control_plane.verify_evidence_path.md
+          - docs_control/**/*.md
+        files: ^(docs/index\.md|docs/core/GOVERNANCE\.md|docs/generated/control/(NEXT_SESSION|TRACEABILITY_SUMMARY|WORKFLOW_CONTROL_PLANE|workflow_control_plane\.verify_evidence_path)\.md|docs_control/.*\.md)$
+
+  - repo: https://github.com/lycheeverse/lychee
+    rev: v0.15.1
+    hooks:
+      - id: lychee
+        args:
+          - --no-progress
+          - --exclude-mail
+
+  - repo: local
+    hooks:
+      - id: validate-workflow-alignment
+        name: validate-workflow-alignment
+        entry: powershell -NoProfile -ExecutionPolicy Bypass -File scripts/validate_workflow_alignment.ps1
+        language: system
+        pass_filenames: false
+        files: ^(\.pre-commit-config\.yaml|\.vale(\.backlog)?\.ini|mkdocs\.yml|\.github/workflows/.*\.yml|docs/core/(GOVERNANCE|ARCHITECTURE)\.md|docs/generated/control/(NEXT_SESSION|TRACEABILITY_SUMMARY|WORKFLOW_CONTROL_PLANE|workflow_control_plane\.verify_evidence_path)\.md|docs_control/(next_session(\.schema)?|traceability(\.schema)?|task_status(\.schema)?|capability_audit(\.schema)?|vale_backlog_baseline|workflow_control_plane(\.schema)?)\.json|docs_control/(next_session_note|workflow_control_plane_note)\.md|docs_control/observed_workflow/.*\.json|scripts/(validate_workflow_alignment|validate_traceability|validate_next_session|validate_capability_audit|generate_control_docs|enforce_next_session_flow|report_vale_backlog|preflight_state_discovery|verify_batch_status|validate_workflow_control_plane|validate_workflow_control_alignment|generate_workflow_control_diagrams|extract_verify_stage_manifest|extract_ci_manifest|extract_hooks_manifest|assert_preflight_write_guard|generate_verify_dashboard|update_docs)\.ps1)$
+      - id: vale-critical
+        name: vale (critical scope, blocking errors-only)
+        entry: tools/vale/vale.exe
+        language: system
+        always_run: true
+        pass_filenames: false
+        args:
+          - --config=.vale.ini
+          - docs/index.md
+          - docs/core/GOVERNANCE.md
+          - docs/generated/control/NEXT_SESSION.md
+          - docs/generated/control/TRACEABILITY_SUMMARY.md
+          - docs_control/next_session_note.md
+        files: ^(docs/index\.md|docs/core/GOVERNANCE\.md|docs/generated/control/(NEXT_SESSION|TRACEABILITY_SUMMARY)\.md|docs_control/next_session_note\.md)$
+      - id: vale
+        name: vale (changed markdown, blocking errors-only)
+        entry: tools/vale/vale.exe
+        language: system
+        args:
+          - --config=.vale.ini
+        files: \.md$
+        exclude: ^(site/|backup_docs_[^/]+/|NEXT_SESSION_Archive/|src-tauri/binaries/build/|tools/vale/|docs/core/AUDIT_TRAIL_Log_dashboard\.md|docs/generated/control/VERIFY_.*\.md)$
+      - id: enforce-next-session-flow
+        name: enforce-next-session-flow
+        entry: powershell -NoProfile -ExecutionPolicy Bypass -File scripts/enforce_next_session_flow.ps1
+        language: system
+        pass_filenames: false
+        files: ^(docs_control/(next_session\.json|next_session_note\.md|traceability\.json)|docs/generated/control/(NEXT_SESSION|TRACEABILITY_SUMMARY)\.md)$

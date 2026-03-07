@@ -1,0 +1,4 @@
+At line:1 char:112
++ … les\nodejs/node_modules/npm/bin/npm-cli.js" $Step.executable) @($Step …
++                                                               ~
+Unexpected token ')' in expression or statement.

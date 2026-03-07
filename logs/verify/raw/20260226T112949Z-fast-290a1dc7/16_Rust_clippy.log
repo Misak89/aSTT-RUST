@@ -1,0 +1,4 @@
+warning: error finalizing incremental compilation session directory `\\?\C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\target\debug\incremental\build_script_build-1h0eon4mu5d54\s-hg5osbnf0i-0h88y7p-working`: Access is denied. (os error 5)
+System.Management.Automation.RemoteException
+warning: `app_temp` (build script) generated 1 warning
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.32s

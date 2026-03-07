@@ -1,0 +1,95 @@
+{
+  "generated_at": "2026-02-19 Thu 08:57",
+  "project_root": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+  "runtime": {
+    "powershell": "7.5.4",
+    "python_venv": "Python 3.11.9",
+    "node": "v24.3.0",
+    "npm": "11.4.2",
+    "cargo": "cargo 1.93.1 (083ac5135 2025-12-15)",
+    "rustc": "rustc 1.93.1 (01f6ddf75 2026-02-11)",
+    "mkdocs_cli": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\python.exe: No module named mkdocs"
+  },
+  "python_packages": {
+    "mkdocs": "not installed",
+    "mkdocs_material": "not installed",
+    "mkdocs_awesome_pages_plugin": "not installed",
+    "pystray": "not installed",
+    "pillow": "not installed"
+  },
+  "run_on_save": {
+    "configured": true,
+    "command_count": 1,
+    "valid_command": true,
+    "commands": [
+      "pwsh -NoProfile -ExecutionPolicy Bypass -File \"${workspaceFolder}\\scripts\\run_on_save.ps1\" -FilePath \"${file}\""
+    ]
+  },
+  "critical_checks": [
+    {
+      "name": "Root path exists",
+      "ok": true,
+      "detail": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST"
+    },
+    {
+      "name": "run_on_save.ps1 exists",
+      "ok": true,
+      "detail": "scripts/run_on_save.ps1"
+    },
+    {
+      "name": "run_on_save_guard.ps1 exists",
+      "ok": true,
+      "detail": "scripts/run_on_save_guard.ps1"
+    },
+    {
+      "name": "start_doc_automation.ps1 exists",
+      "ok": true,
+      "detail": "scripts/start_doc_automation.ps1"
+    },
+    {
+      "name": "RunOnSave configured",
+      "ok": true,
+      "detail": ".vscode/settings.json"
+    },
+    {
+      "name": "RunOnSave command valid",
+      "ok": true,
+      "detail": "must include run_on_save.ps1 + ${file}"
+    },
+    {
+      "name": "run_on_save_health_check",
+      "ok": true,
+      "detail": "exit code 0 required"
+    }
+  ],
+  "run_on_save_health": {
+    "executed": false,
+    "ok": true,
+    "output": [
+      "skipped"
+    ]
+  },
+  "node_dependencies": {
+    "dep:@tauri-apps/api": "^2",
+    "dep:@tauri-apps/plugin-opener": "^2",
+    "devDep:@sveltejs/adapter-static": "^3.0.6",
+    "devDep:@sveltejs/kit": "^2.9.0",
+    "devDep:@sveltejs/vite-plugin-svelte": "^5.0.0",
+    "devDep:danger": "^12.0.0",
+    "devDep:husky": "^9.0.0",
+    "devDep:svelte": "^5.0.0",
+    "devDep:svelte-check": "^4.0.0",
+    "devDep:typescript": "~5.6.2",
+    "devDep:vite": "^6.0.3",
+    "devDep:@tauri-apps/cli": "^2"
+  },
+  "cargo_dependencies": {
+    "build-dependencies:tauri-build": "{ version = \"2\", features = [] }",
+    "dependencies:tauri": "{ version = \"2\", features = [] }",
+    "dependencies:tauri-plugin-opener": "\"2\"",
+    "dependencies:tauri-plugin-shell": "\"2\"",
+    "dependencies:serde": "{ version = \"1\", features = [\"derive\"] }",
+    "dependencies:serde_json": "\"1\"",
+    "dependencies:tokio": "{ version = \"1\", features = [\"sync\", \"macros\", \"rt\", \"rt-multi-thread\"] }"
+  }
+}

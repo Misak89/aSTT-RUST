@@ -1,0 +1,180 @@
+name: Clean Clone Smoke
+
+on:
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  clean-clone-smoke:
+    name: clean-clone-smoke-execution
+    runs-on: ubuntu-latest
+    env:
+      TZ: UTC
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Setup Graphviz
+        uses: ts-graphviz/setup-graphviz@v2
+
+      - name: Create fresh clean clone
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          $cloneDir = Join-Path $env:RUNNER_TEMP ("clean-clone-" + $env:GITHUB_RUN_ID + "-" + $env:GITHUB_RUN_ATTEMPT)
+          if (Test-Path $cloneDir) {
+            Remove-Item -Recurse -Force $cloneDir
+          }
+          git clone --no-hardlinks --depth 1 "$env:GITHUB_WORKSPACE" $cloneDir
+          "CLONE_DIR=$cloneDir" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
+      - name: Run smoke suite in clean clone
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          Push-Location $env:CLONE_DIR
+          try {
+            git reset --hard HEAD
+            git clean -fdx
+
+            $dirtyBefore = @(git status --porcelain)
+            $ignorePattern = '^\s*[A-Za-z\?]{1,2}\s+docs/spec-kit$'
+            $effectiveDirty = @($dirtyBefore | Where-Object { $_ -notmatch $ignorePattern })
+            $ignoredDirty = @($dirtyBefore | Where-Object { $_ -match $ignorePattern })
+            if ($ignoredDirty.Count -gt 0) {
+              Write-Host "Ignoring known dirty path entries: docs/spec-kit"
+              $ignoredDirty | ForEach-Object { Write-Host $_ }
+            }
+            if ($effectiveDirty.Count -gt 0) {
+              $effectiveDirty | ForEach-Object { Write-Host $_ }
+              throw "Fresh clone is not clean before smoke checks."
+            }
+
+            Write-Host "Toolchain versions in clean clone:"
+            pwsh --version
+            node --version
+            python --version
+            git --version
+            dot -V
+
+            ./scripts/validate_workflow_alignment.ps1
+            ./scripts/validate_workflow_control_plane.ps1
+            ./scripts/validate_workflow_control_alignment.ps1 -RefreshObserved
+
+            $manifestDrift = @(git status --porcelain -- docs_control/observed_workflow)
+            if ($manifestDrift.Count -gt 0) {
+              $manifestDrift | ForEach-Object { Write-Host $_ }
+              throw "Observed workflow manifests changed after refresh. Commit docs_control/observed_workflow/*.json."
+            }
+
+            ./scripts/generate_control_docs.ps1 -SkipPreflightWriteGuard
+            ./scripts/generate_verify_dashboard.ps1 -SkipPreflightWriteGuard
+            ./scripts/generate_workflow_control_diagrams.ps1 -SkipPreflightWriteGuard
+
+            $driftAfterGenerate = @(git status --porcelain -- docs/generated/control docs_control/observed_workflow)
+            if ($driftAfterGenerate.Count -gt 0) {
+              $driftAfterGenerate | ForEach-Object { Write-Host $_ }
+              git diff -- docs/generated/control docs_control/observed_workflow | Out-File artifacts_clean_clone_drift.patch -Encoding utf8
+              throw "Committed generated outputs are stale in clean clone."
+            }
+
+            ./scripts/generate_control_docs.ps1 -CheckOnly
+            ./scripts/generate_verify_dashboard.ps1 -CheckOnly
+            ./scripts/generate_workflow_control_diagrams.ps1 -CheckOnly
+
+            New-Item -ItemType Directory -Path artifacts -Force | Out-Null
+            $filesPass1 = @(Get-ChildItem docs/generated/control -File -Recurse | Sort-Object FullName)
+            $snapshot1 = foreach ($f in $filesPass1) {
+              $hash = Get-FileHash -Algorithm SHA256 -Path $f.FullName
+              [pscustomobject]@{
+                path = ($f.FullName -replace '\\', '/')
+                sha256 = $hash.Hash.ToLowerInvariant()
+              }
+            }
+            $snapshot1 | ConvertTo-Json -Depth 5 | Set-Content artifacts/clean_clone_snapshot_pass1.json -Encoding UTF8
+
+            ./scripts/generate_control_docs.ps1 -SkipPreflightWriteGuard
+            ./scripts/generate_verify_dashboard.ps1 -SkipPreflightWriteGuard
+            ./scripts/generate_workflow_control_diagrams.ps1 -SkipPreflightWriteGuard
+
+            $filesPass2 = @(Get-ChildItem docs/generated/control -File -Recurse | Sort-Object FullName)
+            $snapshot2 = foreach ($f in $filesPass2) {
+              $hash = Get-FileHash -Algorithm SHA256 -Path $f.FullName
+              [pscustomobject]@{
+                path = ($f.FullName -replace '\\', '/')
+                sha256 = $hash.Hash.ToLowerInvariant()
+              }
+            }
+            $snapshot2 | ConvertTo-Json -Depth 5 | Set-Content artifacts/clean_clone_snapshot_pass2.json -Encoding UTF8
+
+            $j1 = ($snapshot1 | ConvertTo-Json -Depth 10 -Compress)
+            $j2 = ($snapshot2 | ConvertTo-Json -Depth 10 -Compress)
+            if ($j1 -cne $j2) {
+              throw "Determinism mismatch in clean clone: pass #1 and pass #2 differ."
+            }
+
+            $path = "docs_control/next_session.json"
+            $original = Get-Content $path -Raw -Encoding UTF8
+            $utf8 = New-Object System.Text.UTF8Encoding($false)
+            try {
+              $data = $original | ConvertFrom-Json -Depth 100
+              $data.document.updated_at = "2099-12-31 23:59 (UTC+0)"
+              ($data | ConvertTo-Json -Depth 100) | Set-Content $path -Encoding UTF8
+
+              & ./scripts/generate_control_docs.ps1 -CheckOnly
+              $exitCode = $LASTEXITCODE
+              if ($exitCode -eq 0) {
+                throw "Negative stale-check FAILED: CheckOnly passed after canonical mutation."
+              }
+              Write-Host "Negative stale-check PASS (drift detected as expected)."
+            }
+            finally {
+              [System.IO.File]::WriteAllText($path, $original, $utf8)
+            }
+
+            ./scripts/generate_control_docs.ps1 -CheckOnly
+          }
+          finally {
+            Pop-Location
+          }
+
+      - name: Upload clean clone artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: clean-clone-smoke-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ env.CLONE_DIR }}/artifacts/*.json
+            ${{ env.CLONE_DIR }}/artifacts_clean_clone_drift.patch
+
+  clean-clone-smoke-required-check:
+    name: clean-clone-smoke-required-check
+    runs-on: ubuntu-latest
+    if: ${{ always() }}
+    needs:
+      - clean-clone-smoke
+    steps:
+      - name: Enforce smoke success
+        shell: bash
+        run: |
+          if [ "${{ needs.clean-clone-smoke.result }}" != "success" ]; then
+            echo "Clean clone smoke result: ${{ needs.clean-clone-smoke.result }}"
+            exit 1
+          fi
+          echo "Clean clone smoke PASS."

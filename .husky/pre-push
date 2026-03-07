@@ -1,0 +1,38 @@
+#!/bin/bash
+
+echo "=== Pre-push Hook ==="
+echo "Workflow Execution Guard v1.0"
+echo ""
+
+# Kontrola dostupnosti PowerShell
+if ! command -v powershell &> /dev/null; then
+    echo "ERROR: PowerShell is not available!"
+    echo "Please install PowerShell or use --no-verify to skip."
+    exit 1
+fi
+
+# Kontrola existence skriptu
+SCRIPT="scripts/workflow_guard.ps1"
+if [ ! -f "$SCRIPT" ]; then
+    echo "ERROR: Workflow Guard script not found: $SCRIPT"
+    echo "Please run setup first."
+    exit 1
+fi
+
+# Spusteni Workflow Guard
+echo "Running Workflow Guard (pre-push)..."
+powershell -ExecutionPolicy Bypass -File "$SCRIPT" -Trigger pre-push
+
+if [ $? -ne 0 ]; then
+    echo ""
+    echo "=========================================="
+    echo "ERROR: Workflow Guard blocked the push!"
+    echo "=========================================="
+    echo ""
+    echo "Failed steps must be fixed before pushing."
+    echo "Use 'git push --no-verify' to skip (not recommended)."
+    exit 1
+fi
+
+echo ""
+echo "All pre-push checks passed! Push allowed."

@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "generated_at_utc": "2026-02-27T10:37:38.293Z",
+  "root_path": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+  "registry_path": "docs_control/capability_audit.json",
+  "schema_path": "docs_control/capability_audit.schema.json",
+  "tool_observation_path": "logs/verify/toolchain_capabilities.json",
+  "error_count": 0,
+  "warning_count": 1,
+  "model_status": "DRAFT",
+  "tool_counts": {
+    "found": 2,
+    "missing": 1,
+    "total": 3
+  },
+  "claim_counts": {
+    "total": 3,
+    "used_for_decisions": 2,
+    "unknown": 1,
+    "verified": 2,
+    "deprecated": 0
+  },
+  "errors": [],
+  "warnings": [
+    "Tool 'tool.mermaid_cli' not found locally (capability claim may remain source-only)."
+  ]
+}

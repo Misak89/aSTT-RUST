@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.0",
+  "generated_at_utc": "2026-02-27T10:37:38.250Z",
+  "root_path": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST",
+  "source_registry": "docs_control/capability_audit.json",
+  "tools": [
+    {
+      "tool_id": "tool.graphviz.dot",
+      "label": "Graphviz dot renderer",
+      "found": true,
+      "resolved_command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\tools\\graphviz\\Graphviz-14.1.2-win64\\bin\\dot.exe",
+      "version_args": [
+        "-V"
+      ],
+      "version_text": "",
+      "version_probe_success": true,
+      "version_probe_exit_code": 0,
+      "version_pin_regex": null,
+      "version_pin_enforcement": null,
+      "version_pin_matched": null,
+      "candidates": [
+        {
+          "candidate": "tools/graphviz/Graphviz-14.1.2-win64/bin/dot.exe",
+          "found": true,
+          "resolved": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\tools\\graphviz\\Graphviz-14.1.2-win64\\bin\\dot.exe"
+        },
+        {
+          "candidate": "tools/graphviz/bin/dot.exe",
+          "found": false,
+          "resolved": null
+        },
+        {
+          "candidate": "dot",
+          "found": false,
+          "resolved": null
+        }
+      ]
+    },
+    {
+      "tool_id": "tool.mkdocs",
+      "label": "MkDocs CLI (python -m mkdocs)",
+      "found": true,
+      "resolved_command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\python.exe",
+      "version_args": [
+        "-X",
+        "utf8",
+        "-m",
+        "mkdocs",
+        "--version"
+      ],
+      "version_text": "Python 3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)] on win32",
+      "version_probe_success": true,
+      "version_probe_exit_code": 0,
+      "version_pin_regex": null,
+      "version_pin_enforcement": null,
+      "version_pin_matched": null,
+      "candidates": [
+        {
+          "candidate": ".venv/Scripts/python.exe",
+          "found": true,
+          "resolved": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.venv\\Scripts\\python.exe"
+        },
+        {
+          "candidate": "python",
+          "found": true,
+          "resolved": "C:\\Program Files\\Python311\\python.exe"
+        }
+      ]
+    },
+    {
+      "tool_id": "tool.mermaid_cli",
+      "label": "Mermaid CLI (mmdc)",
+      "found": false,
+      "resolved_command": null,
+      "version_args": [
+        "--version"
+      ],
+      "version_text": null,
+      "version_probe_success": false,
+      "version_probe_exit_code": null,
+      "version_pin_regex": "11\\.12\\.0",
+      "version_pin_enforcement": "warn",
+      "version_pin_matched": null,
+      "candidates": [
+        {
+          "candidate": "node_modules/.bin/mmdc.cmd",
+          "found": false,
+          "resolved": null
+        },
+        {
+          "candidate": "node_modules/.bin/mmdc",
+          "found": false,
+          "resolved": null
+        },
+        {
+          "candidate": "mmdc",
+          "found": false,
+          "resolved": null
+        }
+      ]
+    }
+  ]
+}

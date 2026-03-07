@@ -1,0 +1,16 @@
+
+========================================
+  Batch Status Verifier v1.0
+========================================
+
+PASS: task_status JSON schema validation
+WARN: batch[batch.json-first-traceability-p0]: required artifacts have uncommitted changes: docs_control/next_session.json, docs_control/next_session.schema.json, docs_control/traceability.json, docs_control/traceability.schema.json, scripts/generate_control_docs.ps1
+WARN: batch[batch.markdownlint-policy-a]: required artifacts have uncommitted changes: .markdownlint-cli2.yaml, .pre-commit-config.markdownlint-backlog.yaml, .pre-commit-config.yaml, scripts/report_markdownlint_backlog.ps1, scripts/verify_stage.ps1
+WARN: batch[batch.vale-policy-b]: required artifacts have uncommitted changes: .pre-commit-config.yaml, .vale.backlog.ini, .vale.ini, docs_control/vale_backlog_baseline.json, scripts/report_vale_backlog.ps1
+WARN: batch[batch.claim-evidence-guard-p0]: required artifacts have uncommitted changes: docs_control/task_status.json, docs_control/task_status.schema.json, scripts/preflight_state_discovery.ps1, scripts/validate_workflow_alignment.ps1, scripts/verify_batch_status.ps1
+Batch status verification summary:
+  batches: 4
+  errors: 0
+  warnings: 4
+  summary json: logs/verify/batch_status_verify_summary.json
+--- BATCH STATUS VERIFICATION PASSED ---

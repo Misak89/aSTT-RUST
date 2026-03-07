@@ -1,0 +1,204 @@
+{
+  "schema_version": "1.0",
+  "source_of_truth": "logs/verify/vale_backlog_summary.json",
+  "generated_at_utc": "2026-02-26T18:45:52.815Z",
+  "command": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\tools\\vale\\vale.exe --output=JSON --config=C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\.vale.backlog.ini .",
+  "runner": "vale",
+  "config_path": ".vale.backlog.ini",
+  "scope": "repo-wide markdown backlog (non-blocking report)",
+  "non_blocking_report": true,
+  "vale_exit_code": 1,
+  "total_alerts": 6303,
+  "error_count": 1798,
+  "warning_count": 4505,
+  "suggestion_count": 0,
+  "top_severities": [
+    {
+      "severity": "warning",
+      "count": 4505
+    },
+    {
+      "severity": "error",
+      "count": 1798
+    }
+  ],
+  "top_rules": [
+    {
+      "rule": "Google.Headings",
+      "count": 1653
+    },
+    {
+      "rule": "Google.Colons",
+      "count": 545
+    },
+    {
+      "rule": "Google.WordList",
+      "count": 543
+    },
+    {
+      "rule": "Microsoft.Contractions",
+      "count": 521
+    },
+    {
+      "rule": "Microsoft.HeadingAcronyms",
+      "count": 302
+    },
+    {
+      "rule": "Google.Quotes",
+      "count": 274
+    },
+    {
+      "rule": "Microsoft.Quotes",
+      "count": 272
+    },
+    {
+      "rule": "Microsoft.Adverbs",
+      "count": 254
+    },
+    {
+      "rule": "Microsoft.Terms",
+      "count": 251
+    },
+    {
+      "rule": "Google.Will",
+      "count": 232
+    },
+    {
+      "rule": "Microsoft.FirstPerson",
+      "count": 152
+    },
+    {
+      "rule": "Google.Latin",
+      "count": 148
+    },
+    {
+      "rule": "Microsoft.Foreign",
+      "count": 148
+    },
+    {
+      "rule": "Google.We",
+      "count": 142
+    },
+    {
+      "rule": "Microsoft.We",
+      "count": 142
+    }
+  ],
+  "top_dirs": [
+    {
+      "dir": "sandbox",
+      "count": 2118
+    },
+    {
+      "dir": "docs",
+      "count": 1764
+    },
+    {
+      "dir": "tools",
+      "count": 1528
+    },
+    {
+      "dir": "(root)",
+      "count": 386
+    },
+    {
+      "dir": "plans",
+      "count": 297
+    },
+    {
+      "dir": ".specify",
+      "count": 140
+    },
+    {
+      "dir": "logs",
+      "count": 35
+    },
+    {
+      "dir": ".agent",
+      "count": 34
+    },
+    {
+      "dir": "test",
+      "count": 1
+    }
+  ],
+  "top_files": [
+    {
+      "file": "sandbox/portable_bench/python-embed/Lib/site-packages/lightning/pytorch/CHANGELOG.md",
+      "count": 312
+    },
+    {
+      "file": "sandbox/portable_bench/python-embed/Lib/site-packages/pytorch_lightning/CHANGELOG.md",
+      "count": 312
+    },
+    {
+      "file": "sandbox/portable_bench/venv-system/Lib/site-packages/lightning/pytorch/CHANGELOG.md",
+      "count": 312
+    },
+    {
+      "file": "sandbox/portable_bench/venv-system/Lib/site-packages/pytorch_lightning/CHANGELOG.md",
+      "count": 312
+    },
+    {
+      "file": "CRITICAL_ANALYSIS.md",
+      "count": 175
+    },
+    {
+      "file": "docs/spec-kit/extensions/RFC-EXTENSION-SYSTEM.md",
+      "count": 158
+    },
+    {
+      "file": "tools/superpowers/RELEASE-NOTES.md",
+      "count": 151
+    },
+    {
+      "file": "docs/spec-kit/README.md",
+      "count": 143
+    },
+    {
+      "file": "tools/superpowers/skills/writing-skills/SKILL.md",
+      "count": 140
+    },
+    {
+      "file": "docs/spec-kit/extensions/EXTENSION-USER-GUIDE.md",
+      "count": 138
+    },
+    {
+      "file": "docs/spec-kit/AGENTS.md",
+      "count": 132
+    },
+    {
+      "file": "tools/superpowers/docs/plans/2025-11-22-opencode-support-implementation.md",
+      "count": 116
+    },
+    {
+      "file": "sandbox/portable_bench/python-embed/Lib/site-packages/huggingface_hub/templates/modelcard_template.md",
+      "count": 108
+    },
+    {
+      "file": "sandbox/portable_bench/venv-system/Lib/site-packages/huggingface_hub/templates/modelcard_template.md",
+      "count": 108
+    },
+    {
+      "file": "tools/superpowers/skills/writing-skills/anthropic-best-practices.md",
+      "count": 105
+    }
+  ],
+  "raw_json_path": "logs/verify/vale_backlog_latest.json",
+  "baseline_path": "docs_control/vale_backlog_baseline.json",
+  "baseline": {
+    "total_alerts": 6303,
+    "error_count": 1798,
+    "warning_count": 4505,
+    "suggestion_count": 0
+  },
+  "delta": {
+    "total_alerts": 0,
+    "error_count": 0,
+    "warning_count": 0,
+    "suggestion_count": 0
+  },
+  "no_regression_enforced": true,
+  "regression_detected": false,
+  "regression_messages": []
+}

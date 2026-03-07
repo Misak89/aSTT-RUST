@@ -1,0 +1,1482 @@
+vale.....................................................................Failed
+- hook id: vale
+- exit code: 1
+
+[4m.specify\spec.md[0m
+ 23:37   [33mwarning[0m  Use 'capability' or 'feature'   Google.WordList           
+                  instead of 'functionality'.                               
+ 23:128  [33mwarning[0m  Use 'app' instead of            Google.WordList           
+                  'application'.                                            
+ 25:4    [33mwarning[0m  'User Stories' should use       Google.Headings           
+                  sentence-style capitalization.                            
+ 27:5    [33mwarning[0m  '1. Physician Starts            Google.Headings           
+                  a Session' should use                                     
+                  sentence-style capitalization.                            
+ 29:5    [33mwarning[0m  Avoid first-person pronouns     Google.FirstPerson        
+                  such as 'I '.                                             
+ 29:5    [33mwarning[0m  Use first person (such as 'I')  Microsoft.FirstPerson     
+                  sparingly.                                                
+ 29:27   [33mwarning[0m  Use 'app' instead of            Google.WordList           
+                  'application'.                                            
+ 30:14   [33mwarning[0m  Use first person (such as '     Microsoft.FirstPerson     
+                  I') sparingly.                                            
+ 30:14   [33mwarning[0m  Avoid first-person pronouns     Google.FirstPerson        
+                  such as ' I '.                                            
+ 32:5    [33mwarning[0m  '2. Real-Time Transcription'    Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 34:5    [33mwarning[0m  Avoid first-person pronouns     Google.FirstPerson        
+                  such as 'I '.                                             
+ 34:5    [33mwarning[0m  Use first person (such as 'I')  Microsoft.FirstPerson     
+                  sparingly.                                                
+ 34:45   [33mwarning[0m  Avoid first-person pronouns     Google.FirstPerson        
+                  such as ' I '.                                            
+ 34:45   [33mwarning[0m  Use first person (such as '     Microsoft.FirstPerson     
+                  I') sparingly.                                            
+ 35:14   [33mwarning[0m  Avoid first-person pronouns     Google.FirstPerson        
+                  such as ' I '.                                            
+ 35:14   [33mwarning[0m  Use first person (such as '     Microsoft.FirstPerson     
+                  I') sparingly.                                            
+ 37:5    [33mwarning[0m  '3. Speaker Identification      Google.Headings           
+                  (Diarization)' should use                                 
+                  sentence-style capitalization.                            
+ 39:5    [33mwarning[0m  Use first person (such as 'I')  Microsoft.FirstPerson     
+                  sparingly.                                                
+ 39:5    [33mwarning[0m  Avoid first-person pronouns     Google.FirstPerson        
+                  such as 'I '.                                             
+ 39:16   [33mwarning[0m  Use 'app' instead of            Google.WordList           
+                  'application'.                                            
+ 39:53   [33mwarning[0m  Use first person (such as       Microsoft.FirstPerson     
+                  'me') sparingly.                                          
+ 39:53   [33mwarning[0m  Avoid first-person pronouns     Google.FirstPerson        
+                  such as 'me'.                                             
+ 42:5    [33mwarning[0m  '4. Export Transcript'          Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 44:5    [33mwarning[0m  Avoid first-person pronouns     Google.FirstPerson        
+                  such as 'I '.                                             
+ 44:5    [33mwarning[0m  Use first person (such as 'I')  Microsoft.FirstPerson     
+                  sparingly.                                                
+ 44:40   [33mwarning[0m  Avoid first-person pronouns     Google.FirstPerson        
+                  such as 'my'.                                             
+ 44:40   [33mwarning[0m  Use first person (such as       Microsoft.FirstPerson     
+                  'my') sparingly.                                          
+ 45:14   [33mwarning[0m  Use first person (such as '     Microsoft.FirstPerson     
+                  I') sparingly.                                            
+ 45:14   [33mwarning[0m  Avoid first-person pronouns     Google.FirstPerson        
+                  such as ' I '.                                            
+ 45:35   [33mwarning[0m  Avoid first-person pronouns     Google.FirstPerson        
+                  such as 'my'.                                             
+ 45:35   [33mwarning[0m  Use first person (such as       Microsoft.FirstPerson     
+                  'my') sparingly.                                          
+ 47:4    [33mwarning[0m  'Functional Requirements'       Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 49:27   [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 50:10   [31merror[0m    Don't use 'backend'. See the    Microsoft.Avoid           
+                  A-Z word list for details.                                
+ 54:5    [33mwarning[0m  'FR-01: Initialization'         Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 54:5    [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 57:39   [31merror[0m    Don't use 'backend'. See the    Microsoft.Avoid           
+                  A-Z word list for details.                                
+ 59:5    [33mwarning[0m  'FR-02: Recording Control'      Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 59:5    [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 62:41   [31merror[0m    Use 'for example' instead of    Google.Latin              
+                  'e.g.'.                                                   
+ 62:41   [31merror[0m    Use 'for example' instead of    Microsoft.Foreign         
+                  'e.g.,'.                                                  
+ 64:5    [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 64:5    [33mwarning[0m  'FR-03: Transcription Display'  Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 66:48   [31merror[0m    Use 'for example' instead of    Microsoft.Foreign         
+                  'e.g.,'.                                                  
+ 66:48   [31merror[0m    Use 'for example' instead of    Google.Latin              
+                  'e.g.'.                                                   
+ 66:54   [31merror[0m    Commas and periods go inside    Google.Quotes             
+                  quotation marks.                                          
+ 66:54   [31merror[0m    Punctuation should be inside    Microsoft.Quotes          
+                  the quotes.                                               
+ 66:80   [33mwarning[0m  Avoid using 'will'.             Google.Will               
+ 66:109  [31merror[0m    Put a nonbreaking space         Google.Units              
+                  between the number and the                                
+                  unit in '5s'.                                             
+ 69:5    [33mwarning[0m  'FR-04: Configuration'          Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 69:5    [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 73:5    [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 73:5    [33mwarning[0m  'FR-05: Design System (Clean    Google.Headings           
+                  Swiss Style)' should use                                  
+                  sentence-style capitalization.                            
+ 75:51   [31merror[0m    Use 'for example' instead of    Google.Latin              
+                  'e.g.'.                                                   
+ 75:51   [31merror[0m    Use 'for example' instead of    Microsoft.Foreign         
+                  'e.g.,'.                                                  
+ 76:78   [31merror[0m    Use 'for example' instead of    Microsoft.Foreign         
+                  'e.g.,'.                                                  
+ 76:78   [31merror[0m    Use 'for example' instead of    Google.Latin              
+                  'e.g.'.                                                   
+ 81:4    [33mwarning[0m  'Non-Functional Requirements'   Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 83:82   [31merror[0m    Put a nonbreaking space         Google.Units              
+                  between the number and the                                
+                  unit in '3s'.                                             
+ 86:4    [33mwarning[0m  '7. Documentation & Control     Google.Headings           
+                  Requirements' should use                                  
+                  sentence-style capitalization.                            
+
+
+ [4mPROMPT_HISTORY.md[0m
+ 33:4  [33mwarning[0m  '🤖 Historie Promptů'           Google.Headings 
+                should use sentence-style                       
+                capitalization.                                 
+ 43:4  [33mwarning[0m  '📋 Úkoly k Provádění'          Google.Headings 
+                should use sentence-style                       
+                capitalization.                                 
+ 53:4  [33mwarning[0m  '📋 Navržené Úkoly' should use  Google.Headings 
+                sentence-style capitalization.                  
+ 71:4  [33mwarning[0m  '🤖 Historie Promptů'           Google.Headings 
+                should use sentence-style                       
+                capitalization.                                 
+ 81:4  [33mwarning[0m  '📋 Úkoly k Provádění'          Google.Headings 
+                should use sentence-style                       
+                capitalization.                                 
+ 91:4  [33mwarning[0m  '📋 Navržené Úkoly' should use  Google.Headings 
+                sentence-style capitalization.                  
+
+
+ [4mautomation_audit.md[0m
+ 1:20   [33mwarning[0m  ': D' should be in lowercase.   Google.Colons     
+ 23:11  [33mwarning[0m  ': C' should be in lowercase.   Google.Colons     
+ 25:4   [33mwarning[0m  '📈 Current Strengths'          Google.Headings   
+                 should use sentence-style                         
+                 capitalization.                                   
+ 29:4   [33mwarning[0m  '🚩 Identified Weaknesses'      Google.Headings   
+                 should use sentence-style                         
+                 capitalization.                                   
+ 36:5   [33mwarning[0m  '2. Environment Blindness'      Google.Headings   
+                 should use sentence-style                         
+                 capitalization.                                   
+ 37:31  [33mwarning[0m  Remove 'silently' if it's not   Microsoft.Adverbs 
+                 important to the meaning of                       
+                 the statement.                                    
+ 38:37  [33mwarning[0m  Try to avoid using              Microsoft.We      
+                 first-person plural like 'we'.                    
+ 38:37  [33mwarning[0m  Try to avoid using              Google.We         
+                 first-person plural like 'we'.                    
+ 41:5   [33mwarning[0m  '3. Spec-Execution Gap          Google.Headings   
+                 (Spec-Kit Violation)'                             
+                 should use sentence-style                         
+                 capitalization.                                   
+ 43:13  [33mwarning[0m  Try to avoid using              Microsoft.We      
+                 first-person plural like 'We'.                    
+ 43:13  [33mwarning[0m  Try to avoid using              Google.We         
+                 first-person plural like 'We'.                    
+ 44:96  [31merror[0m    Use 'for example' instead of    Google.Latin      
+                 'e.g.'.                                           
+ 44:96  [31merror[0m    Use 'for example' instead of    Microsoft.Foreign 
+                 'e.g.,'.                                          
+ 46:5   [33mwarning[0m  '4. Fragmented Questions'       Google.Headings   
+                 should use sentence-style                         
+                 capitalization.                                   
+ 51:5   [33mwarning[0m  '5. Fragile Versioning Regex'   Google.Headings   
+                 should use sentence-style                         
+                 capitalization.                                   
+ 52:18  [33mwarning[0m  Use 'regular expression'        Google.WordList   
+                 instead of 'regex'.                               
+ 55:4   [33mwarning[0m  '🚀 Recommended Next Actions'   Google.Headings   
+                 should use sentence-style                         
+                 capitalization.                                   
+ 57:35  [31merror[0m    In general, don't hyphenate     Microsoft.Auto    
+                 'Auto-detecting'.                                 
+
+
+ [4mCHANGE_LOG.md[0m
+ 24:5   [33mwarning[0m  '20:00 - WhisperX Integration   Google.Headings           
+                 Complete' should use                                      
+                 sentence-style capitalization.                            
+ 31:5   [33mwarning[0m  '19:00 - Rust-Python Bridge     Google.Headings           
+                 Phase 1 Complete' should use                              
+                 sentence-style capitalization.                            
+ 36:5   [33mwarning[0m  '16:33 - Duplicate              Google.Headings           
+                 Files Fixed' should use                                   
+                 sentence-style capitalization.                            
+ 39:8   [33mwarning[0m  ': C' should be in lowercase.   Google.Colons             
+ 45:5   [33mwarning[0m  '12:25 - OneDrive Restarted'    Google.Headings           
+                 should use sentence-style                                 
+                 capitalization.                                           
+ 46:28  [33mwarning[0m  Use 'turn off' or 'off'         Google.WordList           
+                 instead of 'disabled'.                                    
+ 49:5   [33mwarning[0m  '12:24 - File Duplication       Google.Headings           
+                 Issue Investigation'                                      
+                 should use sentence-style                                 
+                 capitalization.                                           
+ 54:5   [33mwarning[0m  '12:19 - OneDrive               Google.Headings           
+                 Investigation' should use                                 
+                 sentence-style capitalization.                            
+ 56:34  [31merror[0m    'e.S' should have one space.    Google.Spacing            
+ 56:34  [31merror[0m    'e.S' should have one space.    Microsoft.Spacing         
+ 56:39  [31merror[0m    'c.S' should have one space.    Google.Spacing            
+ 56:39  [31merror[0m    'c.S' should have one space.    Microsoft.Spacing         
+ 59:5   [33mwarning[0m  '12:00 - JSON-RPC Contract      Google.Headings           
+                 Creation' should use                                      
+                 sentence-style capitalization.                            
+ 59:13  [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                 title or heading.                                         
+ 59:18  [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                 title or heading.                                         
+ 64:5   [33mwarning[0m  '11:58 - lib.rs Modification'   Google.Headings           
+                 should use sentence-style                                 
+                 capitalization.                                           
+ 69:5   [33mwarning[0m  '11:49 - RPC Contract Tests'    Google.Headings           
+                 should use sentence-style                                 
+                 capitalization.                                           
+ 69:13  [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                 title or heading.                                         
+
+✖ [31m21 errors[0m, [33m81 warnings[0m and [34m0 suggestions[0m in 4 files.
+
+ [4mTEST_INSPIRATION.md[0m
+ 24:4   [33mwarning[0m  '1. Test-First Imperative           Google.Headings           
+                 (Article III)' should use                                     
+                 sentence-style capitalization.                                
+ 24:38  [33mwarning[0m  Avoid using acronyms in a           Microsoft.HeadingAcronyms 
+                 title or heading.                                             
+ 35:4   [33mwarning[0m  '2. Integration-First Testing       Google.Headings           
+                 (Article IX)' should use                                      
+                 sentence-style capitalization.                                
+ 35:42  [33mwarning[0m  Avoid using acronyms in a           Microsoft.HeadingAcronyms 
+                 title or heading.                                             
+ 36:1   [33mwarning[0m  ': U' should be in lowercase.       Google.Colons             
+ 40:27  [33mwarning[0m  ': T' should be in lowercase.       Google.Colons             
+ 58:1   [33mwarning[0m  'B. Python Unit Test (v             Google.Headings           
+                 **********************************                            
+                 )' should use sentence-style                                  
+                 capitalization.                                               
+ 67:5   [33mwarning[0m  'C. Gherkin (Spec-Driven            Google.Headings           
+                 Example)' should use                                          
+                 sentence-style capitalization.                                
+ 78:4   [33mwarning[0m  '4. Quality Gates' should use       Google.Headings           
+                 sentence-style capitalization.                                
+
+
+ [4m.agent\workflows\review.md[0m
+ 3:13     [33mwarning[0m  Prefer 'personal digital        Microsoft.Terms              
+                   assistant' over 'agent'.                                     
+ 23:1     [33mwarning[0m  'description: Review            Google.Headings              
+                   pending Git changes as a                                     
+                   senior engineer, ensuring                                    
+                   Spec-Kit compliance and                                      
+                   release safety.' should use                                  
+                   sentence-style capitalization.                               
+ 23:109   [33mwarning[0m  Don't put a period at the end   Google.HeadingPunctuation    
+                   of a heading.                                                
+ 23:109   [33mwarning[0m  Don't use end punctuation in    Microsoft.HeadingPunctuation 
+                   headings.                                                    
+ 26:3     [33mwarning[0m  'aSTT-RUST Spec-Driven          Google.Headings              
+                   Code Review' should use                                      
+                   sentence-style capitalization.                               
+ 26:8     [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms    
+                   title or heading.                                            
+ 29:15    [33mwarning[0m  Remove 'strictly' if it's not   Microsoft.Adverbs            
+                   important to the meaning of                                  
+                   the statement.                                               
+ 33:5     [33mwarning[0m  '1. Get Pending Changes'        Google.Headings              
+                   should use sentence-style                                    
+                   capitalization.                                              
+ 42:1     [33mwarning[0m  ': F' should be in lowercase.   Google.Colons                
+ 50:5     [33mwarning[0m  '2. Analyze Each Changed File'  Google.Headings              
+                   should use sentence-style                                    
+                   capitalization.                                              
+ 59:5     [33mwarning[0m  '3. Conduct the Review (The     Google.Headings              
+                   Spec-Kit Gates)' should use                                  
+                   sentence-style capitalization.                               
+ 63:6     [33mwarning[0m  'A. Spec-Kit Compliance         Google.Headings              
+                   (NON-NEGOTIABLE)' should use                                 
+                   sentence-style capitalization.                               
+ 63:30    [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms    
+                   title or heading.                                            
+ 65:16    [33mwarning[0m  Use first person (such as '     Microsoft.FirstPerson        
+                   I') sparingly.                                               
+ 65:16    [33mwarning[0m  Avoid first-person pronouns     Google.FirstPerson           
+                   such as ' I '.                                               
+ 67:21    [33mwarning[0m  Use 'command-line tool'         Google.WordList              
+                   instead of 'CLI'.                                            
+ 67:113   [33mwarning[0m  Use 'command-line tool'         Google.WordList              
+                   instead of 'CLI'.                                            
+ 69:6     [33mwarning[0m  'B. IPC & Schema Integrity'     Google.Headings              
+                   should use sentence-style                                    
+                   capitalization.                                              
+ 69:9     [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms    
+                   title or heading.                                            
+ 71:64    [33mwarning[0m  Remove 'strictly' if it's not   Microsoft.Adverbs            
+                   important to the meaning of                                  
+                   the statement.                                               
+ 73:6     [33mwarning[0m  'C. Performance & Security      Google.Headings              
+                   (Article IX)' should use                                     
+                   sentence-style capitalization.                               
+ 73:41    [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms    
+                   title or heading.                                            
+ 74:25    [33mwarning[0m  Avoid using 'Will'.             Google.Will                  
+ 74:49    [33mwarning[0m  Try to avoid using              Microsoft.We                 
+                   first-person plural like                                     
+                   'our'.                                                       
+ 74:49    [33mwarning[0m  Try to avoid using              Google.We                    
+                   first-person plural like                                     
+                   'our'.                                                       
+ 78:6     [33mwarning[0m  'D. Data Compatibility          Google.Headings              
+                   (CRITICAL)' should use                                       
+                   sentence-style capitalization.                               
+ 80:31    [33mwarning[0m  Avoid using 'Will'.             Google.Will                  
+ 82:6     [33mwarning[0m  'E. Code Quality (SOLID/DRY)'   Google.Headings              
+                   should use sentence-style                                    
+                   capitalization.                                              
+ 82:29    [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms    
+                   title or heading.                                            
+ 88:5     [33mwarning[0m  '4. Provide Feedback'           Google.Headings              
+                   should use sentence-style                                    
+                   capitalization.                                              
+ 121:5    [33mwarning[0m  '5. Implementation Policy'      Google.Headings              
+                   should use sentence-style                                    
+                   capitalization.                                              
+ 122:11   [31merror[0m    In general, don't hyphenate     Microsoft.Auto               
+                   'auto-commit'.                                               
+ 123:100  [31merror[0m    Use 'don't' instead of 'do      Microsoft.Contractions       
+                   not'.                                                        
+ 127:52   [33mwarning[0m  ': A' should be in lowercase.   Google.Colons                
+
+
+ [4m.specify\plan.md[0m
+ 22:4    [33mwarning[0m  'Goal Description' should use   Google.Headings           
+                  sentence-style capitalization.                            
+ 23:57   [33mwarning[0m  Use 'app' instead of            Google.WordList           
+                  'application'.                                            
+ 24:5    [33mwarning[0m  Use 'app' instead of            Google.WordList           
+                  'application'.                                            
+ 24:17   [33mwarning[0m  Avoid using 'will'.             Google.Will               
+ 24:59   [31merror[0m    Don't use 'backend'. See the    Microsoft.Avoid           
+                  A-Z word list for details.                                
+ 24:198  [33mwarning[0m  Avoid using 'will'.             Google.Will               
+ 26:4    [33mwarning[0m  'User Review Required'          Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 28:26   [33mwarning[0m  Use first person (such as '     Microsoft.FirstPerson     
+                  I') sparingly.                                            
+ 28:26   [33mwarning[0m  Avoid first-person pronouns     Google.FirstPerson        
+                  such as ' I '.                                            
+ 28:85   [31merror[0m    Use 'it's' instead of 'it is'.  Microsoft.Contractions    
+ 28:247  [33mwarning[0m  Remove 'strictly' if it's not   Microsoft.Adverbs         
+                  important to the meaning of                               
+                  the statement.                                            
+ 33:89   [33mwarning[0m  Avoid using 'will'.             Google.Will               
+ 34:8    [33mwarning[0m  Use 'command-line tool'         Google.WordList           
+                  instead of 'CLI'.                                         
+ 34:71   [33mwarning[0m  Use 'command-line tool'         Google.WordList           
+                  instead of 'CLI'.                                         
+ 36:4    [33mwarning[0m  'Proposed Changes' should use   Google.Headings           
+                  sentence-style capitalization.                            
+ 38:5    [33mwarning[0m  'Project Root' should use       Google.Headings           
+                  sentence-style capitalization.                            
+ 39:7    [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 42:1    [33mwarning[0m  '[NEW] sandbox/portable_bench'  Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 42:7    [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 47:1    [33mwarning[0m  '[NEW] package.json'            Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 47:7    [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 51:1    [33mwarning[0m  '[NEW] Tauri Configuration'     Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 51:7    [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 54:15   [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 55:1    [33mwarning[0m  '[NEW] src-ui' should use       Google.Headings           
+                  sentence-style capitalization.                            
+ 55:7    [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 59:5    [31merror[0m    Don't use 'Backend'. See the    Microsoft.Avoid           
+                  A-Z word list for details.                                
+ 59:5    [33mwarning[0m  'Backend (Rust)' should use     Google.Headings           
+                  sentence-style capitalization.                            
+ 60:1    [33mwarning[0m  '[NEW] src-tauri' should use    Google.Headings           
+                  sentence-style capitalization.                            
+ 60:7    [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 68:5    [33mwarning[0m  'Sidecar (Python)' should use   Google.Headings           
+                  sentence-style capitalization.                            
+ 69:1    [33mwarning[0m  '[NEW] src-python' should use   Google.Headings           
+                  sentence-style capitalization.                            
+ 69:7    [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 74:4    [33mwarning[0m  'Verification Plan' should use  Google.Headings           
+                  sentence-style capitalization.                            
+ 76:5    [33mwarning[0m  'Automated Tests (The           Google.Headings           
+                  "Red" Phase)' should use                                  
+                  sentence-style capitalization.                            
+ 82:5    [33mwarning[0m  'Article IX: Integration-First  Google.Headings           
+                  Verification' should use                                  
+                  sentence-style capitalization.                            
+ 82:13   [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 85:5    [33mwarning[0m  'Manual Verification'           Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 92:131  [33mwarning[0m  Try to avoid using              Google.We                 
+                  first-person plural like 'we'.                            
+ 92:131  [33mwarning[0m  Try to avoid using              Microsoft.We              
+                  first-person plural like 'we'.                            
+ 92:134  [33mwarning[0m  Avoid using 'will'.             Google.Will               
+
+✖ [31m5 errors[0m, [33m79 warnings[0m and [34m0 suggestions[0m in 4 files.
+
+ [4mQA_REPORT.md[0m
+ 1:3    [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                 title or heading.                                         
+ 1:3    [33mwarning[0m  'QA & Quality Dashboard         Google.Headings           
+                 (Autonomous)' should use                                  
+                 sentence-style capitalization.                            
+ 22:76  [33mwarning[0m  ': I' should be in lowercase.   Google.Colons             
+ 26:4   [33mwarning[0m  'Documentation Metrics          Google.Headings           
+                 (Auto-Generated)' should use                              
+                 sentence-style capitalization.                            
+ 26:27  [31merror[0m    In general, don't hyphenate     Microsoft.Auto            
+                 'Auto-Generated'.                                         
+ 37:4   [33mwarning[0m  'System Health                  Google.Headings           
+                 (Agent-Monitored)' should use                             
+                 sentence-style capitalization.                            
+ 37:19  [33mwarning[0m  Prefer 'personal digital        Microsoft.Terms           
+                 assistant' over 'Agent'.                                  
+ 41:5   [31merror[0m    Don't use 'Backend'. See the    Microsoft.Avoid           
+                 A-Z word list for details.                                
+ 48:4   [33mwarning[0m  'System Health                  Google.Headings           
+                 (Agent-Monitored)' should use                             
+                 sentence-style capitalization.                            
+ 48:19  [33mwarning[0m  Prefer 'personal digital        Microsoft.Terms           
+                 assistant' over 'Agent'.                                  
+ 52:5   [31merror[0m    Don't use 'Backend'. See the    Microsoft.Avoid           
+                 A-Z word list for details.                                
+ 59:4   [33mwarning[0m  'System Health                  Google.Headings           
+                 (Agent-Monitored)' should use                             
+                 sentence-style capitalization.                            
+ 59:19  [33mwarning[0m  Prefer 'personal digital        Microsoft.Terms           
+                 assistant' over 'Agent'.                                  
+ 63:5   [31merror[0m    Don't use 'Backend'. See the    Microsoft.Avoid           
+                 A-Z word list for details.                                
+ 71:4   [33mwarning[0m  'Project Status Dashboard'      Google.Headings           
+                 should use sentence-style                                 
+                 capitalization.                                           
+ 73:5   [33mwarning[0m  'Current Priority: Phase 1      Google.Headings           
+                 (Core Prototype)' should use                              
+                 sentence-style capitalization.                            
+ 74:9   [33mwarning[0m  ': R' should be in lowercase.   Google.Colons             
+ 86:4   [33mwarning[0m  'Roadmap & Future Plans'        Google.Headings           
+                 should use sentence-style                                 
+                 capitalization.                                           
+ 88:5   [33mwarning[0m  'Phase 1: Core Prototype        Google.Headings           
+                 (In Progress)' should use                                 
+                 sentence-style capitalization.                            
+ 101:4  [33mwarning[0m  'Watchdog Health' should use    Google.Headings           
+                 sentence-style capitalization.                            
+ 116:4  [33mwarning[0m  'Automated Test Log'            Google.Headings           
+                 should use sentence-style                                 
+                 capitalization.                                           
+ 126:4  [33mwarning[0m  'Action Items (Blockers)'       Google.Headings           
+                 should use sentence-style                                 
+                 capitalization.                                           
+
+
+ [4mREADME.md[0m
+ 10:4   [33mwarning[0m  '📖 Dokumentace (SSOT)'         Google.Headings           
+                 should use sentence-style                                 
+                 capitalization.                                           
+ 10:19  [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                 title or heading.                                         
+ 22:4   [33mwarning[0m  '🚀 Rychlý Start' should use    Google.Headings           
+                 sentence-style capitalization.                            
+ 31:9   [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                 title or heading.                                         
+ 33:7   [33mwarning[0m  Prefer 'personal digital        Microsoft.Terms           
+                 assistant' over 'agent'.                                  
+
+
+ [4msandbox\portable_bench\README.md[0m
+ 26:5    [31merror[0m    In general, don't hyphenate     Microsoft.Auto       
+                  'Auto-download'.                                     
+ 26:39   [31merror[0m    Put a nonbreaking space         Google.Units         
+                  between the number and the                           
+                  unit in '30s'.                                       
+ 30:4    [33mwarning[0m  '🚀 Rychlý Start' should use    Google.Headings      
+                  sentence-style capitalization.                       
+ 59:4    [33mwarning[0m  '📋 Funkce Benchmarku'          Google.Headings      
+                  should use sentence-style                            
+                  capitalization.                                      
+ 84:6    [31merror[0m    In general, don't hyphenate     Microsoft.Auto       
+                  'Auto-alignment'.                                    
+ 88:4    [33mwarning[0m  '🛠️ Advanced Použití'            Google.Headings      
+                  should use sentence-style                            
+                  capitalization.                                      
+ 114:4   [33mwarning[0m  '🔧 Technické Detaily'          Google.Headings      
+                  should use sentence-style                            
+                  capitalization.                                      
+ 119:4   [31merror[0m    Put a nonbreaking space         Google.Units         
+                  between the number and the                           
+                  unit in '3GB'.                                       
+ 169:4   [33mwarning[0m  '🆘 Řešení Problémů'            Google.Headings      
+                  should use sentence-style                            
+                  capitalization.                                      
+ 174:11  [33mwarning[0m  For a general audience, use     Microsoft.GeneralURL 
+                  'address' rather than 'URL'.                         
+
+✖ [31m8 errors[0m, [33m29 warnings[0m and [34m0 suggestions[0m in 4 files.
+
+ [4mplans\documentation_automation_improvements.md[0m
+ 60:5    [33mwarning[0m  '1. Pre-commit Hook'            Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 120:5   [33mwarning[0m  '5. GitHub Actions Workflow'    Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 157:13  [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 157:16  [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+
+
+ [4m.specify\documentation_analysis.md[0m
+ 22:9    [33mwarning[0m  Avoid first-person pronouns     Google.FirstPerson        
+                  such as 'my'.                                             
+ 22:9    [33mwarning[0m  Use first person (such as       Microsoft.FirstPerson     
+                  'my') sparingly.                                          
+ 24:4    [33mwarning[0m  '🚨 Critical Technical Risks    Google.Headings           
+                  (Software Engineering)'                                   
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 26:5    [33mwarning[0m  '1. The "Python Sidecar"        Google.Headings           
+                  Illusion' should use                                      
+                  sentence-style capitalization.                            
+ 27:9    [33mwarning[0m  ': T' should be in lowercase.   Google.Colons             
+ 29:68   [33mwarning[0m  Avoid using 'will'.             Google.Will               
+ 30:94   [33mwarning[0m  Avoid first-person pronouns     Google.FirstPerson        
+                  such as ' I '.                                            
+ 30:94   [33mwarning[0m  Use first person (such as '     Microsoft.FirstPerson     
+                  I') sparingly.                                            
+ 32:5    [33mwarning[0m  '2. "Real-Time" Diarization     Google.Headings           
+                  vs. Reality' should use                                   
+                  sentence-style capitalization.                            
+ 33:9    [33mwarning[0m  ': W' should be in lowercase.   Google.Colons             
+ 33:169  [33mwarning[0m  Remove 'extremely' if it's not  Microsoft.Adverbs         
+                  important to the meaning of                               
+                  the statement.                                            
+ 34:40   [31merror[0m    Punctuation should be inside    Microsoft.Quotes          
+                  the quotes.                                               
+ 34:40   [31merror[0m    Commas and periods go inside    Google.Quotes             
+                  quotation marks.                                          
+ 36:86   [31merror[0m    Use 'for example' instead of    Google.Latin              
+                  'e.g.'.                                                   
+ 36:86   [31merror[0m    Use 'for example' instead of    Microsoft.Foreign         
+                  'e.g.,'.                                                  
+ 36:113  [31merror[0m    Put a nonbreaking space         Google.Units              
+                  between the number and the                                
+                  unit in '5s'.                                             
+ 38:5    [33mwarning[0m  '3. IPC Fragility (Rust         Google.Headings           
+                  <-> Python)' should use                                   
+                  sentence-style capitalization.                            
+ 38:8    [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 42:29   [33mwarning[0m  Remove 'strictly' if it's not   Microsoft.Adverbs         
+                  important to the meaning of                               
+                  the statement.                                            
+ 42:132  [31merror[0m    Use 'for example' instead of    Microsoft.Foreign         
+                  'e.g.,'.                                                  
+ 42:132  [31merror[0m    Use 'for example' instead of    Google.Latin              
+                  'e.g.'.                                                   
+ 44:4    [33mwarning[0m  '✨ VibeCoding Gaps             Google.Headings           
+                  (Philosophy & UX)' should use                             
+                  sentence-style capitalization.                            
+ 44:36   [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 46:5    [33mwarning[0m  '4. Developer Experience        Google.Headings           
+                  (DX) Friction' should use                                 
+                  sentence-style capitalization.                            
+ 46:30   [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 47:9    [33mwarning[0m  ': V' should be in lowercase.   Google.Colons             
+ 47:31   [31merror[0m    Commas and periods go inside    Google.Quotes             
+                  quotation marks.                                          
+ 47:31   [31merror[0m    Punctuation should be inside    Microsoft.Quotes          
+                  the quotes.                                               
+ 47:41   [33mwarning[0m  Avoid first-person pronouns     Google.FirstPerson        
+                  such as ' I '.                                            
+ 47:41   [33mwarning[0m  Use first person (such as '     Microsoft.FirstPerson     
+                  I') sparingly.                                            
+ 51:5    [33mwarning[0m  '5. UI "Wow" Factor vs.         Google.Headings           
+                  Clinical Safety' should use                               
+                  sentence-style capitalization.                            
+ 51:8    [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 52:9    [33mwarning[0m  ': U' should be in lowercase.   Google.Colons             
+ 52:22   [31merror[0m    Punctuation should be inside    Microsoft.Quotes          
+                  the quotes.                                               
+ 52:22   [31merror[0m    Commas and periods go inside    Google.Quotes             
+                  quotation marks.                                          
+ 52:59   [31merror[0m    Punctuation should be inside    Microsoft.Quotes          
+                  the quotes.                                               
+ 52:59   [31merror[0m    Commas and periods go inside    Google.Quotes             
+                  quotation marks.                                          
+ 54:52   [31merror[0m    Use 'for example' instead of    Google.Latin              
+                  'e.g.'.                                                   
+ 54:52   [31merror[0m    Use 'for example' instead of    Microsoft.Foreign         
+                  'e.g.,'.                                                  
+
+
+ [4mLOGS_AND_PROMPTS.md[0m
+ 26:4    [33mwarning[0m  '📁 LOGY (Test Outputs)'        Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 26:6    [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 28:5    [33mwarning[0m  '1. Sandbox Test Logs'          Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 34:5    [33mwarning[0m  '2. Automatizační Logy'         Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 39:5    [33mwarning[0m  '3. QA Report' should use       Google.Headings           
+                  sentence-style capitalization.                            
+ 39:8    [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 46:4    [33mwarning[0m  '🤖 PROMPTY (AI Prompts)'       Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 46:15   [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 48:5    [33mwarning[0m  '1. Agent Prompts' should use   Google.Headings           
+                  sentence-style capitalization.                            
+ 48:8    [33mwarning[0m  Prefer 'personal digital        Microsoft.Terms           
+                  assistant' over 'Agent'.                                  
+ 53:5    [33mwarning[0m  '2. Spec-Kit Prompts'           Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 59:5    [33mwarning[0m  '3. Dokumentační Prompts'       Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 66:4    [33mwarning[0m  '⚙️ STAV AUTOMATIZACE            Google.Headings           
+                  (2026-02-14T08:42:00Z)'                                   
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 66:7    [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 77:4    [33mwarning[0m  '📋 ÚKOLY K PROVEDENÍ'          Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 87:4    [33mwarning[0m  '📁 LOGY (Test Outputs)'        Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 87:6    [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 89:5    [33mwarning[0m  '1. Sandbox Test Logs'          Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 95:5    [33mwarning[0m  '2. Automatizační Logy'         Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 100:5   [33mwarning[0m  '3. QA Report' should use       Google.Headings           
+                  sentence-style capitalization.                            
+ 100:8   [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 107:4   [33mwarning[0m  '🤖 PROMPTY (AI Prompts)'       Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 107:15  [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 109:5   [33mwarning[0m  '1. Agent Prompts' should use   Google.Headings           
+                  sentence-style capitalization.                            
+ 109:8   [33mwarning[0m  Prefer 'personal digital        Microsoft.Terms           
+                  assistant' over 'Agent'.                                  
+ 114:5   [33mwarning[0m  '2. Spec-Kit Prompts'           Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 120:5   [33mwarning[0m  '3. Dokumentační Prompts'       Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 127:4   [33mwarning[0m  '⚙️ STAV AUTOMATIZACE            Google.Headings           
+                  (2026-02-14T08:42:00Z)'                                   
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 127:7   [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 138:4   [33mwarning[0m  '📋 ÚKOLY K PROVEDENÍ'          Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 149:4   [33mwarning[0m  '📁 LOGY (Test Outputs)'        Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 149:6   [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 151:5   [33mwarning[0m  '1. Sandbox Test Logs'          Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 157:5   [33mwarning[0m  '2. Automatizační Logy'         Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 162:5   [33mwarning[0m  '3. QA Report' should use       Google.Headings           
+                  sentence-style capitalization.                            
+ 162:8   [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 169:4   [33mwarning[0m  '🤖 PROMPTY (AI Prompts)'       Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 169:15  [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 171:5   [33mwarning[0m  '1. Spec-Kit Prompts'           Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 177:5   [33mwarning[0m  '2. Dokumentační Prompts'       Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 182:5   [33mwarning[0m  '3. Agent Prompts' should use   Google.Headings           
+                  sentence-style capitalization.                            
+ 182:8   [33mwarning[0m  Prefer 'personal digital        Microsoft.Terms           
+                  assistant' over 'Agent'.                                  
+ 190:4   [33mwarning[0m  '⚙️ STAV AUTOMATIZACE            Google.Headings           
+                  (2026-02-14)' should use                                  
+                  sentence-style capitalization.                            
+ 190:7   [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 201:4   [33mwarning[0m  '📋 ÚKOLY K PROVEDENÍ'          Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+
+✖ [31m15 errors[0m, [33m73 warnings[0m and [34m0 suggestions[0m in 4 files.
+
+ [4msandbox\portable_bench\TEST_REPORT.md[0m
+ 25:4    [33mwarning[0m  '✅ ÚSPĚŠNÉ KOMPONENTY'         Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 27:5    [33mwarning[0m  '1. Core Python Knihovny'       Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 37:5    [33mwarning[0m  '2. Hardware Detekce'           Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 43:5    [33mwarning[0m  '3. Audio Subsystém'            Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 48:5    [33mwarning[0m  '4. FFmpeg' should use          Google.Headings           
+                  sentence-style capitalization.                            
+ 53:5    [33mwarning[0m  '5. Network & Download'         Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 57:5    [33mwarning[0m  '6. WhisperX STT Engine'        Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 57:17   [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 62:4    [33mwarning[0m  '⚠️ NEÚSPĚŠNÉ KOMPONENTY         Google.Headings           
+                  (OPTIONAL)' should use                                    
+                  sentence-style capitalization.                            
+ 64:5    [33mwarning[0m  '1. playsound' should use       Google.Headings           
+                  sentence-style capitalization.                            
+ 67:10   [33mwarning[0m  ': A' should be in lowercase.   Google.Colons             
+ 73:5    [33mwarning[0m  '2. Windows Audio Meter         Google.Headings           
+                  (pycaw)' should use                                       
+                  sentence-style capitalization.                            
+ 76:10   [33mwarning[0m  ': R' should be in lowercase.   Google.Colons             
+ 77:11   [33mwarning[0m  ': M' should be in lowercase.   Google.Colons             
+ 79:4    [33mwarning[0m  '🎯 ZÁVĚR' should use           Google.Headings           
+                  sentence-style capitalization.                            
+ 81:5    [33mwarning[0m  'KRITICKÉ KOMPONENTY: ✅        Google.Headings           
+                  VŠECHNY FUNGUJÍ' should use                               
+                  sentence-style capitalization.                            
+ 88:5    [33mwarning[0m  'OPTIONAL KOMPONENTY:           Google.Headings           
+                  ⚠️ 2 selhaly' should use                                   
+                  sentence-style capitalization.                            
+ 92:4    [33mwarning[0m  '📋 DOPORUČENÍ' should use      Google.Headings           
+                  sentence-style capitalization.                            
+ 103:29  [33mwarning[0m  Avoid first-person pronouns     Google.FirstPerson        
+                  such as ' i '.                                            
+ 103:29  [33mwarning[0m  Use first person (such as '     Microsoft.FirstPerson     
+                  i') sparingly.                                            
+ 109:4   [33mwarning[0m  '🚀 DALŠÍ KROKY' should use     Google.Headings           
+                  sentence-style capitalization.                            
+
+
+ [4mPROPOSED_FIXES.md[0m
+ 27:4    [33mwarning[0m  'SEZNAM CHYB K OPRAVĚ'          Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 27:11   [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 37:1    [33mwarning[0m  ': A' should be in lowercase.   Google.Colons             
+ 73:4    [33mwarning[0m  'NAVRHOVANÉ ŘEŠENÍ' should use  Google.Headings           
+                  sentence-style capitalization.                            
+ 75:5    [33mwarning[0m  'Možnost A: Přesun s            Google.Headings           
+                  vysvětlením (Doporučeno)'                                 
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 75:14   [33mwarning[0m  ': P' should be in lowercase.   Google.Colons             
+ 81:5    [33mwarning[0m  'Možnost B: Pouze opravit'      Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 87:4    [33mwarning[0m  'ČEKÁM NA SCHVÁLENÍ'            Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 87:10   [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 93:4    [33mwarning[0m  'SEZNAM CHYB K OPRAVĚ'          Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 93:11   [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 103:1   [33mwarning[0m  ': A' should be in lowercase.   Google.Colons             
+ 139:4   [33mwarning[0m  'NAVRHOVANÉ ŘEŠENÍ' should use  Google.Headings           
+                  sentence-style capitalization.                            
+ 141:5   [33mwarning[0m  'Možnost A: Přesun s            Google.Headings           
+                  vysvětlením (Doporučeno)'                                 
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 147:5   [33mwarning[0m  'Možnost B: Pouze opravit'      Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 153:4   [33mwarning[0m  'ČEKÁM NA SCHVÁLENÍ'            Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 153:10  [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+
+
+ [4mCRITICAL_ANALYSIS.md[0m
+ 28:4     [33mwarning[0m  '1. Kritické Hodnocení          Google.Headings  
+                   Dokumentace' should use                          
+                   sentence-style capitalization.                   
+ 30:5     [33mwarning[0m  '1.1 Struktura a Hierarchie'    Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 33:29    [33mwarning[0m  ': C' should be in lowercase.   Google.Colons    
+ 44:5     [33mwarning[0m  '1.2 Logika a Srozumitelnost'   Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 55:36    [31merror[0m    Commas and periods go inside    Google.Quotes    
+                   quotation marks.                                 
+ 55:36    [31merror[0m    Punctuation should be inside    Microsoft.Quotes 
+                   the quotes.                                      
+ 55:51    [31merror[0m    Commas and periods go inside    Google.Quotes    
+                   quotation marks.                                 
+ 55:51    [31merror[0m    Punctuation should be inside    Microsoft.Quotes 
+                   the quotes.                                      
+ 58:5     [33mwarning[0m  '1.3 Soulad s Vibe Coding'      Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 81:4     [33mwarning[0m  '2. Kritické Hodnocení          Google.Headings  
+                   Návrhu Projektu' should use                      
+                   sentence-style capitalization.                   
+ 95:5     [33mwarning[0m  '2.2 Technologický Stack'       Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 100:3    [31merror[0m    Don't use 'Backend'. See the    Microsoft.Avoid  
+                   A-Z word list for details.                       
+ 104:5    [33mwarning[0m  '2.3 Bezpečnost a Soukromí'     Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 117:4    [33mwarning[0m  '3. Konkrétní Chyby v           Google.Headings  
+                   Dokumentaci' should use                          
+                   sentence-style capitalization.                   
+ 119:5    [33mwarning[0m  '3.1 Neplatné Odkazy'           Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 126:5    [33mwarning[0m  '3.2 Terminologické Zmatky'     Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 176:1    [33mwarning[0m  ': O' should be in lowercase.   Google.Colons    
+ 188:4    [33mwarning[0m  '1. Kritické Hodnocení          Google.Headings  
+                   Dokumentace' should use                          
+                   sentence-style capitalization.                   
+ 190:5    [33mwarning[0m  '1.1 Struktura a Hierarchie'    Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 203:5    [33mwarning[0m  '1.2 Logika a Srozumitelnost'   Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 215:5    [33mwarning[0m  '1.3 Soulad s Vibe Coding'      Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 237:4    [33mwarning[0m  '2. Kritické Hodnocení          Google.Headings  
+                   Návrhu Projektu' should use                      
+                   sentence-style capitalization.                   
+ 247:13   [33mwarning[0m  ': Z' should be in lowercase.   Google.Colons    
+ 249:5    [33mwarning[0m  '2.2 Technologický Stack'       Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 254:3    [31merror[0m    Don't use 'Backend'. See the    Microsoft.Avoid  
+                   A-Z word list for details.                       
+ 259:5    [33mwarning[0m  '2.3 Modulární Návrh'           Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 266:5    [33mwarning[0m  '2.4 Bezpečnost a Soukromí'     Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 278:4    [33mwarning[0m  '3. Konkrétní Chyby v           Google.Headings  
+                   Dokumentaci' should use                          
+                   sentence-style capitalization.                   
+ 280:5    [33mwarning[0m  '3.1 Neplatné Odkazy'           Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 287:20   [33mwarning[0m  Prefer 'personal digital        Microsoft.Terms  
+                   assistant' over 'agent'.                         
+ 289:5    [33mwarning[0m  '3.2 Faktické Chyby'            Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 295:5    [33mwarning[0m  '3.3 Terminologické Zmatky'     Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 323:5    [33mwarning[0m  '4.3 Střední (Budoucí           Google.Headings  
+                   vylepšení)' should use                           
+                   sentence-style capitalization.                   
+ 350:1    [33mwarning[0m  ': O' should be in lowercase.   Google.Colons    
+ 362:4    [33mwarning[0m  '1. Kritické Hodnocení          Google.Headings  
+                   Dokumentace' should use                          
+                   sentence-style capitalization.                   
+ 364:5    [33mwarning[0m  '1.1 Struktura a Hierarchie'    Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 377:5    [33mwarning[0m  '1.2 Logika a Srozumitelnost'   Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 389:5    [33mwarning[0m  '1.3 Soulad s Vibe Coding'      Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 411:4    [33mwarning[0m  '2. Kritické Hodnocení          Google.Headings  
+                   Návrhu Projektu' should use                      
+                   sentence-style capitalization.                   
+ 421:13   [33mwarning[0m  ': Z' should be in lowercase.   Google.Colons    
+ 423:5    [33mwarning[0m  '2.2 Technologický Stack'       Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 428:3    [31merror[0m    Don't use 'Backend'. See the    Microsoft.Avoid  
+                   A-Z word list for details.                       
+ 433:5    [33mwarning[0m  '2.3 Modulární Návrh'           Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 440:5    [33mwarning[0m  '2.4 Bezpečnost a Soukromí'     Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 452:4    [33mwarning[0m  '3. Konkrétní Chyby v           Google.Headings  
+                   Dokumentaci' should use                          
+                   sentence-style capitalization.                   
+ 454:5    [33mwarning[0m  '3.1 Neplatné Odkazy'           Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 461:20   [33mwarning[0m  Prefer 'personal digital        Microsoft.Terms  
+                   assistant' over 'agent'.                         
+ 463:5    [33mwarning[0m  '3.2 Faktické Chyby'            Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 469:5    [33mwarning[0m  '3.3 Terminologické Zmatky'     Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 497:5    [33mwarning[0m  '4.3 Střední (Budoucí           Google.Headings  
+                   vylepšení)' should use                           
+                   sentence-style capitalization.                   
+ 524:1    [33mwarning[0m  ': O' should be in lowercase.   Google.Colons    
+ 536:4    [33mwarning[0m  '1. Kritické Hodnocení          Google.Headings  
+                   Dokumentace' should use                          
+                   sentence-style capitalization.                   
+ 538:5    [33mwarning[0m  '1.1 Struktura a Hierarchie'    Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 551:5    [33mwarning[0m  '1.2 Logika a Srozumitelnost'   Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 563:5    [33mwarning[0m  '1.3 Soulad s Vibe Coding'      Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 585:4    [33mwarning[0m  '2. Kritické Hodnocení          Google.Headings  
+                   Návrhu Projektu' should use                      
+                   sentence-style capitalization.                   
+ 595:13   [33mwarning[0m  ': Z' should be in lowercase.   Google.Colons    
+ 597:5    [33mwarning[0m  '2.2 Technologický Stack'       Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 602:3    [31merror[0m    Don't use 'Backend'. See the    Microsoft.Avoid  
+                   A-Z word list for details.                       
+ 607:5    [33mwarning[0m  '2.3 Modulární Návrh'           Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 614:5    [33mwarning[0m  '2.4 Bezpečnost a Soukromí'     Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 626:4    [33mwarning[0m  '3. Konkrétní Chyby v           Google.Headings  
+                   Dokumentaci' should use                          
+                   sentence-style capitalization.                   
+ 628:5    [33mwarning[0m  '3.1 Neplatné Odkazy'           Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 635:20   [33mwarning[0m  Prefer 'personal digital        Microsoft.Terms  
+                   assistant' over 'agent'.                         
+ 637:5    [33mwarning[0m  '3.2 Faktické Chyby'            Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 643:5    [33mwarning[0m  '3.3 Terminologické Zmatky'     Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 671:5    [33mwarning[0m  '4.3 Střední (Budoucí           Google.Headings  
+                   vylepšení)' should use                           
+                   sentence-style capitalization.                   
+ 698:1    [33mwarning[0m  ': O' should be in lowercase.   Google.Colons    
+ 708:1    [33mwarning[0m  ': O' should be in lowercase.   Google.Colons    
+ 713:8    [33mwarning[0m  ': D' should be in lowercase.   Google.Colons    
+ 721:4    [33mwarning[0m  '1. Kritické Hodnocení          Google.Headings  
+                   Dokumentace' should use                          
+                   sentence-style capitalization.                   
+ 723:5    [33mwarning[0m  '1.1 Struktura a Hierarchie'    Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 736:5    [33mwarning[0m  '1.2 Logika a Srozumitelnost'   Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 748:5    [33mwarning[0m  '1.3 Soulad s Vibe Coding'      Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 774:4    [33mwarning[0m  '2. Kritické Hodnocení          Google.Headings  
+                   Návrhu Projektu' should use                      
+                   sentence-style capitalization.                   
+ 784:13   [33mwarning[0m  ': Z' should be in lowercase.   Google.Colons    
+ 786:5    [33mwarning[0m  '2.2 Technologický Stack'       Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 791:3    [31merror[0m    Don't use 'Backend'. See the    Microsoft.Avoid  
+                   A-Z word list for details.                       
+ 796:5    [33mwarning[0m  '2.3 Modulární Návrh'           Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 806:5    [33mwarning[0m  '2.4 Bezpečnost a Soukromí'     Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 820:4    [33mwarning[0m  '3. Konkrétní Chyby v           Google.Headings  
+                   Dokumentaci' should use                          
+                   sentence-style capitalization.                   
+ 822:5    [33mwarning[0m  '3.1 Neplatné Odkazy'           Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 831:5    [33mwarning[0m  '3.2 Faktické Chyby'            Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 838:5    [33mwarning[0m  '3.3 Terminologické Zmatky'     Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 866:5    [33mwarning[0m  '4.3 Střední (Budoucí           Google.Headings  
+                   vylepšení)' should use                           
+                   sentence-style capitalization.                   
+ 893:1    [33mwarning[0m  ': O' should be in lowercase.   Google.Colons    
+ 898:8    [33mwarning[0m  ': D' should be in lowercase.   Google.Colons    
+ 907:4    [33mwarning[0m  '1. Kritické Hodnocení          Google.Headings  
+                   Dokumentace' should use                          
+                   sentence-style capitalization.                   
+ 909:5    [33mwarning[0m  '1.1 Struktura a Hierarchie'    Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 923:5    [33mwarning[0m  '1.2 Logika a Srozumitelnost'   Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 934:36   [31merror[0m    Commas and periods go inside    Google.Quotes    
+                   quotation marks.                                 
+ 934:36   [31merror[0m    Punctuation should be inside    Microsoft.Quotes 
+                   the quotes.                                      
+ 934:51   [31merror[0m    Commas and periods go inside    Google.Quotes    
+                   quotation marks.                                 
+ 934:51   [31merror[0m    Punctuation should be inside    Microsoft.Quotes 
+                   the quotes.                                      
+ 937:5    [33mwarning[0m  '1.3 Soulad s Vibe Coding'      Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 960:4    [33mwarning[0m  '2. Kritické Hodnocení          Google.Headings  
+                   Návrhu Projektu' should use                      
+                   sentence-style capitalization.                   
+ 974:5    [33mwarning[0m  '2.2 Technologický Stack'       Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 979:3    [31merror[0m    Don't use 'Backend'. See the    Microsoft.Avoid  
+                   A-Z word list for details.                       
+ 983:5    [33mwarning[0m  '2.3 Bezpečnost a Soukromí'     Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 996:4    [33mwarning[0m  '3. Konkrétní Chyby v           Google.Headings  
+                   Dokumentaci' should use                          
+                   sentence-style capitalization.                   
+ 998:5    [33mwarning[0m  '3.1 Neplatné Odkazy'           Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1005:5   [33mwarning[0m  '3.2 Terminologické Zmatky'     Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1055:1   [33mwarning[0m  ': O' should be in lowercase.   Google.Colons    
+ 1067:4   [33mwarning[0m  '1. Kritické Hodnocení          Google.Headings  
+                   Dokumentace' should use                          
+                   sentence-style capitalization.                   
+ 1069:5   [33mwarning[0m  '1.1 Struktura a Hierarchie'    Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1082:5   [33mwarning[0m  '1.2 Logika a Srozumitelnost'   Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1094:5   [33mwarning[0m  '1.3 Soulad s Vibe Coding'      Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1116:4   [33mwarning[0m  '2. Kritické Hodnocení          Google.Headings  
+                   Návrhu Projektu' should use                      
+                   sentence-style capitalization.                   
+ 1126:13  [33mwarning[0m  ': Z' should be in lowercase.   Google.Colons    
+ 1128:5   [33mwarning[0m  '2.2 Technologický Stack'       Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1133:3   [31merror[0m    Don't use 'Backend'. See the    Microsoft.Avoid  
+                   A-Z word list for details.                       
+ 1138:5   [33mwarning[0m  '2.3 Modulární Návrh'           Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1145:5   [33mwarning[0m  '2.4 Bezpečnost a Soukromí'     Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1157:4   [33mwarning[0m  '3. Konkrétní Chyby v           Google.Headings  
+                   Dokumentaci' should use                          
+                   sentence-style capitalization.                   
+ 1159:5   [33mwarning[0m  '3.1 Neplatné Odkazy'           Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1166:20  [33mwarning[0m  Prefer 'personal digital        Microsoft.Terms  
+                   assistant' over 'agent'.                         
+ 1168:5   [33mwarning[0m  '3.2 Faktické Chyby'            Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1174:5   [33mwarning[0m  '3.3 Terminologické Zmatky'     Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1202:5   [33mwarning[0m  '4.3 Střední (Budoucí           Google.Headings  
+                   vylepšení)' should use                           
+                   sentence-style capitalization.                   
+ 1229:1   [33mwarning[0m  ': O' should be in lowercase.   Google.Colons    
+ 1241:4   [33mwarning[0m  '1. Kritické Hodnocení          Google.Headings  
+                   Dokumentace' should use                          
+                   sentence-style capitalization.                   
+ 1243:5   [33mwarning[0m  '1.1 Struktura a Hierarchie'    Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1256:5   [33mwarning[0m  '1.2 Logika a Srozumitelnost'   Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1268:5   [33mwarning[0m  '1.3 Soulad s Vibe Coding'      Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1290:4   [33mwarning[0m  '2. Kritické Hodnocení          Google.Headings  
+                   Návrhu Projektu' should use                      
+                   sentence-style capitalization.                   
+ 1300:13  [33mwarning[0m  ': Z' should be in lowercase.   Google.Colons    
+ 1302:5   [33mwarning[0m  '2.2 Technologický Stack'       Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1307:3   [31merror[0m    Don't use 'Backend'. See the    Microsoft.Avoid  
+                   A-Z word list for details.                       
+ 1312:5   [33mwarning[0m  '2.3 Modulární Návrh'           Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1319:5   [33mwarning[0m  '2.4 Bezpečnost a Soukromí'     Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1331:4   [33mwarning[0m  '3. Konkrétní Chyby v           Google.Headings  
+                   Dokumentaci' should use                          
+                   sentence-style capitalization.                   
+ 1333:5   [33mwarning[0m  '3.1 Neplatné Odkazy'           Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1340:20  [33mwarning[0m  Prefer 'personal digital        Microsoft.Terms  
+                   assistant' over 'agent'.                         
+ 1342:5   [33mwarning[0m  '3.2 Faktické Chyby'            Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1348:5   [33mwarning[0m  '3.3 Terminologické Zmatky'     Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1376:5   [33mwarning[0m  '4.3 Střední (Budoucí           Google.Headings  
+                   vylepšení)' should use                           
+                   sentence-style capitalization.                   
+ 1403:1   [33mwarning[0m  ': O' should be in lowercase.   Google.Colons    
+ 1415:4   [33mwarning[0m  '1. Kritické Hodnocení          Google.Headings  
+                   Dokumentace' should use                          
+                   sentence-style capitalization.                   
+ 1417:5   [33mwarning[0m  '1.1 Struktura a Hierarchie'    Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1430:5   [33mwarning[0m  '1.2 Logika a Srozumitelnost'   Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1442:5   [33mwarning[0m  '1.3 Soulad s Vibe Coding'      Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1464:4   [33mwarning[0m  '2. Kritické Hodnocení          Google.Headings  
+                   Návrhu Projektu' should use                      
+                   sentence-style capitalization.                   
+ 1474:13  [33mwarning[0m  ': Z' should be in lowercase.   Google.Colons    
+ 1476:5   [33mwarning[0m  '2.2 Technologický Stack'       Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1481:3   [31merror[0m    Don't use 'Backend'. See the    Microsoft.Avoid  
+                   A-Z word list for details.                       
+ 1486:5   [33mwarning[0m  '2.3 Modulární Návrh'           Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1493:5   [33mwarning[0m  '2.4 Bezpečnost a Soukromí'     Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1505:4   [33mwarning[0m  '3. Konkrétní Chyby v           Google.Headings  
+                   Dokumentaci' should use                          
+                   sentence-style capitalization.                   
+ 1507:5   [33mwarning[0m  '3.1 Neplatné Odkazy'           Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1514:20  [33mwarning[0m  Prefer 'personal digital        Microsoft.Terms  
+                   assistant' over 'agent'.                         
+ 1516:5   [33mwarning[0m  '3.2 Faktické Chyby'            Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1522:5   [33mwarning[0m  '3.3 Terminologické Zmatky'     Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1550:5   [33mwarning[0m  '4.3 Střední (Budoucí           Google.Headings  
+                   vylepšení)' should use                           
+                   sentence-style capitalization.                   
+ 1577:1   [33mwarning[0m  ': O' should be in lowercase.   Google.Colons    
+ 1587:1   [33mwarning[0m  ': O' should be in lowercase.   Google.Colons    
+ 1592:8   [33mwarning[0m  ': D' should be in lowercase.   Google.Colons    
+ 1600:4   [33mwarning[0m  '1. Kritické Hodnocení          Google.Headings  
+                   Dokumentace' should use                          
+                   sentence-style capitalization.                   
+ 1602:5   [33mwarning[0m  '1.1 Struktura a Hierarchie'    Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1615:5   [33mwarning[0m  '1.2 Logika a Srozumitelnost'   Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1627:5   [33mwarning[0m  '1.3 Soulad s Vibe Coding'      Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1653:4   [33mwarning[0m  '2. Kritické Hodnocení          Google.Headings  
+                   Návrhu Projektu' should use                      
+                   sentence-style capitalization.                   
+ 1663:13  [33mwarning[0m  ': Z' should be in lowercase.   Google.Colons    
+ 1665:5   [33mwarning[0m  '2.2 Technologický Stack'       Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1670:3   [31merror[0m    Don't use 'Backend'. See the    Microsoft.Avoid  
+                   A-Z word list for details.                       
+ 1675:5   [33mwarning[0m  '2.3 Modulární Návrh'           Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1685:5   [33mwarning[0m  '2.4 Bezpečnost a Soukromí'     Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1699:4   [33mwarning[0m  '3. Konkrétní Chyby v           Google.Headings  
+                   Dokumentaci' should use                          
+                   sentence-style capitalization.                   
+ 1701:5   [33mwarning[0m  '3.1 Neplatné Odkazy'           Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1710:5   [33mwarning[0m  '3.2 Faktické Chyby'            Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1717:5   [33mwarning[0m  '3.3 Terminologické Zmatky'     Google.Headings  
+                   should use sentence-style                        
+                   capitalization.                                  
+ 1745:5   [33mwarning[0m  '4.3 Střední (Budoucí           Google.Headings  
+                   vylepšení)' should use                           
+                   sentence-style capitalization.                   
+ 1772:1   [33mwarning[0m  ': O' should be in lowercase.   Google.Colons    
+ 1777:8   [33mwarning[0m  ': D' should be in lowercase.   Google.Colons    
+ 1786:1   [33mwarning[0m  ': O' should be in lowercase.   Google.Colons    
+ 1791:8   [33mwarning[0m  ': D' should be in lowercase.   Google.Colons    
+
+✖ [31m18 errors[0m, [33m195 warnings[0m and [34m0 suggestions[0m in 4 files.
+
+ [4msandbox\portable_bench\FINAL_TEST_REPORT.md[0m
+ 25:4    [33mwarning[0m  '✅ SHRNUTÍ' should use         Google.Headings           
+                  sentence-style capitalization.                            
+ 27:5    [33mwarning[0m  '✓ VŠECHNY KRITICKÉ             Google.Headings           
+                  KOMPONENTY FUNKČNÍ' should use                            
+                  sentence-style capitalization.                            
+ 29:63   [31merror[0m    Don't use exclamation points    Google.Exclamation        
+                  in text.                                                  
+ 31:4    [33mwarning[0m  '📋 DETAILNÍ VÝSLEDKY'          Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 33:5    [33mwarning[0m  '1. ✅ Core Python              Google.Headings           
+                  Knihovny (100%)' should use                               
+                  sentence-style capitalization.                            
+ 42:5    [33mwarning[0m  '2. ✅ Hardware Detekce         Google.Headings           
+                  (100%)' should use                                        
+                  sentence-style capitalization.                            
+ 48:5    [33mwarning[0m  '3. ✅ Audio Subsystém (100%)'  Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 53:5    [33mwarning[0m  '4. ✅ FFmpeg (100%)'           Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 61:5    [33mwarning[0m  '6. ✅ WhisperX STT             Google.Headings           
+                  Engine (100%)' should use                                 
+                  sentence-style capitalization.                            
+ 61:19   [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 68:5    [33mwarning[0m  '1. playsound' should use       Google.Headings           
+                  sentence-style capitalization.                            
+ 72:5    [33mwarning[0m  '2. pycaw Audio Meter'          Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 74:10   [33mwarning[0m  ': M' should be in lowercase.   Google.Colons             
+ 75:13   [33mwarning[0m  ': A' should be in lowercase.   Google.Colons             
+ 77:4    [33mwarning[0m  '🚀 ZÁVĚR' should use           Google.Headings           
+                  sentence-style capitalization.                            
+ 79:5    [33mwarning[0m  '✅ SYSTÉM JE PLNĚ PŘIPRAVEN!'  Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 79:14   [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 79:22   [31merror[0m    Don't use exclamation points    Google.Exclamation        
+                  in text.                                                  
+ 90:5    [33mwarning[0m  '📝 Provedené Opravy'           Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 96:5    [33mwarning[0m  '🎯 Hotovo k Použít'            Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 108:4   [33mwarning[0m  '📊 Testované Funkce'           Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 123:10  [33mwarning[0m  ': V' should be in lowercase.   Google.Colons             
+
+
+ [4mdocumentation_analysis.md[0m
+ 24:4    [33mwarning[0m  '🚨 Critical Technical Risks    Google.Headings           
+                  (Software Engineering)'                                   
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 26:5    [33mwarning[0m  '1. The "Python Sidecar"        Google.Headings           
+                  Illusion' should use                                      
+                  sentence-style capitalization.                            
+ 27:9    [33mwarning[0m  ': T' should be in lowercase.   Google.Colons             
+ 29:68   [33mwarning[0m  Avoid using 'will'.             Google.Will               
+ 30:94   [33mwarning[0m  Avoid first-person pronouns     Google.FirstPerson        
+                  such as ' I '.                                            
+ 30:94   [33mwarning[0m  Use first person (such as '     Microsoft.FirstPerson     
+                  I') sparingly.                                            
+ 32:5    [33mwarning[0m  '2. "Real-Time" Diarization     Google.Headings           
+                  vs. Reality' should use                                   
+                  sentence-style capitalization.                            
+ 33:9    [33mwarning[0m  ': W' should be in lowercase.   Google.Colons             
+ 33:169  [33mwarning[0m  Remove 'extremely' if it's not  Microsoft.Adverbs         
+                  important to the meaning of                               
+                  the statement.                                            
+ 34:40   [31merror[0m    Commas and periods go inside    Google.Quotes             
+                  quotation marks.                                          
+ 34:40   [31merror[0m    Punctuation should be inside    Microsoft.Quotes          
+                  the quotes.                                               
+ 36:86   [31merror[0m    Use 'for example' instead of    Google.Latin              
+                  'e.g.'.                                                   
+ 36:86   [31merror[0m    Use 'for example' instead of    Microsoft.Foreign         
+                  'e.g.,'.                                                  
+ 36:113  [31merror[0m    Put a nonbreaking space         Google.Units              
+                  between the number and the                                
+                  unit in '5s'.                                             
+ 38:5    [33mwarning[0m  '3. IPC Fragility (Rust         Google.Headings           
+                  <-> Python)' should use                                   
+                  sentence-style capitalization.                            
+ 38:8    [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 42:29   [33mwarning[0m  Remove 'strictly' if it's not   Microsoft.Adverbs         
+                  important to the meaning of                               
+                  the statement.                                            
+ 42:132  [31merror[0m    Use 'for example' instead of    Microsoft.Foreign         
+                  'e.g.,'.                                                  
+ 42:132  [31merror[0m    Use 'for example' instead of    Google.Latin              
+                  'e.g.'.                                                   
+ 44:4    [33mwarning[0m  '✨ VibeCoding Gaps             Google.Headings           
+                  (Philosophy & UX)' should use                             
+                  sentence-style capitalization.                            
+ 44:36   [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 46:5    [33mwarning[0m  '4. Developer Experience        Google.Headings           
+                  (DX) Friction' should use                                 
+                  sentence-style capitalization.                            
+ 46:30   [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 47:9    [33mwarning[0m  ': V' should be in lowercase.   Google.Colons             
+ 47:31   [31merror[0m    Commas and periods go inside    Google.Quotes             
+                  quotation marks.                                          
+ 47:31   [31merror[0m    Punctuation should be inside    Microsoft.Quotes          
+                  the quotes.                                               
+ 47:41   [33mwarning[0m  Use first person (such as '     Microsoft.FirstPerson     
+                  I') sparingly.                                            
+ 47:41   [33mwarning[0m  Avoid first-person pronouns     Google.FirstPerson        
+                  such as ' I '.                                            
+ 51:5    [33mwarning[0m  '5. UI "Wow" Factor vs.         Google.Headings           
+                  Clinical Safety' should use                               
+                  sentence-style capitalization.                            
+ 51:8    [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 52:9    [33mwarning[0m  ': U' should be in lowercase.   Google.Colons             
+ 52:22   [31merror[0m    Commas and periods go inside    Google.Quotes             
+                  quotation marks.                                          
+ 52:22   [31merror[0m    Punctuation should be inside    Microsoft.Quotes          
+                  the quotes.                                               
+ 52:59   [31merror[0m    Commas and periods go inside    Google.Quotes             
+                  quotation marks.                                          
+ 52:59   [31merror[0m    Punctuation should be inside    Microsoft.Quotes          
+                  the quotes.                                               
+ 54:52   [31merror[0m    Use 'for example' instead of    Microsoft.Foreign         
+                  'e.g.,'.                                                  
+ 54:52   [31merror[0m    Use 'for example' instead of    Google.Latin              
+                  'e.g.'.                                                   
+ 58:4    [33mwarning[0m  '🛠 Immediate Action Plan'       Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+
+
+ [4mplans\documentation_automation_improvements_v2.md[0m
+ 56:17   [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 56:20   [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 65:39   [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 142:5   [33mwarning[0m  'Fáze 2: Pre-commit Hooks'      Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 175:13  [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 175:16  [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 220:6   [33mwarning[0m  '4.2 Dashboard v QA_REPORT.md'  Google.Headings           
+                  should use sentence-style                                 
+                  capitalization.                                           
+ 237:13  [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+ 237:16  [33mwarning[0m  Avoid using acronyms in a       Microsoft.HeadingAcronyms 
+                  title or heading.                                         
+
+✖ [31m17 errors[0m, [33m52 warnings[0m and [34m0 suggestions[0m in 3 files.
+

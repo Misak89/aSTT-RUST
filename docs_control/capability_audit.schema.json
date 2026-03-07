@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "docs_control/capability_audit.schema.json",
+  "title": "Capability Audit Registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "source_of_truth",
+    "model",
+    "policies",
+    "tools",
+    "claims",
+    "notes"
+  ],
+  "properties": {
+    "schema_version": { "type": "string", "const": "1.0" },
+    "source_of_truth": { "type": "string", "const": "docs_control/capability_audit.json" },
+    "model": { "$ref": "#/$defs/modelMeta" },
+    "policies": { "$ref": "#/$defs/policies" },
+    "tools": { "type": "array", "items": { "$ref": "#/$defs/tool" } },
+    "claims": { "type": "array", "items": { "$ref": "#/$defs/claim" } },
+    "notes": { "type": "array", "items": { "type": "string" } }
+  },
+  "$defs": {
+    "nonEmptyString": { "type": "string", "minLength": 1 },
+    "toolId": { "type": "string", "pattern": "^tool\\.[a-z0-9_.-]+$" },
+    "claimId": { "type": "string", "pattern": "^claim\\.[a-z0-9_.-]+$" },
+    "modelMeta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "model_id",
+        "model_version",
+        "status",
+        "scope_statement",
+        "created_at_utc",
+        "updated_at_utc"
+      ],
+      "properties": {
+        "model_id": { "type": "string", "const": "capability-audit" },
+        "model_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+        "status": { "type": "string", "enum": ["DRAFT", "APPROVED", "DEPRECATED"] },
+        "scope_statement": { "$ref": "#/$defs/nonEmptyString" },
+        "created_at_utc": { "type": "string", "format": "date-time" },
+        "updated_at_utc": { "type": "string", "format": "date-time" },
+        "approved_at_utc": { "type": ["string", "null"], "format": "date-time" },
+        "approved_by": { "type": ["string", "null"] }
+      }
+    },
+    "policies": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "unknown_default",
+        "verified_requires_official_source",
+        "decision_use_requires_verified",
+        "tool_observation_output_path",
+        "summary_output_path"
+      ],
+      "properties": {
+        "unknown_default": { "type": "boolean", "const": true },
+        "verified_requires_official_source": { "type": "boolean", "const": true },
+        "decision_use_requires_verified": { "type": "boolean", "const": true },
+        "tool_observation_output_path": { "type": "string", "const": "logs/verify/toolchain_capabilities.json" },
+        "summary_output_path": { "type": "string", "const": "logs/verify/capability_audit_summary.json" }
+      }
+    },
+    "tool": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tool_id",
+        "label",
+        "command_candidates",
+        "version_args",
+        "order_index"
+      ],
+      "properties": {
+        "tool_id": { "$ref": "#/$defs/toolId" },
+        "label": { "$ref": "#/$defs/nonEmptyString" },
+        "command_candidates": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "version_args": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        },
+        "version_pin_regex": { "type": "string", "minLength": 1 },
+        "version_pin_enforcement": { "type": "string", "enum": ["warn", "error"] },
+        "preferred_install_package": { "type": "string", "minLength": 1 },
+        "notes": { "type": "string" },
+        "order_index": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "claimSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "title"],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "official_docs",
+            "official_gallery",
+            "official_repo",
+            "repo_source",
+            "observation"
+          ]
+        },
+        "title": { "$ref": "#/$defs/nonEmptyString" },
+        "url": { "type": "string", "format": "uri" },
+        "notes": { "type": "string" }
+      }
+    },
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "claim_id",
+        "tool_id",
+        "statement",
+        "scope",
+        "status",
+        "used_for_decisions",
+        "local_observation_required",
+        "sources",
+        "order_index"
+      ],
+      "properties": {
+        "claim_id": { "$ref": "#/$defs/claimId" },
+        "tool_id": { "$ref": "#/$defs/toolId" },
+        "statement": { "$ref": "#/$defs/nonEmptyString" },
+        "scope": { "$ref": "#/$defs/nonEmptyString" },
+        "status": { "type": "string", "enum": ["verified", "unknown", "deprecated"] },
+        "used_for_decisions": { "type": "boolean" },
+        "local_observation_required": { "type": "boolean" },
+        "sources": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/claimSource" }
+        },
+        "notes": { "type": "string" },
+        "order_index": { "type": "integer", "minimum": 0 }
+      }
+    }
+  }
+}

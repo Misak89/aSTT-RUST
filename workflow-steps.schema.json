@@ -1,0 +1,117 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Workflow Steps Configuration",
+  "description": "JSON Schema for Workflow Execution Guard configuration",
+  "type": "object",
+  "required": ["version", "steps"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+$",
+      "description": "Version of the configuration format (e.g., 1.0)"
+    },
+    "config": {
+      "type": "object",
+      "description": "Optional configuration settings",
+      "properties": {
+        "logPath": {
+          "type": "string",
+          "description": "Path to execution log file"
+        },
+        "auditLogPath": {
+          "type": "string",
+          "description": "Path to force audit log file"
+        },
+        "schemaPath": {
+          "type": "string",
+          "description": "Path to JSON schema file"
+        },
+        "maxLogEntries": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 30,
+          "description": "Maximum number of log entries to keep"
+        }
+      }
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "trigger", "required", "command"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$",
+            "description": "Unique identifier for the step (lowercase, numbers, hyphens)"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Human-readable name of the step"
+          },
+          "description": {
+            "type": "string",
+            "description": "Detailed description of what the step does"
+          },
+          "trigger": {
+            "type": "string",
+            "enum": ["pre-commit", "pre-push", "pre-build", "ci"],
+            "description": "When this step should be executed"
+          },
+          "required": {
+            "type": "boolean",
+            "description": "Whether this step must pass for the workflow to continue"
+          },
+          "command": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The command to execute"
+          },
+          "timeout": {
+            "type": "integer",
+            "minimum": 1,
+            "default": 60,
+            "description": "Maximum execution time in seconds"
+          },
+          "expectedOutput": {
+            "type": "string",
+            "description": "String that must appear in the output for the step to be considered successful"
+          },
+          "retry": {
+            "type": "object",
+            "properties": {
+              "maxAttempts": {
+                "type": "integer",
+                "minimum": 1,
+                "default": 1,
+                "description": "Maximum number of retry attempts"
+              },
+              "delaySeconds": {
+                "type": "integer",
+                "minimum": 0,
+                "default": 0,
+                "description": "Delay between retry attempts in seconds"
+              },
+              "retryOn": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": ["error", "timeout", "failed"]
+                },
+                "description": "Conditions under which to retry"
+              }
+            }
+          },
+          "onFailure": {
+            "type": "string",
+            "enum": ["block", "warn", "ignore"],
+            "default": "block",
+            "description": "Action to take when the step fails"
+          }
+        }
+      }
+    }
+  }
+}

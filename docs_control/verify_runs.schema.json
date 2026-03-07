@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "docs_control/verify_runs.schema.json",
+  "title": "Verify Runs Log",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "source_of_truth",
+    "runs"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+$"
+    },
+    "source_of_truth": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "runs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "run_id",
+          "created_at_utc",
+          "created_at_epoch_ms",
+          "task_id",
+          "commit_sha",
+          "stage",
+          "scope",
+          "status",
+          "steps",
+          "errors",
+          "fingerprints",
+          "error_count"
+        ],
+        "properties": {
+          "run_id": {
+            "type": "string"
+          },
+          "created_at_utc": {
+            "type": "string"
+          },
+          "created_at_epoch_ms": {
+            "type": "integer"
+          },
+          "task_id": {
+            "type": "string"
+          },
+          "commit_sha": {
+            "type": "string"
+          },
+          "stage": {
+            "type": "string"
+          },
+          "scope": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "PASS",
+              "FAIL",
+              "SKIP"
+            ]
+          },
+          "steps": {
+            "type": "array"
+          },
+          "errors": {
+            "type": "array"
+          },
+          "fingerprints": {
+            "type": "array"
+          },
+          "error_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "root_cause": {
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

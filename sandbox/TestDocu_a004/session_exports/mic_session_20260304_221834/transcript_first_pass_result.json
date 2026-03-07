@@ -1,0 +1,12 @@
+{
+  "generated_at": "2026-03-04T22:20:25.301587",
+  "audio_path": "C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\sandbox\\TestDocu_a004\\session_exports\\mic_session_20260304_221834\\astt_recording_20260304_221422.wav",
+  "init_status": "initialized",
+  "init_engine": "faster-whisper",
+  "transcribe_status": "success",
+  "engine": "faster-whisper",
+  "language": "cs",
+  "segments_count": 2,
+  "text_len": 95,
+  "message": ""
+}

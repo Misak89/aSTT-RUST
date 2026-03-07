@@ -1,10 +1,35 @@
+# Environments
+.venv/
+sandbox/portable_bench/venv-system/
+sandbox/portable_bench/python-embed/
+
+# Python packages (external documentation)
+docs/spec-kit/
+sandbox/portable_bench/ffmpeg/
+sandbox/portable_bench/wheels/
+sandbox/portable_bench/*.wav
+sandbox/portable_bench/*.txt
+
+# Build / IDE
 .DS_Store
-node_modules
-/build
-/.svelte-kit
-/package
+node_modules/
+/build/
+/.svelte-kit/
+/.package/
 .env
 .env.*
 !.env.example
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+target/
+dist-electron/
+sandbox/TestDocu_a003/_launch_now/windows-demo/app/*.exe
+
+# Graphviz portable (local only)
+tools/graphviz/
+
+# Workflow Guard logs
+logs/execution-log.json
+
+# Graphviz intermediate files
+docs/workflow-diagram.dot

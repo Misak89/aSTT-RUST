@@ -1,0 +1,9 @@
+Timestamp: 2026-02-19 Thu 08:57
+Critical failed checks: 0
+[OK] Root path exists
+[OK] run_on_save.ps1 exists
+[OK] run_on_save_guard.ps1 exists
+[OK] start_doc_automation.ps1 exists
+[OK] RunOnSave configured
+[OK] RunOnSave command valid
+[OK] run_on_save_health_check

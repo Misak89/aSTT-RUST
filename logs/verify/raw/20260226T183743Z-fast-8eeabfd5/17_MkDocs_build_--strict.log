@@ -1,0 +1,67 @@
+
+ │ ⚠ WARNING – MkDocs 2.0 is incompatible with Material for MkDocs
+ │ 
+ │   MkDocs 1.x is unmaintained. We recommend switching to Zensical, our
+ │   new static site generator, as soon as possible. We're providing an
+ │   analysis of the situation in this article:
+ │   
+ │   https://squidfunk.github.io/mkdocs-material/blog/2026/02/18/mkdocs-2.0/
+
+INFO    -  Cleaning site directory
+INFO    -  Building documentation to directory: C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\site
+INFO    -  The following pages exist in the docs directory, but are not included in the "nav" configuration:
+  - core\NEXT_SESSION.md
+  - core\critical-analysis-2026-02-20.md
+  - spec-kit\CODE_OF_CONDUCT.md
+  - spec-kit\CONTRIBUTING.md
+  - spec-kit\docs\index.md
+  - spec-kit\docs\local-development.md
+  - spec-kit\docs\upgrade.md
+  - spec-kit\extensions\EXTENSION-API-REFERENCE.md
+  - spec-kit\extensions\EXTENSION-DEVELOPMENT-GUIDE.md
+  - spec-kit\extensions\EXTENSION-PUBLISHING-GUIDE.md
+  - spec-kit\extensions\EXTENSION-USER-GUIDE.md
+  - spec-kit\extensions\RFC-EXTENSION-SYSTEM.md
+  - spec-kit\extensions\template\README.md
+  - spec-kit\extensions\template\CHANGELOG.md
+  - spec-kit\extensions\template\EXAMPLE-README.md
+  - spec-kit\extensions\template\commands\example.md
+  - spec-kit\templates\agent-file-template.md
+  - spec-kit\templates\checklist-template.md
+  - spec-kit\templates\constitution-template.md
+  - spec-kit\templates\plan-template.md
+  - spec-kit\templates\spec-template.md
+  - spec-kit\templates\tasks-template.md
+  - spec-kit\templates\commands\analyze.md
+  - spec-kit\templates\commands\checklist.md
+  - spec-kit\templates\commands\clarify.md
+  - spec-kit\templates\commands\constitution.md
+  - spec-kit\templates\commands\implement.md
+  - spec-kit\templates\commands\plan.md
+  - spec-kit\templates\commands\specify.md
+  - spec-kit\templates\commands\tasks.md
+  - spec-kit\templates\commands\taskstoissues.md
+INFO    -  Doc file 'adr/index.md' contains an absolute link '/l4b-static/adr-workflow.png', it was left as is.
+INFO    -  Doc file 'spec-kit/README.md' contains an absolute link '/media/spec-kit-video-header.jpg', it was left as is.
+INFO    -  Doc file 'spec-kit/docs/quickstart.md' contains an unrecognized relative link '../templates', it was left as is.
+INFO    -  Doc file 'spec-kit/README.md' contains a link '#-what-is-spec-driven-development', but there is no such anchor on this page.
+INFO    -  Doc file 'spec-kit/README.md' contains a link '#-get-started', but there is no such anchor on this page.
+INFO    -  Doc file 'spec-kit/README.md' contains a link '#️-video-overview', but there is no such anchor on this page.
+INFO    -  Doc file 'spec-kit/README.md' contains a link '#-supported-ai-agents', but there is no such anchor on this page.
+INFO    -  Doc file 'spec-kit/README.md' contains a link '#-specify-cli-reference', but there is no such anchor on this page.
+INFO    -  Doc file 'spec-kit/README.md' contains a link '#-core-philosophy', but there is no such anchor on this page.
+INFO    -  Doc file 'spec-kit/README.md' contains a link '#-development-phases', but there is no such anchor on this page.
+INFO    -  Doc file 'spec-kit/README.md' contains a link '#-experimental-goals', but there is no such anchor on this page.
+INFO    -  Doc file 'spec-kit/README.md' contains a link '#-prerequisites', but there is no such anchor on this page.
+INFO    -  Doc file 'spec-kit/README.md' contains a link '#-learn-more', but there is no such anchor on this page.
+INFO    -  Doc file 'spec-kit/README.md' contains a link '#-detailed-process', but there is no such anchor on this page.
+INFO    -  Doc file 'spec-kit/README.md' contains a link '#-troubleshooting', but there is no such anchor on this page.
+INFO    -  Doc file 'spec-kit/README.md' contains a link '#-maintainers', but there is no such anchor on this page.
+INFO    -  Doc file 'spec-kit/README.md' contains a link '#-support', but there is no such anchor on this page.
+INFO    -  Doc file 'spec-kit/README.md' contains a link '#-acknowledgements', but there is no such anchor on this page.
+INFO    -  Doc file 'spec-kit/README.md' contains a link '#-license', but there is no such anchor on this page.
+INFO    -  Doc file 'spec-kit/CONTRIBUTING.md' contains a link 'README.md#-supported-ai-agents', but the doc 'spec-kit/README.md' does not contain an anchor '#-supported-ai-agents'.
+INFO    -  Doc file 'spec-kit/docs/upgrade.md' contains a link '../README.md#-supported-ai-agents', but the doc 'spec-kit/README.md' does not contain an anchor '#-supported-ai-agents'.
+INFO    -  Doc file 'spec-kit/extensions/RFC-EXTENSION-SYSTEM.md' contains a link '#extension-discovery--catalog', but there is no such anchor on this page.
+INFO    -  Doc file 'spec-kit/extensions/RFC-EXTENSION-SYSTEM.md' contains a link '#compatibility--versioning', but there is no such anchor on this page.
+INFO    -  Documentation built in 1.28 seconds

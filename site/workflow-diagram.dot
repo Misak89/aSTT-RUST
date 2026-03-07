@@ -1,0 +1,57 @@
+digraph WorkflowGuard {
+    rankdir=TB;
+    node [shape=box, style="rounded,filled", fontname="Arial"];
+    edge [fontname="Arial"];
+    
+    // Pre-commit sekce
+    subgraph cluster_precommit {
+        label="Pre-commit Hook";
+        style=filled;
+        color=lightblue;
+        
+        start [label="Git Commit", shape=oval, fillcolor=lightgreen];
+        check_dup [label="check-duplicates", fillcolor=white];
+        val_ts [label="validate-timestamps", fillcolor=white];
+        val_meta [label="validate-document-metadata", fillcolor=white];
+        upd_docs [label="update-docs", fillcolor=white];
+        val_const [label="validate-constitution", fillcolor=white];
+        commit_ok [label="Commit Allowed", shape=oval, fillcolor=lightgreen];
+        block1 [label="BLOCK", shape=oval, fillcolor=lightcoral];
+    }
+    
+    // Pre-push sekce
+    subgraph cluster_prepush {
+        label="Pre-push Hook";
+        style=filled;
+        color=lightyellow;
+        
+        push_start [label="Git Push", shape=oval, fillcolor=lightgreen];
+        rust_test [label="rust-tests", fillcolor=white];
+        val_next [label="validate-next-session", fillcolor=white];
+        arch_next [label="archive-next-session", fillcolor=white];
+        push_ok [label="Push Allowed", shape=oval, fillcolor=lightgreen];
+        block2 [label="BLOCK", shape=oval, fillcolor=lightcoral];
+    }
+    
+    // Pre-commit hrany
+    start -> check_dup;
+    check_dup -> val_ts [label="PASS"];
+    check_dup -> block1 [label="FAIL", color=red];
+    val_ts -> val_meta [label="PASS"];
+    val_ts -> block1 [label="FAIL", color=red];
+    val_meta -> upd_docs [label="PASS"];
+    val_meta -> block1 [label="FAIL", color=red];
+    upd_docs -> val_const [label="PASS"];
+    upd_docs -> block1 [label="FAIL", color=red];
+    val_const -> commit_ok [label="PASS"];
+    val_const -> block1 [label="FAIL", color=red];
+    
+    // Pre-push hrany
+    push_start -> rust_test;
+    rust_test -> val_next [label="PASS"];
+    rust_test -> block2 [label="FAIL", color=red];
+    val_next -> arch_next [label="PASS"];
+    val_next -> block2 [label="FAIL", color=red];
+    arch_next -> push_ok [label="PASS"];
+    arch_next -> block2 [label="FAIL", color=red];
+}

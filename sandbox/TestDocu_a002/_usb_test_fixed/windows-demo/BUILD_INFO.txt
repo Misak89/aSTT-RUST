@@ -1,0 +1,5 @@
+build_time_utc=2026-03-01T00:33:27.8971522+01:00
+root_path=c:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST
+selected_exe=C:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST\src-tauri\target\release\app_temp.exe
+selected_exe_last_write_utc=2026-02-28T23:33:27.8362421Z
+build_performed=True

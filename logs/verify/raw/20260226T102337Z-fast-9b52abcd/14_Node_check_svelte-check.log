@@ -1,0 +1,27 @@
+
+> app_temp@0.1.0 check
+> svelte-kit sync && svelte-check --tsconfig ./tsconfig.json
+
+The `config.kit.files.assets` option is deprecated, and will be removed in a future version
+The `config.kit.files.hooks.client` option is deprecated, and will be removed in a future version
+The `config.kit.files.hooks.server` option is deprecated, and will be removed in a future version
+The `config.kit.files.lib` option is deprecated, and will be removed in a future version
+The `config.kit.files.params` option is deprecated, and will be removed in a future version
+The `config.kit.files.routes` option is deprecated, and will be removed in a future version
+The `config.kit.files.serviceWorker` option is deprecated, and will be removed in a future version
+The `config.kit.files.appTemplate` option is deprecated, and will be removed in a future version
+The `config.kit.files.errorTemplate` option is deprecated, and will be removed in a future version
+Loading svelte-check in workspace: c:\Users\adamf\OneDrive\Dokumenty\aSTT-RUST
+Getting Svelte diagnostics...
+
+The `config.kit.files.assets` option is deprecated, and will be removed in a future version
+The `config.kit.files.hooks.client` option is deprecated, and will be removed in a future version
+The `config.kit.files.hooks.server` option is deprecated, and will be removed in a future version
+The `config.kit.files.lib` option is deprecated, and will be removed in a future version
+The `config.kit.files.params` option is deprecated, and will be removed in a future version
+The `config.kit.files.routes` option is deprecated, and will be removed in a future version
+The `config.kit.files.serviceWorker` option is deprecated, and will be removed in a future version
+The `config.kit.files.appTemplate` option is deprecated, and will be removed in a future version
+The `config.kit.files.errorTemplate` option is deprecated, and will be removed in a future version
+[32msvelte-check found 0 errors and 0 warnings
+[39m

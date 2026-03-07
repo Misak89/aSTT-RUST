@@ -1,0 +1,334 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "docs_control/workflow_control_plane.schema.json",
+  "title": "Workflow Control Plane Canonical Model",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "source_of_truth",
+    "model",
+    "coverage_requirements",
+    "actors",
+    "artifacts",
+    "nodes",
+    "edges",
+    "views",
+    "alignment_targets",
+    "policies",
+    "generated_outputs",
+    "notes"
+  ],
+  "properties": {
+    "schema_version": { "type": "string", "const": "1.0" },
+    "source_of_truth": { "type": "string", "const": "docs_control/workflow_control_plane.json" },
+    "model": { "$ref": "#/$defs/modelMeta" },
+    "coverage_requirements": { "$ref": "#/$defs/coverageRequirements" },
+    "actors": { "type": "array", "items": { "$ref": "#/$defs/actor" } },
+    "artifacts": { "type": "array", "items": { "$ref": "#/$defs/artifact" } },
+    "nodes": { "type": "array", "items": { "$ref": "#/$defs/node" } },
+    "edges": { "type": "array", "items": { "$ref": "#/$defs/edge" } },
+    "views": { "type": "array", "items": { "$ref": "#/$defs/view" } },
+    "alignment_targets": { "type": "array", "items": { "$ref": "#/$defs/alignmentTarget" } },
+    "policies": { "$ref": "#/$defs/policies" },
+    "generated_outputs": { "type": "array", "items": { "$ref": "#/$defs/generatedOutput" } },
+    "legacy_inputs": { "type": "array", "items": { "$ref": "#/$defs/legacyInput" } },
+    "notes": { "type": "array", "items": { "type": "string" } }
+  },
+  "$defs": {
+    "genericId": { "type": "string", "pattern": "^[a-z][a-z0-9_.:-]*$" },
+    "domainTag": {
+      "type": "string",
+      "enum": [
+        "update",
+        "generate",
+        "validate",
+        "lint",
+        "test",
+        "log",
+        "evidence",
+        "traceability",
+        "hooks",
+        "ci",
+        "docs_publish",
+        "manual_review",
+        "exceptions_non_blocking"
+      ]
+    },
+    "sourceRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "line": { "type": "integer", "minimum": 1 },
+        "match": { "type": "string" },
+        "step_name": { "type": "string" },
+        "job_name": { "type": "string" },
+        "hook_id": { "type": "string" }
+      }
+    },
+    "runtimeRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "value"],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "verify_step_name",
+            "ci_job",
+            "ci_step",
+            "pre_commit_hook_id",
+            "pre_commit_hook_name",
+            "script_function",
+            "artifact_path"
+          ]
+        },
+        "value": { "type": "string", "minLength": 1 },
+        "target_id": { "type": "string", "pattern": "^target\\.[a-z0-9_.-]+$" }
+      }
+    },
+    "modelMeta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "model_id",
+        "model_version",
+        "status",
+        "scope_statement",
+        "determinism_contract",
+        "created_at_utc",
+        "updated_at_utc"
+      ],
+      "properties": {
+        "model_id": { "type": "string", "const": "workflow-control-plane" },
+        "model_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+        "status": { "type": "string", "enum": ["DRAFT", "APPROVED", "DEPRECATED"] },
+        "scope_statement": { "type": "string", "minLength": 1 },
+        "determinism_contract": { "type": "string", "minLength": 1 },
+        "created_at_utc": { "type": "string", "format": "date-time" },
+        "updated_at_utc": { "type": "string", "format": "date-time" },
+        "approved_at_utc": { "type": ["string", "null"], "format": "date-time" },
+        "approved_by": { "type": ["string", "null"] },
+        "freeze_rules": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "coverageRequirements": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["full_process_required", "required_domains", "required_mechanisms", "required_paths"],
+      "properties": {
+        "full_process_required": { "type": "boolean", "const": true },
+        "required_domains": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/domainTag" }, "minItems": 1 },
+        "required_mechanisms": { "type": "array", "uniqueItems": true, "items": { "type": "string" }, "minItems": 1 },
+        "required_paths": { "type": "array", "uniqueItems": true, "items": { "type": "string" }, "minItems": 1 },
+        "required_artifact_ids": { "type": "array", "uniqueItems": true, "items": { "type": "string", "pattern": "^artifact\\." } },
+        "required_node_ids": { "type": "array", "uniqueItems": true, "items": { "type": "string", "pattern": "^node\\." } }
+      }
+    },
+    "actor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["actor_id", "label", "kind", "domain_tags", "order_index"],
+      "properties": {
+        "actor_id": { "type": "string", "pattern": "^actor\\.[a-z0-9_.-]+$" },
+        "label": { "type": "string", "minLength": 1 },
+        "kind": { "type": "string", "enum": ["human", "agent", "local_tooling", "ci_runner", "docs_renderer"] },
+        "domain_tags": { "type": "array", "items": { "$ref": "#/$defs/domainTag" }, "uniqueItems": true },
+        "source_refs": { "type": "array", "items": { "$ref": "#/$defs/sourceRef" } },
+        "notes": { "type": "string" },
+        "order_index": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifact_id", "label", "kind", "path", "canonicality", "mutable_by", "domain_tags", "order_index"],
+      "properties": {
+        "artifact_id": { "type": "string", "pattern": "^artifact\\.[a-z0-9_.-]+$" },
+        "label": { "type": "string", "minLength": 1 },
+        "kind": { "type": "string", "enum": ["code", "canonical_json", "narrative_note", "generated_doc", "generated_diagram", "log", "evidence", "workflow_config", "hook_config", "schema", "observed_manifest"] },
+        "path": { "type": "string", "minLength": 1 },
+        "canonicality": { "type": "string", "enum": ["canonical", "generated", "observed", "legacy"] },
+        "mutable_by": { "type": "string", "enum": ["manual", "generator_only", "runtime_only"] },
+        "domain_tags": { "type": "array", "items": { "$ref": "#/$defs/domainTag" }, "uniqueItems": true },
+        "source_refs": { "type": "array", "items": { "$ref": "#/$defs/sourceRef" } },
+        "runtime_refs": { "type": "array", "items": { "$ref": "#/$defs/runtimeRef" } },
+        "notes": { "type": "string" },
+        "order_index": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["node_id", "label", "kind", "execution_scope", "blocking_mode", "domain_tags", "failure_semantics", "determinism_level", "order_index"],
+      "properties": {
+        "node_id": { "type": "string", "pattern": "^node\\.[a-z0-9_.-]+$" },
+        "label": { "type": "string", "minLength": 1 },
+        "kind": { "type": "string", "enum": ["manual_action", "script", "validator", "generator", "linter", "test", "gate", "ci_job", "ci_step", "hook", "decision", "log_sink", "evidence_sink"] },
+        "execution_scope": { "type": "string", "enum": ["local", "ci", "both", "manual"] },
+        "blocking_mode": { "type": "string", "enum": ["blocking", "non_blocking", "conditional"] },
+        "domain_tags": { "type": "array", "items": { "$ref": "#/$defs/domainTag" }, "uniqueItems": true, "minItems": 1 },
+        "inputs": { "type": "array", "items": { "type": "string", "pattern": "^artifact\\." } },
+        "outputs": { "type": "array", "items": { "type": "string", "pattern": "^artifact\\." } },
+        "source_refs": { "type": "array", "items": { "$ref": "#/$defs/sourceRef" } },
+        "runtime_refs": { "type": "array", "items": { "$ref": "#/$defs/runtimeRef" } },
+        "failure_semantics": { "type": "string", "enum": ["fail_fast", "fail_collect", "warn_only", "skip_allowed"] },
+        "determinism_level": { "type": "string", "enum": ["deterministic", "version_sensitive", "environment_sensitive"] },
+        "manual_gate_required": { "type": "boolean" },
+        "notes": { "type": "string" },
+        "order_index": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "edge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["edge_id", "from", "to", "relation", "condition", "blocking_effect", "evidence_required", "order_index"],
+      "properties": {
+        "edge_id": { "type": "string", "pattern": "^edge\\.[a-z0-9_.-]+$" },
+        "from": { "type": "string", "pattern": "^(actor|artifact|node)\\.[a-z0-9_.-]+$" },
+        "to": { "type": "string", "pattern": "^(actor|artifact|node)\\.[a-z0-9_.-]+$" },
+        "relation": { "type": "string", "enum": ["triggers", "reads", "writes", "generates", "validates", "logs_to", "produces_evidence", "feeds", "blocks", "publishes", "syncs"] },
+        "condition": { "type": "string", "enum": ["always", "on_pass", "on_fail", "on_skip", "if_enabled", "if_changed"] },
+        "blocking_effect": { "type": "string", "enum": ["none", "blocks_progress", "blocks_merge", "blocks_release"] },
+        "evidence_required": { "type": "boolean" },
+        "notes": { "type": "string" },
+        "order_index": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "view": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["view_id", "label", "purpose", "layout", "render_targets", "output_ids", "selectors", "order_index"],
+      "properties": {
+        "view_id": { "type": "string", "pattern": "^view\\.[a-z0-9_.-]+$" },
+        "label": { "type": "string", "minLength": 1 },
+        "purpose": { "type": "string", "minLength": 1 },
+        "layout": { "type": "string", "enum": ["flow_lr", "flow_tb", "sequence", "layered"] },
+        "render_targets": { "type": "array", "items": { "type": "string", "enum": ["mermaid", "dot", "svg", "markdown"] }, "uniqueItems": true, "minItems": 1 },
+        "output_ids": { "type": "array", "items": { "type": "string", "pattern": "^out\\.[a-z0-9_.-]+$" } },
+        "must_cover_domains": { "type": "array", "items": { "$ref": "#/$defs/domainTag" }, "uniqueItems": true },
+        "selectors": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "include_node_ids": { "type": "array", "items": { "type": "string", "pattern": "^node\\." } },
+            "exclude_node_ids": { "type": "array", "items": { "type": "string", "pattern": "^node\\." } },
+            "include_artifact_ids": { "type": "array", "items": { "type": "string", "pattern": "^artifact\\." } },
+            "exclude_artifact_ids": { "type": "array", "items": { "type": "string", "pattern": "^artifact\\." } },
+            "include_domain_tags": { "type": "array", "items": { "$ref": "#/$defs/domainTag" } },
+            "exclude_domain_tags": { "type": "array", "items": { "$ref": "#/$defs/domainTag" } }
+          }
+        },
+        "notes": { "type": "string" },
+        "order_index": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "alignmentTarget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target_id", "kind", "path", "extractor", "required_runtime_refs", "blocking_mode", "order_index"],
+      "properties": {
+        "target_id": { "type": "string", "pattern": "^target\\.[a-z0-9_.-]+$" },
+        "kind": { "type": "string", "enum": ["powershell_script", "github_workflow", "pre_commit_config"] },
+        "path": { "type": "string", "minLength": 1 },
+        "extractor": { "type": "string", "enum": ["ps_step_manifest", "yaml_manifest", "regex_manifest"] },
+        "required_runtime_refs": { "type": "array", "items": { "$ref": "#/$defs/runtimeRef" } },
+        "blocking_mode": { "type": "string", "enum": ["blocking", "non_blocking"] },
+        "source_refs": { "type": "array", "items": { "$ref": "#/$defs/sourceRef" } },
+        "notes": { "type": "string" },
+        "order_index": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "policies": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["canonical_json_format", "generated_edit_policy", "stale_check_policy", "alignment_policy", "coverage_policy"],
+      "properties": {
+        "canonical_json_format": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["stable_key_ordering", "indent_spaces", "newline_policy", "trailing_newline_required"],
+          "properties": {
+            "stable_key_ordering": { "type": "boolean", "const": true },
+            "indent_spaces": { "type": "integer", "enum": [2] },
+            "newline_policy": { "type": "string", "enum": ["lf", "crlf"] },
+            "trailing_newline_required": { "type": "boolean", "const": true }
+          }
+        },
+        "generated_edit_policy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["manual_edit_forbidden", "generated_paths"],
+          "properties": {
+            "manual_edit_forbidden": { "type": "boolean", "const": true },
+            "generated_paths": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+          }
+        },
+        "stale_check_policy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["enabled", "blocking", "check_only_supported"],
+          "properties": {
+            "enabled": { "type": "boolean", "const": true },
+            "blocking": { "type": "boolean", "const": true },
+            "check_only_supported": { "type": "boolean", "const": true },
+            "canonical_compare_targets": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+            "svg_best_effort": { "type": "boolean" }
+          }
+        },
+        "alignment_policy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["enabled", "blocking", "fail_on_missing_runtime_ref", "fail_on_missing_canonical_ref"],
+          "properties": {
+            "enabled": { "type": "boolean", "const": true },
+            "blocking": { "type": "boolean", "const": true },
+            "fail_on_missing_runtime_ref": { "type": "boolean", "const": true },
+            "fail_on_missing_canonical_ref": { "type": "boolean", "const": true },
+            "fail_on_order_drift": { "type": "boolean" }
+          }
+        },
+        "coverage_policy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["enabled", "blocking", "fail_on_missing_domain", "fail_on_missing_mechanism", "fail_on_missing_path"],
+          "properties": {
+            "enabled": { "type": "boolean", "const": true },
+            "blocking": { "type": "boolean", "const": true },
+            "fail_on_missing_domain": { "type": "boolean", "const": true },
+            "fail_on_missing_mechanism": { "type": "boolean", "const": true },
+            "fail_on_missing_path": { "type": "boolean", "const": true }
+          }
+        }
+      }
+    },
+    "generatedOutput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["output_id", "view_id", "path", "kind", "renderer", "generator_script", "check_only_supported", "order_index"],
+      "properties": {
+        "output_id": { "type": "string", "pattern": "^out\\.[a-z0-9_.-]+$" },
+        "view_id": { "type": "string", "pattern": "^view\\.[a-z0-9_.-]+$" },
+        "path": { "type": "string", "minLength": 1 },
+        "kind": { "type": "string", "enum": ["mermaid", "dot", "svg", "markdown"] },
+        "renderer": { "type": "string", "enum": ["powershell_template", "graphviz", "mermaid_cli", "none"] },
+        "generator_script": { "type": "string", "minLength": 1 },
+        "check_only_supported": { "type": "boolean" },
+        "notes": { "type": "string" },
+        "order_index": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "legacyInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "status", "reason"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "status": { "type": "string", "enum": ["legacy_reference_only", "deprecated", "do_not_use_as_ssot"] },
+        "reason": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

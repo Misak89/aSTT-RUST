@@ -1,0 +1,85 @@
+site_name: aSTT-RUST Documentation
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Prepnout na tmavy rezim
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Prepnout na svetly rezim
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - search.highlight
+
+nav:
+  - Home: index.md
+  - Core:
+      - Index: core/index.md
+      - Architecture: core/ARCHITECTURE.md
+      - Governance: core/GOVERNANCE.md
+      - Documentation Audit Plan: core/DOCUMENTATION_AUDIT_PLAN.md
+      - Audit Dashboard: core/AUDIT_TRAIL_Log_dashboard.md
+      - Antigravity Tools: core/ANTIGRAVITY_TOOLS.md
+      - Organization: core/ORGANIZATION.md
+      - Constitution: core/CONSTITUTION.md
+      - Next Session: generated/control/NEXT_SESSION.md
+      - Vision: core/VISION.md
+  - Audit:
+      - Software Inventory: software-inventory.md
+      - Audit Method: software-audit-method.md
+      - Verify Status: generated/control/VERIFY_STATUS.md
+      - Verify Runs (DESC): generated/control/VERIFY_RUNS_DESC.md
+      - Verify Runs (ASC): generated/control/VERIFY_RUNS_ASC.md
+      - Verify Runs By Scope: generated/control/VERIFY_RUNS_BY_SCOPE.md
+      - GitHub Update+Deploy Log: generated/control/GITHUB_UPDATE_DEPLOY_LOG.md
+      - Traceability Summary: generated/control/TRACEABILITY_SUMMARY.md
+      - Workflow Control Plane: generated/control/WORKFLOW_CONTROL_PLANE.md
+      - Workflow Verify+Evidence View: generated/control/workflow_control_plane.verify_evidence_path.md
+      - Workflow Control Plane (SVG Literal Interactive): generated/control/workflow_control_plane.full.literal.interactive.md
+      - Workflow Control Plane (SVG Full): generated/control/workflow_control_plane.full.svg
+      - Workflow Control Plane (SVG Fit Screen): generated/control/workflow_control_plane.full.fit.svg
+      - Workflow Control Plane (SVG Compact Fit): generated/control/workflow_control_plane.full.compact.fit.svg
+      - Workflow Control Plane (SVG Literal Rotated): generated/control/workflow_control_plane.full.literal.fit.svg
+      - Workflow Verify/Test Flow (SVG): generated/control/workflow_control_plane.verify_test_flow.svg
+      - Workflow Logging+Evidence Claims (SVG): generated/control/workflow_control_plane.logging_evidence_claims.svg
+      - Workflow Docs Generation+Stale-Check (SVG): generated/control/workflow_control_plane.docs_generation_stale_check.svg
+      - Workflow Hooks+CI Enforcement (SVG): generated/control/workflow_control_plane.hooks_ci_enforcement.svg
+  - Internal:
+      - ADRs:
+          - Index: adr/index.md
+          - Use Log4brains: adr/20260219-use-log4brains-to-manage-the-adrs.md
+          - Markdown ADRs: adr/20260219-use-markdown-architectural-decision-records.md
+          - Template: adr/template.md
+      - Spec-Kit:
+          - Index: spec-kit/README.md
+          - AGENTS: spec-kit/AGENTS.md
+          - CHANGELOG: spec-kit/CHANGELOG.md
+          - Security: spec-kit/SECURITY.md
+          - Support: spec-kit/SUPPORT.md
+          - Spec-Driven: spec-kit/spec-driven.md
+          - Installation: spec-kit/docs/installation.md
+          - Quickstart: spec-kit/docs/quickstart.md
+      - Plans:
+          - Refactor Batch C: plans/2026-02-19-refactor-batch-c.md
+      - Inventory Playbook: inventory-refactor-playbook.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+extra_javascript:
+  - javascripts/nav-interactive-highlight.js
+
+extra_css:
+  - stylesheets/extra.css

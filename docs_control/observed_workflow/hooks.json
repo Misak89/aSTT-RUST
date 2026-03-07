@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "manifest_type": "observed_pre_commit_hooks",
+  "source_path": ".pre-commit-config.yaml",
+  "hooks": [
+    {
+      "order_index": 1,
+      "line": 5,
+      "repo": "https://github.com/DavidAnson/markdownlint-cli2",
+      "hook_id": "markdownlint-cli2",
+      "name": "markdownlint-cli2 (blocking scope, P0 curated)",
+      "entry": "",
+      "files": "^(docs/index\\.md|docs/core/GOVERNANCE\\.md|docs/generated/control/(NEXT_SESSION|TRACEABILITY_SUMMARY|WORKFLOW_CONTROL_PLANE|workflow_control_plane\\.verify_evidence_path)\\.md|docs_control/.*\\.md)$",
+      "exclude": "",
+      "always_run": true,
+      "pass_filenames": false
+    },
+    {
+      "order_index": 2,
+      "line": 22,
+      "repo": "https://github.com/lycheeverse/lychee",
+      "hook_id": "lychee",
+      "name": "",
+      "entry": "",
+      "files": "",
+      "exclude": "",
+      "always_run": null,
+      "pass_filenames": null
+    },
+    {
+      "order_index": 3,
+      "line": 29,
+      "repo": "local",
+      "hook_id": "validate-workflow-alignment",
+      "name": "validate-workflow-alignment",
+      "entry": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/validate_workflow_alignment.ps1",
+      "files": "^(\\.pre-commit-config\\.yaml|\\.vale(\\.backlog)?\\.ini|mkdocs\\.yml|\\.github/workflows/.*\\.yml|docs/core/(GOVERNANCE|ARCHITECTURE)\\.md|docs/generated/control/(NEXT_SESSION|TRACEABILITY_SUMMARY|WORKFLOW_CONTROL_PLANE|workflow_control_plane\\.verify_evidence_path)\\.md|docs_control/(next_session(\\.schema)?|traceability(\\.schema)?|task_status(\\.schema)?|capability_audit(\\.schema)?|vale_backlog_baseline|workflow_control_plane(\\.schema)?)\\.json|docs_control/(next_session_note|workflow_control_plane_note)\\.md|docs_control/observed_workflow/.*\\.json|scripts/(validate_workflow_alignment|validate_traceability|validate_next_session|validate_capability_audit|generate_control_docs|enforce_next_session_flow|report_vale_backlog|preflight_state_discovery|verify_batch_status|validate_workflow_control_plane|validate_workflow_control_alignment|generate_workflow_control_diagrams|extract_verify_stage_manifest|extract_ci_manifest|extract_hooks_manifest|assert_preflight_write_guard|generate_verify_dashboard|update_docs)\\.ps1)$",
+      "exclude": "",
+      "always_run": null,
+      "pass_filenames": false
+    },
+    {
+      "order_index": 4,
+      "line": 35,
+      "repo": "local",
+      "hook_id": "vale-critical",
+      "name": "vale (critical scope, blocking errors-only)",
+      "entry": "tools/vale/vale.exe",
+      "files": "^(docs/index\\.md|docs/core/GOVERNANCE\\.md|docs/generated/control/(NEXT_SESSION|TRACEABILITY_SUMMARY)\\.md|docs_control/next_session_note\\.md)$",
+      "exclude": "",
+      "always_run": true,
+      "pass_filenames": false
+    },
+    {
+      "order_index": 5,
+      "line": 49,
+      "repo": "local",
+      "hook_id": "vale",
+      "name": "vale (changed markdown, blocking errors-only)",
+      "entry": "tools/vale/vale.exe",
+      "files": "\\.md$",
+      "exclude": "^(site/|backup_docs_[^/]+/|NEXT_SESSION_Archive/|src-tauri/binaries/build/|tools/vale/|docs/core/AUDIT_TRAIL_Log_dashboard\\.md|docs/generated/control/VERIFY_.*\\.md)$",
+      "always_run": null,
+      "pass_filenames": null
+    },
+    {
+      "order_index": 6,
+      "line": 57,
+      "repo": "local",
+      "hook_id": "enforce-next-session-flow",
+      "name": "enforce-next-session-flow",
+      "entry": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/enforce_next_session_flow.ps1",
+      "files": "^(docs_control/(next_session\\.json|next_session_note\\.md|traceability\\.json)|docs/generated/control/(NEXT_SESSION|TRACEABILITY_SUMMARY)\\.md)$",
+      "exclude": "",
+      "always_run": null,
+      "pass_filenames": false
+    }
+  ]
+}

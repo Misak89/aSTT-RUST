@@ -1,0 +1,68 @@
+# MegaLinter Configuration
+# https://megalinter.io/configuration/
+
+# Disable plugins that cause false positives
+DISABLE:
+  - DEVSKIM
+  - SECRETLINT
+
+# Enable linters
+ENABLE:
+  # Markdown
+  - MARKDOWN_MARKDOWN_LINK_CHECK
+  - MARKDOWN_MARKDOWNLINT
+  # YAML
+  - YAML_YAMLLINT
+  - YAML_PRETTIER
+  # Spelling
+  - SPELL_CSPELL
+  - SPELL_LYCHEE
+  # Copy/paste detection
+  - COPYPASTE_JSCPD
+  # Security
+  - REPOSITORY_CHECKOV
+  - REPOSITORY_GRYPE
+  - REPOSITORY_TRUFFLEHOG
+  - REPOSITORY_GITLEAKS
+  # JavaScript/TypeScript (Sprint 11)
+  - JAVASCRIPT_ES
+  - TYPESCRIPT_ES
+  - JAVASCRIPT_PRETTIER
+  # Rust (Sprint 11)
+  - RUST_RUSTFMT
+  # Python (Sprint 11)
+  - PYTHON_PYLINT
+  - PYTHON_BLACK
+
+# File extensions to lint
+FILE_EXTENSIONS:
+  - .js
+  - .ts
+  - .json
+  - .md
+  - .yml
+  - .yaml
+  - .svelte
+  - .rs
+  - .py
+
+# Directories to exclude
+EXCLUDED_DIRECTORIES:
+  - .git
+  - node_modules
+  - target
+  - sandbox/portable_bench/python-embed
+  - src-tauri/target
+
+# Markdown link check configuration
+MARKDOWN_LINK_CHECK_CONFIG:
+  # Retry on failure
+  retry: 3
+  # Timeout in seconds
+  timeout: 10
+
+# YAML linting
+YAML_YAMLLINT_CONFIG_FILE: .yamllint.yml
+
+# Markdown linting
+MARKDOWN_MARKDOWNLINT_CONFIG_FILE: .markdownlint.yml

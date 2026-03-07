@@ -1,0 +1,12 @@
+{
+  "tested_at": "2026-03-04T19:57:20.410978",
+  "url": "https://www.youtube.com/watch?v=3LHFu3Hnufs",
+  "init_status": "initialized",
+  "init_engine": "faster-whisper",
+  "transcribe_status": "success",
+  "transcribe_engine": "faster-whisper",
+  "language": "en",
+  "segments_count": 12,
+  "text_len": 804,
+  "message": ""
+}

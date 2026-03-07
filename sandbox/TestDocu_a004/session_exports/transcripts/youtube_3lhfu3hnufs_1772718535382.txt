@@ -1,0 +1,106 @@
+# aSTT Transcript Export
+export_unix_ms=1772718535382
+source=https://www.youtube.com/watch?v=3LHFu3Hnufs
+language=en
+engine=faster-whisper
+format_version=3
+section_1=full_transcript
+section_2=numbered_segments_with_time
+section_3=settings_snapshot_json
+section_4=raw_rpc_response_json
+segment_line_format=NNN | HH:MM:SS.mmm -> HH:MM:SS.mmm | speaker=<value-or-> | text=<segment_text>
+
+[full_transcript]
+I was curious as to what makes them different, what makes white supremacy different, or like Islamophobia so different from anti-Semitism. Freedom of speech, freedom of religion, freedom of association, and so on. If I want to kill you and behead you, unless you convert to the religion I dictate, what would be the place of compromise? One of the great speakers of our day is the great Ayaan Hirsi Ali. Here she is at a fantastic debate with individuals that are supporting Islam's development in the West without understanding exactly what's going on today. Listen carefully what she has to say about that. And of course I'd like to hear what you have to say about it, so don't forget to leave your comments below and of course subscribe to this channel and we'll talk to you on the other end of the video. I would like to reiterate the thanks for your time here at the University of Austin. What I wanted to ask you was, you speak of Islamophobia and classes like black studies as phony, ideological things, but...
+
+[numbered_segments_with_time]
+001 | 00:00:00.000 -> 00:00:05.320 | speaker=SPEAKER_01 | text=I was curious as to what makes them different, what makes white supremacy different, or like
+002 | 00:00:05.320 -> 00:00:07.600 | speaker=SPEAKER_01 | text=Islamophobia so different from anti-Semitism.
+003 | 00:00:07.600 -> 00:00:11.640 | speaker=SPEAKER_01 | text=Freedom of speech, freedom of religion, freedom of association, and so on.
+004 | 00:00:11.640 -> 00:00:17.680 | speaker=SPEAKER_01 | text=If I want to kill you and behead you, unless you convert to the religion I dictate, what
+005 | 00:00:17.680 -> 00:00:19.620 | speaker=SPEAKER_01 | text=would be the place of compromise?
+006 | 00:00:19.620 -> 00:00:22.920 | speaker=SPEAKER_01 | text=One of the great speakers of our day is the great Ayaan Hirsi Ali.
+007 | 00:00:22.920 -> 00:00:28.280 | speaker=SPEAKER_01 | text=Here she is at a fantastic debate with individuals that are supporting Islam's development
+008 | 00:00:28.280 -> 00:00:31.960 | speaker=SPEAKER_01 | text=in the West without understanding exactly what's going on today.
+009 | 00:00:31.960 -> 00:00:34.680 | speaker=SPEAKER_01 | text=Listen carefully what she has to say about that.
+010 | 00:00:34.680 -> 00:00:38.440 | speaker=SPEAKER_01 | text=And of course I'd like to hear what you have to say about it, so don't forget to leave
+011 | 00:00:38.440 -> 00:00:42.800 | speaker=SPEAKER_01 | text=your comments below and of course subscribe to this channel and we'll talk to you on
+012 | 00:00:42.800 -> 00:00:43.800 | speaker=SPEAKER_01 | text=the other end of the video.
+013 | 00:00:43.800 -> 00:00:49.720 | speaker=SPEAKER_01 | text=I would like to reiterate the thanks for your time here at the University of Austin.
+014 | 00:00:49.720 -> 00:00:56.320 | speaker=SPEAKER_01 | text=What I wanted to ask you was, you speak of Islamophobia and classes like black studies
+015 | 00:00:56.320 -> 00:00:59.760 | speaker=SPEAKER_01 | text=as phony, ideological things, but...
+
+[settings_snapshot_json]
+{
+  "export_created_at_iso": "2026-03-05T13:48:55.360Z",
+  "run_options": {
+    "auto_mic_quick_seconds": 3,
+    "auto_transcribe_mic": true,
+    "last_transcribe_clip_seconds": 60,
+    "low_latency_video_mode": false,
+    "low_latency_video_seconds": 5,
+    "timed_auto_save_txt": true,
+    "timed_clip_seconds_target": 60
+  },
+  "runtime_monitor_tail": [
+    "14:34:23 | UI mounted",
+    "14:34:23 | Sidecar log file: %TEMP%\\astt_demo_a004\\sidecar.log",
+    "14:39:17 | Init config model=medium, language=en, device=cpu, compute=int8, diarization=false",
+    "14:39:17 | Transcribe request source=url clip=full-source",
+    "14:39:17 | Init sidecar (auto) START (init_sidecar)",
+    "14:39:23 | Init sidecar (auto) OK in 6205 ms status=initialized",
+    "14:39:23 | Transcribe START (transcribe)",
+    "14:45:34 | Abort requested by user (hard).",
+    "14:45:34 | Abort request sent.",
+    "14:45:34 | Abort: no transcript text was available to save yet.",
+    "14:45:34 | Transcribe FAILED in 371299 ms -> Request aborted by user (method: transcribe)",
+    "14:46:45 | Timed run started target=60s",
+    "14:47:45 | Timed run timer-expired: captured=60s -> transcribe",
+    "14:47:45 | Init config model=medium, language=en, device=cpu, compute=int8, diarization=false",
+    "14:47:45 | Transcribe request source=url clip=60",
+    "14:47:45 | Init sidecar (auto) START (init_sidecar)",
+    "14:47:49 | Init sidecar (auto) OK in 3555 ms status=initialized",
+    "14:47:49 | Transcribe START (transcribe)",
+    "14:48:24 | Transcribe OK in 34928 ms status=success",
+    "14:48:24 | First-word latency(back)=34343 ms, first-word->UI=34938 ms, total(back)=34343 ms, uiElapsed(transcribe)=34938 ms, uiElapsed(end-to-end)=38495 ms, budget=LATE",
+    "14:48:24 | Save transcript TXT START (save_transcript_txt)",
+    "14:48:24 | Save transcript TXT OK in 36 ms",
+    "14:48:24 | Transcript TXT saved -> C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\sandbox\\TestDocu_a004\\session_exports\\transcripts\\youtube_3lhfu3hnufs_1772718504432.txt",
+    "14:48:44 | Save transcript TXT START (save_transcript_txt)",
+    "14:48:44 | Save transcript TXT OK in 21 ms",
+    "14:48:44 | Transcript TXT saved -> C:\\Users\\adamf\\OneDrive\\Dokumenty\\aSTT-RUST\\sandbox\\TestDocu_a004\\session_exports\\transcripts\\youtube_3lhfu3hnufs_1772718524453.txt"
+  ],
+  "runtime_state": {
+    "recording_state": "idle",
+    "status": "Transcript saved to TXT."
+  },
+  "source": {
+    "audio_path": "https://www.youtube.com/watch?v=3LHFu3Hnufs",
+    "inferred_media_kind": null,
+    "is_http": true,
+    "media_url": "https://www.youtube.com/watch?v=3LHFu3Hnufs",
+    "source_kind": "url",
+    "youtube_id": "3LHFu3Hnufs"
+  },
+  "stt_config": {
+    "compute_type": "int8",
+    "device": "cpu",
+    "diarization": false,
+    "hf_token_set": false,
+    "language": "en",
+    "model": "medium"
+  },
+  "transcript_metrics": {
+    "first_segment_start_s": 0,
+    "first_word_latency_ms": 34343,
+    "first_word_to_ui_ms": 34938,
+    "latency_budget_ok": false,
+    "segments_count": 15,
+    "total_elapsed_ms": 34343,
+    "transcript_engine": "faster-whisper",
+    "transcript_language": "en"
+  }
+}
+
+[raw_rpc_response_json]
+{"info":"raw rpc response not provided"}

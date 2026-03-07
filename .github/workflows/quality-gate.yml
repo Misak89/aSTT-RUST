@@ -1,0 +1,157 @@
+name: Unified Quality Gate
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  governance-determinism:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate workflow alignment
+        shell: pwsh
+        run: ./scripts/validate_workflow_alignment.ps1
+
+      - name: Validate workflow control plane model
+        shell: pwsh
+        run: ./scripts/validate_workflow_control_plane.ps1
+
+      - name: Validate workflow control alignment (refresh observed)
+        shell: pwsh
+        run: ./scripts/validate_workflow_control_alignment.ps1 -RefreshObserved
+
+      - name: Capability audit (tools + sources)
+        shell: pwsh
+        run: ./scripts/validate_capability_audit.ps1
+
+      - name: Preflight state discovery (claim=evidence)
+        shell: pwsh
+        run: ./scripts/preflight_state_discovery.ps1
+
+      - name: Verify batch status claims (claim=evidence)
+        shell: pwsh
+        run: ./scripts/verify_batch_status.ps1
+
+      - name: Validate traceability registry
+        shell: pwsh
+        run: ./scripts/validate_traceability.ps1
+
+      - name: Validate NEXT_SESSION structure
+        shell: pwsh
+        run: ./scripts/validate_next_session.ps1 -SkipGeneratedFreshnessCheck
+
+      - name: Control docs stale-check
+        shell: pwsh
+        run: ./scripts/generate_control_docs.ps1 -CheckOnly
+
+      - name: Verify dashboard stale-check
+        shell: pwsh
+        run: ./scripts/generate_verify_dashboard.ps1 -CheckOnly
+
+      - name: Workflow control diagrams stale-check
+        shell: pwsh
+        run: ./scripts/generate_workflow_control_diagrams.ps1 -CheckOnly
+
+      - name: Enforce NEXT_SESSION flow
+        shell: pwsh
+        run: ./scripts/enforce_next_session_flow.ps1
+
+  docs-security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Markdown lint
+        uses: DavidAnson/markdownlint-cli2-action@v18
+        with:
+          globs: |
+            docs/index.md
+            docs/core/GOVERNANCE.md
+            docs/generated/control/NEXT_SESSION.md
+            docs/generated/control/TRACEABILITY_SUMMARY.md
+            docs/generated/control/WORKFLOW_CONTROL_PLANE.md
+            docs/generated/control/workflow_control_plane.verify_evidence_path.md
+            docs_control/**/*.md
+
+      - name: Markdown lint backlog (non-blocking)
+        continue-on-error: true
+        uses: DavidAnson/markdownlint-cli2-action@v18
+        with:
+          globs: '**/*.md'
+
+      - name: Vale prose lint (critical blocking)
+        uses: errata-ai/vale-action@v2
+        with:
+          config: .vale.ini
+          files: |
+            docs/index.md
+            docs/core/GOVERNANCE.md
+            docs/generated/control/NEXT_SESSION.md
+            docs/generated/control/TRACEABILITY_SUMMARY.md
+            docs_control/next_session_note.md
+
+      - name: Vale prose lint backlog (non-blocking)
+        continue-on-error: true
+        uses: errata-ai/vale-action@v2
+        with:
+          config: .vale.backlog.ini
+          files: |
+            **/*.md
+
+      - name: Link audit (lychee)
+        uses: lycheeverse/lychee-action@v2
+        with:
+          fail: true
+          args: >-
+            --no-progress
+            --exclude-mail
+            --accept 200,206,301,302,303,307,308
+            "**/*.md"
+
+  code-audit:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Node checks
+        run: |
+          npm run check --if-present
+          npm test --if-present
+
+      - name: Rust checks
+        run: |
+          cargo fmt --manifest-path src-tauri/Cargo.toml --all -- --check
+          cargo clippy --manifest-path src-tauri/Cargo.toml --all-targets --all-features -- -D warnings
+          cargo test --manifest-path src-tauri/Cargo.toml --all-targets --all-features
+
+      - name: Software inventory audit (CI mode)
+        shell: pwsh
+        run: |
+          pwsh -NoProfile -ExecutionPolicy Bypass -File scripts/inventory_project_sw.ps1 -SkipRunOnSaveHealthCheck
+
+      - name: Upload audit outputs
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: software-audit
+          path: |
+            docs/software-inventory.md
+            docs/software-audit-method.md
+            logs/software-inventory.json
+            logs/software-audit-last.txt

@@ -1,0 +1,22 @@
+Running markdownlint backlog scan (non-blocking)...
+Markdownlint backlog report (non-blocking):
+  pre-commit exit code: 1
+  markdownlint errors: 1706
+  summary json: logs/verify/markdownlint_backlog_summary.json
+  raw log: logs/verify/markdownlint_backlog_latest.log
+  top rules:
+    - MD012: 1016
+    - MD024: 207
+    - MD032: 206
+    - MD022: 152
+    - MD013: 40
+    - MD058: 18
+    - MD036: 15
+    - MD040: 14
+    - MD007: 9
+    - MD031: 9
+    - MD026: 7
+    - MD030: 6
+    - MD009: 4
+    - MD003: 1
+    - MD025: 1

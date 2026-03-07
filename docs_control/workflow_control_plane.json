@@ -1,0 +1,2472 @@
+{
+  "schema_version": "1.0",
+  "source_of_truth": "docs_control/workflow_control_plane.json",
+  "model": {
+    "model_id": "workflow-control-plane",
+    "model_version": "0.3.0",
+    "status": "DRAFT",
+    "scope_statement": "Canonical JSON SSOT for workflow/control-plane diagrams covering local hooks, verify fast runtime path, CI jobs, logging/evidence, and self-hosting diagram subsystem.",
+    "determinism_contract": "Only this JSON is manually edited. Generated diagram views are stale-checked and must not be edited manually.",
+    "created_at_utc": "2026-02-26T13:45:00Z",
+    "updated_at_utc": "2026-02-28T16:55:00Z",
+    "approved_at_utc": null,
+    "approved_by": null,
+    "freeze_rules": [
+      "Workflow changes without SSOT update are P0 drift.",
+      "Promotion to APPROVED requires alignment and stale-check implementation."
+    ]
+  },
+  "coverage_requirements": {
+    "full_process_required": true,
+    "required_domains": [
+      "update",
+      "generate",
+      "validate",
+      "lint",
+      "test",
+      "log",
+      "evidence",
+      "traceability",
+      "hooks",
+      "ci",
+      "docs_publish",
+      "manual_review",
+      "exceptions_non_blocking"
+    ],
+    "required_mechanisms": [
+      "verify_fast_orchestrator",
+      "verify_stage_steps",
+      "capability_audit",
+      "control_docs_generation",
+      "stale_check",
+      "verify_run_logging",
+      "traceability_validation",
+      "next_session_validation",
+      "markdownlint_blocking",
+      "markdownlint_backlog",
+      "vale_blocking",
+      "vale_backlog",
+      "mkdocs_strict",
+      "pre_commit_enforcement",
+      "ci_enforcement"
+    ],
+    "required_paths": [
+      "pass_path",
+      "fail_fast_path",
+      "non_blocking_backlog_path",
+      "skip_optional_path"
+    ],
+    "required_artifact_ids": [
+      "artifact.workflow_control_plane_json",
+      "artifact.workflow_control_plane_schema",
+      "artifact.verify_runs_json",
+      "artifact.task_status_json",
+      "artifact.capability_audit_json",
+      "artifact.capability_audit_summary_json",
+      "artifact.observed_verify_stage_manifest",
+      "artifact.observed_ci_jobs_manifest",
+      "artifact.observed_hooks_manifest",
+      "artifact.workflow_control_plane_full_md"
+    ],
+    "required_node_ids": [
+      "node.verify_fast_orchestrator",
+      "node.validate_workflow_alignment",
+      "node.validate_workflow_control_plane",
+      "node.validate_workflow_control_alignment",
+      "node.validate_capability_audit",
+      "node.preflight_state_discovery",
+      "node.verify_batch_status_claims",
+      "node.validate_traceability",
+      "node.validate_next_session",
+      "node.enforce_next_session_flow",
+      "node.generate_control_docs",
+      "node.workflow_control_diagrams_generator",
+      "node.workflow_control_diagrams_stale_check",
+      "node.mkdocs_strict",
+      "node.node_check_svelte",
+      "node.rust_fmt_check",
+      "node.rust_clippy",
+      "node.log_verify_run"
+    ]
+  },
+  "actors": [
+    {
+      "actor_id": "actor.user",
+      "label": "User",
+      "kind": "human",
+      "domain_tags": ["update", "manual_review"],
+      "order_index": 10
+    },
+    {
+      "actor_id": "actor.local_tooling",
+      "label": "Local Tooling",
+      "kind": "local_tooling",
+      "domain_tags": ["hooks", "validate", "lint", "test", "generate"],
+      "order_index": 15
+    },
+    {
+      "actor_id": "actor.ci",
+      "label": "CI Runner",
+      "kind": "ci_runner",
+      "domain_tags": ["ci", "validate", "lint", "test", "docs_publish"],
+      "order_index": 20
+    }
+  ],
+  "artifacts": [
+    {
+      "artifact_id": "artifact.workflow_control_plane_json",
+      "label": "Workflow Control Plane SSOT",
+      "kind": "canonical_json",
+      "path": "docs_control/workflow_control_plane.json",
+      "canonicality": "canonical",
+      "mutable_by": "manual",
+      "domain_tags": ["generate", "validate", "manual_review"],
+      "order_index": 10
+    },
+    {
+      "artifact_id": "artifact.workflow_control_plane_schema",
+      "label": "Workflow Control Plane Schema",
+      "kind": "schema",
+      "path": "docs_control/workflow_control_plane.schema.json",
+      "canonicality": "canonical",
+      "mutable_by": "manual",
+      "domain_tags": ["validate"],
+      "order_index": 20
+    },
+    {
+      "artifact_id": "artifact.verify_runs_json",
+      "label": "Verify Runs Evidence Log",
+      "kind": "evidence",
+      "path": "docs_control/verify_runs.json",
+      "canonicality": "canonical",
+      "mutable_by": "runtime_only",
+      "domain_tags": ["log", "evidence"],
+      "order_index": 30
+    },
+    {
+      "artifact_id": "artifact.traceability_json",
+      "label": "Traceability Registry",
+      "kind": "canonical_json",
+      "path": "docs_control/traceability.json",
+      "canonicality": "canonical",
+      "mutable_by": "manual",
+      "domain_tags": ["traceability", "validate", "evidence"],
+      "order_index": 40
+    },
+    {
+      "artifact_id": "artifact.next_session_json",
+      "label": "NEXT_SESSION Canonical JSON",
+      "kind": "canonical_json",
+      "path": "docs_control/next_session.json",
+      "canonicality": "canonical",
+      "mutable_by": "manual",
+      "domain_tags": ["validate", "manual_review", "evidence"],
+      "order_index": 50
+    },
+    {
+      "artifact_id": "artifact.pre_commit_config",
+      "label": "pre-commit Config",
+      "kind": "hook_config",
+      "path": ".pre-commit-config.yaml",
+      "canonicality": "canonical",
+      "mutable_by": "manual",
+      "domain_tags": ["hooks", "lint", "validate"],
+      "order_index": 60
+    },
+    {
+      "artifact_id": "artifact.verify_stage_script",
+      "label": "verify_stage Script",
+      "kind": "code",
+      "path": "scripts/verify_stage.ps1",
+      "canonicality": "canonical",
+      "mutable_by": "manual",
+      "domain_tags": ["validate", "lint", "test", "log", "evidence"],
+      "order_index": 70
+    },
+    {
+      "artifact_id": "artifact.ci_workflow_ci",
+      "label": "CI Workflow",
+      "kind": "workflow_config",
+      "path": ".github/workflows/ci.yml",
+      "canonicality": "canonical",
+      "mutable_by": "manual",
+      "domain_tags": ["ci", "validate", "test"],
+      "order_index": 80
+    },
+    {
+      "artifact_id": "artifact.ci_workflow_quality_gate",
+      "label": "Quality Gate Workflow",
+      "kind": "workflow_config",
+      "path": ".github/workflows/quality-gate.yml",
+      "canonicality": "canonical",
+      "mutable_by": "manual",
+      "domain_tags": ["ci", "validate", "lint", "docs_publish"],
+      "order_index": 90
+    },
+    {
+      "artifact_id": "artifact.ci_workflow_determinism",
+      "label": "Determinism Workflow",
+      "kind": "workflow_config",
+      "path": ".github/workflows/determinism.yml",
+      "canonicality": "canonical",
+      "mutable_by": "manual",
+      "domain_tags": ["ci", "validate", "generate", "docs_publish"],
+      "order_index": 92
+    },
+    {
+      "artifact_id": "artifact.ci_workflow_clean_clone_smoke",
+      "label": "Clean Clone Smoke Workflow",
+      "kind": "workflow_config",
+      "path": ".github/workflows/clean-clone-smoke.yml",
+      "canonicality": "canonical",
+      "mutable_by": "manual",
+      "domain_tags": ["ci", "validate", "generate", "docs_publish"],
+      "order_index": 93
+    },
+    {
+      "artifact_id": "artifact.mkdocs_yml",
+      "label": "MkDocs Config",
+      "kind": "workflow_config",
+      "path": "mkdocs.yml",
+      "canonicality": "canonical",
+      "mutable_by": "manual",
+      "domain_tags": ["docs_publish", "validate"],
+      "order_index": 95
+    },
+    {
+      "artifact_id": "artifact.task_status_json",
+      "label": "Task Status Registry",
+      "kind": "canonical_json",
+      "path": "docs_control/task_status.json",
+      "canonicality": "canonical",
+      "mutable_by": "manual",
+      "domain_tags": ["validate", "evidence", "manual_review"],
+      "order_index": 100
+    },
+    {
+      "artifact_id": "artifact.capability_audit_json",
+      "label": "Capability Audit Registry",
+      "kind": "canonical_json",
+      "path": "docs_control/capability_audit.json",
+      "canonicality": "canonical",
+      "mutable_by": "manual",
+      "domain_tags": ["validate", "manual_review", "evidence"],
+      "order_index": 105
+    },
+    {
+      "artifact_id": "artifact.capability_audit_schema",
+      "label": "Capability Audit Schema",
+      "kind": "schema",
+      "path": "docs_control/capability_audit.schema.json",
+      "canonicality": "canonical",
+      "mutable_by": "manual",
+      "domain_tags": ["validate"],
+      "order_index": 106
+    },
+    {
+      "artifact_id": "artifact.generated_next_session_md",
+      "label": "Generated NEXT_SESSION View",
+      "kind": "generated_doc",
+      "path": "docs/generated/control/NEXT_SESSION.md",
+      "canonicality": "generated",
+      "mutable_by": "generator_only",
+      "domain_tags": ["generate", "docs_publish", "evidence"],
+      "order_index": 110
+    },
+    {
+      "artifact_id": "artifact.generated_traceability_md",
+      "label": "Generated Traceability View",
+      "kind": "generated_doc",
+      "path": "docs/generated/control/TRACEABILITY_SUMMARY.md",
+      "canonicality": "generated",
+      "mutable_by": "generator_only",
+      "domain_tags": ["generate", "docs_publish", "traceability"],
+      "order_index": 120
+    },
+    {
+      "artifact_id": "artifact.preflight_state_json",
+      "label": "Preflight state snapshot",
+      "kind": "log",
+      "path": "logs/verify/preflight_state.json",
+      "canonicality": "observed",
+      "mutable_by": "runtime_only",
+      "domain_tags": ["validate", "log", "evidence"],
+      "order_index": 130
+    },
+    {
+      "artifact_id": "artifact.batch_status_verify_summary_json",
+      "label": "Batch status verify summary",
+      "kind": "log",
+      "path": "logs/verify/batch_status_verify_summary.json",
+      "canonicality": "observed",
+      "mutable_by": "runtime_only",
+      "domain_tags": ["validate", "log", "evidence"],
+      "order_index": 140
+    },
+    {
+      "artifact_id": "artifact.capability_audit_summary_json",
+      "label": "Capability audit summary",
+      "kind": "log",
+      "path": "logs/verify/capability_audit_summary.json",
+      "canonicality": "observed",
+      "mutable_by": "runtime_only",
+      "domain_tags": ["validate", "log", "evidence"],
+      "order_index": 145
+    },
+    {
+      "artifact_id": "artifact.toolchain_capabilities_json",
+      "label": "Toolchain capability observations",
+      "kind": "log",
+      "path": "logs/verify/toolchain_capabilities.json",
+      "canonicality": "observed",
+      "mutable_by": "runtime_only",
+      "domain_tags": ["validate", "log", "evidence"],
+      "order_index": 146
+    },
+    {
+      "artifact_id": "artifact.markdownlint_backlog_summary_json",
+      "label": "Markdownlint backlog summary",
+      "kind": "log",
+      "path": "logs/verify/markdownlint_backlog_summary.json",
+      "canonicality": "observed",
+      "mutable_by": "runtime_only",
+      "domain_tags": ["lint", "exceptions_non_blocking", "log", "evidence"],
+      "order_index": 150
+    },
+    {
+      "artifact_id": "artifact.vale_backlog_summary_json",
+      "label": "Vale backlog summary",
+      "kind": "log",
+      "path": "logs/verify/vale_backlog_summary.json",
+      "canonicality": "observed",
+      "mutable_by": "runtime_only",
+      "domain_tags": ["lint", "exceptions_non_blocking", "log", "evidence"],
+      "order_index": 160
+    },
+    {
+      "artifact_id": "artifact.observed_verify_stage_manifest",
+      "label": "Observed verify_stage manifest",
+      "kind": "observed_manifest",
+      "path": "docs_control/observed_workflow/verify_stage.json",
+      "canonicality": "observed",
+      "mutable_by": "generator_only",
+      "domain_tags": ["generate", "validate"],
+      "order_index": 170
+    },
+    {
+      "artifact_id": "artifact.observed_ci_jobs_manifest",
+      "label": "Observed CI jobs manifest",
+      "kind": "observed_manifest",
+      "path": "docs_control/observed_workflow/ci_jobs.json",
+      "canonicality": "observed",
+      "mutable_by": "generator_only",
+      "domain_tags": ["generate", "ci", "validate"],
+      "order_index": 180
+    },
+    {
+      "artifact_id": "artifact.observed_hooks_manifest",
+      "label": "Observed pre-commit hooks manifest",
+      "kind": "observed_manifest",
+      "path": "docs_control/observed_workflow/hooks.json",
+      "canonicality": "observed",
+      "mutable_by": "generator_only",
+      "domain_tags": ["generate", "hooks", "validate"],
+      "order_index": 190
+    },
+    {
+      "artifact_id": "artifact.workflow_control_plane_note_md",
+      "label": "Workflow control plane note",
+      "kind": "narrative_note",
+      "path": "docs_control/workflow_control_plane_note.md",
+      "canonicality": "canonical",
+      "mutable_by": "manual",
+      "domain_tags": ["manual_review", "generate"],
+      "order_index": 200
+    },
+    {
+      "artifact_id": "artifact.workflow_control_plane_full_md",
+      "label": "Workflow control plane full view",
+      "kind": "generated_doc",
+      "path": "docs/generated/control/WORKFLOW_CONTROL_PLANE.md",
+      "canonicality": "generated",
+      "mutable_by": "generator_only",
+      "domain_tags": ["generate", "docs_publish", "manual_review"],
+      "order_index": 210
+    },
+    {
+      "artifact_id": "artifact.workflow_control_plane_verify_md",
+      "label": "Workflow control plane verify+evidence view",
+      "kind": "generated_doc",
+      "path": "docs/generated/control/workflow_control_plane.verify_evidence_path.md",
+      "canonicality": "generated",
+      "mutable_by": "generator_only",
+      "domain_tags": ["generate", "docs_publish", "evidence"],
+      "order_index": 220
+    },
+    {
+      "artifact_id": "artifact.workflow_control_plane_full_mmd",
+      "label": "Workflow control plane full Mermaid",
+      "kind": "generated_diagram",
+      "path": "docs/generated/control/workflow_control_plane.full.mmd",
+      "canonicality": "generated",
+      "mutable_by": "generator_only",
+      "domain_tags": ["generate", "docs_publish"],
+      "order_index": 230
+    },
+    {
+      "artifact_id": "artifact.workflow_control_plane_full_dot",
+      "label": "Workflow control plane full DOT",
+      "kind": "generated_diagram",
+      "path": "docs/generated/control/workflow_control_plane.full.dot",
+      "canonicality": "generated",
+      "mutable_by": "generator_only",
+      "domain_tags": ["generate", "docs_publish"],
+      "order_index": 240
+    },
+    {
+      "artifact_id": "artifact.workflow_control_plane_full_svg",
+      "label": "Workflow control plane full SVG",
+      "kind": "generated_diagram",
+      "path": "docs/generated/control/workflow_control_plane.full.svg",
+      "canonicality": "generated",
+      "mutable_by": "generator_only",
+      "domain_tags": ["generate", "docs_publish"],
+      "order_index": 250
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "node.verify_fast_orchestrator",
+      "label": "verify_fast / verify_stage",
+      "kind": "script",
+      "execution_scope": "both",
+      "blocking_mode": "blocking",
+      "domain_tags": ["validate", "lint", "test"],
+      "failure_semantics": "fail_fast",
+      "determinism_level": "deterministic",
+      "runtime_refs": [
+        {
+          "kind": "script_function",
+          "value": "Get-FastSteps",
+          "target_id": "target.verify_stage_ps1"
+        },
+        {
+          "kind": "verify_step_name",
+          "value": "Validate traceability registry",
+          "target_id": "target.verify_stage_ps1"
+        },
+        {
+          "kind": "verify_step_name",
+          "value": "Validate NEXT_SESSION control (JSON-first)",
+          "target_id": "target.verify_stage_ps1"
+        },
+        {
+          "kind": "verify_step_name",
+          "value": "Control docs stale-check",
+          "target_id": "target.verify_stage_ps1"
+        },
+        {
+          "kind": "verify_step_name",
+          "value": "MkDocs build --strict",
+          "target_id": "target.verify_stage_ps1"
+        }
+      ],
+      "order_index": 10
+    },
+    {
+      "node_id": "node.log_verify_run",
+      "label": "log_verify_run",
+      "kind": "log_sink",
+      "execution_scope": "both",
+      "blocking_mode": "blocking",
+      "domain_tags": ["log", "evidence"],
+      "outputs": ["artifact.verify_runs_json"],
+      "failure_semantics": "fail_collect",
+      "determinism_level": "deterministic",
+      "order_index": 20
+    },
+    {
+      "node_id": "node.pre_commit_enforcement",
+      "label": "pre-commit enforcement",
+      "kind": "hook",
+      "execution_scope": "local",
+      "blocking_mode": "blocking",
+      "domain_tags": ["hooks", "validate", "lint"],
+      "inputs": ["artifact.pre_commit_config"],
+      "runtime_refs": [
+        {
+          "kind": "pre_commit_hook_id",
+          "value": "markdownlint-cli2",
+          "target_id": "target.pre_commit_config"
+        },
+        {
+          "kind": "pre_commit_hook_id",
+          "value": "vale-critical",
+          "target_id": "target.pre_commit_config"
+        }
+      ],
+      "failure_semantics": "fail_fast",
+      "determinism_level": "version_sensitive",
+      "order_index": 25
+    },
+    {
+      "node_id": "node.markdownlint_backlog",
+      "label": "markdownlint backlog",
+      "kind": "linter",
+      "execution_scope": "both",
+      "blocking_mode": "non_blocking",
+      "domain_tags": ["lint", "exceptions_non_blocking", "evidence"],
+      "failure_semantics": "warn_only",
+      "determinism_level": "version_sensitive",
+      "order_index": 30
+    },
+    {
+      "node_id": "node.markdownlint_blocking",
+      "label": "markdownlint blocking",
+      "kind": "linter",
+      "execution_scope": "both",
+      "blocking_mode": "blocking",
+      "domain_tags": ["lint", "docs_publish", "validate"],
+      "failure_semantics": "fail_fast",
+      "determinism_level": "version_sensitive",
+      "order_index": 32
+    },
+    {
+      "node_id": "node.vale_blocking",
+      "label": "Vale blocking",
+      "kind": "linter",
+      "execution_scope": "both",
+      "blocking_mode": "blocking",
+      "domain_tags": ["lint", "docs_publish"],
+      "failure_semantics": "fail_fast",
+      "determinism_level": "version_sensitive",
+      "order_index": 34
+    },
+    {
+      "node_id": "node.vale_backlog",
+      "label": "Vale backlog no-regression",
+      "kind": "linter",
+      "execution_scope": "both",
+      "blocking_mode": "non_blocking",
+      "domain_tags": ["lint", "exceptions_non_blocking", "evidence"],
+      "failure_semantics": "warn_only",
+      "determinism_level": "version_sensitive",
+      "order_index": 36
+    },
+    {
+      "node_id": "node.validate_traceability",
+      "label": "validate_traceability",
+      "kind": "validator",
+      "execution_scope": "both",
+      "blocking_mode": "blocking",
+      "domain_tags": ["validate", "traceability", "evidence"],
+      "inputs": ["artifact.traceability_json"],
+      "failure_semantics": "fail_fast",
+      "determinism_level": "deterministic",
+      "order_index": 38
+    },
+    {
+      "node_id": "node.validate_next_session",
+      "label": "validate_next_session JSON-first",
+      "kind": "validator",
+      "execution_scope": "both",
+      "blocking_mode": "blocking",
+      "domain_tags": ["validate", "manual_review", "evidence"],
+      "inputs": ["artifact.next_session_json"],
+      "failure_semantics": "fail_fast",
+      "determinism_level": "deterministic",
+      "order_index": 40
+    },
+    {
+      "node_id": "node.generate_control_docs",
+      "label": "generate_control_docs",
+      "kind": "generator",
+      "execution_scope": "both",
+      "blocking_mode": "blocking",
+      "domain_tags": ["generate", "docs_publish", "validate"],
+      "failure_semantics": "fail_fast",
+      "determinism_level": "deterministic",
+      "order_index": 42
+    },
+    {
+      "node_id": "node.stale_check_control_docs",
+      "label": "stale-check control docs",
+      "kind": "gate",
+      "execution_scope": "both",
+      "blocking_mode": "blocking",
+      "domain_tags": ["generate", "validate"],
+      "failure_semantics": "fail_fast",
+      "determinism_level": "deterministic",
+      "order_index": 44
+    },
+    {
+      "node_id": "node.mkdocs_strict",
+      "label": "mkdocs build --strict",
+      "kind": "validator",
+      "execution_scope": "both",
+      "blocking_mode": "blocking",
+      "domain_tags": ["docs_publish", "validate"],
+      "failure_semantics": "fail_fast",
+      "determinism_level": "version_sensitive",
+      "order_index": 46
+    },
+    {
+      "node_id": "node.ci_enforcement",
+      "label": "CI enforcement",
+      "kind": "ci_job",
+      "execution_scope": "ci",
+      "blocking_mode": "blocking",
+      "domain_tags": ["ci", "validate", "lint", "test"],
+      "inputs": ["artifact.ci_workflow_ci", "artifact.ci_workflow_quality_gate", "artifact.ci_workflow_determinism", "artifact.ci_workflow_clean_clone_smoke"],
+      "runtime_refs": [
+        {
+          "kind": "ci_job",
+          "value": "governance-determinism",
+          "target_id": "target.quality_gate_workflow"
+        },
+        {
+          "kind": "ci_job",
+          "value": "next-session-governance",
+          "target_id": "target.ci_workflow_ci"
+        },
+        {
+          "kind": "ci_job",
+          "value": "determinism-required-check",
+          "target_id": "target.determinism_workflow"
+        },
+        {
+          "kind": "ci_job",
+          "value": "clean-clone-smoke-required-check",
+          "target_id": "target.clean_clone_smoke_workflow"
+        }
+      ],
+      "failure_semantics": "fail_fast",
+      "determinism_level": "version_sensitive",
+      "order_index": 48
+    },
+    {
+      "node_id": "node.manual_review_freeze",
+      "label": "Manual review / freeze",
+      "kind": "decision",
+      "execution_scope": "manual",
+      "blocking_mode": "conditional",
+      "domain_tags": ["manual_review", "update"],
+      "failure_semantics": "skip_allowed",
+      "determinism_level": "environment_sensitive",
+      "order_index": 50
+    },
+    {
+      "node_id": "node.validate_workflow_alignment",
+      "label": "validate_workflow_alignment",
+      "kind": "validator",
+      "execution_scope": "both",
+      "blocking_mode": "blocking",
+      "domain_tags": ["validate", "hooks", "ci", "docs_publish"],
+      "inputs": ["artifact.pre_commit_config", "artifact.ci_workflow_ci", "artifact.ci_workflow_quality_gate", "artifact.ci_workflow_determinism", "artifact.ci_workflow_clean_clone_smoke"],
+      "runtime_refs": [
+        { "kind": "verify_step_name", "value": "Validate workflow alignment", "target_id": "target.verify_stage_ps1" },
+        { "kind": "ci_step", "value": "Validate workflow alignment", "target_id": "target.ci_workflow_ci" },
+        { "kind": "ci_step", "value": "Validate workflow alignment", "target_id": "target.quality_gate_workflow" }
+      ],
+      "failure_semantics": "fail_fast",
+      "determinism_level": "deterministic",
+      "order_index": 52
+    },
+    {
+      "node_id": "node.validate_workflow_control_plane",
+      "label": "validate_workflow_control_plane",
+      "kind": "validator",
+      "execution_scope": "both",
+      "blocking_mode": "blocking",
+      "domain_tags": ["validate", "generate", "hooks", "ci"],
+      "inputs": ["artifact.workflow_control_plane_json", "artifact.workflow_control_plane_schema"],
+      "runtime_refs": [
+        { "kind": "verify_step_name", "value": "Validate workflow control plane model", "target_id": "target.verify_stage_ps1" },
+        { "kind": "ci_step", "value": "Validate workflow control plane model", "target_id": "target.ci_workflow_ci" },
+        { "kind": "ci_step", "value": "Validate workflow control plane model", "target_id": "target.quality_gate_workflow" }
+      ],
+      "failure_semantics": "fail_fast",
+      "determinism_level": "deterministic",
+      "order_index": 54
+    },
+    {
+      "node_id": "node.extract_verify_stage_manifest",
+      "label": "extract_verify_stage_manifest",
+      "kind": "generator",
+      "execution_scope": "both",
+      "blocking_mode": "blocking",
+      "domain_tags": ["generate", "validate"],
+      "inputs": ["artifact.verify_stage_script"],
+      "outputs": ["artifact.observed_verify_stage_manifest"],
+      "failure_semantics": "fail_fast",
+      "determinism_level": "deterministic",
+      "order_index": 56
+    },
+    {
+      "node_id": "node.extract_ci_manifest",
+      "label": "extract_ci_manifest",
+      "kind": "generator",
+      "execution_scope": "both",
+      "blocking_mode": "blocking",
+      "domain_tags": ["generate", "ci", "validate"],
+      "inputs": ["artifact.ci_workflow_ci", "artifact.ci_workflow_quality_gate", "artifact.ci_workflow_determinism", "artifact.ci_workflow_clean_clone_smoke"],
+      "outputs": ["artifact.observed_ci_jobs_manifest"],
+      "failure_semantics": "fail_fast",
+      "determinism_level": "deterministic",
+      "order_index": 58
+    },
+    {
+      "node_id": "node.extract_hooks_manifest",
+      "label": "extract_hooks_manifest",
+      "kind": "generator",
+      "execution_scope": "both",
+      "blocking_mode": "blocking",
+      "domain_tags": ["generate", "hooks", "validate"],
+      "inputs": ["artifact.pre_commit_config"],
+      "outputs": ["artifact.observed_hooks_manifest"],
+      "failure_semantics": "fail_fast",
+      "determinism_level": "deterministic",
+      "order_index": 60
+    },
+    {
+      "node_id": "node.validate_workflow_control_alignment",
+      "label": "validate_workflow_control_alignment (refresh observed)",
+      "kind": "validator",
+      "execution_scope": "both",
+      "blocking_mode": "blocking",
+      "domain_tags": ["validate", "hooks", "ci", "generate"],
+      "inputs": ["artifact.workflow_control_plane_json", "artifact.observed_verify_stage_manifest", "artifact.observed_ci_jobs_manifest", "artifact.observed_hooks_manifest"],
+      "runtime_refs": [
+        { "kind": "verify_step_name", "value": "Validate workflow control alignment (refresh observed)", "target_id": "target.verify_stage_ps1" },
+        { "kind": "ci_step", "value": "Validate workflow control alignment (refresh observed)", "target_id": "target.ci_workflow_ci" },
+        { "kind": "ci_step", "value": "Validate workflow control alignment (refresh observed)", "target_id": "target.quality_gate_workflow" }
+      ],
+      "failure_semantics": "fail_fast",
+      "determinism_level": "deterministic",
+      "order_index": 62
+    },
+    {
+      "node_id": "node.validate_capability_audit",
+      "label": "validate_capability_audit (tools + sources)",
+      "kind": "validator",
+      "execution_scope": "both",
+      "blocking_mode": "blocking",
+      "domain_tags": ["validate", "log", "evidence", "manual_review"],
+      "inputs": ["artifact.capability_audit_json", "artifact.capability_audit_schema"],
+      "outputs": ["artifact.capability_audit_summary_json", "artifact.toolchain_capabilities_json"],
+      "runtime_refs": [
+        { "kind": "verify_step_name", "value": "Capability audit (tools + sources)", "target_id": "target.verify_stage_ps1" },
+        { "kind": "ci_step", "value": "Capability audit (tools + sources)", "target_id": "target.ci_workflow_ci" },
+        { "kind": "ci_step", "value": "Capability audit (tools + sources)", "target_id": "target.quality_gate_workflow" }
+      ],
+      "failure_semantics": "fail_fast",
+      "determinism_level": "environment_sensitive",
+      "order_index": 63
+    },
+    {
+      "node_id": "node.preflight_state_discovery",
+      "label": "preflight_state_discovery (claim=evidence)",
+      "kind": "validator",
+      "execution_scope": "both",
+      "blocking_mode": "blocking",
+      "domain_tags": ["validate", "log", "evidence", "manual_review", "update"],
+      "inputs": ["artifact.task_status_json"],
+      "outputs": ["artifact.preflight_state_json"],
+      "runtime_refs": [
+        { "kind": "verify_step_name", "value": "Preflight state discovery (claim=evidence)", "target_id": "target.verify_stage_ps1" },
+        { "kind": "ci_step", "value": "Preflight state discovery (claim=evidence)", "target_id": "target.ci_workflow_ci" },
+        { "kind": "ci_step", "value": "Preflight state discovery (claim=evidence)", "target_id": "target.quality_gate_workflow" }
+      ],
+      "failure_semantics": "fail_fast",
+      "determinism_level": "deterministic",
+      "order_index": 64
+    },
+    {
+      "node_id": "node.verify_batch_status_claims",
+      "label": "verify_batch_status claims (claim=evidence)",
+      "kind": "validator",
+      "execution_scope": "both",
+      "blocking_mode": "blocking",
+      "domain_tags": ["validate", "log", "evidence", "manual_review"],
+      "inputs": ["artifact.task_status_json", "artifact.verify_runs_json"],
+      "outputs": ["artifact.batch_status_verify_summary_json"],
+      "runtime_refs": [
+        { "kind": "verify_step_name", "value": "Verify batch status claims (claim=evidence)", "target_id": "target.verify_stage_ps1" },
+        { "kind": "ci_step", "value": "Verify batch status claims (claim=evidence)", "target_id": "target.ci_workflow_ci" },
+        { "kind": "ci_step", "value": "Verify batch status claims (claim=evidence)", "target_id": "target.quality_gate_workflow" }
+      ],
+      "failure_semantics": "fail_fast",
+      "determinism_level": "deterministic",
+      "order_index": 66
+    },
+    {
+      "node_id": "node.enforce_next_session_flow",
+      "label": "enforce_next_session_flow",
+      "kind": "gate",
+      "execution_scope": "both",
+      "blocking_mode": "blocking",
+      "domain_tags": ["validate", "manual_review", "evidence"],
+      "inputs": ["artifact.next_session_json", "artifact.traceability_json", "artifact.generated_next_session_md", "artifact.generated_traceability_md"],
+      "runtime_refs": [
+        { "kind": "verify_step_name", "value": "Enforce NEXT_SESSION flow", "target_id": "target.verify_stage_ps1" },
+        { "kind": "ci_step", "value": "Enforce NEXT_SESSION flow", "target_id": "target.ci_workflow_ci" },
+        { "kind": "ci_step", "value": "Enforce NEXT_SESSION flow", "target_id": "target.quality_gate_workflow" },
+        { "kind": "pre_commit_hook_id", "value": "enforce-next-session-flow", "target_id": "target.pre_commit_config" }
+      ],
+      "failure_semantics": "fail_fast",
+      "determinism_level": "deterministic",
+      "order_index": 68
+    },
+    {
+      "node_id": "node.workflow_control_diagrams_generator",
+      "label": "generate_workflow_control_diagrams",
+      "kind": "generator",
+      "execution_scope": "both",
+      "blocking_mode": "blocking",
+      "domain_tags": ["generate", "docs_publish", "validate"],
+      "inputs": ["artifact.workflow_control_plane_json"],
+      "outputs": ["artifact.workflow_control_plane_full_mmd", "artifact.workflow_control_plane_full_dot", "artifact.workflow_control_plane_full_svg", "artifact.workflow_control_plane_full_md", "artifact.workflow_control_plane_verify_md"],
+      "failure_semantics": "fail_fast",
+      "determinism_level": "version_sensitive",
+      "order_index": 70
+    },
+    {
+      "node_id": "node.workflow_control_diagrams_stale_check",
+      "label": "workflow_control_diagrams stale-check",
+      "kind": "gate",
+      "execution_scope": "both",
+      "blocking_mode": "blocking",
+      "domain_tags": ["generate", "validate", "docs_publish"],
+      "inputs": ["artifact.workflow_control_plane_json", "artifact.workflow_control_plane_full_md", "artifact.workflow_control_plane_full_mmd", "artifact.workflow_control_plane_full_dot", "artifact.workflow_control_plane_full_svg"],
+      "runtime_refs": [
+        { "kind": "verify_step_name", "value": "Workflow control diagrams stale-check", "target_id": "target.verify_stage_ps1" },
+        { "kind": "ci_step", "value": "Workflow control diagrams stale-check", "target_id": "target.ci_workflow_ci" },
+        { "kind": "ci_step", "value": "Workflow control diagrams stale-check", "target_id": "target.quality_gate_workflow" }
+      ],
+      "failure_semantics": "fail_fast",
+      "determinism_level": "version_sensitive",
+      "order_index": 72
+    },
+    {
+      "node_id": "node.link_audit_lychee",
+      "label": "Link audit (lychee, optional)",
+      "kind": "linter",
+      "execution_scope": "both",
+      "blocking_mode": "conditional",
+      "domain_tags": ["lint", "docs_publish", "exceptions_non_blocking"],
+      "runtime_refs": [
+        { "kind": "verify_step_name", "value": "Link audit (lychee, optional)", "target_id": "target.verify_stage_ps1" },
+        { "kind": "ci_step", "value": "Link audit (lychee)", "target_id": "target.quality_gate_workflow" },
+        { "kind": "pre_commit_hook_id", "value": "lychee", "target_id": "target.pre_commit_config" }
+      ],
+      "failure_semantics": "skip_allowed",
+      "determinism_level": "environment_sensitive",
+      "order_index": 74
+    },
+    {
+      "node_id": "node.node_check_svelte",
+      "label": "Node check (svelte-check)",
+      "kind": "test",
+      "execution_scope": "both",
+      "blocking_mode": "blocking",
+      "domain_tags": ["test", "validate"],
+      "runtime_refs": [
+        { "kind": "verify_step_name", "value": "Node check (svelte-check)", "target_id": "target.verify_stage_ps1" },
+        { "kind": "ci_step", "value": "Node checks", "target_id": "target.quality_gate_workflow" }
+      ],
+      "failure_semantics": "fail_fast",
+      "determinism_level": "version_sensitive",
+      "order_index": 76
+    },
+    {
+      "node_id": "node.rust_fmt_check",
+      "label": "Rust fmt check",
+      "kind": "test",
+      "execution_scope": "both",
+      "blocking_mode": "blocking",
+      "domain_tags": ["test", "validate"],
+      "runtime_refs": [
+        { "kind": "verify_step_name", "value": "Rust fmt check", "target_id": "target.verify_stage_ps1" },
+        { "kind": "ci_step", "value": "Rust checks", "target_id": "target.quality_gate_workflow" }
+      ],
+      "failure_semantics": "fail_fast",
+      "determinism_level": "version_sensitive",
+      "order_index": 78
+    },
+    {
+      "node_id": "node.rust_clippy",
+      "label": "Rust clippy",
+      "kind": "linter",
+      "execution_scope": "both",
+      "blocking_mode": "blocking",
+      "domain_tags": ["lint", "test", "validate"],
+      "runtime_refs": [
+        { "kind": "verify_step_name", "value": "Rust clippy", "target_id": "target.verify_stage_ps1" },
+        { "kind": "ci_step", "value": "Rust checks", "target_id": "target.quality_gate_workflow" }
+      ],
+      "failure_semantics": "fail_fast",
+      "determinism_level": "version_sensitive",
+      "order_index": 80
+    },
+    {
+      "node_id": "node.ci_job_test_ui",
+      "label": "CI job: test-ui",
+      "kind": "ci_job",
+      "execution_scope": "ci",
+      "blocking_mode": "blocking",
+      "domain_tags": ["ci", "test"],
+      "runtime_refs": [
+        { "kind": "ci_job", "value": "test-ui", "target_id": "target.ci_workflow_ci" }
+      ],
+      "failure_semantics": "fail_fast",
+      "determinism_level": "version_sensitive",
+      "order_index": 82
+    },
+    {
+      "node_id": "node.ci_job_test_rust",
+      "label": "CI job: test-rust",
+      "kind": "ci_job",
+      "execution_scope": "ci",
+      "blocking_mode": "blocking",
+      "domain_tags": ["ci", "test"],
+      "runtime_refs": [
+        { "kind": "ci_job", "value": "test-rust", "target_id": "target.ci_workflow_ci" }
+      ],
+      "failure_semantics": "fail_fast",
+      "determinism_level": "version_sensitive",
+      "order_index": 84
+    },
+    {
+      "node_id": "node.ci_job_lint",
+      "label": "CI job: lint",
+      "kind": "ci_job",
+      "execution_scope": "ci",
+      "blocking_mode": "blocking",
+      "domain_tags": ["ci", "lint"],
+      "runtime_refs": [
+        { "kind": "ci_job", "value": "lint", "target_id": "target.ci_workflow_ci" }
+      ],
+      "failure_semantics": "fail_fast",
+      "determinism_level": "version_sensitive",
+      "order_index": 86
+    },
+    {
+      "node_id": "node.ci_job_docs_security",
+      "label": "CI job: docs-security",
+      "kind": "ci_job",
+      "execution_scope": "ci",
+      "blocking_mode": "blocking",
+      "domain_tags": ["ci", "lint", "docs_publish"],
+      "runtime_refs": [
+        { "kind": "ci_job", "value": "docs-security", "target_id": "target.quality_gate_workflow" }
+      ],
+      "failure_semantics": "fail_fast",
+      "determinism_level": "version_sensitive",
+      "order_index": 88
+    },
+    {
+      "node_id": "node.ci_job_code_audit",
+      "label": "CI job: code-audit",
+      "kind": "ci_job",
+      "execution_scope": "ci",
+      "blocking_mode": "blocking",
+      "domain_tags": ["ci", "test", "lint", "validate"],
+      "runtime_refs": [
+        { "kind": "ci_job", "value": "code-audit", "target_id": "target.quality_gate_workflow" }
+      ],
+      "failure_semantics": "fail_fast",
+      "determinism_level": "version_sensitive",
+      "order_index": 90
+    },
+    {
+      "node_id": "node.ci_job_determinism_required_check",
+      "label": "CI job: determinism-required-check",
+      "kind": "ci_job",
+      "execution_scope": "ci",
+      "blocking_mode": "blocking",
+      "domain_tags": ["ci", "validate", "generate", "docs_publish"],
+      "runtime_refs": [
+        { "kind": "ci_job", "value": "determinism-required-check", "target_id": "target.determinism_workflow" }
+      ],
+      "failure_semantics": "fail_fast",
+      "determinism_level": "version_sensitive",
+      "order_index": 92
+    },
+    {
+      "node_id": "node.ci_job_clean_clone_smoke_required_check",
+      "label": "CI job: clean-clone-smoke-required-check",
+      "kind": "ci_job",
+      "execution_scope": "ci",
+      "blocking_mode": "blocking",
+      "domain_tags": ["ci", "validate", "generate", "docs_publish"],
+      "runtime_refs": [
+        { "kind": "ci_job", "value": "clean-clone-smoke-required-check", "target_id": "target.clean_clone_smoke_workflow" }
+      ],
+      "failure_semantics": "fail_fast",
+      "determinism_level": "version_sensitive",
+      "order_index": 94
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "edge.verify_fast.on_fail.log_verify_run",
+      "from": "node.verify_fast_orchestrator",
+      "to": "node.log_verify_run",
+      "relation": "logs_to",
+      "condition": "on_fail",
+      "blocking_effect": "blocks_progress",
+      "evidence_required": true,
+      "order_index": 10
+    },
+    {
+      "edge_id": "edge.verify_fast.always.backlog",
+      "from": "node.verify_fast_orchestrator",
+      "to": "node.markdownlint_backlog",
+      "relation": "feeds",
+      "condition": "always",
+      "blocking_effect": "none",
+      "evidence_required": true,
+      "order_index": 20
+    },
+    {
+      "edge_id": "edge.verify_fast.on_skip.manual_review",
+      "from": "node.verify_fast_orchestrator",
+      "to": "node.manual_review_freeze",
+      "relation": "feeds",
+      "condition": "on_skip",
+      "blocking_effect": "none",
+      "evidence_required": true,
+      "order_index": 30
+    },
+    {
+      "edge_id": "edge.verify_fast.on_pass.log_verify_run",
+      "from": "node.verify_fast_orchestrator",
+      "to": "node.log_verify_run",
+      "relation": "logs_to",
+      "condition": "on_pass",
+      "blocking_effect": "none",
+      "evidence_required": true,
+      "order_index": 40
+    },
+    {
+      "edge_id": "edge.log_verify_run.writes.verify_runs",
+      "from": "node.log_verify_run",
+      "to": "artifact.verify_runs_json",
+      "relation": "writes",
+      "condition": "always",
+      "blocking_effect": "none",
+      "evidence_required": true,
+      "order_index": 50
+    },
+    {
+      "edge_id": "edge.user.triggers.pre_commit",
+      "from": "actor.user",
+      "to": "node.pre_commit_enforcement",
+      "relation": "triggers",
+      "condition": "if_changed",
+      "blocking_effect": "blocks_progress",
+      "evidence_required": false,
+      "order_index": 60
+    },
+    {
+      "edge_id": "edge.pre_commit.on_pass.verify_fast",
+      "from": "node.pre_commit_enforcement",
+      "to": "node.verify_fast_orchestrator",
+      "relation": "triggers",
+      "condition": "on_pass",
+      "blocking_effect": "blocks_progress",
+      "evidence_required": false,
+      "order_index": 70
+    },
+    {
+      "edge_id": "edge.verify_fast.on_pass.validate_traceability",
+      "from": "node.verify_fast_orchestrator",
+      "to": "node.validate_traceability",
+      "relation": "triggers",
+      "condition": "on_pass",
+      "blocking_effect": "blocks_progress",
+      "evidence_required": false,
+      "order_index": 80
+    },
+    {
+      "edge_id": "edge.validate_traceability.on_pass.validate_next_session",
+      "from": "node.validate_traceability",
+      "to": "node.validate_next_session",
+      "relation": "triggers",
+      "condition": "on_pass",
+      "blocking_effect": "blocks_progress",
+      "evidence_required": false,
+      "order_index": 90
+    },
+    {
+      "edge_id": "edge.validate_next_session.on_pass.generate_control_docs",
+      "from": "node.validate_next_session",
+      "to": "node.generate_control_docs",
+      "relation": "triggers",
+      "condition": "on_pass",
+      "blocking_effect": "blocks_progress",
+      "evidence_required": false,
+      "order_index": 100
+    },
+    {
+      "edge_id": "edge.generate_control_docs.on_pass.stale_check",
+      "from": "node.generate_control_docs",
+      "to": "node.stale_check_control_docs",
+      "relation": "triggers",
+      "condition": "on_pass",
+      "blocking_effect": "blocks_progress",
+      "evidence_required": false,
+      "order_index": 110
+    },
+    {
+      "edge_id": "edge.stale_check.on_pass.markdownlint_blocking",
+      "from": "node.stale_check_control_docs",
+      "to": "node.markdownlint_blocking",
+      "relation": "triggers",
+      "condition": "on_pass",
+      "blocking_effect": "blocks_progress",
+      "evidence_required": false,
+      "order_index": 120
+    },
+    {
+      "edge_id": "edge.markdownlint_blocking.on_pass.vale_blocking",
+      "from": "node.markdownlint_blocking",
+      "to": "node.vale_blocking",
+      "relation": "triggers",
+      "condition": "on_pass",
+      "blocking_effect": "blocks_progress",
+      "evidence_required": false,
+      "order_index": 130
+    },
+    {
+      "edge_id": "edge.vale_blocking.on_pass.mkdocs_strict",
+      "from": "node.vale_blocking",
+      "to": "node.mkdocs_strict",
+      "relation": "triggers",
+      "condition": "on_pass",
+      "blocking_effect": "blocks_progress",
+      "evidence_required": false,
+      "order_index": 140
+    },
+    {
+      "edge_id": "edge.mkdocs_strict.on_pass.log_verify_run",
+      "from": "node.mkdocs_strict",
+      "to": "node.log_verify_run",
+      "relation": "logs_to",
+      "condition": "on_pass",
+      "blocking_effect": "none",
+      "evidence_required": true,
+      "order_index": 150
+    },
+    {
+      "edge_id": "edge.verify_fast.always.vale_backlog",
+      "from": "node.verify_fast_orchestrator",
+      "to": "node.vale_backlog",
+      "relation": "feeds",
+      "condition": "always",
+      "blocking_effect": "none",
+      "evidence_required": true,
+      "order_index": 160
+    },
+    {
+      "edge_id": "edge.ci_runner.triggers.ci_enforcement",
+      "from": "actor.ci",
+      "to": "node.ci_enforcement",
+      "relation": "triggers",
+      "condition": "always",
+      "blocking_effect": "blocks_merge",
+      "evidence_required": false,
+      "order_index": 170
+    },
+    {
+      "edge_id": "edge.verify_fast.on_pass.validate_workflow_alignment",
+      "from": "node.verify_fast_orchestrator",
+      "to": "node.validate_workflow_alignment",
+      "relation": "triggers",
+      "condition": "on_pass",
+      "blocking_effect": "blocks_progress",
+      "evidence_required": false,
+      "order_index": 172
+    },
+    {
+      "edge_id": "edge.validate_workflow_alignment.on_pass.validate_workflow_control_plane",
+      "from": "node.validate_workflow_alignment",
+      "to": "node.validate_workflow_control_plane",
+      "relation": "triggers",
+      "condition": "on_pass",
+      "blocking_effect": "blocks_progress",
+      "evidence_required": false,
+      "order_index": 174
+    },
+    {
+      "edge_id": "edge.validate_workflow_control_plane.on_pass.extract_verify_stage_manifest",
+      "from": "node.validate_workflow_control_plane",
+      "to": "node.extract_verify_stage_manifest",
+      "relation": "triggers",
+      "condition": "on_pass",
+      "blocking_effect": "blocks_progress",
+      "evidence_required": false,
+      "order_index": 176
+    },
+    {
+      "edge_id": "edge.extract_verify_stage_manifest.writes.observed_verify_stage",
+      "from": "node.extract_verify_stage_manifest",
+      "to": "artifact.observed_verify_stage_manifest",
+      "relation": "writes",
+      "condition": "always",
+      "blocking_effect": "none",
+      "evidence_required": true,
+      "order_index": 178
+    },
+    {
+      "edge_id": "edge.extract_verify_stage_manifest.on_pass.extract_ci_manifest",
+      "from": "node.extract_verify_stage_manifest",
+      "to": "node.extract_ci_manifest",
+      "relation": "triggers",
+      "condition": "on_pass",
+      "blocking_effect": "blocks_progress",
+      "evidence_required": false,
+      "order_index": 180
+    },
+    {
+      "edge_id": "edge.extract_ci_manifest.writes.observed_ci",
+      "from": "node.extract_ci_manifest",
+      "to": "artifact.observed_ci_jobs_manifest",
+      "relation": "writes",
+      "condition": "always",
+      "blocking_effect": "none",
+      "evidence_required": true,
+      "order_index": 182
+    },
+    {
+      "edge_id": "edge.extract_ci_manifest.on_pass.extract_hooks_manifest",
+      "from": "node.extract_ci_manifest",
+      "to": "node.extract_hooks_manifest",
+      "relation": "triggers",
+      "condition": "on_pass",
+      "blocking_effect": "blocks_progress",
+      "evidence_required": false,
+      "order_index": 184
+    },
+    {
+      "edge_id": "edge.extract_hooks_manifest.writes.observed_hooks",
+      "from": "node.extract_hooks_manifest",
+      "to": "artifact.observed_hooks_manifest",
+      "relation": "writes",
+      "condition": "always",
+      "blocking_effect": "none",
+      "evidence_required": true,
+      "order_index": 186
+    },
+    {
+      "edge_id": "edge.extract_hooks_manifest.on_pass.validate_workflow_control_alignment",
+      "from": "node.extract_hooks_manifest",
+      "to": "node.validate_workflow_control_alignment",
+      "relation": "triggers",
+      "condition": "on_pass",
+      "blocking_effect": "blocks_progress",
+      "evidence_required": false,
+      "order_index": 188
+    },
+    {
+      "edge_id": "edge.validate_workflow_control_alignment.on_pass.validate_capability_audit",
+      "from": "node.validate_workflow_control_alignment",
+      "to": "node.validate_capability_audit",
+      "relation": "triggers",
+      "condition": "on_pass",
+      "blocking_effect": "blocks_progress",
+      "evidence_required": false,
+      "order_index": 190
+    },
+    {
+      "edge_id": "edge.validate_capability_audit.writes.capability_audit_summary_json",
+      "from": "node.validate_capability_audit",
+      "to": "artifact.capability_audit_summary_json",
+      "relation": "writes",
+      "condition": "always",
+      "blocking_effect": "none",
+      "evidence_required": true,
+      "order_index": 191
+    },
+    {
+      "edge_id": "edge.validate_capability_audit.writes.toolchain_capabilities_json",
+      "from": "node.validate_capability_audit",
+      "to": "artifact.toolchain_capabilities_json",
+      "relation": "writes",
+      "condition": "always",
+      "blocking_effect": "none",
+      "evidence_required": true,
+      "order_index": 193
+    },
+    {
+      "edge_id": "edge.validate_capability_audit.on_pass.preflight_state_discovery",
+      "from": "node.validate_capability_audit",
+      "to": "node.preflight_state_discovery",
+      "relation": "triggers",
+      "condition": "on_pass",
+      "blocking_effect": "blocks_progress",
+      "evidence_required": false,
+      "order_index": 195
+    },
+    {
+      "edge_id": "edge.preflight_state_discovery.writes.preflight_state_json",
+      "from": "node.preflight_state_discovery",
+      "to": "artifact.preflight_state_json",
+      "relation": "writes",
+      "condition": "always",
+      "blocking_effect": "none",
+      "evidence_required": true,
+      "order_index": 192
+    },
+    {
+      "edge_id": "edge.preflight_state_discovery.on_pass.verify_batch_status_claims",
+      "from": "node.preflight_state_discovery",
+      "to": "node.verify_batch_status_claims",
+      "relation": "triggers",
+      "condition": "on_pass",
+      "blocking_effect": "blocks_progress",
+      "evidence_required": false,
+      "order_index": 194
+    },
+    {
+      "edge_id": "edge.verify_batch_status_claims.writes.batch_status_verify_summary_json",
+      "from": "node.verify_batch_status_claims",
+      "to": "artifact.batch_status_verify_summary_json",
+      "relation": "writes",
+      "condition": "always",
+      "blocking_effect": "none",
+      "evidence_required": true,
+      "order_index": 196
+    },
+    {
+      "edge_id": "edge.verify_batch_status_claims.on_pass.validate_traceability",
+      "from": "node.verify_batch_status_claims",
+      "to": "node.validate_traceability",
+      "relation": "triggers",
+      "condition": "on_pass",
+      "blocking_effect": "blocks_progress",
+      "evidence_required": false,
+      "order_index": 198
+    },
+    {
+      "edge_id": "edge.validate_next_session.on_pass.enforce_next_session_flow",
+      "from": "node.validate_next_session",
+      "to": "node.enforce_next_session_flow",
+      "relation": "triggers",
+      "condition": "on_pass",
+      "blocking_effect": "blocks_progress",
+      "evidence_required": false,
+      "order_index": 200
+    },
+    {
+      "edge_id": "edge.enforce_next_session_flow.on_pass.stale_check_control_docs",
+      "from": "node.enforce_next_session_flow",
+      "to": "node.stale_check_control_docs",
+      "relation": "triggers",
+      "condition": "on_pass",
+      "blocking_effect": "blocks_progress",
+      "evidence_required": false,
+      "order_index": 202
+    },
+    {
+      "edge_id": "edge.user.if_changed.generate_control_docs",
+      "from": "actor.user",
+      "to": "node.generate_control_docs",
+      "relation": "triggers",
+      "condition": "if_changed",
+      "blocking_effect": "none",
+      "evidence_required": false,
+      "order_index": 204
+    },
+    {
+      "edge_id": "edge.generate_control_docs.writes.generated_next_session_md",
+      "from": "node.generate_control_docs",
+      "to": "artifact.generated_next_session_md",
+      "relation": "writes",
+      "condition": "always",
+      "blocking_effect": "none",
+      "evidence_required": false,
+      "order_index": 206
+    },
+    {
+      "edge_id": "edge.generate_control_docs.writes.generated_traceability_md",
+      "from": "node.generate_control_docs",
+      "to": "artifact.generated_traceability_md",
+      "relation": "writes",
+      "condition": "always",
+      "blocking_effect": "none",
+      "evidence_required": false,
+      "order_index": 208
+    },
+    {
+      "edge_id": "edge.user.if_changed.workflow_control_diagrams_generator",
+      "from": "actor.user",
+      "to": "node.workflow_control_diagrams_generator",
+      "relation": "triggers",
+      "condition": "if_changed",
+      "blocking_effect": "none",
+      "evidence_required": false,
+      "order_index": 210
+    },
+    {
+      "edge_id": "edge.workflow_control_diagrams_generator.writes.workflow_control_plane_full_mmd",
+      "from": "node.workflow_control_diagrams_generator",
+      "to": "artifact.workflow_control_plane_full_mmd",
+      "relation": "writes",
+      "condition": "always",
+      "blocking_effect": "none",
+      "evidence_required": false,
+      "order_index": 212
+    },
+    {
+      "edge_id": "edge.workflow_control_diagrams_generator.writes.workflow_control_plane_full_dot",
+      "from": "node.workflow_control_diagrams_generator",
+      "to": "artifact.workflow_control_plane_full_dot",
+      "relation": "writes",
+      "condition": "always",
+      "blocking_effect": "none",
+      "evidence_required": false,
+      "order_index": 214
+    },
+    {
+      "edge_id": "edge.workflow_control_diagrams_generator.writes.workflow_control_plane_full_svg",
+      "from": "node.workflow_control_diagrams_generator",
+      "to": "artifact.workflow_control_plane_full_svg",
+      "relation": "writes",
+      "condition": "always",
+      "blocking_effect": "none",
+      "evidence_required": false,
+      "order_index": 216
+    },
+    {
+      "edge_id": "edge.workflow_control_diagrams_generator.writes.workflow_control_plane_full_md",
+      "from": "node.workflow_control_diagrams_generator",
+      "to": "artifact.workflow_control_plane_full_md",
+      "relation": "writes",
+      "condition": "always",
+      "blocking_effect": "none",
+      "evidence_required": false,
+      "order_index": 218
+    },
+    {
+      "edge_id": "edge.workflow_control_diagrams_generator.writes.workflow_control_plane_verify_md",
+      "from": "node.workflow_control_diagrams_generator",
+      "to": "artifact.workflow_control_plane_verify_md",
+      "relation": "writes",
+      "condition": "always",
+      "blocking_effect": "none",
+      "evidence_required": false,
+      "order_index": 220
+    },
+    {
+      "edge_id": "edge.stale_check_control_docs.on_pass.workflow_control_diagrams_stale_check",
+      "from": "node.stale_check_control_docs",
+      "to": "node.workflow_control_diagrams_stale_check",
+      "relation": "triggers",
+      "condition": "on_pass",
+      "blocking_effect": "blocks_progress",
+      "evidence_required": false,
+      "order_index": 222
+    },
+    {
+      "edge_id": "edge.workflow_control_diagrams_generator.on_pass.workflow_control_diagrams_stale_check",
+      "from": "node.workflow_control_diagrams_generator",
+      "to": "node.workflow_control_diagrams_stale_check",
+      "relation": "triggers",
+      "condition": "on_pass",
+      "blocking_effect": "blocks_progress",
+      "evidence_required": false,
+      "order_index": 224
+    },
+    {
+      "edge_id": "edge.workflow_control_diagrams_stale_check.on_pass.markdownlint_blocking",
+      "from": "node.workflow_control_diagrams_stale_check",
+      "to": "node.markdownlint_blocking",
+      "relation": "triggers",
+      "condition": "on_pass",
+      "blocking_effect": "blocks_progress",
+      "evidence_required": false,
+      "order_index": 226
+    },
+    {
+      "edge_id": "edge.markdownlint_backlog.writes.markdownlint_backlog_summary_json",
+      "from": "node.markdownlint_backlog",
+      "to": "artifact.markdownlint_backlog_summary_json",
+      "relation": "writes",
+      "condition": "always",
+      "blocking_effect": "none",
+      "evidence_required": true,
+      "order_index": 228
+    },
+    {
+      "edge_id": "edge.markdownlint_blocking.on_pass.linked_markdownlint_backlog",
+      "from": "node.markdownlint_blocking",
+      "to": "node.markdownlint_backlog",
+      "relation": "feeds",
+      "condition": "on_pass",
+      "blocking_effect": "none",
+      "evidence_required": false,
+      "order_index": 230
+    },
+    {
+      "edge_id": "edge.markdownlint_backlog.feeds.vale_blocking",
+      "from": "node.markdownlint_backlog",
+      "to": "node.vale_blocking",
+      "relation": "feeds",
+      "condition": "always",
+      "blocking_effect": "none",
+      "evidence_required": false,
+      "order_index": 232
+    },
+    {
+      "edge_id": "edge.vale_backlog.writes.vale_backlog_summary_json",
+      "from": "node.vale_backlog",
+      "to": "artifact.vale_backlog_summary_json",
+      "relation": "writes",
+      "condition": "always",
+      "blocking_effect": "none",
+      "evidence_required": true,
+      "order_index": 234
+    },
+    {
+      "edge_id": "edge.vale_backlog.feeds.link_audit_lychee",
+      "from": "node.vale_backlog",
+      "to": "node.link_audit_lychee",
+      "relation": "feeds",
+      "condition": "always",
+      "blocking_effect": "none",
+      "evidence_required": false,
+      "order_index": 236
+    },
+    {
+      "edge_id": "edge.link_audit_lychee.on_pass.mkdocs_strict",
+      "from": "node.link_audit_lychee",
+      "to": "node.mkdocs_strict",
+      "relation": "triggers",
+      "condition": "on_pass",
+      "blocking_effect": "blocks_progress",
+      "evidence_required": false,
+      "order_index": 238
+    },
+    {
+      "edge_id": "edge.link_audit_lychee.on_skip.mkdocs_strict",
+      "from": "node.link_audit_lychee",
+      "to": "node.mkdocs_strict",
+      "relation": "triggers",
+      "condition": "on_skip",
+      "blocking_effect": "none",
+      "evidence_required": false,
+      "order_index": 240
+    },
+    {
+      "edge_id": "edge.mkdocs_strict.on_pass.node_check_svelte",
+      "from": "node.mkdocs_strict",
+      "to": "node.node_check_svelte",
+      "relation": "triggers",
+      "condition": "on_pass",
+      "blocking_effect": "blocks_progress",
+      "evidence_required": false,
+      "order_index": 242
+    },
+    {
+      "edge_id": "edge.node_check_svelte.on_pass.rust_fmt_check",
+      "from": "node.node_check_svelte",
+      "to": "node.rust_fmt_check",
+      "relation": "triggers",
+      "condition": "on_pass",
+      "blocking_effect": "blocks_progress",
+      "evidence_required": false,
+      "order_index": 244
+    },
+    {
+      "edge_id": "edge.rust_fmt_check.on_pass.rust_clippy",
+      "from": "node.rust_fmt_check",
+      "to": "node.rust_clippy",
+      "relation": "triggers",
+      "condition": "on_pass",
+      "blocking_effect": "blocks_progress",
+      "evidence_required": false,
+      "order_index": 246
+    },
+    {
+      "edge_id": "edge.rust_clippy.on_pass.log_verify_run",
+      "from": "node.rust_clippy",
+      "to": "node.log_verify_run",
+      "relation": "logs_to",
+      "condition": "on_pass",
+      "blocking_effect": "none",
+      "evidence_required": true,
+      "order_index": 248
+    },
+    {
+      "edge_id": "edge.preflight_state_discovery.reads.task_status_json",
+      "from": "node.preflight_state_discovery",
+      "to": "artifact.task_status_json",
+      "relation": "reads",
+      "condition": "always",
+      "blocking_effect": "none",
+      "evidence_required": false,
+      "order_index": 250
+    },
+    {
+      "edge_id": "edge.verify_batch_status_claims.reads.task_status_json",
+      "from": "node.verify_batch_status_claims",
+      "to": "artifact.task_status_json",
+      "relation": "reads",
+      "condition": "always",
+      "blocking_effect": "none",
+      "evidence_required": false,
+      "order_index": 252
+    },
+    {
+      "edge_id": "edge.validate_capability_audit.reads.capability_audit_json",
+      "from": "node.validate_capability_audit",
+      "to": "artifact.capability_audit_json",
+      "relation": "reads",
+      "condition": "always",
+      "blocking_effect": "none",
+      "evidence_required": false,
+      "order_index": 253
+    },
+    {
+      "edge_id": "edge.validate_capability_audit.reads.capability_audit_schema",
+      "from": "node.validate_capability_audit",
+      "to": "artifact.capability_audit_schema",
+      "relation": "reads",
+      "condition": "always",
+      "blocking_effect": "none",
+      "evidence_required": false,
+      "order_index": 253
+    },
+    {
+      "edge_id": "edge.validate_workflow_control_plane.reads.workflow_control_plane_json",
+      "from": "node.validate_workflow_control_plane",
+      "to": "artifact.workflow_control_plane_json",
+      "relation": "reads",
+      "condition": "always",
+      "blocking_effect": "none",
+      "evidence_required": false,
+      "order_index": 254
+    },
+    {
+      "edge_id": "edge.validate_workflow_control_plane.reads.workflow_control_plane_schema",
+      "from": "node.validate_workflow_control_plane",
+      "to": "artifact.workflow_control_plane_schema",
+      "relation": "reads",
+      "condition": "always",
+      "blocking_effect": "none",
+      "evidence_required": false,
+      "order_index": 256
+    },
+    {
+      "edge_id": "edge.validate_workflow_control_alignment.reads.observed_verify_stage_manifest",
+      "from": "node.validate_workflow_control_alignment",
+      "to": "artifact.observed_verify_stage_manifest",
+      "relation": "reads",
+      "condition": "always",
+      "blocking_effect": "none",
+      "evidence_required": false,
+      "order_index": 258
+    },
+    {
+      "edge_id": "edge.validate_workflow_control_alignment.reads.observed_ci_jobs_manifest",
+      "from": "node.validate_workflow_control_alignment",
+      "to": "artifact.observed_ci_jobs_manifest",
+      "relation": "reads",
+      "condition": "always",
+      "blocking_effect": "none",
+      "evidence_required": false,
+      "order_index": 260
+    },
+    {
+      "edge_id": "edge.validate_workflow_control_alignment.reads.observed_hooks_manifest",
+      "from": "node.validate_workflow_control_alignment",
+      "to": "artifact.observed_hooks_manifest",
+      "relation": "reads",
+      "condition": "always",
+      "blocking_effect": "none",
+      "evidence_required": false,
+      "order_index": 262
+    },
+    {
+      "edge_id": "edge.ci_enforcement.triggers.ci_job_test_ui",
+      "from": "node.ci_enforcement",
+      "to": "node.ci_job_test_ui",
+      "relation": "triggers",
+      "condition": "always",
+      "blocking_effect": "blocks_merge",
+      "evidence_required": false,
+      "order_index": 264
+    },
+    {
+      "edge_id": "edge.ci_enforcement.triggers.ci_job_test_rust",
+      "from": "node.ci_enforcement",
+      "to": "node.ci_job_test_rust",
+      "relation": "triggers",
+      "condition": "always",
+      "blocking_effect": "blocks_merge",
+      "evidence_required": false,
+      "order_index": 266
+    },
+    {
+      "edge_id": "edge.ci_enforcement.triggers.ci_job_lint",
+      "from": "node.ci_enforcement",
+      "to": "node.ci_job_lint",
+      "relation": "triggers",
+      "condition": "always",
+      "blocking_effect": "blocks_merge",
+      "evidence_required": false,
+      "order_index": 268
+    },
+    {
+      "edge_id": "edge.ci_enforcement.triggers.ci_job_docs_security",
+      "from": "node.ci_enforcement",
+      "to": "node.ci_job_docs_security",
+      "relation": "triggers",
+      "condition": "always",
+      "blocking_effect": "blocks_merge",
+      "evidence_required": false,
+      "order_index": 270
+    },
+    {
+      "edge_id": "edge.ci_enforcement.triggers.ci_job_code_audit",
+      "from": "node.ci_enforcement",
+      "to": "node.ci_job_code_audit",
+      "relation": "triggers",
+      "condition": "always",
+      "blocking_effect": "blocks_merge",
+      "evidence_required": false,
+      "order_index": 272
+    },
+    {
+      "edge_id": "edge.ci_enforcement.triggers.ci_job_determinism_required_check",
+      "from": "node.ci_enforcement",
+      "to": "node.ci_job_determinism_required_check",
+      "relation": "triggers",
+      "condition": "always",
+      "blocking_effect": "blocks_merge",
+      "evidence_required": false,
+      "order_index": 279
+    },
+    {
+      "edge_id": "edge.ci_enforcement.triggers.ci_job_clean_clone_smoke_required_check",
+      "from": "node.ci_enforcement",
+      "to": "node.ci_job_clean_clone_smoke_required_check",
+      "relation": "triggers",
+      "condition": "always",
+      "blocking_effect": "blocks_merge",
+      "evidence_required": false,
+      "order_index": 280
+    },
+    {
+      "edge_id": "edge.ci_job_docs_security.feeds.docs_lint_path",
+      "from": "node.ci_job_docs_security",
+      "to": "node.markdownlint_blocking",
+      "relation": "feeds",
+      "condition": "always",
+      "blocking_effect": "none",
+      "evidence_required": false,
+      "order_index": 274
+    },
+    {
+      "edge_id": "edge.ci_job_docs_security.feeds.vale_link_path",
+      "from": "node.ci_job_docs_security",
+      "to": "node.vale_blocking",
+      "relation": "feeds",
+      "condition": "always",
+      "blocking_effect": "none",
+      "evidence_required": false,
+      "order_index": 276
+    },
+    {
+      "edge_id": "edge.ci_job_code_audit.feeds.node_rust_checks",
+      "from": "node.ci_job_code_audit",
+      "to": "node.node_check_svelte",
+      "relation": "feeds",
+      "condition": "always",
+      "blocking_effect": "none",
+      "evidence_required": false,
+      "order_index": 278
+    }
+  ],
+  "views": [
+    {
+      "view_id": "view.full_control_plane",
+      "label": "Full control plane",
+      "purpose": "Canonical full process graph view covering local hooks, verify fast runtime path, self-hosting diagram subsystem, non-blocking backlog paths, CI jobs, and evidence logging.",
+      "layout": "layered",
+      "render_targets": ["mermaid", "dot", "svg", "markdown"],
+      "output_ids": [
+        "out.full_control_plane.mermaid",
+        "out.full_control_plane.dot",
+        "out.full_control_plane.svg",
+        "out.full_control_plane.markdown"
+      ],
+      "selectors": {
+        "include_domain_tags": [
+          "update",
+          "generate",
+          "validate",
+          "lint",
+          "test",
+          "log",
+          "evidence",
+          "traceability",
+          "hooks",
+          "ci",
+          "docs_publish",
+          "manual_review",
+          "exceptions_non_blocking"
+        ]
+      },
+      "must_cover_domains": [
+        "update",
+        "generate",
+        "validate",
+        "lint",
+        "test",
+        "log",
+        "evidence",
+        "traceability",
+        "hooks",
+        "ci",
+        "docs_publish",
+        "manual_review",
+        "exceptions_non_blocking"
+      ],
+      "order_index": 10
+    },
+    {
+      "view_id": "view.verify_evidence_path",
+      "label": "Verify + evidence path",
+      "purpose": "Focused path for governance/verify execution, claim=evidence guard, control docs + diagram stale-checks, backlog reports, and verify run logging.",
+      "layout": "flow_lr",
+      "render_targets": ["mermaid", "markdown"],
+      "output_ids": [
+        "out.verify_evidence_path.mermaid",
+        "out.verify_evidence_path.markdown"
+      ],
+      "selectors": {
+        "include_node_ids": [
+          "node.verify_fast_orchestrator",
+          "node.validate_workflow_alignment",
+          "node.validate_workflow_control_plane",
+          "node.extract_verify_stage_manifest",
+          "node.extract_ci_manifest",
+          "node.extract_hooks_manifest",
+          "node.validate_workflow_control_alignment",
+          "node.validate_capability_audit",
+          "node.preflight_state_discovery",
+          "node.verify_batch_status_claims",
+          "node.validate_traceability",
+          "node.validate_next_session",
+          "node.enforce_next_session_flow",
+          "node.generate_control_docs",
+          "node.stale_check_control_docs",
+          "node.workflow_control_diagrams_generator",
+          "node.workflow_control_diagrams_stale_check",
+          "node.markdownlint_blocking",
+          "node.markdownlint_backlog",
+          "node.vale_blocking",
+          "node.vale_backlog",
+          "node.link_audit_lychee",
+          "node.mkdocs_strict",
+          "node.log_verify_run",
+          "node.manual_review_freeze"
+        ],
+        "include_artifact_ids": [
+          "artifact.workflow_control_plane_json",
+          "artifact.observed_verify_stage_manifest",
+          "artifact.observed_ci_jobs_manifest",
+          "artifact.observed_hooks_manifest",
+          "artifact.task_status_json",
+          "artifact.capability_audit_json",
+          "artifact.traceability_json",
+          "artifact.next_session_json",
+          "artifact.verify_runs_json",
+          "artifact.preflight_state_json",
+          "artifact.batch_status_verify_summary_json",
+          "artifact.capability_audit_summary_json",
+          "artifact.toolchain_capabilities_json",
+          "artifact.markdownlint_backlog_summary_json",
+          "artifact.vale_backlog_summary_json",
+          "artifact.workflow_control_plane_full_md",
+          "artifact.workflow_control_plane_verify_md"
+        ]
+      },
+      "must_cover_domains": ["validate", "lint", "log", "evidence", "traceability", "exceptions_non_blocking"],
+      "order_index": 20
+    },
+    {
+      "view_id": "view.verify_test_flow",
+      "label": "Verify + test flow",
+      "purpose": "Focused local verify runtime path from pre-commit into blocking docs/test checks and verify run logging, excluding CI fanout and backlog branches.",
+      "layout": "flow_lr",
+      "render_targets": ["mermaid", "dot", "svg", "markdown"],
+      "output_ids": [
+        "out.verify_test_flow.mermaid",
+        "out.verify_test_flow.dot",
+        "out.verify_test_flow.svg",
+        "out.verify_test_flow.markdown"
+      ],
+      "selectors": {
+        "include_node_ids": [
+          "node.pre_commit_enforcement",
+          "node.verify_fast_orchestrator",
+          "node.manual_review_freeze",
+          "node.markdownlint_blocking",
+          "node.vale_blocking",
+          "node.link_audit_lychee",
+          "node.mkdocs_strict",
+          "node.node_check_svelte",
+          "node.rust_fmt_check",
+          "node.rust_clippy",
+          "node.log_verify_run"
+        ],
+        "include_artifact_ids": [
+          "artifact.verify_runs_json"
+        ]
+      },
+      "must_cover_domains": ["hooks", "validate", "lint", "test", "log", "evidence", "manual_review"],
+      "order_index": 30
+    },
+    {
+      "view_id": "view.logging_evidence_claims",
+      "label": "Logging + evidence claims",
+      "purpose": "Focused claim=evidence and evidence logging path around capability audit, preflight discovery, batch claim verification, traceability/session validators, and verify run logging.",
+      "layout": "flow_lr",
+      "render_targets": ["mermaid", "dot", "svg", "markdown"],
+      "output_ids": [
+        "out.logging_evidence_claims.mermaid",
+        "out.logging_evidence_claims.dot",
+        "out.logging_evidence_claims.svg",
+        "out.logging_evidence_claims.markdown"
+      ],
+      "selectors": {
+        "include_node_ids": [
+          "node.verify_fast_orchestrator",
+          "node.log_verify_run",
+          "node.validate_capability_audit",
+          "node.preflight_state_discovery",
+          "node.verify_batch_status_claims",
+          "node.validate_traceability",
+          "node.validate_next_session",
+          "node.enforce_next_session_flow",
+          "node.manual_review_freeze"
+        ],
+        "include_artifact_ids": [
+          "artifact.verify_runs_json",
+          "artifact.task_status_json",
+          "artifact.capability_audit_json",
+          "artifact.capability_audit_schema",
+          "artifact.preflight_state_json",
+          "artifact.batch_status_verify_summary_json",
+          "artifact.capability_audit_summary_json",
+          "artifact.toolchain_capabilities_json"
+        ]
+      },
+      "must_cover_domains": ["validate", "log", "evidence", "traceability", "manual_review"],
+      "order_index": 40
+    },
+    {
+      "view_id": "view.docs_generation_stale_check",
+      "label": "Docs generation + stale-check",
+      "purpose": "Focused control-doc and diagram generation path, stale-check gates, docs-quality sequence, and non-blocking backlog reports.",
+      "layout": "flow_lr",
+      "render_targets": ["mermaid", "dot", "svg", "markdown"],
+      "output_ids": [
+        "out.docs_generation_stale_check.mermaid",
+        "out.docs_generation_stale_check.dot",
+        "out.docs_generation_stale_check.svg",
+        "out.docs_generation_stale_check.markdown"
+      ],
+      "selectors": {
+        "include_node_ids": [
+          "node.verify_fast_orchestrator",
+          "node.validate_next_session",
+          "node.enforce_next_session_flow",
+          "node.generate_control_docs",
+          "node.stale_check_control_docs",
+          "node.workflow_control_diagrams_generator",
+          "node.workflow_control_diagrams_stale_check",
+          "node.markdownlint_blocking",
+          "node.markdownlint_backlog",
+          "node.vale_blocking",
+          "node.vale_backlog",
+          "node.link_audit_lychee",
+          "node.mkdocs_strict"
+        ],
+        "include_artifact_ids": [
+          "artifact.generated_next_session_md",
+          "artifact.generated_traceability_md",
+          "artifact.markdownlint_backlog_summary_json",
+          "artifact.vale_backlog_summary_json",
+          "artifact.workflow_control_plane_full_md",
+          "artifact.workflow_control_plane_verify_md",
+          "artifact.workflow_control_plane_full_mmd",
+          "artifact.workflow_control_plane_full_dot",
+          "artifact.workflow_control_plane_full_svg"
+        ]
+      },
+      "must_cover_domains": ["generate", "docs_publish", "validate", "lint", "exceptions_non_blocking"],
+      "order_index": 50
+    },
+    {
+      "view_id": "view.hooks_ci_enforcement",
+      "label": "Hooks + CI enforcement",
+      "purpose": "Entry-point and enforcement fanout view from local pre-commit and CI jobs into shared docs lint and code-audit check paths.",
+      "layout": "layered",
+      "render_targets": ["mermaid", "dot", "svg", "markdown"],
+      "output_ids": [
+        "out.hooks_ci_enforcement.mermaid",
+        "out.hooks_ci_enforcement.dot",
+        "out.hooks_ci_enforcement.svg",
+        "out.hooks_ci_enforcement.markdown"
+      ],
+      "selectors": {
+        "include_node_ids": [
+          "node.pre_commit_enforcement",
+          "node.verify_fast_orchestrator",
+          "node.ci_enforcement",
+          "node.ci_job_test_ui",
+          "node.ci_job_test_rust",
+          "node.ci_job_lint",
+          "node.ci_job_docs_security",
+          "node.ci_job_code_audit",
+          "node.ci_job_determinism_required_check",
+          "node.ci_job_clean_clone_smoke_required_check",
+          "node.markdownlint_blocking",
+          "node.vale_blocking",
+          "node.node_check_svelte"
+        ]
+      },
+      "must_cover_domains": ["hooks", "ci", "validate", "lint", "test", "docs_publish"],
+      "order_index": 60
+    }
+  ],
+  "alignment_targets": [
+    {
+      "target_id": "target.verify_stage_ps1",
+      "kind": "powershell_script",
+      "path": "scripts/verify_stage.ps1",
+      "extractor": "ps_step_manifest",
+      "required_runtime_refs": [
+        { "kind": "script_function", "value": "Get-FastSteps" },
+        { "kind": "verify_step_name", "value": "Validate workflow alignment" },
+        { "kind": "verify_step_name", "value": "Validate workflow control plane model" },
+        { "kind": "verify_step_name", "value": "Validate workflow control alignment (refresh observed)" },
+        { "kind": "verify_step_name", "value": "Capability audit (tools + sources)" },
+        { "kind": "verify_step_name", "value": "Preflight state discovery (claim=evidence)" },
+        { "kind": "verify_step_name", "value": "Verify batch status claims (claim=evidence)" },
+        { "kind": "verify_step_name", "value": "Validate traceability registry" },
+        { "kind": "verify_step_name", "value": "Validate NEXT_SESSION control (JSON-first)" },
+        { "kind": "verify_step_name", "value": "Enforce NEXT_SESSION flow" },
+        { "kind": "verify_step_name", "value": "Control docs stale-check" },
+        { "kind": "verify_step_name", "value": "Workflow control diagrams stale-check" },
+        { "kind": "verify_step_name", "value": "Markdown lint (pre-commit, blocking scope)" },
+        { "kind": "verify_step_name", "value": "Markdown lint backlog report (non-blocking)" },
+        { "kind": "verify_step_name", "value": "Vale prose lint (critical blocking, pre-commit)" },
+        { "kind": "verify_step_name", "value": "Vale backlog report + no-regression" },
+        { "kind": "verify_step_name", "value": "MkDocs build --strict" }
+      ,
+        { "kind": "verify_step_name", "value": "Node check (svelte-check)" },
+        { "kind": "verify_step_name", "value": "Rust fmt check" },
+        { "kind": "verify_step_name", "value": "Rust clippy" }
+      ],
+      "blocking_mode": "blocking",
+      "order_index": 10
+    },
+    {
+      "target_id": "target.ci_workflow_ci",
+      "kind": "github_workflow",
+      "path": ".github/workflows/ci.yml",
+      "extractor": "yaml_manifest",
+      "required_runtime_refs": [
+        { "kind": "ci_job", "value": "next-session-governance" },
+        { "kind": "ci_job", "value": "test-ui" },
+        { "kind": "ci_job", "value": "test-rust" },
+        { "kind": "ci_job", "value": "lint" }
+      ],
+      "blocking_mode": "blocking",
+      "order_index": 15
+    },
+    {
+      "target_id": "target.quality_gate_workflow",
+      "kind": "github_workflow",
+      "path": ".github/workflows/quality-gate.yml",
+      "extractor": "yaml_manifest",
+      "required_runtime_refs": [
+        { "kind": "ci_job", "value": "governance-determinism" },
+        { "kind": "ci_job", "value": "docs-security" },
+        { "kind": "ci_job", "value": "code-audit" }
+      ],
+      "blocking_mode": "blocking",
+      "order_index": 20
+    },
+    {
+      "target_id": "target.determinism_workflow",
+      "kind": "github_workflow",
+      "path": ".github/workflows/determinism.yml",
+      "extractor": "yaml_manifest",
+      "required_runtime_refs": [
+        { "kind": "ci_job", "value": "determinism" },
+        { "kind": "ci_job", "value": "determinism-required-check" }
+      ],
+      "blocking_mode": "blocking",
+      "order_index": 22
+    },
+    {
+      "target_id": "target.clean_clone_smoke_workflow",
+      "kind": "github_workflow",
+      "path": ".github/workflows/clean-clone-smoke.yml",
+      "extractor": "yaml_manifest",
+      "required_runtime_refs": [
+        { "kind": "ci_job", "value": "clean-clone-smoke" },
+        { "kind": "ci_job", "value": "clean-clone-smoke-required-check" }
+      ],
+      "blocking_mode": "blocking",
+      "order_index": 24
+    },
+    {
+      "target_id": "target.pre_commit_config",
+      "kind": "pre_commit_config",
+      "path": ".pre-commit-config.yaml",
+      "extractor": "regex_manifest",
+      "required_runtime_refs": [
+        { "kind": "pre_commit_hook_id", "value": "markdownlint-cli2" },
+        { "kind": "pre_commit_hook_id", "value": "validate-workflow-alignment" },
+        { "kind": "pre_commit_hook_id", "value": "vale-critical" },
+        { "kind": "pre_commit_hook_id", "value": "vale" },
+        { "kind": "pre_commit_hook_id", "value": "enforce-next-session-flow" },
+        { "kind": "pre_commit_hook_id", "value": "lychee" }
+      ],
+      "blocking_mode": "blocking",
+      "order_index": 30
+    }
+  ],
+  "policies": {
+    "canonical_json_format": {
+      "stable_key_ordering": true,
+      "indent_spaces": 2,
+      "newline_policy": "lf",
+      "trailing_newline_required": true
+    },
+    "generated_edit_policy": {
+      "manual_edit_forbidden": true,
+      "generated_paths": [
+        "docs/generated/control/WORKFLOW_CONTROL_PLANE.md",
+        "docs/generated/control/workflow_control_plane.*"
+      ]
+    },
+    "stale_check_policy": {
+      "enabled": true,
+      "blocking": true,
+      "check_only_supported": true,
+      "canonical_compare_targets": ["mermaid", "dot", "markdown"],
+      "svg_best_effort": true
+    },
+    "alignment_policy": {
+      "enabled": true,
+      "blocking": true,
+      "fail_on_missing_runtime_ref": true,
+      "fail_on_missing_canonical_ref": true,
+      "fail_on_order_drift": false
+    },
+    "coverage_policy": {
+      "enabled": true,
+      "blocking": true,
+      "fail_on_missing_domain": true,
+      "fail_on_missing_mechanism": true,
+      "fail_on_missing_path": true
+    }
+  },
+  "generated_outputs": [
+    {
+      "output_id": "out.full_control_plane.mermaid",
+      "view_id": "view.full_control_plane",
+      "path": "docs/generated/control/workflow_control_plane.full.mmd",
+      "kind": "mermaid",
+      "renderer": "powershell_template",
+      "generator_script": "scripts/generate_workflow_control_diagrams.ps1",
+      "check_only_supported": true,
+      "order_index": 10
+    },
+    {
+      "output_id": "out.full_control_plane.dot",
+      "view_id": "view.full_control_plane",
+      "path": "docs/generated/control/workflow_control_plane.full.dot",
+      "kind": "dot",
+      "renderer": "powershell_template",
+      "generator_script": "scripts/generate_workflow_control_diagrams.ps1",
+      "check_only_supported": true,
+      "order_index": 20
+    },
+    {
+      "output_id": "out.full_control_plane.svg",
+      "view_id": "view.full_control_plane",
+      "path": "docs/generated/control/workflow_control_plane.full.svg",
+      "kind": "svg",
+      "renderer": "graphviz",
+      "generator_script": "scripts/generate_workflow_control_diagrams.ps1",
+      "check_only_supported": true,
+      "order_index": 30
+    },
+    {
+      "output_id": "out.full_control_plane.svg_fit",
+      "view_id": "view.full_control_plane",
+      "path": "docs/generated/control/workflow_control_plane.full.fit.svg",
+      "kind": "svg",
+      "renderer": "graphviz",
+      "generator_script": "scripts/generate_workflow_control_diagrams.ps1",
+      "check_only_supported": true,
+      "notes": "Viewport-fit SVG variant for full control plane overview on large screens.",
+      "order_index": 35
+    },
+    {
+      "output_id": "out.full_control_plane.svg_compact_fit",
+      "view_id": "view.full_control_plane",
+      "path": "docs/generated/control/workflow_control_plane.full.compact.fit.svg",
+      "kind": "svg",
+      "renderer": "graphviz",
+      "generator_script": "scripts/generate_workflow_control_diagrams.ps1",
+      "check_only_supported": true,
+      "notes": "Compact full SVG variant with reduced width and denser artifact rows for large-screen viewing.",
+      "order_index": 37
+    },
+    {
+      "output_id": "out.full_control_plane.svg_literal_fit",
+      "view_id": "view.full_control_plane",
+      "path": "docs/generated/control/workflow_control_plane.full.literal.fit.svg",
+      "kind": "svg",
+      "renderer": "graphviz",
+      "generator_script": "scripts/generate_workflow_control_diagrams.ps1",
+      "check_only_supported": true,
+      "notes": "Literal full SVG variant with 90-degree rotated artifact rectangles and widened edge spacing.",
+      "order_index": 38
+    },
+    {
+      "output_id": "out.full_control_plane.svg_literal_raw",
+      "view_id": "view.full_control_plane",
+      "path": "docs/generated/control/workflow_control_plane.full.literal.svg",
+      "kind": "svg",
+      "renderer": "graphviz",
+      "generator_script": "scripts/generate_workflow_control_diagrams.ps1",
+      "check_only_supported": true,
+      "notes": "Literal full SVG variant (raw dimensions) used by interactive viewer image source.",
+      "order_index": 39
+    },
+    {
+      "output_id": "out.full_control_plane.literal_interactive.markdown",
+      "view_id": "view.full_control_plane",
+      "path": "docs/generated/control/workflow_control_plane.full.literal.interactive.md",
+      "kind": "markdown",
+      "renderer": "powershell_template",
+      "generator_script": "scripts/generate_workflow_control_diagrams.ps1",
+      "check_only_supported": true,
+      "notes": "Interactive viewer page for full literal rotated SVG with zoom and pan.",
+      "order_index": 40
+    },
+    {
+      "output_id": "out.full_control_plane.markdown",
+      "view_id": "view.full_control_plane",
+      "path": "docs/generated/control/WORKFLOW_CONTROL_PLANE.md",
+      "kind": "markdown",
+      "renderer": "powershell_template",
+      "generator_script": "scripts/generate_workflow_control_diagrams.ps1",
+      "check_only_supported": true,
+      "order_index": 40
+    },
+    {
+      "output_id": "out.verify_evidence_path.mermaid",
+      "view_id": "view.verify_evidence_path",
+      "path": "docs/generated/control/workflow_control_plane.verify_evidence_path.mmd",
+      "kind": "mermaid",
+      "renderer": "powershell_template",
+      "generator_script": "scripts/generate_workflow_control_diagrams.ps1",
+      "check_only_supported": true,
+      "order_index": 50
+    },
+    {
+      "output_id": "out.verify_evidence_path.markdown",
+      "view_id": "view.verify_evidence_path",
+      "path": "docs/generated/control/workflow_control_plane.verify_evidence_path.md",
+      "kind": "markdown",
+      "renderer": "powershell_template",
+      "generator_script": "scripts/generate_workflow_control_diagrams.ps1",
+      "check_only_supported": true,
+      "order_index": 60
+    },
+    {
+      "output_id": "out.verify_test_flow.mermaid",
+      "view_id": "view.verify_test_flow",
+      "path": "docs/generated/control/workflow_control_plane.verify_test_flow.mmd",
+      "kind": "mermaid",
+      "renderer": "powershell_template",
+      "generator_script": "scripts/generate_workflow_control_diagrams.ps1",
+      "check_only_supported": true,
+      "order_index": 70
+    },
+    {
+      "output_id": "out.verify_test_flow.dot",
+      "view_id": "view.verify_test_flow",
+      "path": "docs/generated/control/workflow_control_plane.verify_test_flow.dot",
+      "kind": "dot",
+      "renderer": "powershell_template",
+      "generator_script": "scripts/generate_workflow_control_diagrams.ps1",
+      "check_only_supported": true,
+      "order_index": 80
+    },
+    {
+      "output_id": "out.verify_test_flow.svg",
+      "view_id": "view.verify_test_flow",
+      "path": "docs/generated/control/workflow_control_plane.verify_test_flow.svg",
+      "kind": "svg",
+      "renderer": "graphviz",
+      "generator_script": "scripts/generate_workflow_control_diagrams.ps1",
+      "check_only_supported": true,
+      "order_index": 90
+    },
+    {
+      "output_id": "out.verify_test_flow.markdown",
+      "view_id": "view.verify_test_flow",
+      "path": "docs/generated/control/workflow_control_plane.verify_test_flow.md",
+      "kind": "markdown",
+      "renderer": "powershell_template",
+      "generator_script": "scripts/generate_workflow_control_diagrams.ps1",
+      "check_only_supported": true,
+      "order_index": 100
+    },
+    {
+      "output_id": "out.logging_evidence_claims.mermaid",
+      "view_id": "view.logging_evidence_claims",
+      "path": "docs/generated/control/workflow_control_plane.logging_evidence_claims.mmd",
+      "kind": "mermaid",
+      "renderer": "powershell_template",
+      "generator_script": "scripts/generate_workflow_control_diagrams.ps1",
+      "check_only_supported": true,
+      "order_index": 110
+    },
+    {
+      "output_id": "out.logging_evidence_claims.dot",
+      "view_id": "view.logging_evidence_claims",
+      "path": "docs/generated/control/workflow_control_plane.logging_evidence_claims.dot",
+      "kind": "dot",
+      "renderer": "powershell_template",
+      "generator_script": "scripts/generate_workflow_control_diagrams.ps1",
+      "check_only_supported": true,
+      "order_index": 120
+    },
+    {
+      "output_id": "out.logging_evidence_claims.svg",
+      "view_id": "view.logging_evidence_claims",
+      "path": "docs/generated/control/workflow_control_plane.logging_evidence_claims.svg",
+      "kind": "svg",
+      "renderer": "graphviz",
+      "generator_script": "scripts/generate_workflow_control_diagrams.ps1",
+      "check_only_supported": true,
+      "order_index": 130
+    },
+    {
+      "output_id": "out.logging_evidence_claims.markdown",
+      "view_id": "view.logging_evidence_claims",
+      "path": "docs/generated/control/workflow_control_plane.logging_evidence_claims.md",
+      "kind": "markdown",
+      "renderer": "powershell_template",
+      "generator_script": "scripts/generate_workflow_control_diagrams.ps1",
+      "check_only_supported": true,
+      "order_index": 140
+    },
+    {
+      "output_id": "out.docs_generation_stale_check.mermaid",
+      "view_id": "view.docs_generation_stale_check",
+      "path": "docs/generated/control/workflow_control_plane.docs_generation_stale_check.mmd",
+      "kind": "mermaid",
+      "renderer": "powershell_template",
+      "generator_script": "scripts/generate_workflow_control_diagrams.ps1",
+      "check_only_supported": true,
+      "order_index": 150
+    },
+    {
+      "output_id": "out.docs_generation_stale_check.dot",
+      "view_id": "view.docs_generation_stale_check",
+      "path": "docs/generated/control/workflow_control_plane.docs_generation_stale_check.dot",
+      "kind": "dot",
+      "renderer": "powershell_template",
+      "generator_script": "scripts/generate_workflow_control_diagrams.ps1",
+      "check_only_supported": true,
+      "order_index": 160
+    },
+    {
+      "output_id": "out.docs_generation_stale_check.svg",
+      "view_id": "view.docs_generation_stale_check",
+      "path": "docs/generated/control/workflow_control_plane.docs_generation_stale_check.svg",
+      "kind": "svg",
+      "renderer": "graphviz",
+      "generator_script": "scripts/generate_workflow_control_diagrams.ps1",
+      "check_only_supported": true,
+      "order_index": 170
+    },
+    {
+      "output_id": "out.docs_generation_stale_check.markdown",
+      "view_id": "view.docs_generation_stale_check",
+      "path": "docs/generated/control/workflow_control_plane.docs_generation_stale_check.md",
+      "kind": "markdown",
+      "renderer": "powershell_template",
+      "generator_script": "scripts/generate_workflow_control_diagrams.ps1",
+      "check_only_supported": true,
+      "order_index": 180
+    },
+    {
+      "output_id": "out.hooks_ci_enforcement.mermaid",
+      "view_id": "view.hooks_ci_enforcement",
+      "path": "docs/generated/control/workflow_control_plane.hooks_ci_enforcement.mmd",
+      "kind": "mermaid",
+      "renderer": "powershell_template",
+      "generator_script": "scripts/generate_workflow_control_diagrams.ps1",
+      "check_only_supported": true,
+      "order_index": 190
+    },
+    {
+      "output_id": "out.hooks_ci_enforcement.dot",
+      "view_id": "view.hooks_ci_enforcement",
+      "path": "docs/generated/control/workflow_control_plane.hooks_ci_enforcement.dot",
+      "kind": "dot",
+      "renderer": "powershell_template",
+      "generator_script": "scripts/generate_workflow_control_diagrams.ps1",
+      "check_only_supported": true,
+      "order_index": 200
+    },
+    {
+      "output_id": "out.hooks_ci_enforcement.svg",
+      "view_id": "view.hooks_ci_enforcement",
+      "path": "docs/generated/control/workflow_control_plane.hooks_ci_enforcement.svg",
+      "kind": "svg",
+      "renderer": "graphviz",
+      "generator_script": "scripts/generate_workflow_control_diagrams.ps1",
+      "check_only_supported": true,
+      "order_index": 210
+    },
+    {
+      "output_id": "out.hooks_ci_enforcement.markdown",
+      "view_id": "view.hooks_ci_enforcement",
+      "path": "docs/generated/control/workflow_control_plane.hooks_ci_enforcement.md",
+      "kind": "markdown",
+      "renderer": "powershell_template",
+      "generator_script": "scripts/generate_workflow_control_diagrams.ps1",
+      "check_only_supported": true,
+      "order_index": 220
+    }
+  ],
+  "legacy_inputs": [
+    {
+      "path": "workflow-steps.json",
+      "status": "do_not_use_as_ssot",
+      "reason": "Legacy workflow source is not canonical for the JSON-first diagram system."
+    }
+  ],
+  "notes": [
+    "D6 baseline: canonical graph includes verify fast runtime path, capability audit gate, claim=evidence guard, self-hosting workflow-control-plane diagram subsystem, non-blocking backlog paths, and CI job coverage nodes.",
+    "Observed manifests are generated and alignment-validated against verify_stage, CI workflows, and pre-commit hooks.",
+    "Graphviz SVG rendering is active when dot is available; generator still supports placeholder fallback for environments without Graphviz."
+  ]
+}

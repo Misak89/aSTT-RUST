@@ -1,0 +1,27 @@
+{
+  "tested_at": "2026-03-04T20:17:20.101603",
+  "url": "https://www.youtube.com/watch?v=3LHFu3Hnufs",
+  "init_status": "initialized",
+  "init_engine": "faster-whisper",
+  "init_elapsed_seconds": 2.063,
+  "runs": [
+    {
+      "clip_seconds": 15,
+      "elapsed_seconds": 5.859,
+      "status": "success",
+      "engine": "faster-whisper",
+      "segments_count": 4,
+      "text_len": 272,
+      "message": ""
+    },
+    {
+      "clip_seconds": 180,
+      "elapsed_seconds": 21.578,
+      "status": "success",
+      "engine": "faster-whisper",
+      "segments_count": 37,
+      "text_len": 2689,
+      "message": ""
+    }
+  ]
+}

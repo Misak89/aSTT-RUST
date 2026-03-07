@@ -1,0 +1,15 @@
+markdownlint-cli2 (blocking scope, P0 curated)...........................Failed
+- hook id: markdownlint-cli2
+- exit code: 1
+
+markdownlint-cli2 v0.15.0 (markdownlint v0.36.1)
+Finding: docs/index.md docs/core/GOVERNANCE.md docs/generated/control/NEXT_SESSION.md docs/generated/control/TRACEABILITY_SUMMARY.md docs/generated/control/WORKFLOW_CONTROL_PLANE.md docs/generated/control/workflow_control_plane.verify_evidence_path.md docs_control/**/*.md !site/** !backup_docs_*/** !NEXT_SESSION_Archive/** !src-tauri/binaries/build/** !tools/vale/**
+Linting: 8 file(s)
+Summary: 6 error(s)
+docs_control/next_session_note.md:18:141 MD013/line-length Line length [Expected: 140; Actual: 173]
+docs_control/workflow_control_plane_note.md:6 MD032/blanks-around-lists Lists should be surrounded by blank lines [Context: "- D1 baseline hotovy (schema +..."]
+docs_control/workflow_control_plane_note.md:11 MD032/blanks-around-lists Lists should be surrounded by blank lines [Context: "- 1 canonical full graph z JSO..."]
+docs_control/workflow_control_plane_note.md:16 MD032/blanks-around-lists Lists should be surrounded by blank lines [Context: "- `workflow-steps.json` je leg..."]
+docs/generated/control/NEXT_SESSION.md:218:141 MD013/line-length Line length [Expected: 140; Actual: 173]
+docs/generated/control/WORKFLOW_CONTROL_PLANE.md:6:141 MD013/line-length Line length [Expected: 140; Actual: 149]
+

@@ -1,0 +1,2719 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>Upgrade Guide - aSTT-RUST Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#upgrade-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="aSTT-RUST Documentation" class="md-header__button md-logo" aria-label="aSTT-RUST Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            aSTT-RUST Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Upgrade Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Prepnout na tmavy rezim"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Prepnout na tmavy rezim" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Prepnout na svetly rezim"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Prepnout na svetly rezim" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../core/" class="md-tabs__link">
+          
+  
+  
+  Core
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../software-inventory/" class="md-tabs__link">
+          
+  
+  
+  Audit
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../adr/" class="md-tabs__link">
+          
+  
+  
+  Internal
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="aSTT-RUST Documentation" class="md-nav__button md-logo" aria-label="aSTT-RUST Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    aSTT-RUST Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../core/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../core/ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../core/GOVERNANCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../core/DOCUMENTATION_AUDIT_PLAN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Audit Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../core/AUDIT_TRAIL_Log_dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audit Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../core/ANTIGRAVITY_TOOLS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Antigravity Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../core/ORGANIZATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Organization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../core/CONSTITUTION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Constitution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/NEXT_SESSION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Next Session
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../core/VISION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audit
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Audit
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software-inventory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Software Inventory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software-audit-method/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audit Method
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/VERIFY_STATUS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/VERIFY_RUNS_DESC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify Runs (DESC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/VERIFY_RUNS_ASC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify Runs (ASC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/VERIFY_RUNS_BY_SCOPE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify Runs By Scope
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/GITHUB_UPDATE_DEPLOY_LOG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GitHub Update+Deploy Log
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/TRACEABILITY_SUMMARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Traceability Summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/WORKFLOW_CONTROL_PLANE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Control Plane
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/workflow_control_plane.verify_evidence_path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Verify+Evidence View
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/workflow_control_plane.full.literal.interactive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Control Plane (SVG Literal Interactive)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/workflow_control_plane.full.svg" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Control Plane (SVG Full)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/workflow_control_plane.full.fit.svg" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Control Plane (SVG Fit Screen)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/workflow_control_plane.full.compact.fit.svg" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Control Plane (SVG Compact Fit)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/workflow_control_plane.full.literal.fit.svg" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Control Plane (SVG Literal Rotated)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/workflow_control_plane.verify_test_flow.svg" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Verify/Test Flow (SVG)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/workflow_control_plane.logging_evidence_claims.svg" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Logging+Evidence Claims (SVG)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/workflow_control_plane.docs_generation_stale_check.svg" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Docs Generation+Stale-Check (SVG)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../generated/control/workflow_control_plane.hooks_ci_enforcement.svg" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Hooks+CI Enforcement (SVG)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Internal
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Internal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADRs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ADRs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../adr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../adr/20260219-use-log4brains-to-manage-the-adrs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use Log4brains
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../adr/20260219-use-markdown-architectural-decision-records/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Markdown ADRs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../adr/template/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Template
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spec-Kit
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Spec-Kit
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AGENTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AGENTS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CHANGELOG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CHANGELOG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SECURITY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SUPPORT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Support
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spec-driven/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spec-Driven
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plans
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Plans
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../plans/2026-02-19-refactor-batch-c/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Refactor Batch C
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../inventory-refactor-playbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inventory Playbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-upgrade-the-cli-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1: Upgrade the CLI Tool
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1: Upgrade the CLI Tool">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#if-you-installed-with-uv-tool-install" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        If you installed with uv tool install
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-you-use-one-shot-uvx-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        If you use one-shot uvx commands
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-the-upgrade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verify the upgrade
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-updating-project-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2: Updating Project Files
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2: Updating Project Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-gets-updated" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What gets updated?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-stays-safe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What stays safe?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Update command
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#understanding-the-force-flag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Understanding the --force flag
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#important-warnings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚠️ Important Warnings
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚠️ Important Warnings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-constitution-file-will-be-overwritten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Constitution file will be overwritten
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-custom-template-modifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Custom template modifications
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-duplicate-slash-commands-ide-based-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Duplicate slash commands (IDE-based agents)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Scenarios
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Scenarios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scenario-1-i-just-want-new-slash-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario 1: "I just want new slash commands"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-2-i-customized-templates-and-constitution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario 2: "I customized templates and constitution"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-3-i-see-duplicate-slash-commands-in-my-ide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario 3: "I see duplicate slash commands in my IDE"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-4-im-working-on-a-project-without-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario 4: "I'm working on a project without Git"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-no-git-flag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using --no-git Flag
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using --no-git Flag">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-no-git-does-not-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What --no-git does NOT do
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#working-without-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Working without Git
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slash-commands-not-showing-up-after-upgrade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "Slash commands not showing up after upgrade"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i-lost-my-constitution-customizations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "I lost my constitution customizations"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warning-current-directory-is-not-empty" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "Warning: Current directory is not empty"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cli-upgrade-doesnt-seem-to-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "CLI upgrade doesn't seem to work"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#do-i-need-to-run-specify-every-time-i-open-my-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "Do I need to run specify every time I open my project?"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-compatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version Compatibility
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="upgrade-guide">Upgrade Guide</h1>
+<blockquote>
+<p>You have Spec Kit installed and want to upgrade to the latest version to get new features, bug fixes, or updated slash commands. This guide covers both upgrading the CLI tool and updating your project files.</p>
+</blockquote>
+<hr />
+<h2 id="quick-reference">Quick Reference</h2>
+<table>
+<thead>
+<tr>
+<th>What to Upgrade</th>
+<th>Command</th>
+<th>When to Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CLI Tool Only</strong></td>
+<td><code>uv tool install specify-cli --force --from git+https://github.com/github/spec-kit.git</code></td>
+<td>Get latest CLI features without touching project files</td>
+</tr>
+<tr>
+<td><strong>Project Files</strong></td>
+<td><code>specify init --here --force --ai &lt;your-agent&gt;</code></td>
+<td>Update slash commands, templates, and scripts in your project</td>
+</tr>
+<tr>
+<td><strong>Both</strong></td>
+<td>Run CLI upgrade, then project update</td>
+<td>Recommended for major version updates</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="part-1-upgrade-the-cli-tool">Part 1: Upgrade the CLI Tool</h2>
+<p>The CLI tool (<code>specify</code>) is separate from your project files. Upgrade it to get the latest features and bug fixes.</p>
+<h3 id="if-you-installed-with-uv-tool-install">If you installed with <code>uv tool install</code></h3>
+<div class="highlight"><pre><span></span><code>uv<span class="w"> </span>tool<span class="w"> </span>install<span class="w"> </span>specify-cli<span class="w"> </span>--force<span class="w"> </span>--from<span class="w"> </span>git+https://github.com/github/spec-kit.git
+</code></pre></div>
+<h3 id="if-you-use-one-shot-uvx-commands">If you use one-shot <code>uvx</code> commands</h3>
+<p>No upgrade needed—<code>uvx</code> always fetches the latest version. Just run your commands as normal:</p>
+<div class="highlight"><pre><span></span><code>uvx<span class="w"> </span>--from<span class="w"> </span>git+https://github.com/github/spec-kit.git<span class="w"> </span>specify<span class="w"> </span>init<span class="w"> </span>--here<span class="w"> </span>--ai<span class="w"> </span>copilot
+</code></pre></div>
+<h3 id="verify-the-upgrade">Verify the upgrade</h3>
+<div class="highlight"><pre><span></span><code>specify<span class="w"> </span>check
+</code></pre></div>
+<p>This shows installed tools and confirms the CLI is working.</p>
+<hr />
+<h2 id="part-2-updating-project-files">Part 2: Updating Project Files</h2>
+<p>When Spec Kit releases new features (like new slash commands or updated templates), you need to refresh your project's Spec Kit files.</p>
+<h3 id="what-gets-updated">What gets updated?</h3>
+<p>Running <code>specify init --here --force</code> will update:</p>
+<ul>
+<li>✅ <strong>Slash command files</strong> (<code>.claude/commands/</code>, <code>.github/prompts/</code>, etc.)</li>
+<li>✅ <strong>Script files</strong> (<code>.specify/scripts/</code>)</li>
+<li>✅ <strong>Template files</strong> (<code>.specify/templates/</code>)</li>
+<li>✅ <strong>Shared memory files</strong> (<code>.specify/memory/</code>) - <strong>⚠️ See warnings below</strong></li>
+</ul>
+<h3 id="what-stays-safe">What stays safe?</h3>
+<p>These files are <strong>never touched</strong> by the upgrade—the template packages don't even contain them:</p>
+<ul>
+<li>✅ <strong>Your specifications</strong> (<code>specs/001-my-feature/spec.md</code>, etc.) - <strong>CONFIRMED SAFE</strong></li>
+<li>✅ <strong>Your implementation plans</strong> (<code>specs/001-my-feature/plan.md</code>, <code>tasks.md</code>, etc.) - <strong>CONFIRMED SAFE</strong></li>
+<li>✅ <strong>Your source code</strong> - <strong>CONFIRMED SAFE</strong></li>
+<li>✅ <strong>Your git history</strong> - <strong>CONFIRMED SAFE</strong></li>
+</ul>
+<p>The <code>specs/</code> directory is completely excluded from template packages and will never be modified during upgrades.</p>
+<h3 id="update-command">Update command</h3>
+<p>Run this inside your project directory:</p>
+<div class="highlight"><pre><span></span><code>specify<span class="w"> </span>init<span class="w"> </span>--here<span class="w"> </span>--force<span class="w"> </span>--ai<span class="w"> </span>&lt;your-agent&gt;
+</code></pre></div>
+<p>Replace <code>&lt;your-agent&gt;</code> with your AI assistant. Refer to this list of <a href="../../#-supported-ai-agents">Supported AI Agents</a></p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code>specify<span class="w"> </span>init<span class="w"> </span>--here<span class="w"> </span>--force<span class="w"> </span>--ai<span class="w"> </span>copilot
+</code></pre></div>
+<h3 id="understanding-the-force-flag">Understanding the <code>--force</code> flag</h3>
+<p>Without <code>--force</code>, the CLI warns you and asks for confirmation:</p>
+<div class="highlight"><pre><span></span><code>Warning: Current directory is not empty (25 items)
+Template files will be merged with existing content and may overwrite existing files
+Proceed? [y/N]
+</code></pre></div>
+<p>With <code>--force</code>, it skips the confirmation and proceeds immediately.</p>
+<p><strong>Important: Your <code>specs/</code> directory is always safe.</strong> The <code>--force</code> flag only affects template files (commands, scripts, templates, memory). Your feature specifications, plans, and tasks in <code>specs/</code> are never included in upgrade packages and cannot be overwritten.</p>
+<hr />
+<h2 id="important-warnings">⚠️ Important Warnings</h2>
+<h3 id="1-constitution-file-will-be-overwritten">1. Constitution file will be overwritten</h3>
+<p><strong>Known issue:</strong> <code>specify init --here --force</code> currently overwrites <code>.specify/memory/constitution.md</code> with the default template, erasing any customizations you made.</p>
+<p><strong>Workaround:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Back up your constitution before upgrading</span>
+cp<span class="w"> </span>.specify/memory/constitution.md<span class="w"> </span>.specify/memory/constitution-backup.md
+
+<span class="c1"># 2. Run the upgrade</span>
+specify<span class="w"> </span>init<span class="w"> </span>--here<span class="w"> </span>--force<span class="w"> </span>--ai<span class="w"> </span>copilot
+
+<span class="c1"># 3. Restore your customized constitution</span>
+mv<span class="w"> </span>.specify/memory/constitution-backup.md<span class="w"> </span>.specify/memory/constitution.md
+</code></pre></div>
+<p>Or use git to restore it:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># After upgrade, restore from git history</span>
+git<span class="w"> </span>restore<span class="w"> </span>.specify/memory/constitution.md
+</code></pre></div>
+<h3 id="2-custom-template-modifications">2. Custom template modifications</h3>
+<p>If you customized any templates in <code>.specify/templates/</code>, the upgrade will overwrite them. Back them up first:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Back up custom templates</span>
+cp<span class="w"> </span>-r<span class="w"> </span>.specify/templates<span class="w"> </span>.specify/templates-backup
+
+<span class="c1"># After upgrade, merge your changes back manually</span>
+</code></pre></div>
+<h3 id="3-duplicate-slash-commands-ide-based-agents">3. Duplicate slash commands (IDE-based agents)</h3>
+<p>Some IDE-based agents (like Kilo Code, Windsurf) may show <strong>duplicate slash commands</strong> after upgrading—both old and new versions appear.</p>
+<p><strong>Solution:</strong> Manually delete the old command files from your agent's folder.</p>
+<p><strong>Example for Kilo Code:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Navigate to the agent&#39;s commands folder</span>
+<span class="nb">cd</span><span class="w"> </span>.kilocode/rules/
+
+<span class="c1"># List files and identify duplicates</span>
+ls<span class="w"> </span>-la
+
+<span class="c1"># Delete old versions (example filenames - yours may differ)</span>
+rm<span class="w"> </span>speckit.specify-old.md
+rm<span class="w"> </span>speckit.plan-v1.md
+</code></pre></div>
+<p>Restart your IDE to refresh the command list.</p>
+<hr />
+<h2 id="common-scenarios">Common Scenarios</h2>
+<h3 id="scenario-1-i-just-want-new-slash-commands">Scenario 1: "I just want new slash commands"</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Upgrade CLI (if using persistent install)</span>
+uv<span class="w"> </span>tool<span class="w"> </span>install<span class="w"> </span>specify-cli<span class="w"> </span>--force<span class="w"> </span>--from<span class="w"> </span>git+https://github.com/github/spec-kit.git
+
+<span class="c1"># Update project files to get new commands</span>
+specify<span class="w"> </span>init<span class="w"> </span>--here<span class="w"> </span>--force<span class="w"> </span>--ai<span class="w"> </span>copilot
+
+<span class="c1"># Restore your constitution if customized</span>
+git<span class="w"> </span>restore<span class="w"> </span>.specify/memory/constitution.md
+</code></pre></div>
+<h3 id="scenario-2-i-customized-templates-and-constitution">Scenario 2: "I customized templates and constitution"</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Back up customizations</span>
+cp<span class="w"> </span>.specify/memory/constitution.md<span class="w"> </span>/tmp/constitution-backup.md
+cp<span class="w"> </span>-r<span class="w"> </span>.specify/templates<span class="w"> </span>/tmp/templates-backup
+
+<span class="c1"># 2. Upgrade CLI</span>
+uv<span class="w"> </span>tool<span class="w"> </span>install<span class="w"> </span>specify-cli<span class="w"> </span>--force<span class="w"> </span>--from<span class="w"> </span>git+https://github.com/github/spec-kit.git
+
+<span class="c1"># 3. Update project</span>
+specify<span class="w"> </span>init<span class="w"> </span>--here<span class="w"> </span>--force<span class="w"> </span>--ai<span class="w"> </span>copilot
+
+<span class="c1"># 4. Restore customizations</span>
+mv<span class="w"> </span>/tmp/constitution-backup.md<span class="w"> </span>.specify/memory/constitution.md
+<span class="c1"># Manually merge template changes if needed</span>
+</code></pre></div>
+<h3 id="scenario-3-i-see-duplicate-slash-commands-in-my-ide">Scenario 3: "I see duplicate slash commands in my IDE"</h3>
+<p>This happens with IDE-based agents (Kilo Code, Windsurf, Roo Code, etc.).</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Find the agent folder (example: .kilocode/rules/)</span>
+<span class="nb">cd</span><span class="w"> </span>.kilocode/rules/
+
+<span class="c1"># List all files</span>
+ls<span class="w"> </span>-la
+
+<span class="c1"># Delete old command files</span>
+rm<span class="w"> </span>speckit.old-command-name.md
+
+<span class="c1"># Restart your IDE</span>
+</code></pre></div>
+<h3 id="scenario-4-im-working-on-a-project-without-git">Scenario 4: "I'm working on a project without Git"</h3>
+<p>If you initialized your project with <code>--no-git</code>, you can still upgrade:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Manually back up files you customized</span>
+cp<span class="w"> </span>.specify/memory/constitution.md<span class="w"> </span>/tmp/constitution-backup.md
+
+<span class="c1"># Run upgrade</span>
+specify<span class="w"> </span>init<span class="w"> </span>--here<span class="w"> </span>--force<span class="w"> </span>--ai<span class="w"> </span>copilot<span class="w"> </span>--no-git
+
+<span class="c1"># Restore customizations</span>
+mv<span class="w"> </span>/tmp/constitution-backup.md<span class="w"> </span>.specify/memory/constitution.md
+</code></pre></div>
+<p>The <code>--no-git</code> flag skips git initialization but doesn't affect file updates.</p>
+<hr />
+<h2 id="using-no-git-flag">Using <code>--no-git</code> Flag</h2>
+<p>The <code>--no-git</code> flag tells Spec Kit to <strong>skip git repository initialization</strong>. This is useful when:</p>
+<ul>
+<li>You manage version control differently (Mercurial, SVN, etc.)</li>
+<li>Your project is part of a larger monorepo with existing git setup</li>
+<li>You're experimenting and don't want version control yet</li>
+</ul>
+<p><strong>During initial setup:</strong></p>
+<div class="highlight"><pre><span></span><code>specify<span class="w"> </span>init<span class="w"> </span>my-project<span class="w"> </span>--ai<span class="w"> </span>copilot<span class="w"> </span>--no-git
+</code></pre></div>
+<p><strong>During upgrade:</strong></p>
+<div class="highlight"><pre><span></span><code>specify<span class="w"> </span>init<span class="w"> </span>--here<span class="w"> </span>--force<span class="w"> </span>--ai<span class="w"> </span>copilot<span class="w"> </span>--no-git
+</code></pre></div>
+<h3 id="what-no-git-does-not-do">What <code>--no-git</code> does NOT do</h3>
+<p>❌ Does NOT prevent file updates
+❌ Does NOT skip slash command installation
+❌ Does NOT affect template merging</p>
+<p>It <strong>only</strong> skips running <code>git init</code> and creating the initial commit.</p>
+<h3 id="working-without-git">Working without Git</h3>
+<p>If you use <code>--no-git</code>, you'll need to manage feature directories manually:</p>
+<p><strong>Set the <code>SPECIFY_FEATURE</code> environment variable</strong> before using planning commands:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Bash/Zsh</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">SPECIFY_FEATURE</span><span class="o">=</span><span class="s2">&quot;001-my-feature&quot;</span>
+
+<span class="c1"># PowerShell</span>
+<span class="nv">$env</span>:SPECIFY_FEATURE<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;001-my-feature&quot;</span>
+</code></pre></div>
+<p>This tells Spec Kit which feature directory to use when creating specs, plans, and tasks.</p>
+<p><strong>Why this matters:</strong> Without git, Spec Kit can't detect your current branch name to determine the active feature. The environment variable provides that context manually.</p>
+<hr />
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="slash-commands-not-showing-up-after-upgrade">"Slash commands not showing up after upgrade"</h3>
+<p><strong>Cause:</strong> Agent didn't reload the command files.</p>
+<p><strong>Fix:</strong></p>
+<ol>
+<li><strong>Restart your IDE/editor</strong> completely (not just reload window)</li>
+<li><strong>For CLI-based agents</strong>, verify files exist:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>-la<span class="w"> </span>.claude/commands/<span class="w">      </span><span class="c1"># Claude Code</span>
+ls<span class="w"> </span>-la<span class="w"> </span>.gemini/commands/<span class="w">       </span><span class="c1"># Gemini</span>
+ls<span class="w"> </span>-la<span class="w"> </span>.cursor/commands/<span class="w">       </span><span class="c1"># Cursor</span>
+</code></pre></div>
+<ol>
+<li><strong>Check agent-specific setup:</strong></li>
+<li>Codex requires <code>CODEX_HOME</code> environment variable</li>
+<li>Some agents need workspace restart or cache clearing</li>
+</ol>
+<h3 id="i-lost-my-constitution-customizations">"I lost my constitution customizations"</h3>
+<p><strong>Fix:</strong> Restore from git or backup:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># If you committed before upgrading</span>
+git<span class="w"> </span>restore<span class="w"> </span>.specify/memory/constitution.md
+
+<span class="c1"># If you backed up manually</span>
+cp<span class="w"> </span>/tmp/constitution-backup.md<span class="w"> </span>.specify/memory/constitution.md
+</code></pre></div>
+<p><strong>Prevention:</strong> Always commit or back up <code>constitution.md</code> before upgrading.</p>
+<h3 id="warning-current-directory-is-not-empty">"Warning: Current directory is not empty"</h3>
+<p><strong>Full warning message:</strong></p>
+<div class="highlight"><pre><span></span><code>Warning: Current directory is not empty (25 items)
+Template files will be merged with existing content and may overwrite existing files
+Do you want to continue? [y/N]
+</code></pre></div>
+<p><strong>What this means:</strong></p>
+<p>This warning appears when you run <code>specify init --here</code> (or <code>specify init .</code>) in a directory that already has files. It's telling you:</p>
+<ol>
+<li><strong>The directory has existing content</strong> - In the example, 25 files/folders</li>
+<li><strong>Files will be merged</strong> - New template files will be added alongside your existing files</li>
+<li><strong>Some files may be overwritten</strong> - If you already have Spec Kit files (<code>.claude/</code>, <code>.specify/</code>, etc.), they'll be replaced with the new versions</li>
+</ol>
+<p><strong>What gets overwritten:</strong></p>
+<p>Only Spec Kit infrastructure files:</p>
+<ul>
+<li>Agent command files (<code>.claude/commands/</code>, <code>.github/prompts/</code>, etc.)</li>
+<li>Scripts in <code>.specify/scripts/</code></li>
+<li>Templates in <code>.specify/templates/</code></li>
+<li>Memory files in <code>.specify/memory/</code> (including constitution)</li>
+</ul>
+<p><strong>What stays untouched:</strong></p>
+<ul>
+<li>Your <code>specs/</code> directory (specifications, plans, tasks)</li>
+<li>Your source code files</li>
+<li>Your <code>.git/</code> directory and git history</li>
+<li>Any other files not part of Spec Kit templates</li>
+</ul>
+<p><strong>How to respond:</strong></p>
+<ul>
+<li><strong>Type <code>y</code> and press Enter</strong> - Proceed with the merge (recommended if upgrading)</li>
+<li><strong>Type <code>n</code> and press Enter</strong> - Cancel the operation</li>
+<li><strong>Use <code>--force</code> flag</strong> - Skip this confirmation entirely:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>specify<span class="w"> </span>init<span class="w"> </span>--here<span class="w"> </span>--force<span class="w"> </span>--ai<span class="w"> </span>copilot
+</code></pre></div>
+<p><strong>When you see this warning:</strong></p>
+<ul>
+<li>✅ <strong>Expected</strong> when upgrading an existing Spec Kit project</li>
+<li>✅ <strong>Expected</strong> when adding Spec Kit to an existing codebase</li>
+<li>⚠️ <strong>Unexpected</strong> if you thought you were creating a new project in an empty directory</li>
+</ul>
+<p><strong>Prevention tip:</strong> Before upgrading, commit or back up your <code>.specify/memory/constitution.md</code> if you customized it.</p>
+<h3 id="cli-upgrade-doesnt-seem-to-work">"CLI upgrade doesn't seem to work"</h3>
+<p>Verify the installation:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check installed tools</span>
+uv<span class="w"> </span>tool<span class="w"> </span>list
+
+<span class="c1"># Should show specify-cli</span>
+
+<span class="c1"># Verify path</span>
+which<span class="w"> </span>specify
+
+<span class="c1"># Should point to the uv tool installation directory</span>
+</code></pre></div>
+<p>If not found, reinstall:</p>
+<div class="highlight"><pre><span></span><code>uv<span class="w"> </span>tool<span class="w"> </span>uninstall<span class="w"> </span>specify-cli
+uv<span class="w"> </span>tool<span class="w"> </span>install<span class="w"> </span>specify-cli<span class="w"> </span>--from<span class="w"> </span>git+https://github.com/github/spec-kit.git
+</code></pre></div>
+<h3 id="do-i-need-to-run-specify-every-time-i-open-my-project">"Do I need to run specify every time I open my project?"</h3>
+<p><strong>Short answer:</strong> No, you only run <code>specify init</code> once per project (or when upgrading).</p>
+<p><strong>Explanation:</strong></p>
+<p>The <code>specify</code> CLI tool is used for:</p>
+<ul>
+<li><strong>Initial setup:</strong> <code>specify init</code> to bootstrap Spec Kit in your project</li>
+<li><strong>Upgrades:</strong> <code>specify init --here --force</code> to update templates and commands</li>
+<li><strong>Diagnostics:</strong> <code>specify check</code> to verify tool installation</li>
+</ul>
+<p>Once you've run <code>specify init</code>, the slash commands (like <code>/speckit.specify</code>, <code>/speckit.plan</code>, etc.) are <strong>permanently installed</strong> in your project's agent folder (<code>.claude/</code>, <code>.github/prompts/</code>, etc.). Your AI assistant reads these command files directly—no need to run <code>specify</code> again.</p>
+<p><strong>If your agent isn't recognizing slash commands:</strong></p>
+<ol>
+<li><strong>Verify command files exist:</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># For GitHub Copilot</span>
+ls<span class="w"> </span>-la<span class="w"> </span>.github/prompts/
+
+<span class="c1"># For Claude</span>
+ls<span class="w"> </span>-la<span class="w"> </span>.claude/commands/
+</code></pre></div>
+<ol>
+<li>
+<p><strong>Restart your IDE/editor completely</strong> (not just reload window)</p>
+</li>
+<li>
+<p><strong>Check you're in the correct directory</strong> where you ran <code>specify init</code></p>
+</li>
+<li>
+<p><strong>For some agents</strong>, you may need to reload the workspace or clear cache</p>
+</li>
+</ol>
+<p><strong>Related issue:</strong> If Copilot can't open local files or uses PowerShell commands unexpectedly, this is typically an IDE context issue, not related to <code>specify</code>. Try:</p>
+<ul>
+<li>Restarting VS Code</li>
+<li>Checking file permissions</li>
+<li>Ensuring the workspace folder is properly opened</li>
+</ul>
+<hr />
+<h2 id="version-compatibility">Version Compatibility</h2>
+<p>Spec Kit follows semantic versioning for major releases. The CLI and project files are designed to be compatible within the same major version.</p>
+<p><strong>Best practice:</strong> Keep both CLI and project files in sync by upgrading both together during major version changes.</p>
+<hr />
+<h2 id="next-steps">Next Steps</h2>
+<p>After upgrading:</p>
+<ul>
+<li><strong>Test new slash commands:</strong> Run <code>/speckit.constitution</code> or another command to verify everything works</li>
+<li><strong>Review release notes:</strong> Check <a href="https://github.com/github/spec-kit/releases">GitHub Releases</a> for new features and breaking changes</li>
+<li><strong>Update workflows:</strong> If new commands were added, update your team's development workflows</li>
+<li><strong>Check documentation:</strong> Visit <a href="https://github.github.io/spec-kit/">github.io/spec-kit</a> for updated guides</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../javascripts/nav-interactive-highlight.js"></script>
+      
+    
+  </body>
+</html>

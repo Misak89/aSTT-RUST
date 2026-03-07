@@ -1,0 +1,29 @@
+# aSTT Transcript Export
+export_unix_ms=1772670915012
+source=https://www.youtube.com/watch?v=3LHFu3Hnufs
+language=en
+engine=faster-whisper
+format_version=2
+section_1=full_transcript
+section_2=numbered_segments_with_time
+segment_line_format=NNN | HH:MM:SS.mmm -> HH:MM:SS.mmm | speaker=<value-or-> | text=<segment_text>
+
+[full_transcript]
+I was curious as to what makes them different, what makes white supremacy different or like Islamophobia so different from anti-Semitism. Freedom of speech, freedom of religion, freedom of association and so on. If I want to kill you and behead you, unless you convert to the religion I dictate, what would be the place of compromise? One of the great speakers of our day is a great Ayaan Hersielle. Here she is at a fantastic debate with individuals that are supporting Islam's development in the West without understanding exactly what's going on today. Listen carefully what she has to say about that. And of course I'd like to hear what you have to say about it so don't forget to leave your comments below and of course subscribe to this channel and we'll talk to you on the other end of the video. I would like to reiterate the thanks for your time here at the University of Austin. What I wanted to ask you was do you speak of Islamophobia and classes like black studies as phony ideological things?
+
+[numbered_segments_with_time]
+001 | 00:00:00.000 -> 00:00:05.340 | speaker=SPEAKER_01 | text=I was curious as to what makes them different, what makes white supremacy different or like
+002 | 00:00:05.340 -> 00:00:07.620 | speaker=SPEAKER_01 | text=Islamophobia so different from anti-Semitism.
+003 | 00:00:07.620 -> 00:00:11.660 | speaker=SPEAKER_01 | text=Freedom of speech, freedom of religion, freedom of association and so on.
+004 | 00:00:11.660 -> 00:00:17.660 | speaker=SPEAKER_01 | text=If I want to kill you and behead you, unless you convert to the religion I dictate, what
+005 | 00:00:17.660 -> 00:00:19.620 | speaker=SPEAKER_01 | text=would be the place of compromise?
+006 | 00:00:19.620 -> 00:00:22.940 | speaker=SPEAKER_01 | text=One of the great speakers of our day is a great Ayaan Hersielle.
+007 | 00:00:22.940 -> 00:00:28.300 | speaker=SPEAKER_01 | text=Here she is at a fantastic debate with individuals that are supporting Islam's development
+008 | 00:00:28.300 -> 00:00:32.020 | speaker=SPEAKER_01 | text=in the West without understanding exactly what's going on today.
+009 | 00:00:32.020 -> 00:00:34.740 | speaker=SPEAKER_01 | text=Listen carefully what she has to say about that.
+010 | 00:00:34.740 -> 00:00:38.620 | speaker=SPEAKER_01 | text=And of course I'd like to hear what you have to say about it so don't forget to leave your
+011 | 00:00:38.620 -> 00:00:42.900 | speaker=SPEAKER_01 | text=comments below and of course subscribe to this channel and we'll talk to you on the
+012 | 00:00:42.900 -> 00:00:43.900 | speaker=SPEAKER_01 | text=other end of the video.
+013 | 00:00:43.900 -> 00:00:49.780 | speaker=SPEAKER_01 | text=I would like to reiterate the thanks for your time here at the University of Austin.
+014 | 00:00:49.780 -> 00:00:56.380 | speaker=SPEAKER_01 | text=What I wanted to ask you was do you speak of Islamophobia and classes like black studies
+015 | 00:00:56.380 -> 00:00:59.820 | speaker=SPEAKER_01 | text=as phony ideological things?

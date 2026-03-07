@@ -1,0 +1,153 @@
+%% Generated from docs_control/workflow_control_plane.json
+%% view_id: view.full_control_plane
+flowchart TB
+  actor_user{{"User"}}
+  actor_local_tooling{{"Local Tooling"}}
+  actor_ci{{"CI Runner"}}
+  node_verify_fast_orchestrator["verify_fast / verify_stage"]
+  node_log_verify_run["log_verify_run"]
+  node_pre_commit_enforcement(["pre-commit enforcement"])
+  node_markdownlint_backlog(["markdownlint backlog"])
+  node_markdownlint_blocking(["markdownlint blocking"])
+  node_vale_blocking(["Vale blocking"])
+  node_vale_backlog(["Vale backlog no-regression"])
+  node_validate_traceability(["validate_traceability"])
+  node_validate_next_session(["validate_next_session JSON-first"])
+  node_generate_control_docs["generate_control_docs"]
+  node_stale_check_control_docs(["stale-check control docs"])
+  node_mkdocs_strict(["mkdocs build --strict"])
+  node_ci_enforcement(["CI enforcement"])
+  node_manual_review_freeze{"Manual review / freeze"}
+  node_validate_workflow_alignment(["validate_workflow_alignment"])
+  node_validate_workflow_control_plane(["validate_workflow_control_plane"])
+  node_extract_verify_stage_manifest["extract_verify_stage_manifest"]
+  node_extract_ci_manifest["extract_ci_manifest"]
+  node_extract_hooks_manifest["extract_hooks_manifest"]
+  node_validate_workflow_control_alignment(["validate_workflow_control_alignment (refresh observed)"])
+  node_validate_capability_audit(["validate_capability_audit (tools + sources)"])
+  node_preflight_state_discovery(["preflight_state_discovery (claim=evidence)"])
+  node_verify_batch_status_claims(["verify_batch_status claims (claim=evidence)"])
+  node_enforce_next_session_flow(["enforce_next_session_flow"])
+  node_workflow_control_diagrams_generator["generate_workflow_control_diagrams"]
+  node_workflow_control_diagrams_stale_check(["workflow_control_diagrams stale-check"])
+  node_link_audit_lychee(["Link audit (lychee, optional)"])
+  node_node_check_svelte(["Node check (svelte-check)"])
+  node_rust_fmt_check(["Rust fmt check"])
+  node_rust_clippy(["Rust clippy"])
+  node_ci_job_test_ui(["CI job: test-ui"])
+  node_ci_job_test_rust(["CI job: test-rust"])
+  node_ci_job_lint(["CI job: lint"])
+  node_ci_job_docs_security(["CI job: docs-security"])
+  node_ci_job_code_audit(["CI job: code-audit"])
+  node_ci_job_determinism_required_check(["CI job: determinism-required-check"])
+  node_ci_job_clean_clone_smoke_required_check(["CI job: clean-clone-smoke-required-check"])
+  artifact_workflow_control_plane_json[( "Workflow Control Plane SSOT" )]
+  artifact_workflow_control_plane_schema[( "Workflow Control Plane Schema" )]
+  artifact_verify_runs_json[( "Verify Runs Evidence Log" )]
+  artifact_traceability_json[( "Traceability Registry" )]
+  artifact_next_session_json[( "NEXT_SESSION Canonical JSON" )]
+  artifact_pre_commit_config[( "pre-commit Config" )]
+  artifact_verify_stage_script[( "verify_stage Script" )]
+  artifact_ci_workflow_ci[( "CI Workflow" )]
+  artifact_ci_workflow_quality_gate[( "Quality Gate Workflow" )]
+  artifact_ci_workflow_determinism[( "Determinism Workflow" )]
+  artifact_ci_workflow_clean_clone_smoke[( "Clean Clone Smoke Workflow" )]
+  artifact_mkdocs_yml[( "MkDocs Config" )]
+  artifact_task_status_json[( "Task Status Registry" )]
+  artifact_capability_audit_json[( "Capability Audit Registry" )]
+  artifact_capability_audit_schema[( "Capability Audit Schema" )]
+  artifact_generated_next_session_md[( "Generated NEXT_SESSION View" )]
+  artifact_generated_traceability_md[( "Generated Traceability View" )]
+  artifact_preflight_state_json[( "Preflight state snapshot" )]
+  artifact_batch_status_verify_summary_json[( "Batch status verify summary" )]
+  artifact_capability_audit_summary_json[( "Capability audit summary" )]
+  artifact_toolchain_capabilities_json[( "Toolchain capability observations" )]
+  artifact_markdownlint_backlog_summary_json[( "Markdownlint backlog summary" )]
+  artifact_vale_backlog_summary_json[( "Vale backlog summary" )]
+  artifact_observed_verify_stage_manifest[( "Observed verify_stage manifest" )]
+  artifact_observed_ci_jobs_manifest[( "Observed CI jobs manifest" )]
+  artifact_observed_hooks_manifest[( "Observed pre-commit hooks manifest" )]
+  artifact_workflow_control_plane_note_md[( "Workflow control plane note" )]
+  artifact_workflow_control_plane_full_md[( "Workflow control plane full view" )]
+  artifact_workflow_control_plane_verify_md[( "Workflow control plane verify+evidence view" )]
+  artifact_workflow_control_plane_full_mmd[( "Workflow control plane full Mermaid" )]
+  artifact_workflow_control_plane_full_dot[( "Workflow control plane full DOT" )]
+  artifact_workflow_control_plane_full_svg[( "Workflow control plane full SVG" )]
+  node_verify_fast_orchestrator -->|on_fail / logs_to| node_log_verify_run
+  node_verify_fast_orchestrator -->|always / feeds| node_markdownlint_backlog
+  node_verify_fast_orchestrator -->|on_skip / feeds| node_manual_review_freeze
+  node_verify_fast_orchestrator -->|on_pass / logs_to| node_log_verify_run
+  node_log_verify_run -->|always / writes| artifact_verify_runs_json
+  actor_user -->|if_changed / triggers| node_pre_commit_enforcement
+  node_pre_commit_enforcement -->|on_pass / triggers| node_verify_fast_orchestrator
+  node_verify_fast_orchestrator -->|on_pass / triggers| node_validate_traceability
+  node_validate_traceability -->|on_pass / triggers| node_validate_next_session
+  node_validate_next_session -->|on_pass / triggers| node_generate_control_docs
+  node_generate_control_docs -->|on_pass / triggers| node_stale_check_control_docs
+  node_stale_check_control_docs -->|on_pass / triggers| node_markdownlint_blocking
+  node_markdownlint_blocking -->|on_pass / triggers| node_vale_blocking
+  node_vale_blocking -->|on_pass / triggers| node_mkdocs_strict
+  node_mkdocs_strict -->|on_pass / logs_to| node_log_verify_run
+  node_verify_fast_orchestrator -->|always / feeds| node_vale_backlog
+  actor_ci -->|always / triggers| node_ci_enforcement
+  node_verify_fast_orchestrator -->|on_pass / triggers| node_validate_workflow_alignment
+  node_validate_workflow_alignment -->|on_pass / triggers| node_validate_workflow_control_plane
+  node_validate_workflow_control_plane -->|on_pass / triggers| node_extract_verify_stage_manifest
+  node_extract_verify_stage_manifest -->|always / writes| artifact_observed_verify_stage_manifest
+  node_extract_verify_stage_manifest -->|on_pass / triggers| node_extract_ci_manifest
+  node_extract_ci_manifest -->|always / writes| artifact_observed_ci_jobs_manifest
+  node_extract_ci_manifest -->|on_pass / triggers| node_extract_hooks_manifest
+  node_extract_hooks_manifest -->|always / writes| artifact_observed_hooks_manifest
+  node_extract_hooks_manifest -->|on_pass / triggers| node_validate_workflow_control_alignment
+  node_validate_workflow_control_alignment -->|on_pass / triggers| node_validate_capability_audit
+  node_validate_capability_audit -->|always / writes| artifact_capability_audit_summary_json
+  node_preflight_state_discovery -->|always / writes| artifact_preflight_state_json
+  node_validate_capability_audit -->|always / writes| artifact_toolchain_capabilities_json
+  node_preflight_state_discovery -->|on_pass / triggers| node_verify_batch_status_claims
+  node_validate_capability_audit -->|on_pass / triggers| node_preflight_state_discovery
+  node_verify_batch_status_claims -->|always / writes| artifact_batch_status_verify_summary_json
+  node_verify_batch_status_claims -->|on_pass / triggers| node_validate_traceability
+  node_validate_next_session -->|on_pass / triggers| node_enforce_next_session_flow
+  node_enforce_next_session_flow -->|on_pass / triggers| node_stale_check_control_docs
+  actor_user -->|if_changed / triggers| node_generate_control_docs
+  node_generate_control_docs -->|always / writes| artifact_generated_next_session_md
+  node_generate_control_docs -->|always / writes| artifact_generated_traceability_md
+  actor_user -->|if_changed / triggers| node_workflow_control_diagrams_generator
+  node_workflow_control_diagrams_generator -->|always / writes| artifact_workflow_control_plane_full_mmd
+  node_workflow_control_diagrams_generator -->|always / writes| artifact_workflow_control_plane_full_dot
+  node_workflow_control_diagrams_generator -->|always / writes| artifact_workflow_control_plane_full_svg
+  node_workflow_control_diagrams_generator -->|always / writes| artifact_workflow_control_plane_full_md
+  node_workflow_control_diagrams_generator -->|always / writes| artifact_workflow_control_plane_verify_md
+  node_stale_check_control_docs -->|on_pass / triggers| node_workflow_control_diagrams_stale_check
+  node_workflow_control_diagrams_generator -->|on_pass / triggers| node_workflow_control_diagrams_stale_check
+  node_workflow_control_diagrams_stale_check -->|on_pass / triggers| node_markdownlint_blocking
+  node_markdownlint_backlog -->|always / writes| artifact_markdownlint_backlog_summary_json
+  node_markdownlint_blocking -->|on_pass / feeds| node_markdownlint_backlog
+  node_markdownlint_backlog -->|always / feeds| node_vale_blocking
+  node_vale_backlog -->|always / writes| artifact_vale_backlog_summary_json
+  node_vale_backlog -->|always / feeds| node_link_audit_lychee
+  node_link_audit_lychee -->|on_pass / triggers| node_mkdocs_strict
+  node_link_audit_lychee -->|on_skip / triggers| node_mkdocs_strict
+  node_mkdocs_strict -->|on_pass / triggers| node_node_check_svelte
+  node_node_check_svelte -->|on_pass / triggers| node_rust_fmt_check
+  node_rust_fmt_check -->|on_pass / triggers| node_rust_clippy
+  node_rust_clippy -->|on_pass / logs_to| node_log_verify_run
+  node_preflight_state_discovery -->|always / reads| artifact_task_status_json
+  node_verify_batch_status_claims -->|always / reads| artifact_task_status_json
+  node_validate_capability_audit -->|always / reads| artifact_capability_audit_json
+  node_validate_capability_audit -->|always / reads| artifact_capability_audit_schema
+  node_validate_workflow_control_plane -->|always / reads| artifact_workflow_control_plane_json
+  node_validate_workflow_control_plane -->|always / reads| artifact_workflow_control_plane_schema
+  node_validate_workflow_control_alignment -->|always / reads| artifact_observed_verify_stage_manifest
+  node_validate_workflow_control_alignment -->|always / reads| artifact_observed_ci_jobs_manifest
+  node_validate_workflow_control_alignment -->|always / reads| artifact_observed_hooks_manifest
+  node_ci_enforcement -->|always / triggers| node_ci_job_test_ui
+  node_ci_enforcement -->|always / triggers| node_ci_job_test_rust
+  node_ci_enforcement -->|always / triggers| node_ci_job_lint
+  node_ci_enforcement -->|always / triggers| node_ci_job_docs_security
+  node_ci_enforcement -->|always / triggers| node_ci_job_code_audit
+  node_ci_job_docs_security -->|always / feeds| node_markdownlint_blocking
+  node_ci_job_docs_security -->|always / feeds| node_vale_blocking
+  node_ci_job_code_audit -->|always / feeds| node_node_check_svelte
+  node_ci_enforcement -->|always / triggers| node_ci_job_determinism_required_check
+  node_ci_enforcement -->|always / triggers| node_ci_job_clean_clone_smoke_required_check
