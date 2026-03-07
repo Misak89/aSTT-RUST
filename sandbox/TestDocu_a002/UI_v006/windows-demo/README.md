@@ -1,5 +1,12 @@
 # TestDocu_a002 Demo (No STT)
 
+## Stable checkpoint + easy launch
+
+- See: `VERSION_CHECKPOINT_AND_RUN.md`
+- Safe launch (A002 only): `RUN_A002_ONLY_SAFE.cmd`
+- Safe launch (A002 + A003): `RUN_A002_A003_SAFE.cmd`
+- Existing launch: `RUN_FROM_USB.cmd`
+
 ## Goal
 
 - Demo UI in agreed stack: `SvelteKit + TypeScript + Tauri/Rust`.
